@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ffffff"><title>KhizChat</title><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="icon-192.png"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<style>
+:root,[data-t=light]{--bg:#f5f7fb;--s:#fff;--s2:#eef1f8;--tx:#0f172a;--mu:#64748b;--ac:#2563eb;--bd:#e2e8f0}
+[data-t=dark]{--bg:#0b1220;--s:#111a2e;--s2:#18233b;--tx:#e6ebf5;--mu:#8b97b1;--ac:#3b82f6;--bd:#223052}
+[data-t=midnight]{--bg:#000;--s:#0b0b12;--s2:#16161f;--tx:#f4f4ff;--mu:#8a8aa5;--ac:#8b5cf6;--bd:#1f1f2e}
+[data-t=emerald]{--bg:#f0f7f4;--s:#fff;--s2:#e4f1ec;--tx:#0f2a22;--mu:#5b7a6e;--ac:#059669;--bd:#d3e6dd}
+[data-t=rose]{--bg:#fdf4f6;--s:#fff;--s2:#fbe7ec;--tx:#2d1018;--mu:#8a5a68;--ac:#e11d48;--bd:#f4d3db}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}html,body{height:100%}
+body{font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif;background:var(--bg);color:var(--tx);overflow:hidden}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer;border:0;background:var(--s2);padding:10px 16px;border-radius:12px;transition:.15s}button:active{transform:scale(.96)}
+input,textarea{background:var(--s2);border:1px solid transparent;border-radius:12px;padding:12px 14px;width:100%;outline:0;transition:.15s}
+input:focus,textarea:focus{border-color:var(--ac);background:var(--s)}
+.pri{background:var(--ac);color:#fff;font-weight:600}[hidden]{display:none!important}
+.i{width:20px;height:20px;flex:none}.mu{color:var(--mu);font-size:13px}.c{text-align:center}
+/* auth */
+#auth{height:100%;display:grid;place-items:center;padding:20px;overflow:auto}
+.card{background:var(--s);border:1px solid var(--bd);border-radius:24px;padding:28px;width:100%;max-width:390px;display:grid;gap:14px;box-shadow:0 20px 50px #0001}
+.brand{display:flex;gap:12px;align-items:center;justify-content:center}.brand b{font-size:22px;letter-spacing:2px;display:block}.brand span{font-size:12px;color:var(--mu)}
+.mark{width:48px;height:48px;border-radius:14px;background:var(--ac);color:#fff;display:grid;place-items:center;font-weight:800;font-size:24px}
+.seg{display:grid;grid-template-columns:1fr 1fr;background:var(--s2);border-radius:12px;padding:4px}.seg button{background:none;padding:9px}.seg .on{background:var(--s);box-shadow:0 1px 4px #0002;font-weight:600}
+.err{color:#e11d48;font-size:13px;min-height:18px;text-align:center}
+/* layout */
+#app{display:flex;height:100%}
+#side{display:flex;width:430px;background:var(--s);border-right:1px solid var(--bd);min-width:0}
+#nav{display:flex;flex-direction:column;gap:6px;width:72px;padding:14px 8px;border-right:1px solid var(--bd);background:var(--s)}
+#nav button{background:none;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0;font-size:10.5px;color:var(--mu);position:relative}
+#nav .on{background:var(--s2);color:var(--ac)}.nbd{position:absolute;top:4px;right:10px;background:#e11d48;color:#fff;border-radius:99px;font-size:10px;padding:0 5px;font-style:normal}
+#pane{flex:1;display:flex;flex-direction:column;min-width:0}
+.ph{padding:18px 18px 10px;display:flex;justify-content:space-between;align-items:baseline}.ph b{font-size:22px}
+#list{flex:1;overflow:auto;padding:4px 10px 16px}
+.it{display:flex;gap:12px;align-items:center;padding:10px;border-radius:14px;cursor:pointer}.it:hover{background:var(--s2)}
+.it .b{flex:1;min-width:0}.it b{display:block;font-weight:600}.it .mu{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{display:grid;justify-items:end;gap:4px}.bd{background:var(--ac);color:#fff;border-radius:99px;padding:1px 8px;font-size:12px;font-weight:600}
+.av{border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;flex:none}
+.avw{position:relative;flex:none}.od{position:absolute;right:0;bottom:0;width:12px;height:12px;border-radius:50%;background:#22c55e;border:2px solid var(--s)}
+#main{flex:1;display:flex;flex-direction:column;min-width:0;background:var(--bg)}
+#empty{margin:auto;text-align:center;padding:20px;color:var(--mu)}#empty .mark{margin:0 auto 14px;width:64px;height:64px;font-size:32px}
+#chat{display:flex;flex-direction:column;height:100%}
+#hd{display:flex;gap:10px;align-items:center;padding:10px 14px;background:var(--s);border-bottom:1px solid var(--bd)}#hd .b{flex:1;min-width:0}#hd b{font-weight:600}
+.ib{width:42px;height:42px;border-radius:50%;padding:0;display:grid;place-items:center;flex:none;background:var(--s2)}
+.back{display:none}
+#msgs{flex:1;overflow:auto;padding:16px 14px;display:flex;flex-direction:column;gap:4px}
+.m{max-width:min(78%,520px);padding:8px 12px;border-radius:18px 18px 18px 6px;background:var(--s);border:1px solid var(--bd);align-self:flex-start;word-wrap:break-word}
+.m.me{align-self:flex-end;background:var(--ac);color:#fff;border:0;border-radius:18px 18px 6px 18px}
+.m small{display:block;text-align:right;opacity:.7;font-size:11px;margin-top:2px}.tk.r{color:#93e0ff;opacity:1}
+.m img,.m video{max-width:100%;max-height:280px;border-radius:12px;display:block}.m audio{max-width:100%;height:38px}
+#comp{display:flex;gap:8px;padding:10px 12px;background:var(--s);border-top:1px solid var(--bd);align-items:center;padding-bottom:max(10px,env(safe-area-inset-bottom))}
+#comp textarea{height:44px;resize:none;border-radius:22px;padding:11px 16px}
+.rec{background:#e11d48!important;color:#fff;animation:pl 1s infinite}@keyframes pl{50%{opacity:.5}}
+.sec{padding:12px 8px 4px;color:var(--mu);font-size:12px;text-transform:uppercase;letter-spacing:.8px;font-weight:600}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.row.sp{justify-content:space-between}.pad{padding:8px}
+.st{background:var(--s2);border-radius:16px;padding:14px;margin:8px 0}.st img{max-width:100%;border-radius:12px;margin-top:8px}
+.tg{width:48px;height:28px;border-radius:99px;background:var(--bd);position:relative;padding:0}.tg:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 1px 3px #0004}.tg.on{background:var(--ac)}.tg.on:after{left:23px}
+.sws{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:8px}.sw{display:grid;gap:6px;justify-items:center;font-size:12px;padding:10px 4px;border:2px solid transparent;background:var(--s2)}.sw span{width:34px;height:34px;border-radius:50%;background:var(--c);border:1px solid #0002}.sw.on{border-color:var(--ac)}
+.prof{display:grid;justify-items:center;gap:4px;padding:14px 8px}
+/* call */
+#ov{position:fixed;inset:0;z-index:50;background:radial-gradient(circle at 50% 30%,#1e2a52,#080b18);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;text-align:center;overflow:hidden}
+#rv{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}.hid{position:absolute!important;width:1px!important;height:1px!important;opacity:0;pointer-events:none;inset:auto!important}
+#lv{position:absolute;right:14px;top:14px;width:110px;border-radius:14px;z-index:2;transform:scaleX(-1);background:#000;border:2px solid #fff3}
+.cinfo{position:relative;z-index:2;display:grid;gap:8px;justify-items:center}.cinfo.top{position:absolute;top:18px;left:0;right:0;text-shadow:0 1px 6px #000}
+.ctl{position:absolute;bottom:max(36px,env(safe-area-inset-bottom));display:flex;gap:18px;z-index:2}
+.rb{width:64px;height:64px;border-radius:50%;padding:0;display:grid;place-items:center;color:#fff}.rb .i{width:26px;height:26px}.g{background:#22c55e}.r{background:#ef4444}.r .i{transform:rotate(135deg)}.gl{background:#ffffff26;backdrop-filter:blur(8px)}.gl.off{background:#fff;color:#111}
+.pulse{animation:pu 1.5s infinite}@keyframes pu{0%{box-shadow:0 0 0 0 #22c55e88}100%{box-shadow:0 0 0 24px #0000}}
+#tt{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#111;color:#fff;padding:10px 16px;border-radius:12px;z-index:99;max-width:90%;box-shadow:0 8px 24px #0006}
+@media(max-width:760px){
+ #side{width:100%;flex-direction:column-reverse}#nav{flex-direction:row;width:100%;border-right:0;border-top:1px solid var(--bd);padding:6px 8px max(6px,env(safe-area-inset-bottom))}#nav button{flex:1}
+ #main{display:none}.co #side{display:none}.co #main{display:flex}.back{display:grid}.nbd{right:22%}}
+
+:root,[data-t=light]{--ac2:#7c3aed}[data-t=dark]{--ac2:#8b5cf6}[data-t=midnight]{--ac2:#ec4899}[data-t=emerald]{--ac2:#0ea5e9}[data-t=rose]{--ac2:#f97316}
+[data-t=ocean]{--bg:#06202b;--s:#0b3040;--s2:#10445a;--tx:#e6fbff;--mu:#7fb4c4;--ac:#06b6d4;--ac2:#3b82f6;--bd:#165a73}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.pri,.m.me{background:linear-gradient(135deg,var(--ac),var(--ac2))}.pri{box-shadow:0 8px 18px -8px var(--ac)}
+.mark{background:linear-gradient(135deg,var(--ac),var(--ac2));box-shadow:0 10px 24px -8px var(--ac2)}
+#auth{background:radial-gradient(60% 50% at 15% 10%,color-mix(in srgb,var(--ac) 22%,transparent),transparent),radial-gradient(60% 50% at 90% 95%,color-mix(in srgb,var(--ac2) 22%,transparent),transparent),var(--bg)}
+.card{border-radius:30px;box-shadow:0 40px 80px -30px #0004;padding:32px}.brand b{font-size:24px;letter-spacing:.5px}
+#nav .on{background:color-mix(in srgb,var(--ac) 14%,transparent)}.it{border-radius:18px}
+.ph b{font-size:26px;font-weight:800;letter-spacing:-.5px}
+#msgs{background-image:radial-gradient(color-mix(in srgb,var(--tx) 7%,transparent) 1px,transparent 1px);background-size:20px 20px}
+.m{box-shadow:0 1px 2px #0001;cursor:pointer}
+#comp{margin:6px 10px max(10px,env(safe-area-inset-bottom));padding:6px;border-radius:30px;border:1px solid var(--bd);box-shadow:0 10px 30px -14px #0005}
+#comp textarea{background:transparent;border:0;padding:11px 8px}
+#rpb{display:flex;align-items:center;gap:8px;margin:0 10px;padding:6px 8px 6px 14px;background:var(--s);border:1px solid var(--bd);border-left:4px solid var(--ac);border-radius:14px;font-size:13px;color:var(--mu)}#rpb span{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.qt{background:#0002;border-left:3px solid var(--ac2);border-radius:8px;padding:4px 8px;margin-bottom:5px;font-size:13px;opacity:.9}.m:not(.me) .qt{background:var(--s2)}.qt b{display:block;font-size:12px}
+.rx{display:inline-block;background:var(--s);color:var(--tx);border:1px solid var(--bd);border-radius:99px;padding:0 8px;font-size:13px;margin-top:3px}
+#mm{position:fixed;z-index:70;display:flex;gap:2px;background:var(--s);border:1px solid var(--bd);border-radius:30px;padding:5px;box-shadow:0 12px 30px -8px #0006}#mm button{background:none;padding:6px 8px;font-size:20px;border-radius:50%}
+.dpw{position:relative;cursor:pointer;display:block}.dpe{position:absolute;right:-2px;bottom:-2px;background:var(--ac);color:#fff;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:3px solid var(--s)}.dpe .i{width:15px;height:15px}
+img.av{display:block}
+</style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+</head><body data-t="light">
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+<symbol id="i-status" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-dasharray="4 3"/><circle cx="12" cy="12" r="4"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+<symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></symbol>
+<symbol id="i-videooff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/><line x1="1" y1="1" x2="23" y2="23"/></symbol>
+<symbol id="i-mic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></symbol>
+<symbol id="i-micoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/><line x1="1" y1="1" x2="23" y2="23"/></symbol>
+<symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+<symbol id="i-clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+<symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></symbol>
+<symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol><symbol id="i-set" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+</defs></svg>
+<div id="auth"><div class="card">
+<div class="brand"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><div><b>KhizChat</b><span>by Muhammad Khizar</span></div></div>
+<div class="seg"><button id="tl" class="on">Login</button><button id="ts">Sign up</button></div>
+<input id="nm" placeholder="Poora naam" hidden>
+<input id="u" placeholder="Username" autocapitalize="off" autocomplete="username">
+<input id="pw" type="password" placeholder="Password (min 6)" autocomplete="current-password">
+<div class="err" id="er"></div>
+<button class="pri" id="go">Login</button>
+<button id="instb" hidden onclick="inst()">Install app</button><p class="mu c">Secure • Real-time • Free</p>
+</div></div>
+<div id="app" hidden>
+<aside id="side"><section id="pane"><header class="ph"><b id="pt">Chats</b><span class="mu" id="who"></span></header><div id="list"></div></section><nav id="nav"></nav></aside>
+<main id="main"><div id="empty"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><b style="color:var(--tx);font-size:20px">KhizChat</b><p>Chat chun lein ya naya friend add karein</p></div>
+<div id="chat" hidden>
+<div id="hd"><button class="ib back" id="bk"><svg class="i"><use href="#i-back"/></svg></button><div id="hav"></div><div class="b"><b id="hn"></b><div class="mu" id="hp"></div></div><button class="ib" id="ca"><svg class="i"><use href="#i-phone"/></svg></button><button class="ib" id="cv"><svg class="i"><use href="#i-video"/></svg></button></div>
+<div id="msgs"></div><div id="rpb" hidden><span id="rpt"></span><button class="ib" onclick="setRp(null)">✕</button></div>
+<div id="comp"><label class="ib" style="cursor:pointer"><svg class="i"><use href="#i-clip"/></svg><input id="fl" type="file" accept="image/*,video/*" hidden></label>
+<textarea id="tx" placeholder="Message likhein…"></textarea><button class="ib" id="mic"><svg class="i"><use href="#i-mic"/></svg></button><button class="ib pri" id="sd"><svg class="i"><use href="#i-send"/></svg></button></div>
+</div></main></div>
+<div id="mm" hidden></div><div id="ov" hidden></div><div id="tt" hidden></div>
+<script>
+"use strict";
+/* ====== FIREBASE CONFIG ====== */
+const firebaseConfig={apiKey:"AIzaSyAbigNspiWnMp4hLwVWd2F62nODuVmxZJ4",authDomain:"khix-3977e.firebaseapp.com",projectId:"khix-3977e",storageBucket:"khix-3977e.firebasestorage.app",messagingSenderId:"843790837457",appId:"1:843790837457:web:a871b30a4b3a81745a87f0"};
+const $=s=>document.querySelector(s),i=n=>`<svg class="i"><use href="#i-${n}"/></svg>`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const err=t=>$('#er').textContent=t;
+let auth,fs,me=null,U={},R=new Map(),M=new Map(),ST=new Map(),CL=new Map(),unsub=[],cur=null,tab='chats',sig='',known=new Set(),ready=false,mode=0,
+ ac,ri,rec,chunks=[],lastTy=0,ringId=null,ringSeen={},pc,ls,rs,timer,rt,cid=null,q=[],myField='ccand',applied=new Set(),remSet=false,tConn=0;
+try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();fs=firebase.firestore();fs.settings({experimentalAutoDetectLongPolling:true,ignoreUndefinedProperties:true})}catch(e){err('Firebase error: '+e.message)}
+function toast(t){const x=$('#tt');x.textContent=t;x.hidden=false;clearTimeout(x.t);x.t=setTimeout(()=>x.hidden=true,2800)}
+const col=n=>{let h=0;for(const c of String(n))h=(h*31+c.charCodeAt(0))%360;return`hsl(${h} 60% 48%)`};
+const nm=u=>U[u]?U[u].name:'…';
+const av=(u,z=44)=>{const d=U[u]&&U[u].dp;return d?`<img class="av" src="${d}" style="width:${z}px;height:${z}px;object-fit:cover">`:`<div class="av" style="background:${col(u)};width:${z}px;height:${z}px;font-size:${z/2.3}px">${esc(nm(u)[0]||'?').toUpperCase()}</div>`};
+const online=u=>U[u]&&(U[u].priv||{}).online!==false&&Date.now()-U[u].seen<30000;
+const avo=(u,z=46)=>`<div class="avw">${av(u,z)}${online(u)?'<i class="od"></i>':''}</div>`;
+const tm=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+const dt=t=>new Date(t).toLocaleString([],{hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'});
+const rf=()=>{clearTimeout(rt);rt=setTimeout(refresh,40)};
+/* ---------- auth ---------- */
+function setMode(m){mode=m;$('#nm').hidden=!m;$('#tl').classList.toggle('on',!m);$('#ts').classList.toggle('on',!!m);$('#go').textContent=m?'Account banayein':'Login';err('')}
+$('#tl').onclick=()=>setMode(0);$('#ts').onclick=()=>setMode(1);
+async function doAuth(){if(!auth)return;actx();
+ const u=$('#u').value.trim().toLowerCase(),p=$('#pw').value,n=$('#nm').value.trim();
+ if(!/^[a-z0-9_]{3,15}$/.test(u))return err('Username: 3-15 letters/numbers/_');
+ if(p.length<6)return err('Password kam az kam 6 characters');
+ if(mode&&!n)return err('Apna naam likhein');
+ err('Please wait…');
+ try{const em=u+'@khix.app';
+  if(mode){const c=await auth.createUserWithEmailAndPassword(em,p);await fs.collection('users').doc(c.user.uid).set({username:u,name:n,seen:Date.now(),theme:'light',priv:{seen:true,online:true,typing:true}})}
+  else await auth.signInWithEmailAndPassword(em,p);err('')}
+ catch(e){const m={'auth/email-already-in-use':'Yeh username le liya gaya hai','auth/invalid-credential':'Username ya password galat hai','auth/wrong-password':'Username ya password galat hai','auth/user-not-found':'Username ya password galat hai','auth/operation-not-allowed':'Firebase mein Email/Password enable karein','auth/network-request-failed':'Internet check karein'};err(m[e.code]||e.message)}}
+$('#go').onclick=doAuth;['u','pw','nm'].forEach(x=>$('#'+x).onkeydown=e=>{if(e.key=='Enter')doAuth()});
+if(auth)auth.onAuthStateChanged(u=>{if(u){me=u.uid;boot()}else{me=null;$('#app').hidden=true;$('#auth').hidden=false}});
+function tr(map){return s=>s.docChanges().forEach(c=>c.type=='removed'?map.delete(c.doc.id):map.set(c.doc.id,Object.assign({id:c.doc.id},c.doc.data())))}
+const NAV=[['chats','chat','Chats'],['friends','users','Friends'],['status','status','Status'],['calls','phone','Calls'],['set','set','Settings']];
+function boot(){
+ unsub.forEach(f=>f());unsub=[];known=new Set();ready=false;
+ const on=(qq,fn)=>unsub.push(qq.onSnapshot(s=>{fn(s);rf()},e=>{console.error(e);if(e.code=='permission-denied')toast('Firestore rules publish karein')}));
+ on(fs.collection('users'),s=>{U={};s.forEach(d=>U[d.id]=d.data())});
+ on(fs.collection('status'),tr(ST));
+ for(const k of['from','to']){on(fs.collection('reqs').where(k,'==',me),tr(R));on(fs.collection('msgs').where(k,'==',me),tr(M));on(fs.collection('calls').where(k,'==',me),tr(CL))}
+ $('#auth').hidden=true;$('#app').hidden=false;
+ $('#nav').innerHTML=NAV.map(a=>`<button data-k="${a[0]}">${i(a[1])}<span>${a[2]}</span>${a[0]=='chats'?'<em class="nbd" id="nb" hidden></em>':''}</button>`).join('');
+ $('#nav').onclick=e=>{const b=e.target.closest('button');if(b){tab=b.dataset.k;refresh()}};
+ setTimeout(()=>ready=true,3500);clearInterval(timer);timer=setInterval(()=>{beat();rf()},4000);beat()}
+function beat(){if(me&&!document.hidden)fs.collection('users').doc(me).update({seen:Date.now()}).catch(()=>{})}
+document.addEventListener('visibilitychange',beat);document.addEventListener('click',actx);
+const isF=(a,b)=>[...R.values()].some(r=>r.st=='a'&&(r.from==a&&r.to==b||r.from==b&&r.to==a));
+const friends=()=>Object.keys(U).filter(u=>u!=me&&isF(me,u));
+const pres=u=>{const p=U[u].priv||{};return online(u)?'<span style="color:#22c55e">● Online</span>':p.seen===false?'':'Last seen '+dt(U[u].seen)};
+const typing=u=>{const t=U[u]&&U[u].ty;return t&&t.to==me&&Date.now()-t.ts<3500&&(U[u].priv||{}).typing!==false};
+/* ---------- render ---------- */
+function refresh(){if(!me||!U[me])return;
+ document.body.dataset.t=U[me].theme||'light';document.querySelector('meta[name=theme-color]').content=getComputedStyle(document.body).getPropertyValue('--s').trim()||'#fff';$('#who').textContent='@'+U[me].username;$('#pt').textContent=NAV.find(a=>a[0]==tab)[2];
+ [...$('#nav').children].forEach(b=>b.classList.toggle('on',b.dataset.k==tab));
+ const un=[...M.values()].filter(m=>m.to==me&&!m.read).length,nb=$('#nb');if(nb){nb.hidden=!un;nb.textContent=un}document.title=(un?`(${un}) `:'')+'KhizChat';
+ renderList();if(cur&&U[cur]){$('#hn').textContent=nm(cur);$('#hp').innerHTML=typing(cur)?'<i style="color:var(--ac)">typing…</i>':pres(cur);$('#hav').innerHTML=avo(cur,40);renderMsgs()}
+ callUI();notify()}
+function renderList(){const a=document.activeElement&&document.activeElement.id;if((tab=='friends'&&a=='fu')||(tab=='status'&&a=='stx'))return;let h='';
+ if(tab=='chats'){const g={};for(const m of M.values()){const o=m.from==me?m.to:m.from;(g[o]=g[o]||[]).push(m)}
+  const fr=friends().map(u=>{const ms=(g[u]||[]).sort((x,y)=>x.ts-y.ts),l=ms[ms.length-1];return{u,l,n:ms.filter(m=>m.from==u&&!m.read).length,t:l?l.ts:0}}).sort((x,y)=>y.t-x.t);
+  h=fr.length?fr.map(f=>`<div class="it" data-o="${f.u}">${avo(f.u)}<div class="b"><b>${esc(nm(f.u))}</b><div class="mu">${typing(f.u)?'<span style="color:var(--ac)">typing…</span>':f.l?(f.l.from==me?'You: ':'')+(f.l.type=='text'?esc(f.l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message'})[f.l.type]):'Say hi 👋'}</div></div><div class="meta">${f.l?`<span class="mu">${tm(f.l.ts)}</span>`:''}${f.n?`<span class="bd">${f.n}</span>`:''}</div></div>`).join(''):'<p class="mu c pad" style="padding:30px 16px">Abhi koi chat nahi.<br>Friends tab mein username se friend add karein.</p>'}
+ if(tab=='friends'){const rs=[...R.values()],inc=rs.filter(r=>r.to==me&&r.st=='p'),out=rs.filter(r=>r.from==me&&r.st=='p');
+  h=`<div class="row pad"><input id="fu" placeholder="Friend ka username" style="flex:1"><button class="pri" onclick="addF()">Add</button></div>`;
+  if(inc.length)h+='<div class="sec">Friend requests</div>'+inc.map(r=>`<div class="it">${av(r.from)}<div class="b"><b>${esc(nm(r.from))}</b><div class="mu">@${esc((U[r.from]||{}).username||'')}</div></div><button class="pri" onclick="resp('${r.id}',1)">Accept</button><button onclick="resp('${r.id}',0)">✕</button></div>`).join('');
+  if(out.length)h+='<div class="sec">Sent</div>'+out.map(r=>`<div class="it">${av(r.to)}<div class="b"><b>${esc(nm(r.to))}</b><div class="mu">Pending…</div></div></div>`).join('');
+  h+='<div class="sec">Friends</div>'+(friends().map(u=>`<div class="it" data-o="${u}">${avo(u)}<div class="b"><b>${esc(nm(u))}</b><div class="mu">${pres(u)||'@'+esc(U[u].username)}</div></div></div>`).join('')||'<p class="mu pad">Abhi koi nahi</p>')}
+ if(tab=='status'){h=`<div class="st"><textarea id="stx" placeholder="Apna status likhein…" style="height:70px"></textarea><div class="row" style="margin-top:10px"><button class="pri" onclick="postSt()">Post</button><label class="mu" style="cursor:pointer;padding:8px">📷 Photo<input type="file" accept="image/*" hidden onchange="postImg(this)"></label></div></div>`;
+  const s=[...ST.values()].filter(x=>Date.now()-x.ts<864e5&&(x.u==me||isF(me,x.u))).sort((a,b)=>b.ts-a.ts);
+  h+=s.map(x=>`<div class="st"><div class="row">${av(x.u,32)}<b>${x.u==me?'My status':esc(nm(x.u))}</b><span class="mu">${tm(x.ts)}</span></div>${x.text?`<p style="margin-top:8px">${esc(x.text)}</p>`:''}${x.data?`<img src="${x.data}">`:''}</div>`).join('')||'<p class="mu c pad">Koi status nahi (24 ghante tak rehta hai)</p>'}
+ if(tab=='calls'){const ca=act(),c=[...CL.values()].sort((a,b)=>b.ts-a.ts);
+  h=c.map(c=>{const o=c.from==me?c.to:c.from,out=c.from==me;let s=c.st,bad=0;if(s=='ring'&&c!==ca)s='missed';if(s=='missed'||s=='declined'||s=='cancelled')bad=!out&&s!='cancelled';if(s=='end'||s=='on')s=Math.floor((c.dur||0)/60)+'m '+(c.dur||0)%60+'s';
+   return`<div class="it" onclick="call('${o}','${c.kind}')">${av(o)}<div class="b"><b style="${bad?'color:#e11d48':''}">${esc(nm(o))}</b><div class="mu">${out?'↗ Outgoing':'↙ Incoming'} ${c.kind} • ${s} • ${dt(c.ts)}</div></div><span style="color:var(--ac)">${i(c.kind=='video'?'video':'phone')}</span></div>`}).join('')||'<p class="mu c pad" style="padding:30px">Call history khaali hai</p>'}
+ if(tab=='set'){const u=U[me],p=u.priv||{};
+  const tg=(k,l)=>`<div class="row sp pad"><span>${l}</span><button class="tg ${p[k]!==false?'on':''}" onclick="tgl('${k}')"></button></div>`;
+  h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" style="max-width:270px">${esc(u.about||'Hey! Main KhizChat use kar raha hoon')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="rmDp()">Photo hatayein</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Last seen dikhayein')}${tg('online','Online status dikhayein')}${tg('typing','Typing indicator dikhayein')}
+  <div class="sec">Theme</div><div class="sws">${[['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
+  ${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="askN()" style="width:100%">Notifications allow karein</button></div>
+  <div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v4 • by Muhammad Khizar</p>`}
+ $('#list').innerHTML=h}
+$('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
+function open(u){cur=u;sig='';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
+$('#bk').onclick=()=>{cur=null;$('#app').classList.remove('co');$('#chat').hidden=true;$('#empty').hidden=false};
+function renderMsgs(){const ms=[...M.values()].filter(m=>m.from==cur||m.to==cur).sort((a,b)=>a.ts-b.ts);
+ const un=ms.filter(m=>m.from==cur&&m.to==me&&!m.read);
+ if(un.length&&!document.hidden){const b=fs.batch();un.forEach(m=>{b.update(fs.collection('msgs').doc(m.id),{read:true});m.read=true});b.commit().catch(()=>{})}
+ const s=ms.map(m=>m.id+(m.read?1:0)+(m.del?'d':'')+Object.values(m.react||{}).join('')).join();if(s==sig)return;sig=s;const B=$('#msgs');
+ B.innerHTML=ms.map(m=>{const mine=m.from==me;let x;
+ if(m.del)x='<i class="mu">🚫 Yeh message delete kar diya gaya</i>';
+ else x=(m.reply?`<div class="qt"><b>${m.reply.u==me?'You':esc(nm(m.reply.u))}</b>${esc(m.reply.t)}</div>`:'')+(m.type=='text'?esc(m.text).replace(/\n/g,'<br>'):m.type=='img'?`<img src="${m.data}">`:m.type=='vid'?`<video controls playsinline src="${m.data}"></video>`:`<audio controls src="${m.data}"></audio>`);
+ const rc=Object.values(m.react||{}),rx=rc.length?`<span class="rx">${[...new Set(rc)].join('')}${rc.length>1?' '+rc.length:''}</span>`:'';
+ return`<div class="m ${mine?'me':''}" data-m="${m.id}">${x}<small>${tm(m.ts)} ${mine?`<span class="tk ${m.read?'r':''}">${m.read?'✓✓':'✓'}</span>`:''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
+/* ---------- chat actions ---------- */
+function send(type,text,data){if(!cur)return;fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},reply:rp?{u:rp.from,t:prv(rp)}:null}).catch(e=>toast('Send fail: '+e.code));setRp(null)}
+$('#sd').onclick=()=>{const t=$('#tx').value.trim();if(!t)return;$('#tx').value='';send('text',t)};
+$('#tx').onkeydown=e=>{if(e.key=='Enter'&&!e.shiftKey){e.preventDefault();$('#sd').click()}};
+$('#tx').oninput=()=>{if(cur&&U[me].priv.typing!==false&&Date.now()-lastTy>2000){lastTy=Date.now();fs.collection('users').doc(me).update({ty:{to:cur,ts:Date.now()}}).catch(()=>{})}};
+function pic(f,max,qq){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const s=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',qq))};im.onerror=rej;im.src=u})}
+const bd=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(b)});
+async function sendFile(f,type){try{const d=type=='img'?await pic(f,900,.6):await bd(f);if(d.length>950000)return toast('File bari hai: video/voice ki limit ~700KB');send(type,'',d)}catch(e){toast('File error')}}
+$('#fl').onchange=e=>{const f=e.target.files[0];if(f)sendFile(f,f.type.startsWith('video')?'vid':'img');e.target.value=''};
+$('#mic').onclick=async()=>{const b=$('#mic');if(rec&&rec.state=='recording'){rec.stop();return}
+ try{const s=await navigator.mediaDevices.getUserMedia({audio:true});rec=new MediaRecorder(s);chunks=[];rec.ondataavailable=e=>chunks.push(e.data);
+  rec.onstop=()=>{s.getTracks().forEach(t=>t.stop());b.classList.remove('rec');sendFile(new Blob(chunks,{type:rec.mimeType||'audio/webm'}),'aud')};rec.start();b.classList.add('rec');toast('Recording… dobara dabayein bhejne ke liye')}catch(e){toast('Mic permission chahiye')}};
+async function addF(){const u=$('#fu').value.trim().toLowerCase().replace('@','');if(!u)return;
+ try{const s=await fs.collection('users').where('username','==',u).get();if(s.empty)return toast('Yeh username nahi mila');const t=s.docs[0].id;
+  if(t==me)return toast('Apne aap ko add nahi kar sakte');
+  if([...R.values()].some(r=>r.st!='x'&&(r.from==me&&r.to==t||r.from==t&&r.to==me)))return toast('Request pehle se maujood hai');
+  await fs.collection('reqs').doc(me+'_'+t).set({from:me,to:t,st:'p',ts:Date.now()});$('#fu').value='';toast('Request bhej di ✓')}catch(e){toast('Error: '+e.code)}}
+const resp=(id,ok)=>fs.collection('reqs').doc(id).update({st:ok?'a':'x'});
+function postSt(){const t=$('#stx').value.trim();if(!t)return;fs.collection('status').add({u:me,text:t,data:'',ts:Date.now()});$('#stx').value=''}
+async function postImg(inp){const f=inp.files[0];if(!f)return;try{fs.collection('status').add({u:me,text:'',data:await pic(f,800,.6),ts:Date.now()})}catch(e){toast('Photo error')}inp.value=''}
+const tgl=k=>fs.collection('users').doc(me).update({['priv.'+k]:U[me].priv[k]===false});
+const theme=t=>fs.collection('users').doc(me).update({theme:t});
+function logout(){unsub.forEach(f=>f());auth.signOut().then(()=>location.reload())}
+/* ---------- sound + notifications ---------- */
+function actx(){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state=='suspended')ac.resume()}catch(e){}}
+function tone(f,d){if(!ac)return;const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;g.gain.value=.12;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}
+const beep=()=>tone(880,.15);
+function startRing(){if(ri)return;const r=()=>{tone(660,.3);setTimeout(()=>tone(520,.3),350)};r();ri=setInterval(r,1500);try{navigator.vibrate&&navigator.vibrate([400,200,400])}catch(e){}}
+function stopRing(){clearInterval(ri);ri=null}
+function askN(){if(!('Notification' in window))return toast('Browser support nahi karta');Notification.requestPermission().then(p=>toast(p=='granted'?'Notifications on ✓':'Permission denied'))}
+function push(t,b){toast(t+': '+b);try{if(Notification.permission!='granted')return;if(navigator.serviceWorker&&navigator.serviceWorker.ready)navigator.serviceWorker.ready.then(r=>r.showNotification(t,{body:b,icon:'icon-192.png',badge:'icon-192.png',vibrate:[200,100,200],tag:'khizchat'})).catch(()=>{});else new Notification(t,{body:b})}catch(e){}}
+function notify(){for(const m of M.values())if(m.to==me&&!known.has(m.id)){known.add(m.id);if(ready&&(document.hidden||cur!=m.from)){push(nm(m.from),m.type=='text'?m.text:'📎 Media');beep()}}
+ for(const r of R.values())if(r.to==me&&r.st=='p'&&!known.has(r.id)){known.add(r.id);if(ready){push('Friend request',nm(r.from)+' ne request bheji');beep()}}}
+/* ---------- calls: WebRTC + Firestore signaling (trickle ICE) ---------- */
+const TU='openrelayproject';
+const ICE={iceServers:[{urls:['stun:stun.l.google.com:19302','stun:stun1.l.google.com:19302']},
+ {urls:'turn:openrelay.metered.ca:80',username:TU,credential:TU},{urls:'turn:openrelay.metered.ca:443',username:TU,credential:TU},{urls:'turn:openrelay.metered.ca:443?transport=tcp',username:TU,credential:TU}]};
+const act=()=>[...CL.values()].filter(c=>c.st=='on'||(c.st=='ring'&&(c.from==me?Date.now()-c.ts<40000:Date.now()-(ringSeen[c.id]=ringSeen[c.id]||Date.now())<40000))).sort((a,b)=>a.ts-b.ts).pop();
+function addCand(c){if(!c)return;const s=JSON.stringify(c);if(cid)fs.collection('calls').doc(cid).update({[myField]:firebase.firestore.FieldValue.arrayUnion(s)}).catch(()=>{});else q.push(s)}
+async function mkpc(kind){endMedia();pc=new RTCPeerConnection(ICE);
+ ls=await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true,noiseSuppression:true},video:kind=='video'?{facingMode:'user'}:false});
+ ls.getTracks().forEach(t=>pc.addTrack(t,ls));
+ pc.onicecandidate=e=>addCand(e.candidate);
+ pc.ontrack=e=>{rs=e.streams[0];const v=$('#rv');if(v){v.srcObject=rs;v.play().catch(()=>{})}};
+ pc.onconnectionstatechange=()=>{if(pc.connectionState=='connected'&&!tConn)tConn=Date.now();if(pc.connectionState=='failed')toast('Connection fail: network check karein');rf()}}
+function applyCands(c){if(!pc||!pc.remoteDescription)return;const f=c.from==me?'ecand':'ccand';(c[f]||[]).forEach(s=>{if(!applied.has(s)){applied.add(s);pc.addIceCandidate(JSON.parse(s)).catch(()=>{})}})}
+async function call(u,kind){if(act())return toast('Pehle se call chal rahi hai');actx();const id='c'+Date.now()+me.slice(0,4);
+ try{myField='ccand';await mkpc(kind);await pc.setLocalDescription(await pc.createOffer());
+  await fs.collection('calls').doc(id).set({from:me,to:u,kind,st:'ring',ts:Date.now(),dur:0,offer:JSON.stringify(pc.localDescription),ccand:[],ecand:[]});
+  cid=id;if(q.length){const a=q;q=[];await fs.collection('calls').doc(id).update({ccand:firebase.firestore.FieldValue.arrayUnion(...a)})}}
+ catch(e){toast('Mic/camera permission allow karein');endMedia()}}
+$('#ca').onclick=()=>cur&&call(cur,'audio');$('#cv').onclick=()=>cur&&call(cur,'video');
+async function accept(id){const c=CL.get(id);actx();myField='ecand';
+ try{await mkpc(c.kind);cid=id;await pc.setRemoteDescription(JSON.parse(c.offer));remSet=true;await pc.setLocalDescription(await pc.createAnswer());
+  await fs.collection('calls').doc(id).update({st:'on',answer:JSON.stringify(pc.localDescription)});applyCands(c)}
+ catch(e){toast('Mic/camera permission allow karein');endCall(id)}}
+function endCall(id){const c=CL.get(id);if(!c)return;fs.collection('calls').doc(id).update({st:c.st=='on'?'end':(c.to==me?'declined':'cancelled'),dur:tConn?Math.round((Date.now()-tConn)/1000):0})}
+function endMedia(){try{pc&&pc.close()}catch(e){}pc=null;if(ls)ls.getTracks().forEach(t=>t.stop());ls=rs=null;cid=null;q=[];applied=new Set();remSet=false;tConn=0}
+function tmute(){if(!ls)return;const t=ls.getAudioTracks()[0];if(!t)return;t.enabled=!t.enabled;const b=$('#bm');b.innerHTML=i(t.enabled?'mic':'micoff');b.classList.toggle('off',!t.enabled)}
+function tcam(){if(!ls)return;const t=ls.getVideoTracks()[0];if(!t)return;t.enabled=!t.enabled;const b=$('#bc');b.innerHTML=i(t.enabled?'video':'videooff');b.classList.toggle('off',!t.enabled)}
+function callUI(){const c=act(),o=$('#ov');
+ for(const x of CL.values())if(x.st=='ring'&&x.from==me&&Date.now()-x.ts>=40000)fs.collection('calls').doc(x.id).update({st:'missed'}).catch(()=>{});
+ if(!c){if(!o.hidden){o.hidden=true;o.dataset.k='';o.innerHTML=''}stopRing();if(pc||ls)endMedia();return}
+ const on=c.st=='on',vid=c.kind=='video',k=c.id+c.st,inc=c.to==me&&c.st=='ring',other=c.from==me?c.to:c.from;
+ if(inc){startRing();if(ringId!=c.id){ringId=c.id;push('Incoming '+c.kind+' call',nm(c.from))}}else stopRing();
+ if(c.from==me&&c.answer&&pc&&!remSet){remSet=true;pc.setRemoteDescription(JSON.parse(c.answer)).then(()=>applyCands(c)).catch(()=>{remSet=false})}
+ applyCands(c);
+ if(o.dataset.k!=k){o.dataset.k=k;o.hidden=false;const showV=on&&vid;
+  o.innerHTML=`<video id="rv" autoplay playsinline class="${showV?'':'hid'}"></video>${showV?'<video id="lv" autoplay muted playsinline></video>':''}
+  <div class="cinfo ${showV?'top':''}">${showV?'':`<div class="${inc?'pulse':''}" style="border-radius:50%">${av(other,120)}</div>`}<h2>${esc(nm(other))}</h2><p id="cs" class="mu" style="color:#cbd5ff">${inc?'Incoming '+c.kind+' call…':on?'Connecting…':'Calling…'}</p></div>
+  <div class="ctl">${inc?`<button class="rb r" onclick="endCall('${c.id}')">${i('phone')}</button><button class="rb g pulse" onclick="accept('${c.id}')">${i('phone')}</button>`:`${on?`<button class="rb gl" id="bm" onclick="tmute()">${i('mic')}</button>${vid?`<button class="rb gl" id="bc" onclick="tcam()">${i('video')}</button>`:''}`:''}<button class="rb r" onclick="endCall('${c.id}')">${i('phone')}</button>`}</div>`;
+  const rv=$('#rv'),lv=$('#lv');if(rv&&rs){rv.srcObject=rs;rv.play().catch(()=>{})}if(lv&&ls){lv.srcObject=ls;lv.play().catch(()=>{})}}
+ if(on){const x=$('#cs');if(x){const s=tConn?Math.round((Date.now()-tConn)/1000):-1;x.textContent=s<0?'Connecting…':Math.floor(s/60)+':'+String(s%60).padStart(2,'0')}}}
+setInterval(()=>{if(me&&!$('#ov').hidden)callUI()},1000);
+
+/* ---------- v4: DP, reply, reactions, delete, PWA ---------- */
+let rp=null,dip=null;
+function picSq(f,sz){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const m=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=sz;c.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,sz,sz);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.8))};im.onerror=rej;im.src=u})}
+async function setDp(inp){const f=inp.files[0];if(!f)return;try{await fs.collection('users').doc(me).update({dp:await picSq(f,200)});toast('Photo update ho gayi ✓')}catch(e){toast('Photo error')}inp.value=''}
+const rmDp=()=>fs.collection('users').doc(me).update({dp:firebase.firestore.FieldValue.delete()});
+function editProf(){const n=prompt('Aapka naam',U[me].name);if(n===null)return;const a=prompt('About / bio (max 80)',U[me].about||'');if(a===null)return;fs.collection('users').doc(me).update({name:n.trim()||U[me].name,about:a.trim().slice(0,80)})}
+const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message'})[m.type];
+const hideMM=()=>$('#mm').hidden=true;
+function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm');d.innerHTML=['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')+`<button onclick="setRp('${m.id}')" title="Reply">↩️</button>${m.from==me?`<button onclick="delMsg('${m.id}')" title="Delete">🗑️</button>`:''}`;d.hidden=false;d.style.top=Math.max(8,r.top-56)+'px';d.style.left=Math.min(Math.max(8,r.left),innerWidth-d.offsetWidth-8)+'px'}
+$('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video'))return;const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;showMM(m,el)});
+document.addEventListener('click',e=>{if(!e.target.closest('#mm,[data-m]'))hideMM()});
+function react(id,e){hideMM();const m=M.get(id);fs.collection('msgs').doc(id).update({['react.'+me]:(m.react||{})[me]==e?firebase.firestore.FieldValue.delete():e}).catch(()=>{})}
+function delMsg(id){hideMM();if(confirm('Sab ke liye delete karein?'))fs.collection('msgs').doc(id).update({del:true,text:'',data:''}).catch(()=>{})}
+function setRp(id){hideMM();rp=id?M.get(id):null;$('#rpb').hidden=!rp;if(rp){$('#rpt').textContent='↩ '+(rp.from==me?'You':nm(rp.from))+': '+prv(rp);$('#tx').focus()}}
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;$('#instb').hidden=false});
+window.addEventListener('appinstalled',()=>{dip=null;$('#instb').hidden=true;toast('KhizChat install ho gaya ✓')});
+async function inst(){if(dip){dip.prompt();await dip.userChoice;dip=null;$('#instb').hidden=true}else toast('Chrome menu (⋮) → Install app / Add to Home screen')}
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script></body></html>
