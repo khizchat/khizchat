@@ -86,6 +86,29 @@ body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-s
 #mm{position:fixed;z-index:70;display:flex;gap:2px;background:var(--s);border:1px solid var(--bd);border-radius:30px;padding:5px;box-shadow:0 12px 30px -8px #0006}#mm button{background:none;padding:6px 8px;font-size:20px;border-radius:50%}
 .dpw{position:relative;cursor:pointer;display:block}.dpe{position:absolute;right:-2px;bottom:-2px;background:var(--ac);color:#fff;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:3px solid var(--s)}.dpe .i{width:15px;height:15px}
 img.av{display:block}
+
+#pane{position:relative}
+#sb{padding:0 14px 6px;display:grid;gap:10px}
+#sq{border-radius:14px;background:var(--s2);padding:11px 16px}
+.chips{display:flex;gap:8px}.chips button{padding:6px 14px;font-size:13px;border-radius:99px;background:var(--s2);color:var(--mu);font-weight:500}.chips .on{background:color-mix(in srgb,var(--ac) 16%,transparent);color:var(--ac);font-weight:600}
+.fab{position:absolute;right:18px;bottom:18px;width:58px;height:58px;border-radius:20px;font-size:30px;line-height:1;padding:0;z-index:5;box-shadow:0 14px 28px -10px var(--ac)}
+.it{padding:11px 12px}.it .b b{font-size:15.5px}.it .mu{font-size:13.5px}
+.it .tk.r{color:#2f9bff}.it .tk{font-size:12px;opacity:.8}
+.meta .mu{font-size:12px}
+#hd{background:color-mix(in srgb,var(--s) 88%,transparent);backdrop-filter:blur(14px);cursor:default}#hd .b{cursor:pointer}#hav{cursor:pointer}
+.dsep{align-self:center;margin:12px 0 6px}.dsep span{background:var(--s);border:1px solid var(--bd);color:var(--mu);font-size:12px;padding:3px 12px;border-radius:99px;box-shadow:0 1px 2px #0001}
+.m img{cursor:zoom-in}
+#comp .ib:not(.pri){background:none;color:var(--mu)}#comp .ib:not(.pri):hover{background:var(--s2)}#comp .ib.rec{background:#e11d48;color:#fff}
+#em{font-size:22px}
+#ep{display:grid;grid-template-columns:repeat(8,1fr);gap:2px;margin:0 10px;padding:8px;background:var(--s);border:1px solid var(--bd);border-radius:18px;box-shadow:0 12px 30px -12px #0005}#ep button{background:none;font-size:22px;padding:5px;border-radius:10px}#ep button:hover{background:var(--s2)}
+#mm{flex-direction:column;border-radius:18px;padding:6px;gap:2px;min-width:210px}#mm .rr{display:flex;justify-content:space-between;padding:2px 2px 4px;border-bottom:1px solid var(--bd)}
+#mm .ac{display:grid}#mm .ac button{text-align:left;font-size:14px;padding:9px 12px;border-radius:10px}#mm .ac button:hover,#mm .rr button:hover{background:var(--s2)}
+#lb{position:fixed;inset:0;z-index:80;background:#000d;display:grid;place-items:center;cursor:zoom-out}#lb img{max-width:96%;max-height:92%;border-radius:8px}
+#md{position:fixed;inset:0;z-index:75;background:#0008;display:grid;place-items:center;padding:20px}
+.mc{background:var(--s);border-radius:28px;padding:28px 22px;width:100%;max-width:340px;display:grid;justify-items:center;gap:10px;text-align:center;box-shadow:0 30px 60px -20px #0008}.mc button{display:inline-flex;gap:6px;align-items:center;justify-content:center}
+.row.sp.pad{background:var(--s2);border-radius:14px;margin:5px 0;padding:12px 16px}
+.st{border:1px solid var(--bd);background:var(--s)}
+@media(min-width:761px){#side{width:440px}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -103,7 +126,7 @@ img.av{display:block}
 <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
 <symbol id="i-clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
 <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></symbol>
-<symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol><symbol id="i-set" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+<symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></symbol><symbol id="i-set" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
 </defs></svg>
 <div id="auth"><div class="card">
 <div class="brand"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><div><b>KhizChat</b><span>by Muhammad Khizar</span></div></div>
@@ -116,15 +139,15 @@ img.av{display:block}
 <button id="instb" hidden onclick="inst()">Install app</button><p class="mu c">Secure • Real-time • Free</p>
 </div></div>
 <div id="app" hidden>
-<aside id="side"><section id="pane"><header class="ph"><b id="pt">Chats</b><span class="mu" id="who"></span></header><div id="list"></div></section><nav id="nav"></nav></aside>
+<aside id="side"><section id="pane"><header class="ph"><b id="pt">Chats</b><span class="mu" id="who"></span></header><div id="sb"><input id="sq" placeholder="Search chats…" autocomplete="off"><div class="chips"><button data-f="all" class="on">All</button><button data-f="unread">Unread</button><button data-f="pin">Pinned</button></div></div><div id="list"></div><button class="fab pri" id="fab" onclick="tab='friends';refresh()">+</button></section><nav id="nav"></nav></aside>
 <main id="main"><div id="empty"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><b style="color:var(--tx);font-size:20px">KhizChat</b><p>Chat chun lein ya naya friend add karein</p></div>
 <div id="chat" hidden>
 <div id="hd"><button class="ib back" id="bk"><svg class="i"><use href="#i-back"/></svg></button><div id="hav"></div><div class="b"><b id="hn"></b><div class="mu" id="hp"></div></div><button class="ib" id="ca"><svg class="i"><use href="#i-phone"/></svg></button><button class="ib" id="cv"><svg class="i"><use href="#i-video"/></svg></button></div>
 <div id="msgs"></div><div id="rpb" hidden><span id="rpt"></span><button class="ib" onclick="setRp(null)">✕</button></div>
-<div id="comp"><label class="ib" style="cursor:pointer"><svg class="i"><use href="#i-clip"/></svg><input id="fl" type="file" accept="image/*,video/*" hidden></label>
+<div id="ep" hidden></div><div id="comp"><button class="ib" id="em">😊</button><label class="ib" style="cursor:pointer"><svg class="i"><use href="#i-clip"/></svg><input id="fl" type="file" accept="image/*,video/*" hidden></label>
 <textarea id="tx" placeholder="Message likhein…"></textarea><button class="ib" id="mic"><svg class="i"><use href="#i-mic"/></svg></button><button class="ib pri" id="sd"><svg class="i"><use href="#i-send"/></svg></button></div>
 </div></main></div>
-<div id="mm" hidden></div><div id="ov" hidden></div><div id="tt" hidden></div>
+<div id="lb" hidden onclick="this.hidden=true"><img alt=""></div><div id="md" hidden onclick="if(event.target==this)this.hidden=true"></div><div id="mm" hidden></div><div id="ov" hidden></div><div id="tt" hidden></div>
 <script>
 "use strict";
 /* ====== FIREBASE CONFIG ====== */
@@ -179,15 +202,19 @@ const pres=u=>{const p=U[u].priv||{};return online(u)?'<span style="color:#22c55
 const typing=u=>{const t=U[u]&&U[u].ty;return t&&t.to==me&&Date.now()-t.ts<3500&&(U[u].priv||{}).typing!==false};
 /* ---------- render ---------- */
 function refresh(){if(!me||!U[me])return;
- document.body.dataset.t=U[me].theme||'light';document.querySelector('meta[name=theme-color]').content=getComputedStyle(document.body).getPropertyValue('--s').trim()||'#fff';$('#who').textContent='@'+U[me].username;$('#pt').textContent=NAV.find(a=>a[0]==tab)[2];
+ document.body.dataset.t=U[me].theme||'light';document.querySelector('meta[name=theme-color]').content=getComputedStyle(document.body).getPropertyValue('--s').trim()||'#fff';$('#who').textContent='@'+U[me].username;$('#pt').textContent=NAV.find(a=>a[0]==tab)[2];$('#sb').hidden=tab!='chats';$('#fab').hidden=tab!='chats';
  [...$('#nav').children].forEach(b=>b.classList.toggle('on',b.dataset.k==tab));
  const un=[...M.values()].filter(m=>m.to==me&&!m.read).length,nb=$('#nb');if(nb){nb.hidden=!un;nb.textContent=un}document.title=(un?`(${un}) `:'')+'KhizChat';
  renderList();if(cur&&U[cur]){$('#hn').textContent=nm(cur);$('#hp').innerHTML=typing(cur)?'<i style="color:var(--ac)">typing…</i>':pres(cur);$('#hav').innerHTML=avo(cur,40);renderMsgs()}
  callUI();notify()}
 function renderList(){const a=document.activeElement&&document.activeElement.id;if((tab=='friends'&&a=='fu')||(tab=='status'&&a=='stx'))return;let h='';
  if(tab=='chats'){const g={};for(const m of M.values()){const o=m.from==me?m.to:m.from;(g[o]=g[o]||[]).push(m)}
-  const fr=friends().map(u=>{const ms=(g[u]||[]).sort((x,y)=>x.ts-y.ts),l=ms[ms.length-1];return{u,l,n:ms.filter(m=>m.from==u&&!m.read).length,t:l?l.ts:0}}).sort((x,y)=>y.t-x.t);
-  h=fr.length?fr.map(f=>`<div class="it" data-o="${f.u}">${avo(f.u)}<div class="b"><b>${esc(nm(f.u))}</b><div class="mu">${typing(f.u)?'<span style="color:var(--ac)">typing…</span>':f.l?(f.l.from==me?'You: ':'')+(f.l.type=='text'?esc(f.l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message'})[f.l.type]):'Say hi 👋'}</div></div><div class="meta">${f.l?`<span class="mu">${tm(f.l.ts)}</span>`:''}${f.n?`<span class="bd">${f.n}</span>`:''}</div></div>`).join(''):'<p class="mu c pad" style="padding:30px 16px">Abhi koi chat nahi.<br>Friends tab mein username se friend add karein.</p>'}
+  const pins=U[me].pins||[];
+  let fr=friends().map(u=>{const ms=(g[u]||[]).sort((x,y)=>x.ts-y.ts),l=ms[ms.length-1];return{u,l,n:ms.filter(m=>m.from==u&&!m.read&&!m.del).length,t:l?l.ts:0,p:pins.includes(u)?1:0}});
+  if(qs)fr=fr.filter(f=>(nm(f.u)+' '+(U[f.u].username||'')).toLowerCase().includes(qs));
+  if(fl=='unread')fr=fr.filter(f=>f.n);if(fl=='pin')fr=fr.filter(f=>f.p);
+  fr.sort((x,y)=>(y.p-x.p)||(y.t-x.t));
+  h=fr.length?fr.map(f=>`<div class="it" data-o="${f.u}">${avo(f.u,50)}<div class="b"><b>${esc(nm(f.u))}</b><div class="mu">${typing(f.u)?'<span style="color:var(--ac)">typing…</span>':f.l?(f.l.from==me?`<span class="tk ${f.l.read?'r':''}">${f.l.read?'✓✓':'✓'}</span> `:'')+(f.l.del?'🚫 Deleted message':f.l.type=='text'?esc(f.l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message'})[f.l.type]):'Say hi 👋'}</div></div><div class="meta"><span class="mu" style="${f.n?'color:var(--ac);font-weight:600':''}">${f.l?lt(f.l.ts):''}</span><div class="row" style="gap:5px;flex-wrap:nowrap">${f.p?`<span class="mu">${i('pin')}</span>`:''}${f.n?`<span class="bd">${f.n}</span>`:''}</div></div></div>`).join(''):`<p class="mu c pad" style="padding:40px 16px">${qs||fl!='all'?'Koi chat nahi mili':'Abhi koi chat nahi.<br>Neeche + dabayein aur username se friend add karein.'}</p>`}
  if(tab=='friends'){const rs=[...R.values()],inc=rs.filter(r=>r.to==me&&r.st=='p'),out=rs.filter(r=>r.from==me&&r.st=='p');
   h=`<div class="row pad"><input id="fu" placeholder="Friend ka username" style="flex:1"><button class="pri" onclick="addF()">Add</button></div>`;
   if(inc.length)h+='<div class="sec">Friend requests</div>'+inc.map(r=>`<div class="it">${av(r.from)}<div class="b"><b>${esc(nm(r.from))}</b><div class="mu">@${esc((U[r.from]||{}).username||'')}</div></div><button class="pri" onclick="resp('${r.id}',1)">Accept</button><button onclick="resp('${r.id}',0)">✕</button></div>`).join('');
@@ -204,7 +231,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" style="max-width:270px">${esc(u.about||'Hey! Main KhizChat use kar raha hoon')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="rmDp()">Photo hatayein</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Last seen dikhayein')}${tg('online','Online status dikhayein')}${tg('typing','Typing indicator dikhayein')}
   <div class="sec">Theme</div><div class="sws">${[['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   ${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="askN()" style="width:100%">Notifications allow karein</button></div>
-  <div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v4 • by Muhammad Khizar</p>`}
+  <div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v5 • by Muhammad Khizar</p>`}
  $('#list').innerHTML=h}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){cur=u;sig='';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -212,12 +239,12 @@ $('#bk').onclick=()=>{cur=null;$('#app').classList.remove('co');$('#chat').hidde
 function renderMsgs(){const ms=[...M.values()].filter(m=>m.from==cur||m.to==cur).sort((a,b)=>a.ts-b.ts);
  const un=ms.filter(m=>m.from==cur&&m.to==me&&!m.read);
  if(un.length&&!document.hidden){const b=fs.batch();un.forEach(m=>{b.update(fs.collection('msgs').doc(m.id),{read:true});m.read=true});b.commit().catch(()=>{})}
- const s=ms.map(m=>m.id+(m.read?1:0)+(m.del?'d':'')+Object.values(m.react||{}).join('')).join();if(s==sig)return;sig=s;const B=$('#msgs');
- B.innerHTML=ms.map(m=>{const mine=m.from==me;let x;
+ const s=ms.map(m=>m.id+(m.read?1:0)+(m.del?'d':'')+(m.edited?m.text.length:'')+Object.values(m.react||{}).join('')).join();if(s==sig)return;sig=s;const B=$('#msgs');
+ let ld='';B.innerHTML=ms.map(m=>{const mine=m.from==me;let x;const dk=new Date(m.ts).toDateString(),sep=dk!=ld?(ld=dk,`<div class="dsep"><span>${dl(m.ts)}</span></div>`):'';
  if(m.del)x='<i class="mu">🚫 Yeh message delete kar diya gaya</i>';
  else x=(m.reply?`<div class="qt"><b>${m.reply.u==me?'You':esc(nm(m.reply.u))}</b>${esc(m.reply.t)}</div>`:'')+(m.type=='text'?esc(m.text).replace(/\n/g,'<br>'):m.type=='img'?`<img src="${m.data}">`:m.type=='vid'?`<video controls playsinline src="${m.data}"></video>`:`<audio controls src="${m.data}"></audio>`);
  const rc=Object.values(m.react||{}),rx=rc.length?`<span class="rx">${[...new Set(rc)].join('')}${rc.length>1?' '+rc.length:''}</span>`:'';
- return`<div class="m ${mine?'me':''}" data-m="${m.id}">${x}<small>${tm(m.ts)} ${mine?`<span class="tk ${m.read?'r':''}">${m.read?'✓✓':'✓'}</span>`:''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
+ return sep+`<div class="m ${mine?'me':''}" data-m="${m.id}">${x}<small>${m.edited?'edited · ':''}${tm(m.ts)} ${mine?`<span class="tk ${m.read?'r':''}">${m.read?'✓✓':'✓'}</span>`:''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
 /* ---------- chat actions ---------- */
 function send(type,text,data){if(!cur)return;fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},reply:rp?{u:rp.from,t:prv(rp)}:null}).catch(e=>toast('Send fail: '+e.code));setRp(null)}
 $('#sd').onclick=()=>{const t=$('#tx').value.trim();if(!t)return;$('#tx').value='';send('text',t)};
@@ -301,8 +328,10 @@ const rmDp=()=>fs.collection('users').doc(me).update({dp:firebase.firestore.Fiel
 function editProf(){const n=prompt('Aapka naam',U[me].name);if(n===null)return;const a=prompt('About / bio (max 80)',U[me].about||'');if(a===null)return;fs.collection('users').doc(me).update({name:n.trim()||U[me].name,about:a.trim().slice(0,80)})}
 const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message'})[m.type];
 const hideMM=()=>$('#mm').hidden=true;
-function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm');d.innerHTML=['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')+`<button onclick="setRp('${m.id}')" title="Reply">↩️</button>${m.from==me?`<button onclick="delMsg('${m.id}')" title="Delete">🗑️</button>`:''}`;d.hidden=false;d.style.top=Math.max(8,r.top-56)+'px';d.style.left=Math.min(Math.max(8,r.left),innerWidth-d.offsetWidth-8)+'px'}
-$('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video'))return;const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;showMM(m,el)});
+function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm'),mine=m.from==me;
+ d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}${mine?`<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button>`:''}</div>`;
+ d.hidden=false;const h=d.offsetHeight,w=d.offsetWidth;let t=r.top-h-6;if(t<8)t=Math.min(r.bottom+6,innerHeight-h-8);d.style.top=t+'px';d.style.left=Math.min(Math.max(8,mine?r.right-w:r.left),innerWidth-w-8)+'px'}
+$('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video'))return;if(e.target.tagName=='IMG'&&e.target.closest('.m')){lb(e.target.src);return}const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;showMM(m,el)});
 document.addEventListener('click',e=>{if(!e.target.closest('#mm,[data-m]'))hideMM()});
 function react(id,e){hideMM();const m=M.get(id);fs.collection('msgs').doc(id).update({['react.'+me]:(m.react||{})[me]==e?firebase.firestore.FieldValue.delete():e}).catch(()=>{})}
 function delMsg(id){hideMM();if(confirm('Sab ke liye delete karein?'))fs.collection('msgs').doc(id).update({del:true,text:'',data:''}).catch(()=>{})}
@@ -311,4 +340,24 @@ window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;$('#i
 window.addEventListener('appinstalled',()=>{dip=null;$('#instb').hidden=true;toast('KhizChat install ho gaya ✓')});
 async function inst(){if(dip){dip.prompt();await dip.userChoice;dip=null;$('#instb').hidden=true}else toast('Chrome menu (⋮) → Install app / Add to Home screen')}
 if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+/* ---------- v5: search, pin, emoji, edit, copy, contact info, date separators ---------- */
+let qs='',fl='all';
+const sd=(a,b)=>new Date(a).toDateString()==new Date(b).toDateString();
+const dl=t=>{const n=Date.now();return sd(t,n)?'Today':sd(t,n-864e5)?'Yesterday':new Date(t).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})};
+const lt=t=>{const n=Date.now();return sd(t,n)?tm(t):sd(t,n-864e5)?'Yesterday':new Date(t).toLocaleDateString([],{day:'numeric',month:'short'})};
+$('#sq').oninput=e=>{qs=e.target.value.trim().toLowerCase();renderList()};
+$('#sb .chips').onclick=e=>{const b=e.target.closest('button');if(!b)return;fl=b.dataset.f;[...b.parentNode.children].forEach(x=>x.classList.toggle('on',x==b));renderList()};
+function lb(src){const l=$('#lb');l.querySelector('img').src=src;l.hidden=false}
+function cpy(id){hideMM();const m=M.get(id);navigator.clipboard&&navigator.clipboard.writeText(m.text).then(()=>toast('Copy ho gaya ✓')).catch(()=>toast('Copy nahi hua'))}
+function edMsg(id){hideMM();const m=M.get(id),n=prompt('Message edit karein',m.text);if(n===null||!n.trim()||n.trim()==m.text)return;fs.collection('msgs').doc(id).update({text:n.trim(),edited:true}).catch(()=>toast('Edit fail'))}
+function togglePin(){const p=(U[me].pins||[]).includes(cur),F=firebase.firestore.FieldValue;fs.collection('users').doc(me).update({pins:p?F.arrayRemove(cur):F.arrayUnion(cur)});$('#md').hidden=true;toast(p?'Unpin ho gaya':'Chat pin ho gayi 📌')}
+function showCI(){if(!cur||!U[cur])return;const u=U[cur],pin=(U[me].pins||[]).includes(cur),d=$('#md');
+ d.innerHTML=`<div class="mc">${av(cur,110)}<h3>${esc(u.name)}</h3><div class="mu">@${esc(u.username)}</div><p style="font-size:14px">${esc(u.about||'Hey! Main KhizChat use kar raha hoon')}</p><div class="mu">${pres(cur)||''}</div><div class="row" style="justify-content:center"><button onclick="$('#md').hidden=true;call(cur,'audio')">${i('phone')} Voice</button><button onclick="$('#md').hidden=true;call(cur,'video')">${i('video')} Video</button></div><button onclick="togglePin()" style="width:100%">${i('pin')} ${pin?'Unpin chat':'Pin chat'}</button></div>`;d.hidden=false}
+$('#hd .b').onclick=showCI;$('#hav').onclick=showCI;
+const EMO=['😀','😁','😂','🤣','😊','😍','😘','😎','🤔','😢','😭','😡','👍','👎','🙏','👏','🙌','💪','🔥','✨','🎉','❤️','💔','💯','✅','❌','👀','🤝','😴','🤗','😇','🥰','😜','🤩','😅','😉','🙂','😮','🥺','🤲'];
+$('#ep').innerHTML=EMO.map(e=>`<button>${e}</button>`).join('');
+$('#ep').onclick=e=>{const b=e.target.closest('button');if(b){const t=$('#tx');t.value+=b.textContent;t.focus()}};
+$('#em').onclick=()=>{$('#ep').hidden=!$('#ep').hidden};
+$('#sd').addEventListener('click',()=>{$('#ep').hidden=true});
 </script></body></html>
