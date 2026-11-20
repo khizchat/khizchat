@@ -113,6 +113,19 @@ img.av{display:block}
 [data-w=grad] #msgs{background-image:linear-gradient(160deg,color-mix(in srgb,var(--ac) 10%,var(--bg)),color-mix(in srgb,var(--ac2) 12%,var(--bg)))}
 #msgs .m{font-size:var(--fs,15px)}
 .row.sp .chips button{background:var(--s)}.row.sp .chips .on{background:color-mix(in srgb,var(--ac) 18%,var(--s))}
+*{scrollbar-width:thin;scrollbar-color:var(--bd) transparent}button:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
+.nlogo{display:grid;place-items:center;width:44px;height:44px;margin:2px auto 12px;border-radius:14px;background:linear-gradient(135deg,var(--ac),var(--ac2));box-shadow:0 8px 18px -8px var(--ac2)}
+.it.sel{background:color-mix(in srgb,var(--ac) 11%,transparent)}
+.m.cont{margin-top:-2px}.m.cont:not(.me){border-top-left-radius:8px}.m.me.cont{border-top-right-radius:8px}
+.fw{font-size:11.5px;opacity:.75;font-style:italic;margin-bottom:3px}.m a{color:inherit;text-decoration:underline;word-break:break-all}
+#cbar{padding:8px 14px;background:var(--s);border-bottom:1px solid var(--bd)}#cbar input{border-radius:99px;padding:9px 16px}
+#lk{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;padding:20px}
+#md .mc,#mm{animation:pop .16s ease-out}@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.97)}}
+#side{box-shadow:1px 0 0 var(--bd)}
+.ph{padding:20px 18px 12px}.ph b{font-size:28px}
+.it{transition:background .12s}
+.sec{margin-top:6px}
+@media(max-width:760px){.nlogo{display:none}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -130,12 +143,12 @@ img.av{display:block}
 <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
 <symbol id="i-clip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
 <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></symbol>
-<symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></symbol><symbol id="i-set" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
+<symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol><symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></symbol><symbol id="i-set" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
 </defs></svg>
 <div id="auth"><div class="card">
 <div class="brand"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><div><b>KhizChat</b><span>by Muhammad Khizar</span></div></div>
 <div class="seg"><button id="tl" class="on">Login</button><button id="ts">Sign up</button></div>
-<input id="nm" placeholder="Poora naam" hidden>
+<input id="nm" placeholder="Full name" hidden>
 <input id="u" placeholder="Username" autocapitalize="off" autocomplete="username">
 <input id="pw" type="password" placeholder="Password (min 6)" autocomplete="current-password">
 <div class="err" id="er"></div>
@@ -144,14 +157,14 @@ img.av{display:block}
 </div></div>
 <div id="app" hidden>
 <aside id="side"><section id="pane"><header class="ph"><b id="pt">Chats</b><span class="mu" id="who"></span></header><div id="sb"><input id="sq" placeholder="Search chats…" autocomplete="off"><div class="chips"><button data-f="all" class="on">All</button><button data-f="unread">Unread</button><button data-f="pin">Pinned</button></div></div><div id="list"></div><button class="fab pri" id="fab" onclick="tab='friends';refresh()">+</button></section><nav id="nav"></nav></aside>
-<main id="main"><div id="empty"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><b style="color:var(--tx);font-size:20px">KhizChat</b><p>Chat chun lein ya naya friend add karein</p></div>
+<main id="main"><div id="empty"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><b style="color:var(--tx);font-size:20px">KhizChat</b><p>Select a chat or add a new friend</p></div>
 <div id="chat" hidden>
-<div id="hd"><button class="ib back" id="bk"><svg class="i"><use href="#i-back"/></svg></button><div id="hav"></div><div class="b"><b id="hn"></b><div class="mu" id="hp"></div></div><button class="ib" id="ca"><svg class="i"><use href="#i-phone"/></svg></button><button class="ib" id="cv"><svg class="i"><use href="#i-video"/></svg></button></div>
-<div id="msgs"></div><div id="rpb" hidden><span id="rpt"></span><button class="ib" onclick="setRp(null)">✕</button></div>
+<div id="hd"><button class="ib back" id="bk"><svg class="i"><use href="#i-back"/></svg></button><div id="hav"></div><div class="b"><b id="hn"></b><div class="mu" id="hp"></div></div><button class="ib" id="cs_"><svg class="i"><use href="#i-search"/></svg></button><button class="ib" id="ca"><svg class="i"><use href="#i-phone"/></svg></button><button class="ib" id="cv"><svg class="i"><use href="#i-video"/></svg></button></div>
+<div id="cbar" hidden><input id="cq" placeholder="Search in this chat…" autocomplete="off"></div><div id="msgs"></div><div id="rpb" hidden><span id="rpt"></span><button class="ib" onclick="setRp(null)">✕</button></div>
 <div id="ep" hidden></div><div id="comp"><button class="ib" id="em">😊</button><label class="ib" style="cursor:pointer"><svg class="i"><use href="#i-clip"/></svg><input id="fl" type="file" accept="image/*,video/*" hidden></label>
-<textarea id="tx" placeholder="Message likhein…"></textarea><button class="ib" id="mic"><svg class="i"><use href="#i-mic"/></svg></button><button class="ib pri" id="sd"><svg class="i"><use href="#i-send"/></svg></button></div>
+<textarea id="tx" placeholder="Type a message…"></textarea><button class="ib" id="mic"><svg class="i"><use href="#i-mic"/></svg></button><button class="ib pri" id="sd"><svg class="i"><use href="#i-send"/></svg></button></div>
 </div></main></div>
-<div id="lb" hidden onclick="this.hidden=true"><img alt=""></div><div id="md" hidden onclick="if(event.target==this)this.hidden=true"></div><div id="mm" hidden></div><div id="ov" hidden></div><div id="tt" hidden></div>
+<div id="lb" hidden onclick="this.hidden=true"><img alt=""></div><div id="md" hidden onclick="if(event.target==this)this.hidden=true"></div><div id="lk" hidden></div><div id="mm" hidden></div><div id="ov" hidden></div><div id="tt" hidden></div>
 <script>
 "use strict";
 /* ====== FIREBASE CONFIG ====== */
@@ -172,32 +185,32 @@ const tm=t=>new Date(t).toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})
 const dt=t=>new Date(t).toLocaleString([],{hour:'2-digit',minute:'2-digit',day:'numeric',month:'short'});
 const rf=()=>{clearTimeout(rt);rt=setTimeout(refresh,40)};
 /* ---------- auth ---------- */
-function setMode(m){mode=m;$('#nm').hidden=!m;$('#tl').classList.toggle('on',!m);$('#ts').classList.toggle('on',!!m);$('#go').textContent=m?'Account banayein':'Login';err('')}
+function setMode(m){mode=m;$('#nm').hidden=!m;$('#tl').classList.toggle('on',!m);$('#ts').classList.toggle('on',!!m);$('#go').textContent=m?'Create account':'Login';err('')}
 $('#tl').onclick=()=>setMode(0);$('#ts').onclick=()=>setMode(1);
 async function doAuth(){if(!auth)return;actx();
  const u=$('#u').value.trim().toLowerCase(),p=$('#pw').value,n=$('#nm').value.trim();
  if(!/^[a-z0-9_]{3,15}$/.test(u))return err('Username: 3-15 letters/numbers/_');
- if(p.length<6)return err('Password kam az kam 6 characters');
- if(mode&&!n)return err('Apna naam likhein');
+ if(p.length<6)return err('Password must be at least 6 characters');
+ if(mode&&!n)return err('Enter your name');
  err('Please wait…');
  try{const em=u+'@khix.app';
   if(mode){const c=await auth.createUserWithEmailAndPassword(em,p);await fs.collection('users').doc(c.user.uid).set({username:u,name:n,seen:Date.now(),theme:'light',priv:{seen:true,online:true,typing:true}})}
   else await auth.signInWithEmailAndPassword(em,p);err('')}
- catch(e){const m={'auth/email-already-in-use':'Yeh username le liya gaya hai','auth/invalid-credential':'Username ya password galat hai','auth/wrong-password':'Username ya password galat hai','auth/user-not-found':'Username ya password galat hai','auth/operation-not-allowed':'Firebase mein Email/Password enable karein','auth/network-request-failed':'Internet check karein'};err(m[e.code]||e.message)}}
+ catch(e){const m={'auth/email-already-in-use':'This username is already taken','auth/invalid-credential':'Incorrect username or password','auth/wrong-password':'Incorrect username or password','auth/user-not-found':'Incorrect username or password','auth/operation-not-allowed':'Email/Password sign-in is not enabled in Firebase','auth/network-request-failed':'Check your internet connection'};err(m[e.code]||e.message)}}
 $('#go').onclick=doAuth;['u','pw','nm'].forEach(x=>$('#'+x).onkeydown=e=>{if(e.key=='Enter')doAuth()});
 if(auth)auth.onAuthStateChanged(u=>{if(u){me=u.uid;boot()}else{me=null;$('#app').hidden=true;$('#auth').hidden=false}});
 function tr(map){return s=>s.docChanges().forEach(c=>c.type=='removed'?map.delete(c.doc.id):map.set(c.doc.id,Object.assign({id:c.doc.id},c.doc.data())))}
 const NAV=[['chats','chat','Chats'],['friends','users','Friends'],['status','status','Status'],['calls','phone','Calls'],['set','set','Settings']];
 function boot(){
  unsub.forEach(f=>f());unsub=[];known=new Set();ready=false;
- const on=(qq,fn)=>unsub.push(qq.onSnapshot(s=>{fn(s);rf()},e=>{console.error(e);if(e.code=='permission-denied')toast('Firestore rules publish karein')}));
+ const on=(qq,fn)=>unsub.push(qq.onSnapshot(s=>{fn(s);rf()},e=>{console.error(e);if(e.code=='permission-denied')toast('Publish the Firestore rules')}));
  on(fs.collection('users'),s=>{U={};s.forEach(d=>U[d.id]=d.data())});
  on(fs.collection('status'),tr(ST));
  for(const k of['from','to']){on(fs.collection('reqs').where(k,'==',me),tr(R));on(fs.collection('msgs').where(k,'==',me),tr(M));on(fs.collection('calls').where(k,'==',me),tr(CL))}
  $('#auth').hidden=true;$('#app').hidden=false;
- $('#nav').innerHTML=NAV.map(a=>`<button data-k="${a[0]}">${i(a[1])}<span>${a[2]}</span>${a[0]=='chats'?'<em class="nbd" id="nb" hidden></em>':''}</button>`).join('');
+ $('#nav').innerHTML='<div class="nlogo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div>'+NAV.map(a=>`<button data-k="${a[0]}">${i(a[1])}<span>${a[2]}</span>${a[0]=='chats'?'<em class="nbd" id="nb" hidden></em>':''}</button>`).join('');
  $('#nav').onclick=e=>{const b=e.target.closest('button');if(b){tab=b.dataset.k;refresh()}};
- setTimeout(()=>ready=true,3500);clearInterval(timer);timer=setInterval(()=>{beat();rf()},4000);beat()}
+ lockNow();setTimeout(()=>ready=true,3500);clearInterval(timer);timer=setInterval(()=>{beat();rf()},4000);beat()}
 function beat(){if(me&&!document.hidden)fs.collection('users').doc(me).update({seen:Date.now()}).catch(()=>{})}
 document.addEventListener('visibilitychange',beat);document.addEventListener('click',actx);
 const isF=(a,b)=>[...R.values()].some(r=>r.st=='a'&&(r.from==a&&r.to==b||r.from==b&&r.to==a));
@@ -218,54 +231,54 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   if(qs)fr=fr.filter(f=>(nm(f.u)+' '+(U[f.u].username||'')).toLowerCase().includes(qs));
   if(fl=='unread')fr=fr.filter(f=>f.n);if(fl=='pin')fr=fr.filter(f=>f.p);
   fr.sort((x,y)=>(y.p-x.p)||(y.t-x.t));
-  h=fr.length?fr.map(f=>`<div class="it" data-o="${f.u}">${avo(f.u,50)}<div class="b"><b>${esc(nm(f.u))}</b><div class="mu">${typing(f.u)?'<span style="color:var(--ac)">typing…</span>':f.l?(f.l.from==me?`<span class="tk ${f.l.read?'r':''}">${f.l.read?'✓✓':'✓'}</span> `:'')+(f.l.del?'🚫 Deleted message':f.l.type=='text'?esc(f.l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message'})[f.l.type]):'Say hi 👋'}</div></div><div class="meta"><span class="mu" style="${f.n?'color:var(--ac);font-weight:600':''}">${f.l?lt(f.l.ts):''}</span><div class="row" style="gap:5px;flex-wrap:nowrap">${f.p?`<span class="mu">${i('pin')}</span>`:''}${f.n?`<span class="bd">${f.n}</span>`:''}</div></div></div>`).join(''):`<p class="mu c pad" style="padding:40px 16px">${qs||fl!='all'?'Koi chat nahi mili':'Abhi koi chat nahi.<br>Neeche + dabayein aur username se friend add karein.'}</p>`}
+  h=fr.length?fr.map(f=>`<div class="it ${f.u==cur?'sel':''}" data-o="${f.u}">${avo(f.u,50)}<div class="b"><b>${esc(nm(f.u))}</b><div class="mu">${typing(f.u)?'<span style="color:var(--ac)">typing…</span>':f.l?(f.l.from==me?`<span class="tk ${f.l.read?'r':''}">${f.l.read?'✓✓':'✓'}</span> `:'')+(f.l.del?'🚫 Deleted message':f.l.type=='text'?esc(f.l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message'})[f.l.type]):'Say hi 👋'}</div></div><div class="meta"><span class="mu" style="${f.n?'color:var(--ac);font-weight:600':''}">${f.l?lt(f.l.ts):''}</span><div class="row" style="gap:5px;flex-wrap:nowrap">${(U[me].muted||[]).includes(f.u)?'<span class="mu">🔇</span>':''}${f.p?`<span class="mu">${i('pin')}</span>`:''}${f.n?`<span class="bd">${f.n}</span>`:''}</div></div></div>`).join(''):`<p class="mu c pad" style="padding:40px 16px">${qs||fl!='all'?'No chats found':'No chats yet.<br>Tap + to add a friend by username.'}</p>`}
  if(tab=='friends'){const rs=[...R.values()],inc=rs.filter(r=>r.to==me&&r.st=='p'),out=rs.filter(r=>r.from==me&&r.st=='p');
-  h=`<div class="row pad"><input id="fu" placeholder="Friend ka username" style="flex:1"><button class="pri" onclick="addF()">Add</button></div>`;
+  h=`<div class="row pad"><input id="fu" placeholder="Friend's username" style="flex:1"><button class="pri" onclick="addF()">Add</button></div>`;
   if(inc.length)h+='<div class="sec">Friend requests</div>'+inc.map(r=>`<div class="it">${av(r.from)}<div class="b"><b>${esc(nm(r.from))}</b><div class="mu">@${esc((U[r.from]||{}).username||'')}</div></div><button class="pri" onclick="resp('${r.id}',1)">Accept</button><button onclick="resp('${r.id}',0)">✕</button></div>`).join('');
   if(out.length)h+='<div class="sec">Sent</div>'+out.map(r=>`<div class="it">${av(r.to)}<div class="b"><b>${esc(nm(r.to))}</b><div class="mu">Pending…</div></div></div>`).join('');
-  h+='<div class="sec">Friends</div>'+(friends().map(u=>`<div class="it" data-o="${u}">${avo(u)}<div class="b"><b>${esc(nm(u))}</b><div class="mu">${pres(u)||'@'+esc(U[u].username)}</div></div></div>`).join('')||'<p class="mu pad">Abhi koi nahi</p>')}
- if(tab=='status'){h=`<div class="st"><textarea id="stx" placeholder="Apna status likhein…" style="height:70px"></textarea><div class="row" style="margin-top:10px"><button class="pri" onclick="postSt()">Post</button><label class="mu" style="cursor:pointer;padding:8px">📷 Photo<input type="file" accept="image/*" hidden onchange="postImg(this)"></label></div></div>`;
+  h+='<div class="sec">Friends</div>'+(friends().map(u=>`<div class="it" data-o="${u}">${avo(u)}<div class="b"><b>${esc(nm(u))}</b><div class="mu">${pres(u)||'@'+esc(U[u].username)}</div></div></div>`).join('')||'<p class="mu pad">No friends yet</p>')}
+ if(tab=='status'){h=`<div class="st"><textarea id="stx" placeholder="Write a status…" style="height:70px"></textarea><div class="row" style="margin-top:10px"><button class="pri" onclick="postSt()">Post</button><label class="mu" style="cursor:pointer;padding:8px">📷 Photo<input type="file" accept="image/*" hidden onchange="postImg(this)"></label></div></div>`;
   const s=[...ST.values()].filter(x=>Date.now()-x.ts<864e5&&(x.u==me||isF(me,x.u))).sort((a,b)=>b.ts-a.ts);
-  h+=s.map(x=>`<div class="st"><div class="row">${av(x.u,32)}<b>${x.u==me?'My status':esc(nm(x.u))}</b><span class="mu">${tm(x.ts)}</span></div>${x.text?`<p style="margin-top:8px">${esc(x.text)}</p>`:''}${x.data?`<img src="${x.data}">`:''}</div>`).join('')||'<p class="mu c pad">Koi status nahi (24 ghante tak rehta hai)</p>'}
+  h+=s.map(x=>`<div class="st"><div class="row">${av(x.u,32)}<b>${x.u==me?'My status':esc(nm(x.u))}</b><span class="mu">${tm(x.ts)}</span></div>${x.text?`<p style="margin-top:8px">${esc(x.text)}</p>`:''}${x.data?`<img src="${x.data}">`:''}</div>`).join('')||'<p class="mu c pad">No status updates (they last 24 hours)</p>'}
  if(tab=='calls'){const ca=act(),c=[...CL.values()].sort((a,b)=>b.ts-a.ts);
   h=c.map(c=>{const o=c.from==me?c.to:c.from,out=c.from==me;let s=c.st,bad=0;if(s=='ring'&&c!==ca)s='missed';if(s=='missed'||s=='declined'||s=='cancelled')bad=!out&&s!='cancelled';if(s=='end'||s=='on')s=Math.floor((c.dur||0)/60)+'m '+(c.dur||0)%60+'s';
-   return`<div class="it" onclick="call('${o}','${c.kind}')">${av(o)}<div class="b"><b style="${bad?'color:#e11d48':''}">${esc(nm(o))}</b><div class="mu">${out?'↗ Outgoing':'↙ Incoming'} ${c.kind} • ${s} • ${dt(c.ts)}</div></div><span style="color:var(--ac)">${i(c.kind=='video'?'video':'phone')}</span></div>`}).join('')||'<p class="mu c pad" style="padding:30px">Call history khaali hai</p>'}
+   return`<div class="it" onclick="call('${o}','${c.kind}')">${av(o)}<div class="b"><b style="${bad?'color:#e11d48':''}">${esc(nm(o))}</b><div class="mu">${out?'↗ Outgoing':'↙ Incoming'} ${c.kind} • ${s} • ${dt(c.ts)}</div></div><span style="color:var(--ac)">${i(c.kind=='video'?'video':'phone')}</span></div>`}).join('')||'<p class="mu c pad" style="padding:30px">No call history</p>'}
  if(tab=='set'){const u=U[me],p=u.priv||{};
   const lg=(k,l)=>`<div class="row sp pad"><span>${l}</span><button class="tg ${PF[k]!==false?'on':''}" onclick="sp('${k}',${PF[k]===false})"></button></div>`;const tg=(k,l)=>`<div class="row sp pad"><span>${l}</span><button class="tg ${p[k]!==false?'on':''}" onclick="tgl('${k}')"></button></div>`;
-  h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" style="max-width:270px">${esc(u.about||'Hey! Main KhizChat use kar raha hoon')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="rmDp()">Photo hatayein</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Last seen dikhayein')}${tg('online','Online status dikhayein')}${tg('typing','Typing indicator dikhayein')}${tg('receipts','Read receipts (blue ticks)')}<div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">Koi blocked nahi</p>'}
-  <div class="sec">Chat settings</div>${lg('ent','Enter dabane se message send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'dots')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
-  ${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="askN()" style="width:100%">Notifications allow karein</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Password badlein</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v6 • by Muhammad Khizar</p>`}
+  h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" style="max-width:270px">${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
+  <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'dots')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
+  ${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="askN()" style="width:100%">Enable notifications</button></div>
+  <div class="sec">Account</div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v7 • by Muhammad Khizar</p>`}
  $('#list').innerHTML=h}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
-function open(u){cur=u;sig='';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
-$('#bk').onclick=()=>{cur=null;$('#app').classList.remove('co');$('#chat').hidden=true;$('#empty').hidden=false};
-function renderMsgs(){const ms=[...M.values()].filter(m=>m.from==cur||m.to==cur).sort((a,b)=>a.ts-b.ts);
- const un=ms.filter(m=>m.from==cur&&m.to==me&&!m.read);
+function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
+$('#bk').onclick=()=>{if(cur)drafts[cur]=$('#tx').value;cur=null;$('#app').classList.remove('co');$('#chat').hidden=true;$('#empty').hidden=false};
+function renderMsgs(){const all=[...M.values()].filter(m=>m.from==cur||m.to==cur).sort((a,b)=>a.ts-b.ts),ms=cq?all.filter(m=>m.type=='text'&&!m.del&&m.text.toLowerCase().includes(cq)):all;
+ const un=all.filter(m=>m.from==cur&&m.to==me&&!m.read);
  if(un.length&&!document.hidden&&(U[me].priv||{}).receipts!==false){const b=fs.batch();un.forEach(m=>{b.update(fs.collection('msgs').doc(m.id),{read:true});m.read=true});b.commit().catch(()=>{})}
- const s=ms.map(m=>m.id+(m.read?1:0)+(m.del?'d':'')+(m.edited?m.text.length:'')+Object.values(m.react||{}).join('')).join();if(s==sig)return;sig=s;const B=$('#msgs');
- let ld='';B.innerHTML=ms.map(m=>{const mine=m.from==me;let x;const dk=new Date(m.ts).toDateString(),sep=dk!=ld?(ld=dk,`<div class="dsep"><span>${dl(m.ts)}</span></div>`):'';
- if(m.del)x='<i class="mu">🚫 Yeh message delete kar diya gaya</i>';
- else x=(m.reply?`<div class="qt"><b>${m.reply.u==me?'You':esc(nm(m.reply.u))}</b>${esc(m.reply.t)}</div>`:'')+(m.type=='text'?esc(m.text).replace(/\n/g,'<br>'):m.type=='img'?`<img src="${m.data}">`:m.type=='vid'?`<video controls playsinline src="${m.data}"></video>`:`<audio controls src="${m.data}"></audio>`);
+ const s=ms.map(m=>m.id+(m.read?1:0)+(m.del?'d':'')+(m.edited?m.text.length:'')+((m.star||{})[me]?'s':'')+Object.values(m.react||{}).join('')).join()+'|'+cq;if(s==sig)return;sig=s;const B=$('#msgs');
+ let ld='';B.innerHTML=ms.map((m,ix)=>{const pv=ms[ix-1],cont=pv&&pv.from==m.from&&m.ts-pv.ts<12e4&&sd(m.ts,pv.ts);const mine=m.from==me;let x;const dk=new Date(m.ts).toDateString(),sep=dk!=ld?(ld=dk,`<div class="dsep"><span>${dl(m.ts)}</span></div>`):'';
+ if(m.del)x='<i class="mu">🚫 This message was deleted</i>';
+ else x=(m.fwd?'<div class="fw">➦ Forwarded</div>':'')+(m.reply?`<div class="qt"><b>${m.reply.u==me?'You':esc(nm(m.reply.u))}</b>${esc(m.reply.t)}</div>`:'')+(m.type=='text'?lnk(esc(m.text)).replace(/\n/g,'<br>'):m.type=='img'?`<img src="${m.data}">`:m.type=='vid'?`<video controls playsinline src="${m.data}"></video>`:`<audio controls src="${m.data}"></audio>`);
  const rc=Object.values(m.react||{}),rx=rc.length?`<span class="rx">${[...new Set(rc)].join('')}${rc.length>1?' '+rc.length:''}</span>`:'';
- return sep+`<div class="m ${mine?'me':''}" data-m="${m.id}">${x}<small>${m.edited?'edited · ':''}${tm(m.ts)} ${mine?`<span class="tk ${m.read?'r':''}">${m.read?'✓✓':'✓'}</span>`:''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
+ return sep+`<div class="m ${mine?'me':''}${cont&&!sep?' cont':''}" data-m="${m.id}">${x}<small>${(m.star||{})[me]?'★ ':''}${m.edited?'edited · ':''}${tm(m.ts)} ${mine?`<span class="tk ${m.read?'r':''}">${m.read?'✓✓':'✓'}</span>`:''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
 /* ---------- chat actions ---------- */
-function send(type,text,data){if(!cur)return;if(blocked(cur))return toast('Pehle contact ko unblock karein');fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},reply:rp?{u:rp.from,t:prv(rp)}:null}).catch(e=>toast('Send fail: '+e.code));setRp(null)}
+function send(type,text,data){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},reply:rp?{u:rp.from,t:prv(rp)}:null}).catch(e=>toast('Send failed: '+e.code));setRp(null)}
 $('#sd').onclick=()=>{const t=$('#tx').value.trim();if(!t)return;$('#tx').value='';send('text',t)};
 $('#tx').onkeydown=e=>{if(e.key=='Enter'&&!e.shiftKey&&PF.ent!==false){e.preventDefault();$('#sd').click()}};
 $('#tx').oninput=()=>{if(cur&&U[me].priv.typing!==false&&Date.now()-lastTy>2000){lastTy=Date.now();fs.collection('users').doc(me).update({ty:{to:cur,ts:Date.now()}}).catch(()=>{})}};
 function pic(f,max,qq){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const s=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',qq))};im.onerror=rej;im.src=u})}
 const bd=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(b)});
-async function sendFile(f,type){try{const d=type=='img'?await pic(f,900,.6):await bd(f);if(d.length>950000)return toast('File bari hai: video/voice ki limit ~700KB');send(type,'',d)}catch(e){toast('File error')}}
+async function sendFile(f,type){try{const d=type=='img'?await pic(f,900,.6):await bd(f);if(d.length>950000)return toast('File too large (video/voice limit ~700KB)');send(type,'',d)}catch(e){toast('File error')}}
 $('#fl').onchange=e=>{const f=e.target.files[0];if(f)sendFile(f,f.type.startsWith('video')?'vid':'img');e.target.value=''};
 $('#mic').onclick=async()=>{const b=$('#mic');if(rec&&rec.state=='recording'){rec.stop();return}
  try{const s=await navigator.mediaDevices.getUserMedia({audio:true});rec=new MediaRecorder(s);chunks=[];rec.ondataavailable=e=>chunks.push(e.data);
-  rec.onstop=()=>{s.getTracks().forEach(t=>t.stop());b.classList.remove('rec');sendFile(new Blob(chunks,{type:rec.mimeType||'audio/webm'}),'aud')};rec.start();b.classList.add('rec');toast('Recording… dobara dabayein bhejne ke liye')}catch(e){toast('Mic permission chahiye')}};
+  rec.onstop=()=>{s.getTracks().forEach(t=>t.stop());b.classList.remove('rec');sendFile(new Blob(chunks,{type:rec.mimeType||'audio/webm'}),'aud')};rec.start();b.classList.add('rec');toast('Recording… tap again to send')}catch(e){toast('Microphone permission is required')}};
 async function addF(){const u=$('#fu').value.trim().toLowerCase().replace('@','');if(!u)return;
- try{const s=await fs.collection('users').where('username','==',u).get();if(s.empty)return toast('Yeh username nahi mila');const t=s.docs[0].id;
-  if(t==me)return toast('Apne aap ko add nahi kar sakte');
-  if([...R.values()].some(r=>r.st!='x'&&(r.from==me&&r.to==t||r.from==t&&r.to==me)))return toast('Request pehle se maujood hai');
-  await fs.collection('reqs').doc(me+'_'+t).set({from:me,to:t,st:'p',ts:Date.now()});$('#fu').value='';toast('Request bhej di ✓')}catch(e){toast('Error: '+e.code)}}
+ try{const s=await fs.collection('users').where('username','==',u).get();if(s.empty)return toast('Username not found');const t=s.docs[0].id;
+  if(t==me)return toast('You cannot add yourself');
+  if([...R.values()].some(r=>r.st!='x'&&(r.from==me&&r.to==t||r.from==t&&r.to==me)))return toast('Request already exists');
+  await fs.collection('reqs').doc(me+'_'+t).set({from:me,to:t,st:'p',ts:Date.now()});$('#fu').value='';toast('Request sent ✓')}catch(e){toast('Error: '+e.code)}}
 const resp=(id,ok)=>fs.collection('reqs').doc(id).update({st:ok?'a':'x'});
 function postSt(){const t=$('#stx').value.trim();if(!t)return;fs.collection('status').add({u:me,text:t,data:'',ts:Date.now()});$('#stx').value=''}
 async function postImg(inp){const f=inp.files[0];if(!f)return;try{fs.collection('status').add({u:me,text:'',data:await pic(f,800,.6),ts:Date.now()})}catch(e){toast('Photo error')}inp.value=''}
@@ -278,10 +291,10 @@ function tone(f,d){if(!ac)return;const o=ac.createOscillator(),g=ac.createGain()
 const beep=()=>{if(PF.snd!==false)tone(880,.15)};
 function startRing(){if(ri)return;const r=()=>{tone(660,.3);setTimeout(()=>tone(520,.3),350)};r();ri=setInterval(r,1500);try{navigator.vibrate&&navigator.vibrate([400,200,400])}catch(e){}}
 function stopRing(){clearInterval(ri);ri=null}
-function askN(){if(!('Notification' in window))return toast('Browser support nahi karta');Notification.requestPermission().then(p=>toast(p=='granted'?'Notifications on ✓':'Permission denied'))}
+function askN(){if(!('Notification' in window))return toast('Not supported in this browser');Notification.requestPermission().then(p=>toast(p=='granted'?'Notifications on ✓':'Permission denied'))}
 function push(t,b){toast(t+': '+b);try{if(Notification.permission!='granted')return;if(navigator.serviceWorker&&navigator.serviceWorker.ready)navigator.serviceWorker.ready.then(r=>r.showNotification(t,{body:b,icon:'icon-192.png',badge:'icon-192.png',vibrate:[200,100,200],tag:'khizchat'})).catch(()=>{});else new Notification(t,{body:b})}catch(e){}}
-function notify(){for(const m of M.values())if(m.to==me&&!known.has(m.id)){known.add(m.id);if(ready&&!blocked(m.from)&&(document.hidden||cur!=m.from)){push(nm(m.from),m.type=='text'?m.text:'📎 Media');beep()}}
- for(const r of R.values())if(r.to==me&&r.st=='p'&&!known.has(r.id)){known.add(r.id);if(ready){push('Friend request',nm(r.from)+' ne request bheji');beep()}}}
+function notify(){for(const m of M.values())if(m.to==me&&!known.has(m.id)){known.add(m.id);if(ready&&!blocked(m.from)&&!muted(m.from)&&(document.hidden||cur!=m.from)){push(nm(m.from),m.type=='text'?m.text:'📎 Media');beep()}}
+ for(const r of R.values())if(r.to==me&&r.st=='p'&&!known.has(r.id)){known.add(r.id);if(ready){push('Friend request',nm(r.from)+' sent you a friend request');beep()}}}
 /* ---------- calls: WebRTC + Firestore signaling (trickle ICE) ---------- */
 const TU='openrelayproject';
 const ICE={iceServers:[{urls:['stun:stun.l.google.com:19302','stun:stun1.l.google.com:19302']},
@@ -293,18 +306,18 @@ async function mkpc(kind){endMedia();pc=new RTCPeerConnection(ICE);
  ls.getTracks().forEach(t=>pc.addTrack(t,ls));
  pc.onicecandidate=e=>addCand(e.candidate);
  pc.ontrack=e=>{rs=e.streams[0];const v=$('#rv');if(v){v.srcObject=rs;v.play().catch(()=>{})}};
- pc.onconnectionstatechange=()=>{if(pc.connectionState=='connected'&&!tConn)tConn=Date.now();if(pc.connectionState=='failed')toast('Connection fail: network check karein');rf()}}
+ pc.onconnectionstatechange=()=>{if(pc.connectionState=='connected'&&!tConn)tConn=Date.now();if(pc.connectionState=='failed')toast('Connection failed: check your network');rf()}}
 function applyCands(c){if(!pc||!pc.remoteDescription)return;const f=c.from==me?'ecand':'ccand';(c[f]||[]).forEach(s=>{if(!applied.has(s)){applied.add(s);pc.addIceCandidate(JSON.parse(s)).catch(()=>{})}})}
-async function call(u,kind){if(act())return toast('Pehle se call chal rahi hai');actx();const id='c'+Date.now()+me.slice(0,4);
+async function call(u,kind){if(act())return toast('A call is already in progress');actx();const id='c'+Date.now()+me.slice(0,4);
  try{myField='ccand';await mkpc(kind);await pc.setLocalDescription(await pc.createOffer());
   await fs.collection('calls').doc(id).set({from:me,to:u,kind,st:'ring',ts:Date.now(),dur:0,offer:JSON.stringify(pc.localDescription),ccand:[],ecand:[]});
   cid=id;if(q.length){const a=q;q=[];await fs.collection('calls').doc(id).update({ccand:firebase.firestore.FieldValue.arrayUnion(...a)})}}
- catch(e){toast('Mic/camera permission allow karein');endMedia()}}
+ catch(e){toast('Allow microphone/camera permission');endMedia()}}
 $('#ca').onclick=()=>cur&&call(cur,'audio');$('#cv').onclick=()=>cur&&call(cur,'video');
 async function accept(id){const c=CL.get(id);actx();myField='ecand';
  try{await mkpc(c.kind);cid=id;await pc.setRemoteDescription(JSON.parse(c.offer));remSet=true;await pc.setLocalDescription(await pc.createAnswer());
   await fs.collection('calls').doc(id).update({st:'on',answer:JSON.stringify(pc.localDescription)});applyCands(c)}
- catch(e){toast('Mic/camera permission allow karein');endCall(id)}}
+ catch(e){toast('Allow microphone/camera permission');endCall(id)}}
 function endCall(id){const c=CL.get(id);if(!c)return;fs.collection('calls').doc(id).update({st:c.st=='on'?'end':(c.to==me?'declined':'cancelled'),dur:tConn?Math.round((Date.now()-tConn)/1000):0})}
 function endMedia(){try{pc&&pc.close()}catch(e){}pc=null;if(ls)ls.getTracks().forEach(t=>t.stop());ls=rs=null;cid=null;q=[];applied=new Set();remSet=false;tConn=0}
 function tmute(){if(!ls)return;const t=ls.getAudioTracks()[0];if(!t)return;t.enabled=!t.enabled;const b=$('#bm');b.innerHTML=i(t.enabled?'mic':'micoff');b.classList.toggle('off',!t.enabled)}
@@ -327,21 +340,21 @@ setInterval(()=>{if(me&&!$('#ov').hidden)callUI()},1000);
 /* ---------- v4: DP, reply, reactions, delete, PWA ---------- */
 let rp=null,dip=null;
 function picSq(f,sz){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const m=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=sz;c.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,sz,sz);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.8))};im.onerror=rej;im.src=u})}
-async function setDp(inp){const f=inp.files[0];if(!f)return;try{await fs.collection('users').doc(me).update({dp:await picSq(f,200)});toast('Photo update ho gayi ✓')}catch(e){toast('Photo error')}inp.value=''}
+async function setDp(inp){const f=inp.files[0];if(!f)return;try{await fs.collection('users').doc(me).update({dp:await picSq(f,200)});toast('Profile photo updated ✓')}catch(e){toast('Photo error')}inp.value=''}
 const rmDp=()=>fs.collection('users').doc(me).update({dp:firebase.firestore.FieldValue.delete()});
-function editProf(){const n=prompt('Aapka naam',U[me].name);if(n===null)return;const a=prompt('About / bio (max 80)',U[me].about||'');if(a===null)return;fs.collection('users').doc(me).update({name:n.trim()||U[me].name,about:a.trim().slice(0,80)})}
+function editProf(){const n=prompt('Your name',U[me].name);if(n===null)return;const a=prompt('About / bio (max 80)',U[me].about||'');if(a===null)return;fs.collection('users').doc(me).update({name:n.trim()||U[me].name,about:a.trim().slice(0,80)})}
 const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message'})[m.type];
 const hideMM=()=>$('#mm').hidden=true;
-function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm'),mine=m.from==me;
- d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}${mine?`<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button>`:''}</div>`;
- d.hidden=false;const h=d.offsetHeight,w=d.offsetWidth;let t=r.top-h-6;if(t<8)t=Math.min(r.bottom+6,innerHeight-h-8);d.style.top=t+'px';d.style.left=Math.min(Math.max(8,mine?r.right-w:r.left),innerWidth-w-8)+'px'}
-$('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video'))return;if(e.target.tagName=='IMG'&&e.target.closest('.m')){lb(e.target.src);return}const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;showMM(m,el)});
+function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm'),mine=m.from==me,st=(m.star||{})[me];
+ d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button><button onclick="fwd('${m.id}')">➦ Forward</button><button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}${mine?`<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button>`:''}</div>`;
+ d.hidden=false;const h=d.offsetHeight,w=d.offsetWidth;let t=r.top-h-6;if(t<8)t=Math.min(r.bottom+6,innerHeight-h-8);d.style.top=Math.max(8,t)+'px';d.style.left=Math.min(Math.max(8,mine?r.right-w:r.left),innerWidth-w-8)+'px'}
+$('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video,a'))return;if(e.target.tagName=='IMG'&&e.target.closest('.m')){lb(e.target.src);return}const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;showMM(m,el)});
 document.addEventListener('click',e=>{if(!e.target.closest('#mm,[data-m]'))hideMM()});
 function react(id,e){hideMM();const m=M.get(id);fs.collection('msgs').doc(id).update({['react.'+me]:(m.react||{})[me]==e?firebase.firestore.FieldValue.delete():e}).catch(()=>{})}
-function delMsg(id){hideMM();if(confirm('Sab ke liye delete karein?'))fs.collection('msgs').doc(id).update({del:true,text:'',data:''}).catch(()=>{})}
+function delMsg(id){hideMM();if(confirm('Delete for everyone?'))fs.collection('msgs').doc(id).update({del:true,text:'',data:''}).catch(()=>{})}
 function setRp(id){hideMM();rp=id?M.get(id):null;$('#rpb').hidden=!rp;if(rp){$('#rpt').textContent='↩ '+(rp.from==me?'You':nm(rp.from))+': '+prv(rp);$('#tx').focus()}}
 window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();dip=e;$('#instb').hidden=false});
-window.addEventListener('appinstalled',()=>{dip=null;$('#instb').hidden=true;toast('KhizChat install ho gaya ✓')});
+window.addEventListener('appinstalled',()=>{dip=null;$('#instb').hidden=true;toast('KhizChat installed ✓')});
 async function inst(){if(dip){dip.prompt();await dip.userChoice;dip=null;$('#instb').hidden=true}else toast('Chrome menu (⋮) → Install app / Add to Home screen')}
 if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 
@@ -353,11 +366,11 @@ const lt=t=>{const n=Date.now();return sd(t,n)?tm(t):sd(t,n-864e5)?'Yesterday':n
 $('#sq').oninput=e=>{qs=e.target.value.trim().toLowerCase();renderList()};
 $('#sb .chips').onclick=e=>{const b=e.target.closest('button');if(!b)return;fl=b.dataset.f;[...b.parentNode.children].forEach(x=>x.classList.toggle('on',x==b));renderList()};
 function lb(src){const l=$('#lb');l.querySelector('img').src=src;l.hidden=false}
-function cpy(id){hideMM();const m=M.get(id);navigator.clipboard&&navigator.clipboard.writeText(m.text).then(()=>toast('Copy ho gaya ✓')).catch(()=>toast('Copy nahi hua'))}
-function edMsg(id){hideMM();const m=M.get(id),n=prompt('Message edit karein',m.text);if(n===null||!n.trim()||n.trim()==m.text)return;fs.collection('msgs').doc(id).update({text:n.trim(),edited:true}).catch(()=>toast('Edit fail'))}
-function togglePin(){const p=(U[me].pins||[]).includes(cur),F=firebase.firestore.FieldValue;fs.collection('users').doc(me).update({pins:p?F.arrayRemove(cur):F.arrayUnion(cur)});$('#md').hidden=true;toast(p?'Unpin ho gaya':'Chat pin ho gayi 📌')}
+function cpy(id){hideMM();const m=M.get(id);navigator.clipboard&&navigator.clipboard.writeText(m.text).then(()=>toast('Copied ✓')).catch(()=>toast('Could not copy'))}
+function edMsg(id){hideMM();const m=M.get(id),n=prompt('Edit message',m.text);if(n===null||!n.trim()||n.trim()==m.text)return;fs.collection('msgs').doc(id).update({text:n.trim(),edited:true}).catch(()=>toast('Edit failed'))}
+function togglePin(){const p=(U[me].pins||[]).includes(cur),F=firebase.firestore.FieldValue;fs.collection('users').doc(me).update({pins:p?F.arrayRemove(cur):F.arrayUnion(cur)});$('#md').hidden=true;toast(p?'Chat unpinned':'Chat pinned 📌')}
 function showCI(){if(!cur||!U[cur])return;const u=U[cur],pin=(U[me].pins||[]).includes(cur),d=$('#md');
- d.innerHTML=`<div class="mc">${av(cur,110)}<h3>${esc(u.name)}</h3><div class="mu">@${esc(u.username)}</div><p style="font-size:14px">${esc(u.about||'Hey! Main KhizChat use kar raha hoon')}</p><div class="mu">${pres(cur)||''}</div><div class="row" style="justify-content:center"><button onclick="$('#md').hidden=true;call(cur,'audio')">${i('phone')} Voice</button><button onclick="$('#md').hidden=true;call(cur,'video')">${i('video')} Video</button></div><button onclick="togglePin()" style="width:100%">${i('pin')} ${pin?'Unpin chat':'Pin chat'}</button><button onclick="togBlock('${cur}')" style="width:100%;color:#e11d48">${blocked(cur)?'Unblock contact':'Block contact'}</button></div>`;d.hidden=false}
+ d.innerHTML=`<div class="mc">${av(cur,110)}<h3>${esc(u.name)}</h3><div class="mu">@${esc(u.username)}</div><p style="font-size:14px">${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="mu">${pres(cur)||''}</div><div class="row" style="justify-content:center"><button onclick="$('#md').hidden=true;call(cur,'audio')">${i('phone')} Voice</button><button onclick="$('#md').hidden=true;call(cur,'video')">${i('video')} Video</button></div><button onclick="togglePin()" style="width:100%">${i('pin')} ${pin?'Unpin chat':'Pin chat'}</button><button onclick="togMute('${cur}')" style="width:100%">${muted(cur)?'Unmute notifications':'Mute notifications'}</button><button onclick="togBlock('${cur}')" style="width:100%;color:#e11d48">${blocked(cur)?'Unblock contact':'Block contact'}</button></div>`;d.hidden=false}
 $('#hd .b').onclick=showCI;$('#hav').onclick=showCI;
 const EMO=['😀','😁','😂','🤣','😊','😍','😘','😎','🤔','😢','😭','😡','👍','👎','🙏','👏','🙌','💪','🔥','✨','🎉','❤️','💔','💯','✅','❌','👀','🤝','😴','🤗','😇','🥰','😜','🤩','😅','😉','🙂','😮','🥺','🤲'];
 $('#ep').innerHTML=EMO.map(e=>`<button>${e}</button>`).join('');
@@ -371,7 +384,27 @@ function applyPF(){document.documentElement.style.setProperty('--fs',({s:'13px',
 function sp(k,v){PF[k]=v;try{localStorage.setItem('kc_pf',JSON.stringify(PF))}catch(e){}applyPF();sig='';renderList();if(cur)renderMsgs()}
 applyPF();
 const blocked=u=>((U[me]||{}).blocked||[]).includes(u);
-function togBlock(u){const F=firebase.firestore.FieldValue,b=blocked(u);if(!b&&!confirm('Block karein? Is ke messages aur calls ka notification nahi aayega.'))return;fs.collection('users').doc(me).update({blocked:b?F.arrayRemove(u):F.arrayUnion(u)});$('#md').hidden=true;toast(b?'Unblock ho gaya':'Block ho gaya')}
-async function chPw(){const o=prompt('Purana password');if(o===null)return;const n=prompt('Naya password (min 6 characters)');if(!n||n.length<6)return toast('Password kam az kam 6 characters ka ho');
- try{const u=auth.currentUser,c=firebase.auth.EmailAuthProvider.credential(u.email,o);await u.reauthenticateWithCredential(c);await u.updatePassword(n);toast('Password badal gaya ✓')}catch(e){toast(e.code=='auth/invalid-credential'||e.code=='auth/wrong-password'?'Purana password galat hai':'Error: '+e.code)}}
+function togBlock(u){const F=firebase.firestore.FieldValue,b=blocked(u);if(!b&&!confirm('Block this contact? You will no longer get their message or call notifications.'))return;fs.collection('users').doc(me).update({blocked:b?F.arrayRemove(u):F.arrayUnion(u)});$('#md').hidden=true;toast(b?'Contact unblocked':'Contact blocked')}
+async function chPw(){const o=prompt('Current password');if(o===null)return;const n=prompt('New password (min 6 characters)');if(!n||n.length<6)return toast('Password must be at least 6 characters');
+ try{const u=auth.currentUser,c=firebase.auth.EmailAuthProvider.credential(u.email,o);await u.reauthenticateWithCredential(c);await u.updatePassword(n);toast('Password changed ✓')}catch(e){toast(e.code=='auth/invalid-credential'||e.code=='auth/wrong-password'?'Current password is incorrect':'Error: '+e.code)}}
+
+/* ---------- v7: forward, star, chat search, mute, links, drafts, app lock ---------- */
+let cq='';const drafts={};
+const LOGO='<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg>';
+const lnk=t=>t.replace(/(https?:\/\/[^\s<]+)/g,'<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+const muted=u=>((U[me]||{}).muted||[]).includes(u);
+function togMute(u){const F=firebase.firestore.FieldValue,m=muted(u);fs.collection('users').doc(me).update({muted:m?F.arrayRemove(u):F.arrayUnion(u)});$('#md').hidden=true;toast(m?'Notifications on for this chat':'Chat muted 🔇')}
+function star(id){hideMM();const m=M.get(id),on=(m.star||{})[me];fs.collection('msgs').doc(id).update({['star.'+me]:on?firebase.firestore.FieldValue.delete():true}).catch(()=>{});toast(on?'Removed from starred':'Message starred ★')}
+function fwd(id){hideMM();const d=$('#md');d.innerHTML=`<div class="mc" style="align-items:stretch;text-align:left;max-height:80vh;overflow:auto;justify-items:stretch"><b style="font-size:17px">Forward to…</b>${friends().filter(u=>!blocked(u)).map(u=>`<div class="it" onclick="doFwd('${id}','${u}')">${av(u,40)}<div class="b"><b>${esc(nm(u))}</b></div></div>`).join('')||'<p class="mu">No friends yet</p>'}<button onclick="$('#md').hidden=true">Cancel</button></div>`;d.hidden=false}
+function doFwd(id,u){const m=M.get(id);$('#md').hidden=true;fs.collection('msgs').add({from:me,to:u,type:m.type,text:m.text||'',data:m.data||'',ts:Date.now(),read:false,react:{},fwd:true}).then(()=>toast('Message forwarded ✓')).catch(()=>toast('Forward failed'))}
+function showStar(){const l=[...M.values()].filter(m=>(m.star||{})[me]&&!m.del).sort((a,b)=>b.ts-a.ts),d=$('#md');
+ d.innerHTML=`<div class="mc" style="align-items:stretch;text-align:left;max-height:80vh;overflow:auto;justify-items:stretch"><b style="font-size:17px">★ Starred messages</b>${l.map(m=>{const o=m.from==me?m.to:m.from;return`<div class="it" onclick="$('#md').hidden=true;open('${o}')">${av(o,38)}<div class="b"><b>${m.from==me?'You':esc(nm(m.from))}</b><div class="mu">${esc(prv(m))}</div></div><span class="mu">${lt(m.ts)}</span></div>`}).join('')||'<p class="mu">No starred messages yet. Tap a message and choose Star.</p>'}<button onclick="$('#md').hidden=true">Close</button></div>`;d.hidden=false}
+$('#cs_').onclick=()=>{const b=$('#cbar');b.hidden=!b.hidden;if(!b.hidden)$('#cq').focus();else{cq='';$('#cq').value='';sig='';renderMsgs()}};
+$('#cq').oninput=e=>{cq=e.target.value.trim().toLowerCase();sig='';renderMsgs()};
+async function sha2(t){try{const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}catch(e){let h=5381;for(const c of t)h=(h*33^c.charCodeAt(0))>>>0;return'f'+h}}
+async function setLock(){if(PF.pin){const p=prompt('Enter your PIN to turn off app lock');if(p===null)return;if(await sha2(p+'kc')!=PF.pin)return toast('Wrong PIN');sp('pin','');toast('App lock turned off')}
+ else{const p=prompt('Set a 4-digit PIN');if(p===null)return;if(!/^\d{4}$/.test(p))return toast('PIN must be exactly 4 digits');sp('pin',await sha2(p+'kc'));toast('App lock enabled 🔒')}}
+function lockNow(){if(!PF.pin||!me)return;const l=$('#lk');l.hidden=false;l.innerHTML=`<div class="mc"><div class="mark">${LOGO}</div><h3>KhizChat is locked</h3><input id="lkp" type="password" inputmode="numeric" maxlength="4" placeholder="Enter PIN" style="text-align:center;letter-spacing:8px"><div class="err" id="lke"></div><button class="pri" onclick="unlock()" style="width:100%">Unlock</button></div>`;setTimeout(()=>{const x=$('#lkp');if(x){x.focus();x.onkeydown=e=>{if(e.key=='Enter')unlock()}}},60)}
+async function unlock(){if(await sha2($('#lkp').value+'kc')==PF.pin){$('#lk').hidden=true;$('#lk').innerHTML=''}else $('#lke').textContent='Wrong PIN'}
+let hidAt=0;document.addEventListener('visibilitychange',()=>{if(document.hidden)hidAt=Date.now();else if(PF.pin&&hidAt&&Date.now()-hidAt>60000)lockNow()});
 </script></body></html>
