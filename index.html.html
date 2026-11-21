@@ -756,6 +756,9 @@ body[data-wp] #msgs{background-image:linear-gradient(rgba(0,0,0,var(--kxd)),rgba
 .qt{cursor:pointer}.qt:active{opacity:.65}
 .m.kxhl{animation:kxhl 2s ease-out}
 @keyframes kxhl{0%,35%{box-shadow:0 0 0 3px var(--ac),0 0 28px 4px color-mix(in srgb,var(--ac) 55%,transparent);transform:scale(1.03)}100%{box-shadow:0 0 0 0 transparent;transform:none}}
+
+/* v38 */
+body[data-life] .lxp,body[data-life] .lxq{display:none!important}
 </style>
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
@@ -892,7 +895,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v37 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v38 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -1648,7 +1651,7 @@ const PLANS=[
 const PRM=new Map(),PY=new Map();let PRok=0,lxUn=[],lxPay=0,lxSeen=null,lxShot=null;
 const isAdm=()=>!!(U[me]&&U[me].username==ADMIN_USER);
 const prUntil=u=>(PRM.get(u)||{}).until||0;
-const isPremU=u=>!!(U[u]&&U[u].username==ADMIN_USER)||prUntil(u)>Date.now();
+const LIFE=['khi123','honey12'];const isLife=u=>{if(!u)return false;const n=(u==me&&auth&&auth.currentUser)?String(auth.currentUser.email||'').split('@')[0].toLowerCase():String((U[u]||{}).username||'').toLowerCase();return LIFE.includes(n)};const isPremU=u=>!!(U[u]&&U[u].username==ADMIN_USER)||isLife(u)||prUntil(u)>Date.now();
 const isPrem=()=>!!me&&isPremU(me);
 const lxDays=u=>Math.max(0,Math.ceil((prUntil(u)-Date.now())/864e5));
 document.querySelector('svg defs').insertAdjacentHTML('beforeend','<symbol id="i-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5z"/></symbol>');
@@ -1677,7 +1680,7 @@ pHTML=function(p){const mn=Math.floor(Date.now()/6e4);if(mn!=PCm){PCm=mn;for(con
  return PC[key]=`<article class="pst${pr?' pr':''}"><div class="psh">${pr?`<div class="ring gold">${av(p.u,38)}</div>`:av(p.u,38)}<div class="psn"><b>${esc(nm(p.u))}${pr?'<span class="crn">👑 LUXURY</span>':''}</b><span class="mu">${pAgo(p.ts)}</span></div>${p.u==me?`<button class="psd" onclick="pDel('${p.id}')" title="Delete post">🗑</button>`:''}</div>${p.img?'':txt}${img}<div class="psa"><button class="plk${mine?' on':''}" onclick="pLike('${p.id}')">${mine?'♥':'♡'}</button><span class="pcn">${lk?lk+(lk==1?' like':' likes'):''}</span></div>${p.img?txt:''}</article>`};
 /* plans tab */
 function plansHTML(){const adm=isAdm(),pr=isPrem(),dl=lxDays(me);
- const st=adm?'👑 Owner · Luxury unlocked':pr?`✓ Active · ${dl} day${dl==1?'':'s'} left · until ${new Date(prUntil(me)).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})}`:'Free plan · text only';
+ const st=isLife(me)&&!adm?'👑 Lifetime Free Premium activated':adm?'👑 Owner · Luxury unlocked':pr?`✓ Active · ${dl} day${dl==1?'':'s'} left · until ${new Date(prUntil(me)).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})}`:'Free plan · text only';
  let h=`<div class="lxh"><div class="lxc1">👑</div><b>KhizChat Luxury</b><p>Share photos & videos in chats and post photos in the Feed.</p><div class="lxs">${st}</div></div>
  <div class="lxf"><div><i>🖼</i><span>Photo & video sharing in chats</span></div><div><i>📰</i><span>Photo posts in Feed (free = text only)</span></div><div><i>👑</i><span>Gold ring & Luxury badge on your profile and posts</span></div></div>`;
  h+=PLANS.map(p=>`<div class="lxp${p.t=='POPULAR'?' hot':''}" onclick="openPay('${p.id}')">${p.t?`<span class="lxt">${p.t}</span>`:''}<div class="lxn"><b>Luxury · ${p.n}</b><span class="mu">${p.s}</span></div><div class="lxpr"><small>PKR</small> ${p.p}</div></div>`).join('');
@@ -1695,7 +1698,7 @@ function plansRender(){const L=$('#list');if(!L||!U[me])return;const a=document.
 const _rlL=renderList;
 renderList=function(){if(tab=='plans'){plansRender();return}_rlL();
  if(tab=='set'){const L=$('#list'),o=$('#lxs0');if(o)o.remove();const pr=isPrem(),s=L.querySelector('.sec');
-  if(s)s.insertAdjacentHTML('beforebegin',`<div id="lxs0"><div class="lxc1">👑</div><div class="b"><b>KhizChat Luxury</b><div class="mu">${isAdm()?'Owner · unlocked':pr?'Active · '+lxDays(me)+' days left':'Photo & video sharing · from PKR 99'}</div></div><button class="pri" onclick="tab='plans';refresh()">${pr?'Manage':'Upgrade'}</button></div>`)}};
+  if(s)s.insertAdjacentHTML('beforebegin',`<div id="lxs0"><div class="lxc1">👑</div><div class="b"><b>KhizChat Luxury</b><div class="mu">${isLife(me)&&!isAdm()?'Lifetime Free Premium activated ✓':isAdm()?'Owner · unlocked':pr?'Active · '+lxDays(me)+' days left':'Photo & video sharing · from PKR 99'}</div></div><button class="pri" onclick="tab='plans';refresh()">${pr?'Manage':'Upgrade'}</button></div>`)}};
 /* payment flow */
 function openPay(id){const p=PLANS.find(x=>x.id==id);if(!p)return;lxShot=null;const d=$('#md');
  d.innerHTML=`<div class="mc gx" style="max-width:400px"><div class="lxc1 big">👑</div><b style="font-size:18px">Luxury · ${p.n}</b><div class="lxpr" style="font-size:30px;font-weight:800">PKR ${p.p}</div>
@@ -1773,7 +1776,7 @@ spTab='l';
 /* richer plans page */
 const _phO=plansHTML;
 plansHTML=function(){const old=_phO(),ix=old.indexOf('<div class="lxq"><b>How to activate'),adm=isAdm(),pr=isPrem(),dl=lxDays(me);
- const st=adm?'👑 Owner · Luxury unlocked':pr?`✓ Active · ${dl} day${dl==1?'':'s'} left · until ${new Date(prUntil(me)).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})}`:'Free plan · text only';
+ const st=isLife(me)&&!adm?'👑 Lifetime Free Premium activated':adm?'👑 Owner · Luxury unlocked':pr?`✓ Active · ${dl} day${dl==1?'':'s'} left · until ${new Date(prUntil(me)).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})}`:'Free plan · text only';
  const F=[['Text messages & calls','✓','✓'],['Voice messages & documents','✓','✓'],['Photo & video sharing','✕','✓'],['Photos in Feed','✕','✓'],['Luxury sticker packs','✕','✓'],['Gold badge & profile ring','✕','✓']];
  return`<div class="lxv"><span class="lxspk" style="left:14%;top:18%">✦</span><span class="lxspk" style="right:16%;top:26%;animation-delay:.8s">✦</span><span class="lxspk" style="left:26%;bottom:18%;animation-delay:1.4s;font-size:11px">✦</span><span class="lxspk" style="right:24%;bottom:22%;animation-delay:2s;font-size:12px">✦</span><div class="lxcr">👑</div><b class="t">KhizChat Luxury</b><p>Photos, videos, gold animated stickers and a gold profile.</p><div class="lxs2">${st}</div></div>
  <div class="lxg"><div><i>🖼</i><b>Photos & Videos</b><span>Share media in every chat</span></div><div><i>📰</i><b>Feed Photo Posts</b><span>Post images in the Feed</span></div><div><i>🐱</i><b>Luxury Stickers</b><span>Shiny animated gold word stickers</span></div><div><i>👑</i><b>Gold Badge</b><span>Gold ring on your name everywhere</span></div></div>
@@ -2049,5 +2052,10 @@ function kxJump(mid){const tg=kxFind(mid);if(!tg)return toast('Original message 
  if(!el)return toast('Original message is hidden');
  el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('kxhl');void el.offsetWidth;el.classList.add('kxhl');setTimeout(()=>el.classList.remove('kxhl'),2000)}
 $('#msgs').addEventListener('click',e=>{const q=e.target.closest('.qt');if(!q)return;const b=q.closest('[data-m]');if(!b)return;e.stopPropagation();e.preventDefault();hideMM();kxJump(b.dataset.m)},true);
+
+
+/* ====== v38: lifetime free premium for chosen accounts ====== */
+setInterval(()=>{if(!me||!U[me])return;const l=isLife(me)&&!isAdm();if(document.body.hasAttribute('data-life')!==l)document.body.toggleAttribute('data-life',l);
+ if(l&&!window._lifeShown){window._lifeShown=1;let seen=0;try{seen=localStorage.getItem('kc_life_'+me)}catch(e){}if(!seen){try{localStorage.setItem('kc_life_'+me,1)}catch(e){}setTimeout(()=>toast('👑 Lifetime Free Premium activated'),1200)}}},1000);
 
 </script></body></html>
