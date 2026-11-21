@@ -345,6 +345,16 @@ input:focus,textarea:focus{border-color:var(--ac);background:var(--s)}
 #hmn span{width:20px;text-align:center;flex:none}
 #cbar{padding:8px 14px}
 @media(max-width:760px){#cs_{display:none!important}#hd{padding:8px 10px;gap:8px;min-height:60px}#hd .ib{width:38px;height:38px}.back{margin-left:-2px;color:var(--tx)!important}.hdg{gap:4px}#hmn{right:10px}}
+/* ===== v16: VIP message ticks ===== */
+.tk{display:inline-flex;align-items:center;vertical-align:-2px;margin-left:3px;color:currentColor;transition:color .25s,filter .25s}
+.tk svg{width:17px;height:12px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block}
+.tk.s1,.tk.s2{opacity:.72}
+.tk.s3{opacity:1;color:#6ee7ff;filter:drop-shadow(0 0 3px #22d3ee88)}
+.it .tk{opacity:1;font-size:inherit}.it .tk.s1,.it .tk.s2{color:var(--mu);opacity:1}.it .tk.s3{color:#2f9bff;filter:none}
+.it .tk svg{width:16px;height:11px}
+.inf{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:8px 6px;border-radius:12px;background:var(--s2)}
+.inf .tk{margin:0;flex:none;width:24px;justify-content:center}.inf .tk.s1,.inf .tk.s2{color:var(--mu);opacity:1}.inf .tk.s3{color:#2f9bff;filter:none}
+.inf b{font-size:14px}.infb{display:grid;gap:6px;width:100%}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -481,13 +491,13 @@ function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').v
 $('#bk').onclick=()=>{if(cur)drafts[cur]=$('#tx').value;cur=null;$('#app').classList.remove('co');$('#chat').hidden=true;$('#empty').hidden=false};
 function renderMsgs(){const gr=G.has(cur),all=[...M.values()].filter(m=>gr?(m.g&&m.to==cur):(!m.g&&(m.from==cur||m.to==cur))).sort((a,b)=>a.ts-b.ts),ms=cq?all.filter(m=>m.type=='text'&&!m.del&&!(m.unlock&&m.unlock>Date.now()&&m.from!=me)&&m.text.toLowerCase().includes(cq)):all;
  const un=gr?all.filter(m=>m.from!=me&&m.type!='sys'&&!(m.rd||{})[me]):all.filter(m=>m.from==cur&&m.to==me&&!m.read);
- if(un.length&&!document.hidden&&(U[me].priv||{}).receipts!==false){const b=fs.batch();un.forEach(m=>{b.update(fs.collection('msgs').doc(m.id),gr?{['rd.'+me]:true}:{read:true});if(gr)m.rd=Object.assign({},m.rd,{[me]:true});else m.read=true});b.commit().catch(()=>{})}
- const s=ms.map(m=>m.id+(m.unlock&&m.unlock>Date.now()?'L':'')+(m.read?1:0)+Object.keys(m.rd||{}).length+(m.votes?Object.values(m.votes).join(''):'')+(m.del?'d':'')+(m.edited?m.text.length:'')+((m.star||{})[me]?'s':'')+Object.values(m.react||{}).join('')).join()+'|'+cq;if(s==sig)return;sig=s;const B=$('#msgs');
+ if(un.length&&!document.hidden&&(U[me].priv||{}).receipts!==false){const b=fs.batch();un.forEach(m=>{b.update(fs.collection('msgs').doc(m.id),gr?{['rd.'+me]:Date.now()}:{read:true,readAt:Date.now()});if(gr)m.rd=Object.assign({},m.rd,{[me]:true});else m.read=true});b.commit().catch(()=>{})}
+ const s=ms.map(m=>m.id+(m.unlock&&m.unlock>Date.now()?'L':'')+(m.read?1:0)+(m.dlv?1:0)+Object.keys(m.dl||{}).length+Object.keys(m.rd||{}).length+(m.votes?Object.values(m.votes).join(''):'')+(m.del?'d':'')+(m.edited?m.text.length:'')+((m.star||{})[me]?'s':'')+Object.values(m.react||{}).join('')).join()+'|'+cq;if(s==sig)return;sig=s;const B=$('#msgs');
  let ld='';B.innerHTML=ms.map((m,ix)=>{const pv=ms[ix-1],cont=pv&&pv.from==m.from&&m.ts-pv.ts<12e4&&sd(m.ts,pv.ts);const mine=m.from==me;let x;const dk=new Date(m.ts).toDateString(),sep=dk!=ld?(ld=dk,`<div class="dsep"><span>${dl(m.ts)}</span></div>`):'';if(m.type=='sys')return sep+`<div class="dsep sy"><span>${esc(m.text)}</span></div>`;const rr=gr?G.get(cur).members.filter(z=>z!=me).every(z=>(m.rd||{})[z]):m.read,sn=gr&&!mine&&!(cont&&!sep)?`<div class="sn" style="color:${col(m.from)}">${esc(nm(m.from))}</div>`:'';
  if(m.del)x='<i class="mu">🚫 This message was deleted</i>';
  else if(isLk(m))x=lockHTML(m);else x=lkPre(m)+(m.fwd?'<div class="fw">➦ Forwarded</div>':'')+(m.reply?`<div class="qt"><b>${m.reply.u==me?'You':esc(nm(m.reply.u))}</b>${esc(m.reply.t)}</div>`:'')+(m.type=='text'?lnk(esc(m.text)).replace(/\n/g,'<br>'):m.type=='file'?fileHTML(m):m.type=='poll'?pollHTML(m):m.type=='img'?`<img src="${m.data}">`:m.type=='vid'?`<video controls playsinline src="${m.data}"></video>`:`<audio controls src="${m.data}"></audio>`);
  const rc=Object.values(m.react||{}),rx=rc.length?`<span class="rx">${[...new Set(rc)].join('')}${rc.length>1?' '+rc.length:''}</span>`:'';
- return sep+`<div class="m ${mine?'me':''}${cont&&!sep?' cont':''}" data-m="${m.id}">${sn}${x}<small>${(m.star||{})[me]?'★ ':''}${m.edited?'edited · ':''}${tm(m.ts)} ${mine?`<span class="tk ${rr?'r':''}">${rr?'✓✓':'✓'}</span>`:''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
+ return sep+`<div class="m ${mine?'me':''}${cont&&!sep?' cont':''}" data-m="${m.id}">${sn}${x}<small>${(m.star||{})[me]?'★ ':''}${m.edited?'edited · ':''}${tm(m.ts)} ${mine?tickHTML(m):''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
 /* ---------- chat actions ---------- */
 function send(type,text,data){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');if(G.has(cur)){const gg=G.get(cur);if(gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages')}fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},...gx(cur),reply:rp?{u:rp.from,t:prv(rp)}:null}).catch(e=>toast('Send failed: '+e.code));setRp(null)}
 $('#sd').onclick=()=>{const t=$('#tx').value.trim();if(!t)return;$('#tx').value='';send('text',t)};
@@ -571,7 +581,7 @@ const rmDp=()=>fs.collection('users').doc(me).update({dp:firebase.firestore.Fiel
 const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message',poll:'📊 Poll',file:'📄 Document'})[m.type];
 const hideMM=()=>$('#mm').hidden=true;
 function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm'),mine=m.from==me,st=(m.star||{})[me];
- d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button><button onclick="fwd('${m.id}')">➦ Forward</button><button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}${mine?`<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button>`:''}</div>`;
+ d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${mine?`<button onclick="msgInfo('${m.id}')">ⓘ Info</button>`:''}<button onclick="fwd('${m.id}')">➦ Forward</button><button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}${mine?`<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button>`:''}</div>`;
  d.hidden=false;const h=d.offsetHeight,w=d.offsetWidth;let t=r.top-h-6;if(t<8)t=Math.min(r.bottom+6,innerHeight-h-8);d.style.top=Math.max(8,t)+'px';d.style.left=Math.min(Math.max(8,mine?r.right-w:r.left),innerWidth-w-8)+'px'}
 $('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video,a,.po,.fcb'))return;if(e.target.tagName=='IMG'&&e.target.closest('.m')){lb(e.target.src);return}const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;if(m.unlock&&m.unlock>Date.now()&&m.from!=me)return toast('🔒 Unlocks '+dt(m.unlock));showMM(m,el)});
 document.addEventListener('click',e=>{if(!e.target.closest('#mm,[data-m]'))hideMM()});
@@ -636,7 +646,7 @@ let hidAt=0;document.addEventListener('visibilitychange',()=>{if(document.hidden
 /* ---------- v8: groups, polls, profile about ---------- */
 const gx=c=>G.has(c)?{g:1,mem:G.get(c).members,rd:{}}:{};
 const gsub=id=>G.get(id).members.map(u=>u==me?'You':nm(u)).join(', ');
-const lp=f=>{const l=f.l;if(l.del)return '🚫 Deleted message';const b=(l.unlock&&l.unlock>Date.now()&&l.from!=me)?'⏳ Time-locked message':l.type=='text'||l.type=='sys'?esc(l.text):l.type=='poll'?'📊 '+esc(l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message',file:'Document'})[l.type];const pre=l.type=='sys'?'':l.from==me?(f.grp?'You: ':`<span class="tk ${l.read?'r':''}">${l.read?'✓✓':'✓'}</span> `):(f.grp?esc(nm(l.from))+': ':'');return pre+b};
+const lp=f=>{const l=f.l;if(l.del)return '🚫 Deleted message';const b=(l.unlock&&l.unlock>Date.now()&&l.from!=me)?'⏳ Time-locked message':l.type=='text'||l.type=='sys'?esc(l.text):l.type=='poll'?'📊 '+esc(l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message',file:'Document'})[l.type];const pre=l.type=='sys'?'':l.from==me?(f.grp?'You: ':tickHTML(l)+' '):(f.grp?esc(nm(l.from))+': ':'');return pre+b};
 const PRE=['Available','Busy','At school','At work','At the gym','In a meeting','Sleeping','Urgent calls only','Battery about to die'];
 function editProf(){const u=U[me],d=$('#md');d.innerHTML=`<div class="mc gx"><b style="font-size:18px">Edit profile</b><input id="pn" value="${esc(u.name)}" maxlength="30" placeholder="Your name"><textarea id="pa" maxlength="80" placeholder="About" style="height:70px">${esc(u.about||'')}</textarea><div class="chips" style="flex-wrap:wrap;justify-content:center">${PRE.map(t=>`<button onclick="$('#pa').value='${t}'">${t}</button>`).join('')}</div><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="saveProf()">Save</button></div></div>`;d.hidden=false}
 function saveProf(){const n=$('#pn').value.trim(),a=$('#pa').value.trim().slice(0,80);fs.collection('users').doc(me).update({name:n||U[me].name,about:a}).then(()=>toast('Profile updated ✓')).catch(()=>toast('Update failed'));$('#md').hidden=true}
@@ -944,4 +954,21 @@ async function gPick(inp){const f=inp.files[0];if(!f)return;inp.value='';cropImg
 function hmHide(){const m=$('#hmn');if(m)m.hidden=true}
 function hmMenu(){const m=$('#hmn');if(!m.hidden){m.hidden=true;return}if(!cur||!U[me])return;const gr=G.has(cur),pin=(U[me].pins||[]).includes(cur);
  m.innerHTML=[['ℹ️',gr?'Group info':'Contact info','showCI()'],['🔍','Search in chat',"$('#cs_').click()"],['🕘','Chat timeline','showTL()'],['🗂','Shared files','showFiles()'],['📌',pin?'Unpin chat':'Pin chat','togglePin()'],['🔇',muted(cur)?'Unmute notifications':'Mute notifications','togMute(cur)']].map(a=>`<button onclick="hmHide();${a[2]}"><span>${a[0]}</span>${a[1]}</button>`).join('');m.hidden=false}
+
+/* ---------- v16: VIP ticks: sent ✓ / delivered ✓✓ / seen ✓✓ (blue) ---------- */
+const TK1='<svg viewBox="0 0 18 12"><path d="M3.5 6.5l3.2 3.2L13 2.5"/></svg>',TK2='<svg viewBox="0 0 18 12"><path d="M1.5 6.5l3.2 3.2L11 2.5"/><path d="M7.2 8.9l.8.8L15.5 2.5"/></svg>';
+function tickState(m){if(m.g){const o=G.get(m.to);if(!o)return 1;const rest=o.members.filter(z=>z!=me);if(!rest.length)return 1;if(rest.every(z=>(m.rd||{})[z]))return 3;if(rest.every(z=>(m.dl||{})[z]||(m.rd||{})[z]))return 2;return 1}return m.read?3:m.dlv?2:1}
+function tickHTML(m){const s=tickState(m);return`<span class="tk s${s}" title="${['','Sent','Delivered','Seen'][s]}">${s==1?TK1:TK2}</span>`}
+const dlvSent=new Set();
+function markDlv(){if(!me||!navigator.onLine)return;const b=fs.batch(),ids=[];
+ for(const m of M.values()){if(ids.length>=400)break;if(m.from==me||m.type=='sys'||dlvSent.has(m.id))continue;
+  if(m.g){if(!G.has(m.to)||(m.dl||{})[me]||(m.rd||{})[me])continue;b.update(fs.collection('msgs').doc(m.id),{['dl.'+me]:Date.now()})}
+  else{if(m.to!=me||m.dlv)continue;b.update(fs.collection('msgs').doc(m.id),{dlv:true,dlvAt:Date.now()})}
+  dlvSent.add(m.id);ids.push(m.id)}
+ if(ids.length)b.commit().catch(()=>ids.forEach(x=>dlvSent.delete(x)))}
+const _rf1=refresh;refresh=function(){_rf1();try{markDlv()}catch(e){}};
+function msgInfo(id){hideMM();const m=M.get(id);if(!m)return;const r=(s,l,t)=>`<div class="inf"><span class="tk s${s}">${s==1?TK1:TK2}</span><div><b>${l}</b><div class="mu">${t}</div></div></div>`;let h;
+ if(!m.g)h=r(1,'Sent',dt(m.ts))+r(2,'Delivered',m.dlv?(m.dlvAt?dt(m.dlvAt):'Yes'):'Not yet')+r(3,'Seen',m.read?(m.readAt?dt(m.readAt):'Yes'):'Not yet');
+ else{const g=G.get(m.to);h=r(1,'Sent',dt(m.ts))+(g?g.members.filter(u=>u!=me).map(u=>{const rd=(m.rd||{})[u],dl=(m.dl||{})[u];return`<div class="inf">${av(u,32)}<div style="flex:1"><b>${esc(nm(u))}</b><div class="mu">${rd?'Seen'+(typeof rd=='number'?' · '+dt(rd):''):dl?'Delivered'+(typeof dl=='number'?' · '+dt(dl):''):'Not yet delivered'}</div></div><span class="tk s${rd?3:dl?2:1}">${rd||dl?TK2:TK1}</span></div>`}).join(''):'')}
+ const d=$('#md');d.innerHTML=`<div class="mc gx"><b style="font-size:18px">Message info</b><div class="infb">${h}</div><button onclick="$('#md').hidden=true">Close</button></div>`;d.hidden=false}
 </script></body></html>
