@@ -697,6 +697,14 @@ setTimeout(function(){var a=document.getElementById("app"),u=document.getElement
 .cat.duo{width:210px;height:147px}
 .spg.l .spc.dc{grid-column:span 3;padding:2px}.spg.l .spc.dc svg{width:100%;height:auto;display:block}
 </style>
+<style>
+/* ===== v34: add packs ===== */
+.pkh{grid-column:1/-1;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.pkh button,.pkh label{padding:6px 12px;font-size:12.5px;border-radius:99px;background:var(--s2);font-weight:600;display:inline-flex}
+.pkh .on{background:color-mix(in srgb,var(--ac) 18%,transparent);color:var(--ac)}
+.spg .spc.pk img{object-fit:contain;border-radius:10px;background:var(--s2)}
+.stku{display:block;max-width:150px;max-height:150px;object-fit:contain}
+</style>
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -833,7 +841,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v33 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v34 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -1797,4 +1805,36 @@ renderSp=function(){if(spTab!='p')return _rspN();
  +H('🐰🐼 Bunty & Pandu · couple')+duo('d',duoSvg)
  +H('🐰 Bunty the bunny')+one('p:b_',k=>petSvg('b',k),Object.keys(PETM))
  +H('🐼 Pandu the panda')+one('p:p_',k=>petSvg('p',k),Object.keys(PETM))};
+
+/* ---------- v34: add sticker packs from outside (device files, links, Giphy, .json packs) ---------- */
+const PK_KEY='kc_packs';let PKSEL=0;
+const pkLoad=()=>{try{const l=JSON.parse(localStorage.getItem(PK_KEY));return Array.isArray(l)&&l.length?l:[{n:'My stickers',i:[]}]}catch(e){return[{n:'My stickers',i:[]}]}};
+const pkSave=l=>{try{localStorage.setItem(PK_KEY,JSON.stringify(l));return true}catch(e){toast('Storage full — delete some stickers first');return false}};
+const okU=u=>typeof u=='string'&&/^(https?:\/\/[^\s"'<>]+|data:image\/(png|gif|webp|jpeg);base64,[A-Za-z0-9+\/=]+)$/.test(u);
+const gifFix=u=>{const m=u.match(/giphy\.com\/(?:gifs|stickers|embed)\/(?:[^\/?#]*-)?([A-Za-z0-9]{8,})(?:[\/?#]|$)/);return m&&!/media\d*\.giphy\.com|i\.giphy\.com/.test(u)?'https://media.giphy.com/media/'+m[1]+'/giphy.gif':u};
+const imgOk=u=>new Promise(r=>{const im=new Image(),t=setTimeout(()=>r(false),7000);im.onload=()=>{clearTimeout(t);r(true)};im.onerror=()=>{clearTimeout(t);r(false)};im.src=u});
+function pkAdd(list){const L=pkLoad(),p=L[Math.min(PKSEL,L.length-1)];let n=0;for(const u of list){if(p.i.length>=80||p.i.includes(u))continue;p.i.push(u);n++}return pkSave(L)?n:0}
+async function pkFiles(inp){const fl=[...inp.files];inp.value='';if(!fl.length)return;let ok=0;toast('Adding '+fl.length+' sticker(s)…');
+ for(const f of fl){if(!f.type.startsWith('image/'))continue;try{let d;
+  if(/^image\/(gif|webp|png)$/.test(f.type)&&f.size<=350000)d=await bd(f);
+  else{const im=new Image(),u=URL.createObjectURL(f);await new Promise((a,b)=>{im.onload=a;im.onerror=b;im.src=u});const k=Math.min(1,320/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*k));c.height=Math.max(1,Math.round(im.height*k));c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);d=c.toDataURL('image/webp',.85);if(f.type=='image/gif')toast('Big GIFs lose animation — use a GIF under 350 KB')}
+  ok+=pkAdd([d])}catch(e){}}
+ toast(ok?'Added '+ok+' sticker'+(ok>1?'s':'')+' ✓':'Could not add those files');renderSp()}
+function pkUrls(){const d=$('#md');d.innerHTML=`<div class="mc gx"><b style="font-size:18px">Add stickers from links</b><div class="mu" style="text-align:left;font-size:12.5px">Paste direct image / GIF / WebP links (one per line), a Giphy link, or a link to a pack <b>.json</b> file. Only add stickers you are allowed to use.</div><textarea id="pku" style="height:130px" placeholder="https://…"></textarea><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" id="pkg" onclick="pkGo()">Add</button></div></div>`;d.hidden=false}
+async function pkGo(){const b=$('#pkg');b.disabled=true;b.textContent='Adding…';let urls=($('#pku').value||'').split(/\s+/).map(s=>s.trim()).filter(Boolean).map(gifFix),all=[];
+ for(const u of urls){if(!/^https?:\/\//.test(u))continue;if(/\.json(\?|$)/i.test(u)){try{const j=await (await fetch(u)).json(),a=Array.isArray(j)?j:(j.stickers||j.items||[]);a.forEach(x=>{const v=typeof x=='string'?x:(x&&(x.url||x.src||x.image));if(v)all.push(v)})}catch(e){toast('Could not read that pack file (the site may block it)')}}else all.push(u)}
+ all=[...new Set(all.filter(okU))].slice(0,80);const res=await Promise.all(all.map(imgOk)),good=all.filter((_,k)=>res[k]),n=pkAdd(good);
+ $('#md').hidden=true;toast(n?'Added '+n+' of '+all.length+' sticker(s) ✓':'No valid images found — use direct image links');renderSp()}
+function pkNew(){const n=(prompt('Pack name')||'').trim().slice(0,24);if(!n)return;const L=pkLoad();L.push({n,i:[]});if(pkSave(L))PKSEL=L.length-1;renderSp()}
+function pkDelPack(){const L=pkLoad(),p=L[PKSEL];if(!p||!confirm('Delete pack "'+p.n+'" and its stickers?'))return;L.splice(PKSEL,1);pkSave(L.length?L:[{n:'My stickers',i:[]}]);PKSEL=0;renderSp()}
+function pkDel(k){const L=pkLoad();L[PKSEL].i.splice(k,1);pkSave(L);renderSp()}
+function pkSend(k){const u=pkLoad()[PKSEL].i[k];if(okU(u))sendStk('u',u)}
+const _stkU=stkHTML;
+stkHTML=function(m){if((m.text||'')=='u'&&okU(m.data))return`<img class="stku" src="${esc(m.data)}" loading="lazy" alt="">`;return _stkU(m)};
+const _rspO=renderSp;
+renderSp=function(){if(spTab!='o')return _rspO();
+ const g=$('#spg'),L=pkLoad();if(PKSEL>=L.length)PKSEL=0;const p=L[PKSEL];$('#sp').querySelectorAll('.spt button').forEach(b=>b.classList.toggle('on',b.dataset.k==spTab));g.className='spg';
+ g.innerHTML=`<div class="pkh">${L.map((q,k)=>`<button class="${k==PKSEL?'on':''}" onclick="PKSEL=${k};renderSp()">${esc(q.n)} (${q.i.length})</button>`).join('')}<button onclick="pkNew()">＋ New pack</button></div><div class="pkh"><label class="chp">📁 From device<input type="file" accept="image/*" multiple hidden onchange="pkFiles(this)"></label><button onclick="pkUrls()">🔗 From links</button><button onclick="pkDelPack()" style="color:#e11d48">🗑 Pack</button></div>`
+ +(p.i.length?p.i.map((u,k)=>`<div class="spc pk"><img src="${esc(u)}" loading="lazy" alt="" onclick="pkSend(${k})"><i onclick="pkDel(${k})">✕</i></div>`).join(''):`<p class="mu" style="grid-column:1/-1;text-align:center;padding:14px 8px">No stickers yet. Add PNG / GIF / WebP from your device, or paste links (Giphy links work too).</p>`)};
+$('#sp .spt').insertAdjacentHTML('beforeend','<button data-k="o">🌐 Add packs</button>');
 </script></body></html>
