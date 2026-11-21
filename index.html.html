@@ -573,6 +573,20 @@ body[data-w=glass] .swi{backdrop-filter:blur(14px)}
 .ecr{margin-top:22px;font-size:12px;color:var(--mu);opacity:.85}.ecr b{color:var(--tx);font-weight:600}
 @media(max-width:760px){#ftr{padding-bottom:calc(86px + max(0px,env(safe-area-inset-bottom)));border-top:0}#list{padding-bottom:12px!important}}
 </style>
+<style>
+/* ===== v24: performance ===== */
+.m{animation:none!important}
+.stke{animation:kb-bounce 2.2s ease-in-out 3}.stkw{animation:kb-pop 2.4s ease-in-out 3}
+#msgs .stkx[class*=kb-]{animation-iteration-count:4}
+#sp .spc .ea{animation:none!important}#sp .spc:hover .ea{animation:kb-bounce .8s infinite!important}
+body[data-w=glass] #main::before{animation:none!important;inset:0}
+body[data-w=glass] #hd,body[data-w=glass] #comp{backdrop-filter:blur(14px)!important;-webkit-backdrop-filter:blur(14px)!important}
+body[data-w=glass] #sp,body[data-w=glass] #am,body[data-w=glass] #ep{backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important}
+body[data-bs=glass] #msgs .m:not(.stk){backdrop-filter:blur(10px)!important;-webkit-backdrop-filter:blur(10px)!important}
+#msgs .m{contain:layout style}
+.ldm{align-self:center;margin:4px 0 10px;padding:8px 16px;border-radius:99px;font-size:13px;font-weight:600;background:var(--s2);color:var(--ac)}
+@media(max-width:760px){body[data-bs=glass] #msgs .m:not(.stk){backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
+</style>
 </head><body data-t="light"><div id="splash"><div class="mark"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><b>KhizChat</b><span>by Muhammad Khizar</span></div>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -656,7 +670,7 @@ function boot(){
  $('#auth').hidden=true;$('#app').hidden=false;
  $('#nav').innerHTML='<div class="nlogo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div>'+NAV.map(a=>`<button data-k="${a[0]}">${i(a[1])}<span>${a[2]}</span>${a[0]=='chats'?'<em class="nbd" id="nb" hidden></em>':''}</button>`).join('');
  $('#nav').onclick=e=>{const b=e.target.closest('button');if(b){tab=b.dataset.k;refresh()}};
- lockNow();setTimeout(()=>ready=true,3500);clearInterval(timer);timer=setInterval(()=>{beat();rf()},4000);beat()}
+ lockNow();setTimeout(()=>ready=true,3500);clearInterval(timer);timer=setInterval(()=>{window._bt=(window._bt||0)+1;if(window._bt%4==0)beat();rf()},4000);beat()}
 function beat(){if(me&&!document.hidden)fs.collection('users').doc(me).update({seen:Date.now()}).catch(()=>{})}
 document.addEventListener('visibilitychange',beat);document.addEventListener('click',actx);
 const isF=(a,b)=>[...R.values()].some(r=>r.st=='a'&&(r.from==a&&r.to==b||r.from==b&&r.to==a));
@@ -665,10 +679,10 @@ const pres=u=>{const p=U[u].priv||{};return online(u)?'<span style="color:#22c55
 const typing=u=>{const t=U[u]&&U[u].ty;return t&&t.to==me&&Date.now()-t.ts<3500&&(U[u].priv||{}).typing!==false};
 /* ---------- render ---------- */
 function refresh(){if(!me||!U[me])return;
- document.body.dataset.t=rt_(U[me].theme);document.querySelector('meta[name=theme-color]').content=getComputedStyle(document.body).getPropertyValue('--s').trim()||'#fff';$('#who').textContent='@'+U[me].username;$('#pt').textContent=NAV.find(a=>a[0]==tab)[2];$('#sb').hidden=tab!='chats';$('#fab').hidden=tab!='chats';
+ {const _t=rt_(U[me].theme);if(document.body.dataset.t!=_t||!window._tcOk){document.body.dataset.t=_t;window._tcOk=1;document.querySelector('meta[name=theme-color]').content=getComputedStyle(document.body).getPropertyValue('--s').trim()||'#fff'}}$('#who').textContent='@'+U[me].username;$('#pt').textContent=NAV.find(a=>a[0]==tab)[2];$('#sb').hidden=tab!='chats';$('#fab').hidden=tab!='chats';
  [...$('#nav').children].forEach(b=>b.classList.toggle('on',b.dataset.k==tab));
  const un=[...M.values()].filter(m=>m.g?(G.has(m.to)&&m.from!=me&&m.type!='sys'&&!(m.rd||{})[me]):(m.to==me&&!m.read)).length,nb=$('#nb');if(nb){nb.hidden=!un;nb.textContent=un}document.title=(un?`(${un}) `:'')+'KhizChat';
- renderList();if(cur&&(U[cur]||G.has(cur))){$('#ca').hidden=$('#cv').hidden=G.has(cur);{const gg=G.get(cur),lk=!!(gg&&gg.only&&!gg.admins.includes(me));$('#tx').disabled=lk;$('#tx').placeholder=lk?'Only admins can send messages':'Type a message…';$('#sd').disabled=$('#mic').disabled=$('#at').disabled=lk}$('#hn').textContent=nm(cur);$('#hp').innerHTML=G.has(cur)?gsub(cur):typing(cur)?'<i style="color:var(--ac)">typing…</i>':pres(cur);$('#hav').innerHTML=avo(cur,40);renderMsgs()}
+ renderList();if(cur&&(U[cur]||G.has(cur))){$('#ca').hidden=$('#cv').hidden=G.has(cur);{const gg=G.get(cur),lk=!!(gg&&gg.only&&!gg.admins.includes(me));$('#tx').disabled=lk;$('#tx').placeholder=lk?'Only admins can send messages':'Type a message…';$('#sd').disabled=$('#mic').disabled=$('#at').disabled=lk}$('#hn').textContent=nm(cur);$('#hp').innerHTML=G.has(cur)?gsub(cur):typing(cur)?'<i style="color:var(--ac)">typing…</i>':pres(cur);{const _hv=avo(cur,40),_he=$('#hav');if(_he._h!==_hv){_he._h=_hv;_he.innerHTML=_hv}}renderMsgs()}
  callUI();notify()}
 function renderList(){const a=document.activeElement&&document.activeElement.id;if((tab=='friends'&&a=='fu')||(tab=='status'&&a=='stx'))return;let h='';
  if(tab=='chats'){const g={};for(const m of M.values()){if(m.g||(m.hid||{})[me])continue;const o=m.from==me?m.to:m.from;(g[o]=g[o]||[]).push(m)}
@@ -700,15 +714,15 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient'],['glass','Glass ✨']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
   <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v12 • by Muhammad Khizar</p>`}
- $('#list').innerHTML=h}
+ {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
 $('#bk').onclick=()=>{if(cur)drafts[cur]=$('#tx').value;cur=null;$('#app').classList.remove('co');$('#chat').hidden=true;$('#empty').hidden=false};
-function renderMsgs(){const gr=G.has(cur),all=[...M.values()].filter(m=>(gr?(m.g&&m.to==cur):(!m.g&&(m.from==cur||m.to==cur)))&&!(m.hid||{})[me]).sort((a,b)=>a.ts-b.ts),ms=cq?all.filter(m=>m.type=='text'&&!m.del&&!(m.unlock&&m.unlock>Date.now()&&m.from!=me)&&m.text.toLowerCase().includes(cq)):all;
+function renderMsgs(){const gr=G.has(cur),all=[...M.values()].filter(m=>(gr?(m.g&&m.to==cur):(!m.g&&(m.from==cur||m.to==cur)))&&!(m.hid||{})[me]).sort((a,b)=>a.ts-b.ts),ms0=cq?all.filter(m=>m.type=='text'&&!m.del&&!(m.unlock&&m.unlock>Date.now()&&m.from!=me)&&m.text.toLowerCase().includes(cq)):all;const lim=((window.MLIM||{})[cur])||80,ms=ms0.length>lim?ms0.slice(-lim):ms0;
  const un=gr?all.filter(m=>m.from!=me&&m.type!='sys'&&!(m.rd||{})[me]):all.filter(m=>m.from==cur&&m.to==me&&!m.read);
  if(un.length&&!document.hidden&&(U[me].priv||{}).receipts!==false){const b=fs.batch();un.forEach(m=>{b.update(fs.collection('msgs').doc(m.id),gr?{['rd.'+me]:Date.now()}:{read:true,readAt:Date.now()});if(gr)m.rd=Object.assign({},m.rd,{[me]:true});else m.read=true});b.commit().catch(()=>{})}
- const s=ms.map(m=>m.id+(m.unlock&&m.unlock>Date.now()?'L':'')+(m.read?1:0)+(m.dlv?1:0)+Object.keys(m.dl||{}).length+Object.keys(m.rd||{}).length+(m.votes?Object.values(m.votes).join(''):'')+(m.del?'d':'')+(m.edited?m.text.length:'')+((m.star||{})[me]?'s':'')+Object.values(m.react||{}).join('')).join()+'|'+cq;if(s==sig)return;sig=s;const B=$('#msgs');
- let ld='';B.innerHTML=ms.map((m,ix)=>{const pv=ms[ix-1],cont=pv&&pv.from==m.from&&m.ts-pv.ts<12e4&&sd(m.ts,pv.ts);const mine=m.from==me;let x;const dk=new Date(m.ts).toDateString(),sep=dk!=ld?(ld=dk,`<div class="dsep"><span>${dl(m.ts)}</span></div>`):'';if(m.type=='sys')return sep+`<div class="dsep sy"><span>${esc(m.text)}</span></div>`;const rr=gr?G.get(cur).members.filter(z=>z!=me).every(z=>(m.rd||{})[z]):m.read,sn=gr&&!mine&&!(cont&&!sep)?`<div class="sn" style="color:${col(m.from)}">${esc(nm(m.from))}</div>`:'';
+ const s=ms.map(m=>m.id+(m.unlock&&m.unlock>Date.now()?'L':'')+(m.read?1:0)+(m.dlv?1:0)+Object.keys(m.dl||{}).length+Object.keys(m.rd||{}).length+(m.votes?Object.values(m.votes).join(''):'')+(m.del?'d':'')+(m.edited?m.text.length:'')+((m.star||{})[me]?'s':'')+Object.values(m.react||{}).join('')).join()+'|'+cq+'|'+lim;if(s==sig)return;sig=s;const B=$('#msgs');
+ let ld='';B.innerHTML=(ms0.length>lim?'<button class="ldm" onclick="moreMsgs()">⬆ Earlier messages ('+(ms0.length-lim)+')</button>':'')+ms.map((m,ix)=>{const pv=ms[ix-1],cont=pv&&pv.from==m.from&&m.ts-pv.ts<12e4&&sd(m.ts,pv.ts);const mine=m.from==me;let x;const dk=new Date(m.ts).toDateString(),sep=dk!=ld?(ld=dk,`<div class="dsep"><span>${dl(m.ts)}</span></div>`):'';if(m.type=='sys')return sep+`<div class="dsep sy"><span>${esc(m.text)}</span></div>`;const rr=gr?G.get(cur).members.filter(z=>z!=me).every(z=>(m.rd||{})[z]):m.read,sn=gr&&!mine&&!(cont&&!sep)?`<div class="sn" style="color:${col(m.from)}">${esc(nm(m.from))}</div>`:'';
  if(m.del)x='<i class="mu">🚫 This message was deleted</i>';
  else if(isLk(m))x=lockHTML(m);else x=lkPre(m)+(m.fwd?'<div class="fw">➦ Forwarded</div>':'')+(m.reply?`<div class="qt"><b>${m.reply.u==me?'You':esc(nm(m.reply.u))}</b>${esc(m.reply.t)}${m.reply.th?`<img class="qth" src="${m.reply.th}">`:''}</div>`:'')+(m.type=='text'?lnk(esc(m.text)).replace(/\n/g,'<br>'):m.type=='file'?fileHTML(m):m.type=='poll'?pollHTML(m):m.type=='stk'?stkHTML(m):m.type=='img'?(m.fid?bigHTML(m):`<img src="${m.data}">`):m.type=='vid'?(m.fid?bigHTML(m):`<video controls playsinline src="${m.data}"></video>`):vmHTML(m));
  const rc=Object.values(m.react||{}),rx=rc.length?`<span class="rx">${[...new Set(rc)].join('')}${rc.length>1?' '+rc.length:''}</span>`:'';
@@ -1258,8 +1272,9 @@ function vmUI(id){const el=document.querySelector('.vm[data-vm="'+id+'"]'),a=VA[
 function vmPlay(id){const a=vmGet(id);if(!a)return;if(a.paused){Object.keys(VA).forEach(k=>{if(k!=id)VA[k].pause()});a.play().catch(()=>toast('Cannot play this voice message'))}else a.pause()}
 function vmSeek(e,id){const a=vmGet(id);if(!a||!isFinite(a.duration))return;const r=e.currentTarget.getBoundingClientRect();a.currentTime=Math.min(1,Math.max(0,(e.clientX-r.left)/r.width))*a.duration;vmUI(id)}
 function vmSpd(id){const a=vmGet(id);VS[id]=VSP[(VSP.indexOf(VS[id]||1)+1)%VSP.length];if(a)a.playbackRate=VS[id];vmUI(id);const el=document.querySelector('.vm[data-vm="'+id+'"] .vs');if(el)el.textContent=VS[id]+'×'}
-function vmSync(){document.querySelectorAll('.vm').forEach(el=>{const id=el.dataset.vm;vmGet(id);vmUI(id)})}
-const _rm18=renderMsgs;renderMsgs=function(){_rm18.apply(this,arguments);vmSync()};
+const vmIO='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){const id=en.target.dataset.vm;vmGet(id);vmUI(id);vmIO.unobserve(en.target)}}),{rootMargin:'160px'}):null;
+function vmSync(){document.querySelectorAll('.vm').forEach(el=>{const id=el.dataset.vm;if(VA[id])vmUI(id);else if(vmIO)vmIO.observe(el);else{vmGet(id);vmUI(id)}})}
+const _rm18=renderMsgs;renderMsgs=function(){try{window.RS=new Set([...M.values()].filter(m=>m.type=='stk'&&(m.text||'').startsWith('a:')&&(G.has(cur)?(m.g&&m.to==cur):(!m.g&&(m.from==cur||m.to==cur)))).sort((a,b)=>b.ts-a.ts).slice(0,5).map(m=>m.id))}catch(e){window.RS=new Set()}_rm18.apply(this,arguments);vmSync()};
 
 /* more fonts */
 [['pacifico','Script','Pacifico'],['lobster','Bold script','Lobster'],['caveat','Handwritten','Caveat'],['dancing','Calligraphy','Dancing Script'],['playfair','Classic serif','Playfair Display'],['merri','Book','Merriweather'],['orbitron','Futuristic','Orbitron'],['fredoka','Cute','Fredoka'],['quicksand','Soft','Quicksand'],['comfortaa','Round','Comfortaa'],['righteous','Retro','Righteous'],['bangers','Comic','Bangers'],['urdu','Nastaliq · اردو','Noto Nastaliq Urdu']].forEach(f=>FONTS.push(f));
@@ -1278,7 +1293,7 @@ const cpEmoji=c=>String.fromCodePoint(...c.split('_').map(h=>parseInt(h,16)));
 const nUrl=(c,x)=>'https://fonts.gstatic.com/s/e/notoemoji/latest/'+c+'/512.'+x;
 function stkErr(im){if(im.dataset.t!='g'){im.dataset.t='g';im.src=nUrl(im.dataset.c,'gif')}else{const s=document.createElement('span');s.className='stkx kb-bounce';s.textContent=cpEmoji(im.dataset.c);im.replaceWith(s)}}
 const _stk18=stkHTML;stkHTML=function(m){const t=m.text||'';
- if(t.startsWith('a:')){const c=t.slice(2).replace(/[^0-9a-f_]/gi,'');return c?`<img class="stka" data-c="${c}" src="${nUrl(c,'webp')}" alt="${cpEmoji(c)}" loading="lazy" onerror="stkErr(this)">`:'🎭'}
+ if(t.startsWith('a:')){const c=t.slice(2).replace(/[^0-9a-f_]/gi,'');if(c&&!(window.RS&&RS.has(m.id)))return`<div class="stkx" style="animation:none">${cpEmoji(c)}</div>`;return c?`<img class="stka" data-c="${c}" src="${nUrl(c,'webp')}" alt="${cpEmoji(c)}" loading="lazy" onerror="stkErr(this)">`:'🎭'}
  if(t.startsWith('x:')){const f=FXS[+t.slice(2)];if(f)return`<div class="stkx kb-${f[1]}">${f[0]}</div>`}
  return _stk18(m)};
 const _rsp18=renderSp;renderSp=function(){if(spTab!='a'&&spTab!='f')return _rsp18();
@@ -1371,4 +1386,8 @@ const _sp21=sp;sp=function(k,v){if(k=='w'&&v=='glass'&&(!PF.bs||PF.bs=='classic'
   if(!cancel&&Math.abs(s.dx)>=TH){if(s.dx>0){setRp(s.id);const t=$('#tx');t&&t.focus()}else fwd(s.id)}};
  B.addEventListener('pointerup',e=>end(e,0));B.addEventListener('pointercancel',e=>end(e,1));
  B.addEventListener('click',e=>{if(Date.now()-swEnd<350){e.stopImmediatePropagation();e.preventDefault()}},true)})();
+
+/* ---------- v24: performance helpers ---------- */
+window.MLIM={};
+function moreMsgs(){const B=$('#msgs'),h=B.scrollHeight;MLIM[cur]=((MLIM[cur])||80)+80;sig='';renderMsgs();B.scrollTop=B.scrollHeight-h}
 </script></body></html>
