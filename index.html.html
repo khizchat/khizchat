@@ -616,6 +616,50 @@ window.addEventListener("load",function(){setTimeout(function(){loadFonts(0)},30
 document.addEventListener("DOMContentLoaded",function(){var t=document.getElementById("mainjs");if(!t)return;var x=document.createElement("script");x.text=t.textContent;document.body.appendChild(x)});
 setTimeout(function(){var a=document.getElementById("app"),u=document.getElementById("auth");if(a&&u&&a.hidden)u.hidden=false},10000);
 </script>
+<style>
+/* ===== v30: KhizChat Luxury ===== */
+#nav button[data-k=plans] .i{color:#f59e0b}#nav button[data-k=plans].on{color:#f59e0b}
+.crn{display:inline-flex;align-items:center;gap:3px;font-size:9.5px;font-weight:800;letter-spacing:.4px;padding:1px 8px;border-radius:99px;background:linear-gradient(135deg,#f7b733,#fc4a1a);color:#fff;margin-left:6px;vertical-align:1px;white-space:nowrap}
+#crb{padding:5px 13px;font-size:12px;font-weight:700;border-radius:99px;background:linear-gradient(135deg,#f7b733,#fc4a1a);color:#fff;box-shadow:0 6px 14px -8px #fc4a1a}
+#crb.act{background:color-mix(in srgb,#f59e0b 16%,var(--s2));color:#d97706;box-shadow:none}
+.lxh{margin:6px 6px 14px;padding:24px 18px;border-radius:26px;color:#fff;background:radial-gradient(120% 120% at 0% 0%,#f7b733 0,#fc4a1a 48%,#7c1d6f 100%);display:grid;gap:6px;justify-items:center;text-align:center;box-shadow:0 20px 40px -24px #fc4a1a}
+.lxc1{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;font-size:30px;background:#ffffff2e;box-shadow:inset 0 1px 0 #ffffff66}
+.lxc1.big{margin:0 auto;background:linear-gradient(135deg,#f7b733,#fc4a1a);box-shadow:0 12px 26px -12px #fc4a1a}
+.lxh b{font-size:22px;letter-spacing:-.3px}.lxh p{font-size:13.5px;opacity:.92;max-width:280px}
+.lxs{margin-top:4px;padding:6px 14px;border-radius:99px;background:#00000030;font-size:12.5px;font-weight:600}
+.lxf{margin:0 6px 14px;padding:14px 16px;background:var(--s2);border-radius:18px;display:grid;gap:9px;font-size:14px}
+.lxf div{display:flex;gap:10px;align-items:flex-start}.lxf i{font-style:normal;flex:none}
+.lxp{position:relative;margin:0 6px 14px;padding:16px;border-radius:20px;border:2px solid var(--bd);background:var(--s);display:flex;align-items:center;gap:14px;cursor:pointer;transition:transform .12s,border-color .12s}
+.lxp:active{transform:scale(.98)}.lxp.hot{border-color:#f59e0b;box-shadow:0 14px 30px -20px #f59e0b}
+.lxp .lxn{flex:1;min-width:0}.lxp .lxn b{font-size:16.5px;display:block}.lxp .lxpr{font-size:24px;font-weight:800;white-space:nowrap}.lxp .lxpr small{font-size:12px;font-weight:600;color:var(--mu)}
+.lxt{position:absolute;top:-10px;right:16px;font-size:10px;font-weight:800;letter-spacing:.5px;padding:2px 10px;border-radius:99px;background:linear-gradient(135deg,#f7b733,#fc4a1a);color:#fff}
+.lxm{font-size:14px}.lxm b{color:#d97706}
+.lxr{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--s2);border-radius:12px;padding:10px 12px;width:100%;text-align:left}
+.lxr b{font-size:15px;word-break:break-all}.lxr span{font-size:11.5px;color:var(--mu);display:block}.lxr button{padding:6px 12px;font-size:12.5px;flex:none}
+.lxst{width:100%;text-align:left;font-size:13px;display:grid;gap:5px}.lxst div{display:flex;gap:8px}
+.lxq{margin:0 6px 10px;padding:12px 14px;border-radius:16px;background:var(--s2);display:grid;gap:6px;font-size:13.5px}
+.lxq .row{gap:8px}.lxq img{width:60px;height:60px;object-fit:cover;border-radius:10px;cursor:zoom-in}
+.lxb{display:inline-block;padding:2px 10px;border-radius:99px;font-size:11.5px;font-weight:700}
+.lxb.p{background:#f59e0b22;color:#d97706}.lxb.a{background:#16a34a22;color:#16a34a}.lxb.x{background:#e11d4822;color:#e11d48}
+#lxs0{margin:0 4px 12px;padding:14px;border-radius:18px;background:linear-gradient(135deg,color-mix(in srgb,#f7b733 22%,var(--s)),color-mix(in srgb,#fc4a1a 14%,var(--s)));border:1px solid #f59e0b55;display:flex;gap:12px;align-items:center}
+#lxs0 .lxc1{width:44px;height:44px;font-size:22px;border-radius:14px;background:linear-gradient(135deg,#f7b733,#fc4a1a)}
+#lxs0 .b{flex:1;min-width:0}#lxs0 .b b{display:block}
+/* premium feed look */
+.pcm.lxc{border-radius:24px;border:1px solid var(--bd);box-shadow:0 14px 34px -22px #0008;padding:14px;margin:6px 4px 16px;position:relative;overflow:hidden}
+.pcm.lxc::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,#f7b733,#fc4a1a,#ec4899)}
+.pcm.lxc textarea{background:var(--s2);font-size:15.5px}
+.pph.lk{border:1px dashed #f59e0b;color:#d97706;background:color-mix(in srgb,#f59e0b 10%,transparent);font-weight:600}
+.pst{border-radius:24px;margin:0 4px 18px;box-shadow:0 14px 34px -24px #000a}
+.pst.pr{border-color:#f59e0b66;box-shadow:0 18px 40px -24px #f59e0b}
+.pst.pr::before{content:"";display:block;height:3px;background:linear-gradient(90deg,#f7b733,#fc4a1a,#ec4899)}
+.pst .psh{padding:14px 14px 10px}.pst .psn b{font-size:15px}
+.pst .pim{max-height:620px}
+.pst .pct{padding:2px 16px 14px;font-size:15px;line-height:1.5}
+.pst .pct.big{font-size:18px;line-height:1.55;padding:6px 18px 16px;font-weight:500}
+.pst.pr .pct.big{background:linear-gradient(135deg,color-mix(in srgb,#f7b733 9%,transparent),transparent)}
+.pst .psa{padding:6px 14px 4px}.pst .plk.on{color:#ef4444;animation:kb-beat .5s}
+.ring.gold{background:conic-gradient(#f7b733,#fc4a1a,#ec4899,#f7b733)}
+</style>
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -752,7 +796,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v12 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v30 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -1100,6 +1144,18 @@ service cloud.firestore {
         && request.auth.uid in request.resource.data.admins;
       allow read, update: if request.auth != null && request.auth.uid in resource.data.members;
       allow delete: if request.auth != null && resource.data.createdBy == request.auth.uid;
+    }
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'khizar@khix.app';
+    }
+    match /premium/{uid} {
+      allow read: if request.auth != null;
+      allow write: if isAdmin();
+    }
+    match /payments/{pid} {
+      allow create: if request.auth != null && request.resource.data.u == request.auth.uid && request.resource.data.st == 'p';
+      allow read: if request.auth != null && (isAdmin() || resource.data.u == request.auth.uid);
+      allow update, delete: if isAdmin();
     }
     match /{col}/{id} {
       allow read, write: if request.auth != null && col in ['reqs','msgs','status','calls','fchunks','posts'];
@@ -1481,4 +1537,105 @@ const _boot26=boot;boot=function(){if(fUn){fUn();fUn=null}PO.clear();FOK=0;_boot
 /* ---------- v27: transparent background option + instant settings ---------- */
 const _ap27=applyPF;applyPF=function(){_ap27();document.body.classList.toggle('trp',!!PF.trp)};applyPF();
 const _rl27=renderList;renderList=function(){if(tab=='set')loadFonts(1);_rl27()};
+
+/* ---------- v30: KhizChat Luxury (premium) ---------- */
+const ADMIN_USER='khizar'; /* username of the owner who approves payments (must match the Firestore rules) */
+const OPAY={no:'03483028512',name:'Khizar'};
+const PLANS=[
+ {id:'m1',n:'1 Month',p:99,d:30,s:'Monthly',t:''},
+ {id:'q3',n:'3 Months',p:249,d:90,s:'Quarterly · save 16%',t:'POPULAR'},
+ {id:'y1',n:'1 Year',p:899,d:365,s:'Yearly · save 24%',t:'BEST VALUE'}];
+const PRM=new Map(),PY=new Map();let PRok=0,lxUn=[],lxPay=0,lxSeen=null,lxShot=null;
+const isAdm=()=>!!(U[me]&&U[me].username==ADMIN_USER);
+const prUntil=u=>(PRM.get(u)||{}).until||0;
+const isPremU=u=>!!(U[u]&&U[u].username==ADMIN_USER)||prUntil(u)>Date.now();
+const isPrem=()=>!!me&&isPremU(me);
+const lxDays=u=>Math.max(0,Math.ceil((prUntil(u)-Date.now())/864e5));
+document.querySelector('svg defs').insertAdjacentHTML('beforeend','<symbol id="i-crown" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5z"/></symbol>');
+NAV.splice(5,0,['plans','crown','Luxury']);
+const cpTxt=t=>navigator.clipboard?navigator.clipboard.writeText(t).then(()=>toast('Copied ✓')).catch(()=>toast('Could not copy')):toast('Copy manually: '+t);
+function showUpsell(f){const d=$('#md');d.innerHTML=`<div class="mc"><div class="lxc1 big">👑</div><b style="font-size:19px">KhizChat Luxury</b><div class="mu">${esc(f)} is a Luxury feature.</div><div class="lxm">Starting at <b>PKR 99</b> / month</div><button class="pri" style="width:100%" onclick="goPlans()">See plans</button><button style="width:100%" onclick="$('#md').hidden=true">Not now</button></div>`;d.hidden=false}
+function goPlans(){$('#md').hidden=true;if(cur)$('#bk').click();tab='plans';refresh()}
+function premOK(f){if(isPrem())return true;if(!PRok){toast('Checking your plan… try again in a moment');return false}showUpsell(f);return false}
+/* gate: photo + video sharing */
+const _sfL=sendFile;
+sendFile=async function(f,type){if((type=='img'||type=='vid')&&!premOK('Photo & video sharing'))return;return _sfL(f,type)};
+$('#fl').addEventListener('click',e=>{if(!isPrem()){e.preventDefault();e.stopPropagation();premOK('Photo & video sharing')}},true);
+{const b=$('#am').firstElementChild;if(b)b.innerHTML='🖼  Photo / Video <span class="crn">👑 LUXURY</span>'}
+/* gate: feed photos */
+const _ppL=pPick;
+pPick=async function(inp){if(!isPrem()){inp.value='';premOK('Photo posts in Feed');return}return _ppL(inp)};
+const _pPostL=pPost;
+pPost=function(){if(PP&&!isPrem()){PP=null}return _pPostL()};
+/* premium feed look: text-only for free */
+pComposer=function(){const pr=isPrem();return`<div class="pcm lxc"><div class="row" style="align-items:flex-start;gap:10px;flex-wrap:nowrap">${pr?`<div class="ring gold">${av(me,38)}</div>`:av(me,38)}<textarea id="pxt" maxlength="1000" rows="2" placeholder="${pr?"What's on your mind?":"Share a text update…"}" oninput="PT=this.value;this.style.height='auto';this.style.height=Math.min(160,this.scrollHeight)+'px'" onblur="rf()">${esc(PT)}</textarea></div>${PP&&pr?`<div class="ppv"><img src="${PU._pp||(PU._pp=dURL(PP.d))}" alt=""><button onclick="pRm()">✕</button><span>${Math.round(PP.d.length*3/4/1024)} KB</span></div>`:''}<div class="row sp" style="margin-top:10px">${pr?`<label class="pph">📷 Photo<input type="file" accept="image/*" hidden onchange="pPick(this)"></label>`:`<button class="pph lk" onclick="premOK('Photo posts in Feed')">📷 Photo <span class="crn">👑 LUXURY</span></button>`}<button class="pri" onclick="pPost()" ${PB?'disabled':''}>${PB?'Posting…':'Post'}</button></div></div>`};
+pHTML=function(p){const mn=Math.floor(Date.now()/6e4);if(mn!=PCm){PCm=mn;for(const k in PC)delete PC[k]}
+ const L=p.likes||{},lk=Object.keys(L).length,mine=!!L[me],o=U[p.u]||{},pr=isPremU(p.u),key='x|'+p.id+'|'+lk+'|'+mine+'|'+(o.name||'')+'|'+(o.dp?1:0)+'|'+(NK[p.u]||'')+'|'+(pr?1:0);
+ if(PC[key])return PC[key];
+ let img='';if(p.img){const u=PU[p.id]||(PU[p.id]=dURL(p.img));img=`<div class="pim" style="aspect-ratio:${p.w||4}/${p.h||3}"><img src="${u}" alt="" decoding="async" ondblclick="pLike('${p.id}',1)"></div>`}
+ const txt=p.text?(p.img?`<div class="pct"><b>${esc(nm(p.u))}</b> ${lnk(esc(p.text)).replace(/\n/g,'<br>')}</div>`:`<div class="pct big">${lnk(esc(p.text)).replace(/\n/g,'<br>')}</div>`):'';
+ return PC[key]=`<article class="pst${pr?' pr':''}"><div class="psh">${pr?`<div class="ring gold">${av(p.u,38)}</div>`:av(p.u,38)}<div class="psn"><b>${esc(nm(p.u))}${pr?'<span class="crn">👑 LUXURY</span>':''}</b><span class="mu">${pAgo(p.ts)}</span></div>${p.u==me?`<button class="psd" onclick="pDel('${p.id}')" title="Delete post">🗑</button>`:''}</div>${p.img?'':txt}${img}<div class="psa"><button class="plk${mine?' on':''}" onclick="pLike('${p.id}')">${mine?'♥':'♡'}</button><span class="pcn">${lk?lk+(lk==1?' like':' likes'):''}</span></div>${p.img?txt:''}</article>`};
+/* plans tab */
+function plansHTML(){const adm=isAdm(),pr=isPrem(),dl=lxDays(me);
+ const st=adm?'👑 Owner · Luxury unlocked':pr?`✓ Active · ${dl} day${dl==1?'':'s'} left · until ${new Date(prUntil(me)).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})}`:'Free plan · text only';
+ let h=`<div class="lxh"><div class="lxc1">👑</div><b>KhizChat Luxury</b><p>Share photos & videos in chats and post photos in the Feed.</p><div class="lxs">${st}</div></div>
+ <div class="lxf"><div><i>🖼</i><span>Photo & video sharing in chats</span></div><div><i>📰</i><span>Photo posts in Feed (free = text only)</span></div><div><i>👑</i><span>Gold ring & Luxury badge on your profile and posts</span></div></div>`;
+ h+=PLANS.map(p=>`<div class="lxp${p.t=='POPULAR'?' hot':''}" onclick="openPay('${p.id}')">${p.t?`<span class="lxt">${p.t}</span>`:''}<div class="lxn"><b>Luxury · ${p.n}</b><span class="mu">${p.s}</span></div><div class="lxpr"><small>PKR</small> ${p.p}</div></div>`).join('');
+ h+=`<div class="lxq"><b>How to activate</b><div>1. Choose a plan.</div><div>2. Pay from Easypaisa, JazzCash or any bank to OPay <b>${OPAY.no}</b> (${OPAY.name}).</div><div>3. Submit the Transaction ID (TID).</div><div>4. Luxury turns on after the payment is verified.</div></div>`;
+ const my=[...PY.values()].filter(x=>x.u==me).sort((a,b)=>b.ts-a.ts).slice(0,6);
+ if(my.length&&!adm)h+='<div class="sec">My payments</div>'+my.map(x=>`<div class="lxq"><div class="row sp"><b>${esc(x.plan)} · PKR ${x.amt}</b><span class="lxb ${x.st}">${x.st=='p'?'⏳ Pending':x.st=='a'?'✓ Approved':'✕ Rejected'}</span></div><div class="mu">TID ${esc(x.tid)} · ${dt(x.ts)}${x.note?' · '+esc(x.note):''}</div></div>`).join('');
+ if(adm){const pend=[...PY.values()].filter(x=>x.st=='p').sort((a,b)=>a.ts-b.ts);
+  h+=`<div class="sec">Payment requests (${pend.length})</div>`+(pend.map(x=>`<div class="lxq"><div class="row sp"><b>${esc(nm(x.u))}</b><span class="mu">@${esc((U[x.u]||{}).username||'')}</span></div><div><b>${esc(x.plan)}</b> · PKR ${x.amt} · TID <b>${esc(x.tid)}</b></div><div class="mu">Paid from: ${esc(x.from||'')} · ${dt(x.ts)}</div>${x.shot?`<img src="${x.shot}" onclick="lb(this.src)">`:''}<div class="row"><button class="pri" onclick="payOk('${x.id}')">Approve</button><button onclick="payNo('${x.id}')" style="color:#e11d48">Reject</button></div></div>`).join('')||'<p class="mu pad">No pending requests</p>');
+  const act=[...PRM.entries()].filter(([k,v])=>v.until>Date.now()).sort((a,b)=>b[1].until-a[1].until);
+  h+=`<div class="sec">Grant Luxury manually</div><div class="lxq"><input id="lxu" placeholder="Username"><select id="lxd" style="background:var(--s2);border:0;border-radius:12px;padding:12px;color:var(--tx)"><option value="30">30 days</option><option value="90">90 days</option><option value="365">365 days</option></select><button class="pri" onclick="admGrant()">Grant</button></div>`
+  +`<div class="sec">Active members (${act.length})</div>`+(act.map(([k,v])=>`<div class="it" style="cursor:default">${av(k,38)}<div class="b"><b>${esc(nm(k))}</b><div class="mu">until ${new Date(v.until).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})}</div></div><button onclick="admRevoke('${k}')">Revoke</button></div>`).join('')||'<p class="mu pad">No active members yet</p>')}
+ return h}
+function plansRender(){const L=$('#list');if(!L||!U[me])return;const a=document.activeElement&&document.activeElement.id;if(a=='lxu')return;
+ const h=plansHTML();if(L._h!==h||L._t!=='plans'){const s=L._t==='plans'?L.scrollTop:0;L._h=h;L._t='plans';L.innerHTML=h;L.scrollTop=s}}
+const _rlL=renderList;
+renderList=function(){if(tab=='plans'){plansRender();return}_rlL();
+ if(tab=='set'){const L=$('#list'),o=$('#lxs0');if(o)o.remove();const pr=isPrem(),s=L.querySelector('.sec');
+  if(s)s.insertAdjacentHTML('beforebegin',`<div id="lxs0"><div class="lxc1">👑</div><div class="b"><b>KhizChat Luxury</b><div class="mu">${isAdm()?'Owner · unlocked':pr?'Active · '+lxDays(me)+' days left':'Photo & video sharing · from PKR 99'}</div></div><button class="pri" onclick="tab='plans';refresh()">${pr?'Manage':'Upgrade'}</button></div>`)}};
+/* payment flow */
+function openPay(id){const p=PLANS.find(x=>x.id==id);if(!p)return;lxShot=null;const d=$('#md');
+ d.innerHTML=`<div class="mc gx" style="max-width:400px"><div class="lxc1 big">👑</div><b style="font-size:18px">Luxury · ${p.n}</b><div class="lxpr" style="font-size:30px;font-weight:800">PKR ${p.p}</div>
+ <div class="lxst"><b>1. Send PKR ${p.p} to this OPay account</b></div>
+ <div class="lxr"><div><span>OPay account number</span><b>${OPAY.no}</b></div><button onclick="cpTxt('${OPAY.no}')">Copy</button></div>
+ <div class="lxr"><div><span>Account name</span><b>${OPAY.name}</b></div><button onclick="cpTxt('${OPAY.name}')">Copy</button></div>
+ <div class="lxr"><div><span>Amount</span><b>PKR ${p.p}</b></div><button onclick="cpTxt('${p.p}')">Copy</button></div>
+ <div class="mu" style="text-align:left;font-size:12.5px">Pay from Easypaisa, JazzCash or any bank app → Send money to OPay account.</div>
+ <div class="lxst"><b>2. Enter your payment details</b></div>
+ <input id="lxt" placeholder="Transaction ID (TID)" maxlength="40" autocomplete="off"><input id="lxf" placeholder="Paid from (your name / number)" maxlength="40" autocomplete="off">
+ <label class="chp" style="width:100%;justify-content:center">📎 Attach receipt screenshot (optional)<input type="file" accept="image/*" hidden onchange="lxPick(this)"></label><div class="mu" id="lxsh"></div>
+ <button class="pri" id="lxsb" style="width:100%" onclick="submitPay('${p.id}')">Submit payment</button><button style="width:100%" onclick="$('#md').hidden=true">Cancel</button></div>`;d.hidden=false}
+async function lxPick(inp){const f=inp.files[0];inp.value='';if(!f)return;try{lxShot=await cmp(f,450000,1280);$('#lxsh').textContent='Receipt attached ✓ ('+Math.round(lxShot.d.length*3/4/1024)+' KB)'}catch(e){toast('This image format is not supported')}}
+async function submitPay(id){const pl=PLANS.find(x=>x.id==id),tid=($('#lxt').value||'').trim(),fr=($('#lxf').value||'').trim();
+ if(tid.length<6)return toast('Enter the Transaction ID (TID) from your receipt');
+ if(fr.length<3)return toast('Enter the name or number you paid from');
+ if([...PY.values()].some(x=>x.u==me&&x.st=='p'))return toast('You already have a payment waiting for approval');
+ const b=$('#lxsb');b.disabled=true;b.textContent='Submitting…';
+ try{await fs.collection('payments').add({u:me,plan:pl.n,pid:pl.id,days:pl.d,amt:pl.p,tid,from:fr,shot:lxShot?lxShot.d:'',st:'p',ts:Date.now()});lxShot=null;$('#md').hidden=true;toast('Request sent ✓ Luxury activates after verification')}
+ catch(e){permErr(e)||toast('Could not submit: '+(e.code||'error'));b.disabled=false;b.textContent='Submit payment'}}
+async function payOk(id){const p=PY.get(id);if(!p||!isAdm())return;if(!confirm('Approve '+p.plan+' for '+nm(p.u)+'?\nPKR '+p.amt+' · TID '+p.tid+'\n\nCheck it in your OPay app first.'))return;
+ const until=Math.max(Date.now(),prUntil(p.u))+p.days*864e5,b=fs.batch();
+ b.set(fs.collection('premium').doc(p.u),{until,plan:p.plan,ts:Date.now(),by:me},{merge:true});b.update(fs.collection('payments').doc(id),{st:'a',at:Date.now(),until});
+ try{await b.commit();toast('Luxury activated ✓')}catch(e){permErr(e)||toast('Failed: '+(e.code||'error'))}}
+function payNo(id){const r=prompt('Reason (optional)');if(r===null)return;fs.collection('payments').doc(id).update({st:'x',at:Date.now(),note:r.trim().slice(0,100)}).then(()=>toast('Rejected')).catch(e=>permErr(e)||toast('Failed'))}
+function admGrant(){const un=($('#lxu').value||'').trim().toLowerCase().replace('@',''),dd=+$('#lxd').value,id=Object.keys(U).find(k=>U[k].username==un);if(!id)return toast('Username not found');
+ const until=Math.max(Date.now(),prUntil(id))+dd*864e5;fs.collection('premium').doc(id).set({until,plan:'Manual',ts:Date.now(),by:me},{merge:true}).then(()=>{$('#lxu').value='';toast('Luxury granted ✓')}).catch(e=>permErr(e)||toast('Failed'))}
+function admRevoke(id){if(!confirm('Remove Luxury from '+nm(id)+'?'))return;fs.collection('premium').doc(id).set({until:0,ts:Date.now(),by:me},{merge:true}).then(()=>toast('Revoked')).catch(e=>permErr(e)||toast('Failed'))}
+/* listeners */
+function startPrem(){lxUn.forEach(f=>f());lxUn=[];PRM.clear();PY.clear();PRok=0;lxPay=0;lxSeen=null;
+ lxUn.push(fs.collection('premium').onSnapshot(s=>{s.docChanges().forEach(c=>c.type=='removed'?PRM.delete(c.doc.id):PRM.set(c.doc.id,c.doc.data()));PRok=1;PC&&Object.keys(PC).forEach(k=>delete PC[k]);rf()},e=>{PRok=1;permErr(e)}))}
+function ensurePay(){if(lxPay||!me||!U[me])return;lxPay=1;const adm=isAdm(),q=adm?fs.collection('payments').where('st','==','p'):fs.collection('payments').where('u','==',me);
+ lxUn.push(q.onSnapshot(s=>{const first=lxSeen===null;if(first)lxSeen=new Set();
+  s.docChanges().forEach(c=>{if(c.type=='removed'){PY.delete(c.doc.id);return}const d=Object.assign({id:c.doc.id},c.doc.data());PY.set(c.doc.id,d);
+   if(adm&&c.type=='added'&&!lxSeen.has(c.doc.id)){lxSeen.add(c.doc.id);if(!first)push('💰 New payment request',nm(d.u)+' · '+d.plan+' · PKR '+d.amt)}
+   if(!adm&&c.type=='modified'&&!first){if(d.st=='a')toast('Your Luxury plan is active 👑');else if(d.st=='x')toast('Payment rejected'+(d.note?': '+d.note:''))}});rf()},e=>{permErr(e)}))}
+const _bootL=boot;boot=function(){_bootL();startPrem()};
+/* header crown + nav badge */
+{const w=$('#who'),g=document.createElement('div');g.className='row';g.style.gap='8px';w.parentNode.insertBefore(g,w);const b=document.createElement('button');b.id='crb';b.onclick=()=>{tab='plans';refresh()};g.appendChild(b);g.appendChild(w)}
+function updCrb(){const b=$('#crb');if(!b||!U[me])return;const a=isPrem();b.className=a?'act':'';b.textContent=a?'👑 Luxury':'👑 Upgrade';
+ const nb=document.querySelector('#nav button[data-k=plans]');if(nb){let e=nb.querySelector('.nbd');const n=isAdm()?[...PY.values()].filter(x=>x.st=='p').length:0;if(n&&!e){e=document.createElement('em');e.className='nbd';nb.appendChild(e)}if(e){e.hidden=!n;e.textContent=n}}}
+const _rfL=refresh;refresh=function(){_rfL();try{ensurePay();updCrb()}catch(e){}};
 </script></body></html>
