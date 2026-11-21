@@ -692,6 +692,11 @@ setTimeout(function(){var a=document.getElementById("app"),u=document.getElement
 .spg.l .spc.gw{grid-column:span 3;font-size:13px;font-weight:900;padding:11px 6px;border-radius:12px;background:linear-gradient(110deg,#f7d46a,#fff3b0,#f7b733);color:#3b2300;box-shadow:0 6px 14px -8px #f59e0b}
 .spl{grid-column:1/-1;font-size:12px;font-weight:800;color:#d97706;padding:6px 4px 0;display:flex;justify-content:space-between;align-items:center}
 </style>
+<style>
+/* ===== v32: free pet pack ===== */
+.cat.duo{width:210px;height:147px}
+.spg.l .spc.dc{grid-column:span 3;padding:2px}.spg.l .spc.dc svg{width:100%;height:auto;display:block}
+</style>
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -828,7 +833,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v31 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v32 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -1715,4 +1720,48 @@ plansHTML=function(){const old=_phO(),ix=old.indexOf('<div class="lxq"><b>How to
  +(ix>=0?old.slice(ix):'')};
 /* gold crown next to premium contact name in chat header */
 const _rfX=refresh;refresh=function(){_rfX();try{const h=$('#hn');if(h&&cur&&!G.has(cur)&&isPremU(cur)&&!h.querySelector('.crn'))h.insertAdjacentHTML('beforeend','<span class="crn">👑</span>')}catch(e){}};
+
+/* ---------- v32: FREE original pet pack: Bunty (bunny) & Pandu (panda) ---------- */
+const PETM={happy:{l:'Mast!',a:'bounce'},love:{l:'Love U',a:'beat'},sleepy:{l:'Zzz…',a:'float'},cry:{l:'Hai Hai',a:'wiggle'},angry:{l:'Gussa!',a:'shake'},wow:{l:'Wow!',a:'zoom'},laugh:{l:'LOL',a:'wiggle'},thanks:{l:'Shukriya',a:'zoom'},party:{l:'Party!',a:'bounce'},cool:{l:'Boss',a:'swing'}};
+const DUO={hug:{l:'Jhappi!',a:'beat'},sleep:{l:'Shab bakhair',a:'float'},love:{l:'Pyaar!',a:'beat'},sorry:{l:'Sorry yaar',a:'wiggle'}};
+function petHead(a,k){const B=a=='b',FC=B?'#bff0de':'#ffffff',OL=B?'#6fc3a8':'#3a3a4a',ES=B?'#2e5d4f':'#ffffff',MS=B?'#2e5d4f':'#3a3a4a',PU='#2b2b3a';
+ const S=c=>`stroke="${c}" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"`;
+ const ears=B?`<ellipse cx="40" cy="30" rx="9" ry="25" transform="rotate(-12 40 30)" fill="${FC}" stroke="${OL}" stroke-width="2"/><ellipse cx="40" cy="32" rx="4.5" ry="17" transform="rotate(-12 40 32)" fill="#ffc2d4"/><ellipse cx="80" cy="30" rx="9" ry="25" transform="rotate(12 80 30)" fill="${FC}" stroke="${OL}" stroke-width="2"/><ellipse cx="80" cy="32" rx="4.5" ry="17" transform="rotate(12 80 32)" fill="#ffc2d4"/>`:`<circle cx="27" cy="42" r="13" fill="${PU}"/><circle cx="93" cy="42" r="13" fill="${PU}"/>`;
+ const patch=B?'':`<ellipse cx="41" cy="67" rx="9.5" ry="11.5" transform="rotate(-18 41 67)" fill="${PU}"/><ellipse cx="79" cy="67" rx="9.5" ry="11.5" transform="rotate(18 79 67)" fill="${PU}"/>`;
+ const nose=B?'<ellipse cx="60" cy="74" rx="3.2" ry="2.3" fill="#ff8fb0"/>':`<ellipse cx="60" cy="74" rx="4.2" ry="3" fill="${PU}"/>`;
+ let eyes=`<path d="M35 68Q42 58 49 68M71 68Q78 58 85 68" ${S(ES)}/>`,mouth=`<path d="M60 77v3M60 80Q56 85 52 81M60 80Q64 85 68 81" ${S(MS)}/>`,extra='',hat='',tint='';
+ if(k=='love'){eyes=_ht(42,66,1)+_ht(78,66,1);extra=_ht(102,24,.6)+_ht(16,34,.5)}
+ if(k=='sleepy'){eyes=`<path d="M35 66Q42 72 49 66M71 66Q78 72 85 66" ${S(ES)}/>`;mouth=`<path d="M56 82Q60 85 64 82" ${S(MS)}/>`;extra=`<text x="92" y="30" font-size="17" font-weight="800" fill="#7fb3e8">Z</text><text x="106" y="16" font-size="11" font-weight="800" fill="#7fb3e8">z</text>`}
+ if(k=='cry'){eyes=`<path d="M35 64Q42 71 49 64M71 64Q78 71 85 64" ${S(ES)}/>`;mouth=`<path d="M52 89Q60 81 68 89" ${S(MS)}/>`;extra='<path d="M42 76q-6 9 0 12q6-3 0-12z" fill="#5cc8ff"/><path d="M78 76q-6 9 0 12q6-3 0-12z" fill="#5cc8ff"/>'}
+ if(k=='angry'){tint='<ellipse cx="60" cy="72" rx="43" ry="37" fill="#ff7a7a" opacity=".35"/>';eyes=`<circle cx="42" cy="68" r="4" fill="${ES}"/><circle cx="78" cy="68" r="4" fill="${ES}"/><path d="M31 54L52 63M89 54L68 63" ${S(MS)}/>`;mouth=`<path d="M52 89Q60 79 68 89" ${S(MS)}/>`;extra='<circle cx="14" cy="30" r="5" fill="#ffb3b3" opacity=".85"/><circle cx="108" cy="26" r="6" fill="#ffb3b3" opacity=".85"/>'}
+ if(k=='wow'){eyes=`<circle cx="42" cy="66" r="7.5" fill="#fff" stroke="${PU}" stroke-width="2"/><circle cx="42" cy="66" r="3.4" fill="${PU}"/><circle cx="78" cy="66" r="7.5" fill="#fff" stroke="${PU}" stroke-width="2"/><circle cx="78" cy="66" r="3.4" fill="${PU}"/>`;mouth=`<ellipse cx="60" cy="87" rx="5" ry="6.5" fill="#5a3d7a"/>`;extra=_sp(12,30)+_sp(108,38)}
+ if(k=='laugh'){eyes=`<path d="M34 60L48 67L34 74M86 60L72 67L86 74" ${S(ES)}/>`;mouth=`<path d="M47 79Q60 102 73 79Z" fill="#5a3d7a"/><ellipse cx="60" cy="91" rx="6" ry="3" fill="#ff8fb0"/>`;extra='<path d="M24 78q-6 7-1 10q5-2 1-10z" fill="#5cc8ff"/><path d="M96 78q6 7 1 10q-5-2-1-10z" fill="#5cc8ff"/>'}
+ if(k=='thanks'){extra=`<ellipse cx="53" cy="97" rx="8" ry="12" transform="rotate(14 53 97)" fill="${B?FC:PU}" stroke="${OL}" stroke-width="2"/><ellipse cx="67" cy="97" rx="8" ry="12" transform="rotate(-14 67 97)" fill="${B?FC:PU}" stroke="${OL}" stroke-width="2"/>`+_sp(12,50)+_sp(108,54)}
+ if(k=='party'){hat='<path d="M49 38L60 6L71 38Z" fill="#ff6b9d"/><path d="M53 27h14M56 17h8" stroke="#fff" stroke-width="3"/><circle cx="60" cy="6" r="4" fill="#f7b733"/>';extra='<rect x="10" y="22" width="6" height="3" fill="#4dd0e1" transform="rotate(30 10 22)"/><rect x="104" y="14" width="6" height="3" fill="#ff6b9d" transform="rotate(-25 104 14)"/><rect x="110" y="54" width="6" height="3" fill="#f7b733" transform="rotate(40 110 54)"/><rect x="6" y="60" width="6" height="3" fill="#a78bfa" transform="rotate(-35 6 60)"/>'}
+ if(k=='cool'){eyes=`<rect x="30" y="57" width="26" height="17" rx="6" fill="#1f1f2e"/><rect x="64" y="57" width="26" height="17" rx="6" fill="#1f1f2e"/><path d="M56 64h8" stroke="#1f1f2e" stroke-width="3"/><path d="M35 61h6M69 61h6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>`;mouth=`<path d="M60 77v3M60 80Q56 88 50 83M60 80Q64 88 70 83" ${S(MS)}/>`}
+ return`<g>${ears}<ellipse cx="60" cy="72" rx="43" ry="37" fill="${FC}" stroke="${OL}" stroke-width="2"/>${tint}${patch}<ellipse cx="30" cy="82" rx="7" ry="4" fill="#ff9fb8" opacity=".55"/><ellipse cx="90" cy="82" rx="7" ry="4" fill="#ff9fb8" opacity=".55"/>${eyes}${nose}${mouth}${extra}${hat}</g>`}
+const _lb=(cx,w,t)=>`<rect x="${cx-w/2}" y="118" width="${w}" height="21" rx="10.5" fill="#7fe0c0" stroke="#fff" stroke-width="2.5"/><text x="${cx}" y="133" text-anchor="middle" font-size="13" font-weight="800" fill="#12463a" font-family="Poppins,Inter,Arial,sans-serif">${esc(t)}</text>`;
+function petSvg(a,k){const c=PETM[k];if(!c)return'';return`<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg">${petHead(a,k)}${_lb(60,76,c.l)}</svg>`}
+function duoSvg(k){const c=DUO[k];if(!c)return'';let m1='happy',m2='happy',x='',after='';
+ if(k=='love'){m1=m2='love';x=_ht(105,36,1)+_ht(94,18,.6)+_ht(117,16,.6)}
+ if(k=='sleep'){m1=m2='sleepy'}
+ if(k=='sorry'){m1='cry'}
+ if(k=='hug'){x=_ht(105,30,.9);after='<ellipse cx="99" cy="109" rx="13" ry="6.5" fill="#bff0de" stroke="#6fc3a8" stroke-width="2"/><ellipse cx="112" cy="109" rx="13" ry="6.5" fill="#2b2b3a"/>'}
+ const t=k=='hug'?7:0;
+ const A=`<g transform="translate(6 18) rotate(${t} 48 58) scale(.8)">${petHead('b',m1)}</g>`,P=`<g transform="translate(108 18) rotate(${-t} 48 58) scale(.8)">${petHead('p',m2)}</g>`;
+ if(k=='sleep')after='<path d="M6 100Q105 84 204 100V116H6Z" fill="#a8c8ff" stroke="#7aa6e8" stroke-width="2"/><text x="100" y="22" font-size="15" font-weight="800" fill="#7fb3e8">Z</text><text x="114" y="12" font-size="10" font-weight="800" fill="#7fb3e8">z</text>';
+ return`<svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">${A}${P}${x}${after}${_lb(105,104,c.l)}</svg>`}
+const _stkP=stkHTML;
+stkHTML=function(m){const t=m.text||'';
+ if(t.startsWith('p:')){const [a,k]=t.slice(2).split('_');if((a=='b'||a=='p')&&PETM[k])return`<div class="cat kb-${PETM[k].a}">${petSvg(a,k)}</div>`}
+ if(t.startsWith('d:')){const k=t.slice(2);if(DUO[k])return`<div class="cat duo kb-${DUO[k].a}">${duoSvg(k)}</div>`}
+ return _stkP(m)};
+const _rspP=renderSp;
+renderSp=function(){if(spTab!='p')return _rspP();
+ const g=$('#spg');$('#sp').querySelectorAll('.spt button').forEach(b=>b.classList.toggle('on',b.dataset.k==spTab));g.className='spg l';
+ g.innerHTML=`<div class="spl" style="color:var(--mu)"><span>🐰🐼 Bunty & Pandu · together</span><span class="lxb a">FREE</span></div>`+Object.keys(DUO).map(k=>`<button class="spc dc" onclick="sendStk('d:${k}')">${duoSvg(k)}</button>`).join('')
+ +`<div class="spl" style="color:var(--mu)"><span>🐰 Bunty the bunny</span></div>`+Object.keys(PETM).map(k=>`<button class="spc cs" onclick="sendStk('p:b_${k}')">${petSvg('b',k)}</button>`).join('')
+ +`<div class="spl" style="color:var(--mu)"><span>🐼 Pandu the panda</span></div>`+Object.keys(PETM).map(k=>`<button class="spc cs" onclick="sendStk('p:p_${k}')">${petSvg('p',k)}</button>`).join('')};
+$('#sp .spt').insertAdjacentHTML('afterbegin','<button data-k="p">🐰 Free pets</button>');
+spTab='p';
 </script></body></html>
