@@ -751,6 +751,11 @@ body[data-wp] #msgs{background-image:linear-gradient(rgba(0,0,0,var(--kxd)),rgba
 .sall{grid-column:1/-1;display:flex;justify-content:flex-end}.sall button{padding:6px 14px;font-size:12.5px;border-radius:99px;background:color-mix(in srgb,var(--ac) 14%,transparent);color:var(--ac);font-weight:600}
 .spc.sv .svw{width:100%;height:64px;display:grid;place-items:center;overflow:hidden;cursor:pointer}.spc.sv .svw>*{zoom:.5;max-width:none}
 .spc.sv>i{position:absolute;top:2px;right:2px;font-style:normal;font-size:11px;background:#0006;color:#fff;border-radius:50%;width:18px;height:18px;display:grid;place-items:center}
+
+/* ===== v37: reply jump ===== */
+.qt{cursor:pointer}.qt:active{opacity:.65}
+.m.kxhl{animation:kxhl 2s ease-out}
+@keyframes kxhl{0%,35%{box-shadow:0 0 0 3px var(--ac),0 0 28px 4px color-mix(in srgb,var(--ac) 55%,transparent);transform:scale(1.03)}100%{box-shadow:0 0 0 0 transparent;transform:none}}
 </style>
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
@@ -887,7 +892,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v36 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v37 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -902,7 +907,7 @@ function renderMsgs(){const gr=G.has(cur),all=[...M.values()].filter(m=>(gr?(m.g
  const rc=Object.values(m.react||{}),rx=rc.length?`<span class="rx">${[...new Set(rc)].join('')}${rc.length>1?' '+rc.length:''}</span>`:'';
  return sep+`<div class="m ${mine?'me':''}${cont&&!sep?' cont':''}${m.type=='stk'&&!m.del?' stk':''}" data-m="${m.id}">${sn}${x}<small>${(m.star||{})[me]?'★ ':''}${m.edited?'edited · ':''}${tm(m.ts)} ${mine?tickHTML(m):''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
 /* ---------- chat actions ---------- */
-function send(type,text,data){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');if(G.has(cur)){const gg=G.get(cur);if(gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages')}fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},...gx(cur),reply:rp?Object.assign({u:rp.from,t:prv(rp)},rpTh?{th:rpTh}:{}):null}).catch(e=>toast('Send failed: '+e.code));setRp(null)}
+function send(type,text,data){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');if(G.has(cur)){const gg=G.get(cur);if(gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages')}fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},...gx(cur),reply:rp?Object.assign({u:rp.from,i:rp.id,t:prv(rp)},rpTh?{th:rpTh}:{}):null}).catch(e=>toast('Send failed: '+e.code));setRp(null)}
 $('#sd').onclick=()=>{const t=$('#tx').value.trim();if(!t)return;$('#tx').value='';send('text',t)};
 $('#tx').onkeydown=e=>{if(e.key=='Enter'&&!e.shiftKey&&PF.ent!==false){e.preventDefault();$('#sd').click()}};
 $('#tx').oninput=()=>{if(cur&&!G.has(cur)&&U[me].priv.typing!==false&&Date.now()-lastTy>2000){lastTy=Date.now();fs.collection('users').doc(me).update({ty:{to:cur,ts:Date.now()}}).catch(()=>{})}};
@@ -1514,7 +1519,7 @@ function mediaThumb(f,type){return new Promise(res=>{
  v.onerror=()=>end({d:'',w:16,h:9});v.src=u})}
 async function sendBig(f,type){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');const to=cur,gg=G.get(to);if(gg&&gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages');
  if(f.size>BIGMAX)return toast(f.name+': too large (max 3 MB)');
- const rpl=rp?Object.assign({u:rp.from,t:prv(rp)},rpTh?{th:rpTh}:{}):null;setRp(null);
+ const rpl=rp?Object.assign({u:rp.from,i:rp.id,t:prv(rp)},rpTh?{th:rpTh}:{}):null;setRp(null);
  try{toast('Preparing '+(type=='vid'?'video':'photo')+'…');const th=await mediaThumb(f,type);if(!th&&type=='img')return toast('This photo format is not supported');
   const b64=(await bd(f)).split(',')[1],fid='m'+Date.now()+me.slice(0,4),CH=700000,n=Math.max(1,Math.ceil(b64.length/CH));
   for(let k=0;k<n;k+=3){const b=fs.batch();for(let j=k;j<Math.min(n,k+3);j++)b.set(fs.collection('fchunks').doc(fid+'_'+j),{fid,i:j,d:b64.slice(j*CH,(j+1)*CH),from:me});await b.commit();toast('⬆ '+Math.round(Math.min(n,k+3)*100/n)+'%')}
@@ -2032,5 +2037,17 @@ $('#spg').addEventListener('click',e=>{const s=e.target.closest('.sst');if(s){e.
 {const I=p=>`<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
  const em=$('#em'),sb=$('#stkb');if(em)em.innerHTML=I('<circle cx="12" cy="12" r="9"/><path d="M8.5 14.2a4.2 4.2 0 0 0 7 0M9 9.6h.01M15 9.6h.01"/>');
  if(sb)sb.innerHTML=I('<path d="M20 12.5V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h5.5L20 12.5z"/><path d="M20 12.5h-4a2 2 0 0 0-2 2V20"/>')}
+
+
+/* ====== v37: tap a reply quote -> jump to the original message ====== */
+function kxFind(mid){const m=M.get(mid);if(!m||!m.reply)return null;if(m.reply.i&&M.get(m.reply.i))return M.get(m.reply.i);
+ return [...M.values()].filter(x=>x.ts<m.ts&&x.from==m.reply.u&&(G.has(cur)?(x.g&&x.to==cur):(!x.g&&(x.from==cur||x.to==cur)))).sort((a,b)=>b.ts-a.ts).find(x=>prv(x)==m.reply.t)||null}
+function kxJump(mid){const tg=kxFind(mid);if(!tg)return toast('Original message not found');
+ const q=()=>document.querySelector('#msgs [data-m="'+tg.id+'"]');let el=q();
+ if(!el){const lst=[...M.values()].filter(x=>(G.has(cur)?(x.g&&x.to==cur):(!x.g&&(x.from==cur||x.to==cur)))&&!(x.hid||{})[me]).sort((a,b)=>a.ts-b.ts),k=lst.findIndex(x=>x.id==tg.id);
+  if(k<0)return toast('Original message not found');MLIM[cur]=Math.max(MLIM[cur]||80,lst.length-k+6);sig='';renderMsgs();el=q()}
+ if(!el)return toast('Original message is hidden');
+ el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('kxhl');void el.offsetWidth;el.classList.add('kxhl');setTimeout(()=>el.classList.remove('kxhl'),2000)}
+$('#msgs').addEventListener('click',e=>{const q=e.target.closest('.qt');if(!q)return;const b=q.closest('[data-m]');if(!b)return;e.stopPropagation();e.preventDefault();hideMM();kxJump(b.dataset.m)},true);
 
 </script></body></html>
