@@ -732,6 +732,25 @@ body[data-wp] #msgs{background-image:linear-gradient(rgba(0,0,0,var(--kxd)),rgba
 @keyframes kxgl{from{box-shadow:0 18px 40px -14px #000a,0 0 0 0 color-mix(in srgb,var(--ac) 55%,transparent)}to{box-shadow:0 18px 40px -14px #000a,0 0 0 18px transparent}}
 @keyframes kxpr{to{transform:scaleX(0)}}
 .pwr{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:0 14px 12px}.pwr button{padding:6px 12px;font-size:12.5px;border-radius:99px}
+
+/* ===== v36: modern composer ===== */
+#comp{padding:8px 10px max(10px,env(safe-area-inset-bottom))!important;margin:0!important;gap:10px;background:color-mix(in srgb,var(--bg) 74%,transparent)!important;backdrop-filter:saturate(1.4) blur(18px)!important;-webkit-backdrop-filter:saturate(1.4) blur(18px)!important;border-top:1px solid color-mix(in srgb,var(--bd) 70%,transparent)!important}
+#cpill{border-radius:24px;padding:3px 4px;min-height:46px;gap:0;transition:border-color .18s,box-shadow .18s;box-shadow:0 1px 2px #0000000d}
+#cpill:focus-within{border-color:color-mix(in srgb,var(--ac) 60%,var(--bd));box-shadow:0 0 0 4px color-mix(in srgb,var(--ac) 14%,transparent)}
+#comp #cpill .ib{width:38px;height:38px;color:var(--mu);transition:color .15s,background .15s}
+#comp #cpill .ib:hover{color:var(--ac);background:color-mix(in srgb,var(--ac) 10%,transparent)!important}
+#comp #cpill .ib svg{width:22px;height:22px}
+#comp #cpill textarea{font-size:15.5px;padding:11px 8px}
+#comp #cpill textarea::placeholder{color:var(--mu);opacity:.8}
+#comp #mic,#comp #sd{width:46px;height:46px}
+#sp,#ep,#am{margin:0 10px 8px;border-radius:20px;box-shadow:0 18px 40px -18px #0007}
+#am{min-width:240px;padding:8px;gap:2px;animation:kxpop .16s}#am button{display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:14px;font-weight:500}
+.spt button{font-weight:500}.spc{border-radius:14px;transition:transform .12s,background .12s}.spc:active{transform:scale(.94)}
+.spc .sst{position:absolute;top:2px;right:2px;font-style:normal;font-size:13px;line-height:1;width:20px;height:20px;display:grid;place-items:center;border-radius:50%;background:color-mix(in srgb,var(--s) 88%,transparent);color:var(--mu);box-shadow:0 1px 3px #0003}
+.spc .sst:hover{color:#f59e0b}
+.sall{grid-column:1/-1;display:flex;justify-content:flex-end}.sall button{padding:6px 14px;font-size:12.5px;border-radius:99px;background:color-mix(in srgb,var(--ac) 14%,transparent);color:var(--ac);font-weight:600}
+.spc.sv .svw{width:100%;height:64px;display:grid;place-items:center;overflow:hidden;cursor:pointer}.spc.sv .svw>*{zoom:.5;max-width:none}
+.spc.sv>i{position:absolute;top:2px;right:2px;font-style:normal;font-size:11px;background:#0006;color:#fff;border-radius:50%;width:18px;height:18px;display:grid;place-items:center}
 </style>
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
@@ -868,7 +887,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v35 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v36 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -965,7 +984,7 @@ const rmDp=()=>fs.collection('users').doc(me).update({dp:firebase.firestore.Fiel
 const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message',poll:'📊 Poll',file:'📄 Document',stk:'🎭 Sticker'})[m.type];
 const hideMM=()=>$('#mm').hidden=true;
 function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm'),mine=m.from==me,st=(m.star||{})[me];
- d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${mine?`<button onclick="msgInfo('${m.id}')">ⓘ Info</button>`:''}<button onclick="fwd('${m.id}')">➦ Forward</button>${mine&&(m.type=='text'||m.type=='img')&&!m.del?`<button onclick="shareToFeed('${m.id}')">📰 Share to Feed 👑</button>`:''}<button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button></div>`;
+ d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${mine?`<button onclick="msgInfo('${m.id}')">ⓘ Info</button>`:''}<button onclick="fwd('${m.id}')">➦ Forward</button>${m.type=='stk'&&!m.del?`<button onclick="hideMM();saveStkMsg('${m.id}')">⭐ Save sticker</button><button onclick="hideMM();shareStk('${m.id}')">📤 Share sticker</button><button onclick="hideMM();shareStk('${m.id}',1)">⬇ Download sticker</button>`:''}${mine&&(m.type=='text'||m.type=='img')&&!m.del?`<button onclick="shareToFeed('${m.id}')">📰 Share to Feed 👑</button>`:''}<button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button></div>`;
  d.hidden=false;const h=d.offsetHeight,w=d.offsetWidth;let t=r.top-h-6;if(t<8)t=Math.min(r.bottom+6,innerHeight-h-8);d.style.top=Math.max(8,t)+'px';d.style.left=Math.min(Math.max(8,mine?r.right-w:r.left),innerWidth-w-8)+'px'}
 $('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video,a,.po,.fcb,.vm'))return;if(e.target.tagName=='IMG'&&!e.target.classList.contains('qth')&&e.target.closest('.m')){lb(e.target.src,e.target.closest('[data-m]').dataset.m);return}const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;if(m.unlock&&m.unlock>Date.now()&&m.from!=me)return toast('🔒 Unlocks '+dt(m.unlock));showMM(m,el)});
 document.addEventListener('click',e=>{if(!e.target.closest('#mm,[data-m]'))hideMM()});
@@ -1967,5 +1986,51 @@ function shareToFeed(id){if(!premOK('Share to Feed'))return;const m=M.get(id);if
 async function kxShare(id){const m=M.get(id);if(!m)return;$('#md').hidden=true;let w=0,h=0;
  if(m.type=='img'){await new Promise(r=>{const im=new Image();im.onload=()=>{w=im.naturalWidth;h=im.naturalHeight;r()};im.onerror=r;im.src=m.data})}
  try{await fs.collection('posts').add({u:me,text:m.type=='text'?m.text:'',img:m.type=='img'?m.data:'',w,h,ts:Date.now(),likes:{},lc:0,vc:0});toast('Shared to Feed ✓')}catch(e){permErr(e)||toast('Share failed: '+(e.code||'error'))}}
+
+
+/* ====== v36: save / share stickers, modern composer ====== */
+const stk2=()=>{try{return JSON.parse(localStorage.getItem('kc_stk2'))||[]}catch(e){return[]}};
+function stk2Put(l){try{localStorage.setItem('kc_stk2',JSON.stringify(l));return true}catch(e){toast('Storage full — delete some saved stickers');return false}}
+function saveStks(items){const l=stk2();let n=0;for(const it of items){if(!it.t||l.length>=100)continue;if(l.some(x=>x.t==it.t&&(x.d||'')==(it.d||'')))continue;l.unshift({t:it.t,d:it.d||''});n++}
+ if(n&&!stk2Put(l))return;toast(n?'Saved '+n+' sticker'+(n>1?'s':'')+' ⭐':'Already in your saved stickers');if(spTab=='m'&&!$('#sp').hidden)renderSp()}
+function saveStkMsg(id){const m=M.get(id);if(m&&m.type=='stk')saveStks([{t:m.text,d:m.data}])}
+function sendSaved(k){const x=stk2()[k];if(!x)return;if(/^[cg]:/.test(x.t))sendLx(x.t);else sendStk(x.t,x.d)}
+function delSaved(k){const l=stk2();l.splice(k,1);stk2Put(l);renderSp()}
+function saveAllTab(){const a=[...document.querySelectorAll('#spg .sst')].map(e=>({t:e.dataset.t}));if(!a.length)return toast('Nothing to save here');saveStks(a)}
+/* sticker -> PNG */
+async function stkBlob(m){const t=m.text||'',c=document.createElement('canvas');c.width=c.height=512;const x=c.getContext('2d');
+ const done=()=>new Promise(r=>c.toBlob(r,'image/png'));
+ const img=src=>new Promise((r,j)=>{const im=new Image();im.crossOrigin='anonymous';im.onload=()=>r(im);im.onerror=j;im.src=src});
+ const fit=im=>{const w0=im.naturalWidth||im.width,h0=im.naturalHeight||im.height,k=Math.min(512/w0,512/h0),w=w0*k,h=h0*k;x.drawImage(im,(512-w)/2,(512-h)/2,w,h)};
+ try{
+  if((t=='i'||t=='u')&&m.data){fit(await img(m.data));return await done()}
+  if(t.startsWith('a:')){fit(await img(nUrl(t.slice(2).replace(/[^0-9a-f_]/gi,''),'webp')));return await done()}
+  const d=document.createElement('div');d.innerHTML=stkHTML(m);const sv=d.querySelector('svg');
+  if(sv){sv.setAttribute('width',840);sv.setAttribute('height',560);fit(await img('data:image/svg+xml;charset=utf-8,'+encodeURIComponent(new XMLSerializer().serializeToString(sv))));return await done()}
+ }catch(e){x.clearRect(0,0,512,512)}
+ try{
+  if(t.startsWith('w:')&&WORDS[+t.slice(2)]){const w=WORDS[+t.slice(2)],cs=w[1].split(','),g=x.createLinearGradient(0,0,512,512);g.addColorStop(0,cs[0]);g.addColorStop(1,cs[1]||cs[0]);x.fillStyle=g;x.beginPath();x.roundRect(16,96,480,320,56);x.fill();x.fillStyle='#fff';x.textAlign='center';x.textBaseline='middle';let fs0=110;x.font='800 '+fs0+'px sans-serif';while(x.measureText(w[0]).width>440&&fs0>20){fs0-=6;x.font='800 '+fs0+'px sans-serif'}x.fillText(w[0],256,256)}
+  else if(t.startsWith('g:')&&GW[+t.slice(2)]){const g=x.createLinearGradient(0,150,0,360);g.addColorStop(0,'#fff3b0');g.addColorStop(.5,'#f7b733');g.addColorStop(1,'#b8860b');x.fillStyle=g;x.textAlign='center';x.textBaseline='middle';let f0=130;const s=GW[+t.slice(2)];x.font='900 '+f0+'px sans-serif';while(x.measureText(s).width>460&&f0>20){f0-=6;x.font='900 '+f0+'px sans-serif'}x.fillText(s,256,256)}
+  else{let ch='🎭';if(t.startsWith('e:'))ch=t.slice(2);else if(t.startsWith('a:'))ch=cpEmoji(t.slice(2).replace(/[^0-9a-f_]/gi,''));else if(t.startsWith('x:')&&FXS[+t.slice(2)])ch=FXS[+t.slice(2)][0];x.textAlign='center';x.textBaseline='middle';x.font='360px serif';x.fillText(ch,256,276)}
+  return await done()}catch(e){return null}}
+async function shareStk(id,dl){const m=M.get(id);if(!m)return;toast('Preparing sticker…');const b=await stkBlob(m);if(!b)return toast('Could not prepare this sticker');
+ const f=new File([b],'sticker.png',{type:'image/png'});
+ if(!dl){try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:'KhizChat sticker'});return}}catch(e){if(e&&e.name=='AbortError')return}}
+ const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='sticker.png';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),4000);toast('Sticker downloaded ⬇')}
+/* picker: Mine tab = uploads + saved; star on every sticker; Save all */
+function stkDeco(){const g=$('#spg');if(!g||spTab=='m'||spTab=='o')return;let n=0;
+ g.querySelectorAll('.spc[onclick]').forEach(b=>{const r=/send(?:Stk|Lx)\('([^']+)'\)/.exec(b.getAttribute('onclick')||'');if(r&&!b.querySelector('.sst')){const i=document.createElement('i');i.className='sst';i.dataset.t=r[1];i.textContent='☆';i.title='Save sticker';b.appendChild(i);n++}});
+ if(g.querySelector('.sst')&&!g.querySelector('.sall'))g.insertAdjacentHTML('afterbegin','<div class="sall"><button onclick="saveAllTab()">⭐ Save all</button></div>')}
+$('#spg').addEventListener('click',e=>{const s=e.target.closest('.sst');if(s){e.stopPropagation();e.preventDefault();saveStks([{t:s.dataset.t}])}},true);
+{const _rs=renderSp;renderSp=function(){
+ if(spTab!='m'){const r=_rs.apply(this,arguments);stkDeco();return r}
+ const g=$('#spg');$('#sp').querySelectorAll('.spt button').forEach(b=>b.classList.toggle('on',b.dataset.k==spTab));g.className='spg';
+ const leg=myStk(),sv=stk2();
+ g.innerHTML=`<label class="spc add">＋<input type="file" accept="image/*" hidden onchange="addStk(this)"></label>`+leg.map((d,k)=>`<div class="spc"><img src="${d}" onclick="sendStkImg(${k})"><i onclick="delStk(${k})">✕</i></div>`).join('')+sv.map((x,k)=>`<div class="spc sv"><div class="svw" onclick="sendSaved(${k})">${stkHTML({id:'sv'+k,text:x.t,data:x.d})}</div><i onclick="delSaved(${k})">✕</i></div>`).join('')
+  +(leg.length||sv.length?'':'<p class="mu" style="grid-column:1/-1;text-align:center;padding:10px 8px">Tap ☆ on any sticker, or long-press a sticker in chat → Save sticker, to collect it here.</p>')}}
+/* modern composer icons */
+{const I=p=>`<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${p}</svg>`;
+ const em=$('#em'),sb=$('#stkb');if(em)em.innerHTML=I('<circle cx="12" cy="12" r="9"/><path d="M8.5 14.2a4.2 4.2 0 0 0 7 0M9 9.6h.01M15 9.6h.01"/>');
+ if(sb)sb.innerHTML=I('<path d="M20 12.5V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h5.5L20 12.5z"/><path d="M20 12.5h-4a2 2 0 0 0-2 2V20"/>')}
 
 </script></body></html>
