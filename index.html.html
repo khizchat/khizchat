@@ -558,7 +558,7 @@ body[data-bs] #msgs .m.me:not(.stk) small{opacity:.8}
 <style>
 /* ===== v25: clean, fast, professional (no glass / blur) ===== */
 html{-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;letter-spacing:0}
+body{font-family:var(--ff,-apple-system),-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;letter-spacing:0}
 button,input,textarea{transition:background-color .15s,border-color .15s,color .15s,transform .12s,opacity .15s}
 button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--ac);outline-offset:2px}
 #list,#msgs{overscroll-behavior:contain;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--bd) transparent}
@@ -572,6 +572,33 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px soli
 .m.me{background:var(--ac)!important;box-shadow:0 1px 2px #0002}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 #syn{position:fixed;top:max(10px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:150;background:var(--s);color:var(--mu);border:1px solid var(--bd);box-shadow:0 6px 18px -8px #0005;border-radius:99px;padding:6px 14px;font-size:12px;font-weight:600;pointer-events:none}#syn[hidden]{display:none}
+.pcm{background:var(--s);border:1px solid var(--bd);border-radius:16px;padding:12px;margin:6px 4px 12px}
+.pcm textarea{height:auto;min-height:46px;max-height:160px;resize:none;border-radius:12px;padding:10px 12px;flex:1;min-width:0}
+.pph{display:inline-flex;align-items:center;gap:6px;padding:9px 14px;border-radius:12px;background:var(--s2);cursor:pointer;font-size:14px}
+.ppv{position:relative;margin-top:10px;border-radius:12px;overflow:hidden;background:var(--s2)}.ppv img{display:block;width:100%;max-height:260px;object-fit:cover}
+.ppv button{position:absolute;top:8px;right:8px;width:30px;height:30px;padding:0;border-radius:50%;background:#000a;color:#fff}
+.ppv span{position:absolute;left:8px;bottom:8px;background:#000a;color:#fff;font-size:11px;padding:2px 8px;border-radius:99px}
+.pst{background:var(--s);border:1px solid var(--bd);border-radius:16px;margin:0 4px 12px;overflow:hidden;content-visibility:auto;contain-intrinsic-size:auto 420px}
+.psh{display:flex;align-items:center;gap:10px;padding:10px 12px}.psn{flex:1;min-width:0;display:grid}.psn b{font-weight:600}
+.psd{background:none;padding:6px 8px;border-radius:10px}
+.pim{width:100%;background:var(--s2);max-height:560px;overflow:hidden}.pim img{display:block;width:100%;height:100%;object-fit:cover}
+.psa{display:flex;align-items:center;gap:8px;padding:8px 12px 2px}.plk{background:none;font-size:26px;line-height:1;padding:2px 6px;color:var(--tx)}.plk.on{color:#ef4444}.pcn{font-size:13px;font-weight:600}
+.pct{padding:2px 12px 12px;font-size:14.5px;word-break:break-word}
+body.trp{background:linear-gradient(135deg,color-mix(in srgb,var(--ac) 30%,var(--bg)),var(--bg) 46%,color-mix(in srgb,#ec4899 20%,var(--bg)))}
+body.trp #app,body.trp #main,body.trp #msgs,body.trp #pane,body.trp #list{background:transparent!important}
+body.trp #side,body.trp #nav,body.trp #hd,body.trp #comp{background:color-mix(in srgb,var(--s) 55%,transparent)!important}
+body.trp #ftr{background:transparent}
+body.trp .m:not(.me):not(.stk){background:color-mix(in srgb,var(--s) 68%,transparent)}
+body.trp .it.sel,body.trp .it:hover{background:color-mix(in srgb,var(--s2) 70%,transparent)}
+#rcv{position:fixed;z-index:80;display:flex;align-items:center;gap:10px;padding:0 12px;background:var(--s);border:1px solid color-mix(in srgb,#e11d48 45%,var(--bd));border-radius:99px;box-shadow:0 6px 20px -10px #0006}
+#rcv[hidden]{display:none}
+#rcv .rdot{width:11px;height:11px;border-radius:50%;background:#e11d48;animation:pl 1s infinite;flex:none}
+#rcv b{font-variant-numeric:tabular-nums;min-width:40px}
+#rcv .rvh{flex:1;color:var(--mu);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#rcv button{padding:8px 12px;border-radius:99px;font-weight:600;font-size:13px;flex:none}
+#rcv .rvc{background:none;color:#e11d48}#rcv .rvs{background:var(--ac);color:#fff}
+#msgs.swg,#msgs.swg *{user-select:none;-webkit-user-select:none}
+#msgs .m{touch-action:pan-y}
 </style>
 <script>
 window._F1="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap";window._F2="https://fonts.googleapis.com/css2?family=Pacifico&family=Lobster&family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Orbitron:wght@400;700&family=Fredoka:wght@400;600&family=Quicksand:wght@400;600;700&family=Righteous&family=Bangers&family=Noto+Nastaliq+Urdu:wght@400;700&family=Comfortaa:wght@400;700&family=Merriweather:wght@400;700&display=swap";
@@ -583,6 +610,7 @@ setTimeout(function(){var a=document.getElementById("app"),u=document.getElement
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+<symbol id="i-feed" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="1.6"/><path d="M21 15l-5-5L5 21"/></symbol>
 <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
 <symbol id="i-status" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-dasharray="4 3"/><circle cx="12" cy="12" r="4"/></symbol>
 <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
@@ -611,7 +639,7 @@ setTimeout(function(){var a=document.getElementById("app"),u=document.getElement
 <div id="chat" hidden>
 <div id="hd"><button class="ib back" id="bk"><svg class="i"><use href="#i-back"/></svg></button><div id="hav"></div><div class="b"><b id="hn"></b><div class="mu" id="hp"></div></div><button class="ib" id="cs_"><svg class="i"><use href="#i-search"/></svg></button><button class="ib" id="ca"><svg class="i"><use href="#i-phone"/></svg></button><button class="ib" id="cv"><svg class="i"><use href="#i-video"/></svg></button></div>
 <div id="cbar" hidden><input id="cq" placeholder="Search in this chat…" autocomplete="off"></div><div id="msgs"></div><div id="rpb" hidden><span id="rpt"></span><button class="ib" onclick="setRp(null)">✕</button></div>
-<div id="am" hidden><button onclick="$('#fl').click();$('#am').hidden=true">🖼  Photo / Video (up to 15 MB)</button><button onclick="$('#fd').click();$('#am').hidden=true">📄  Document / File (up to 5 MB)</button><button onclick="$('#am').hidden=true;newPoll()">📊  Poll</button></div><div id="ep" hidden></div><div id="comp"><button class="ib" id="em">😊</button><button class="ib" id="at"><svg class="i"><use href="#i-clip"/></svg></button><input id="fl" type="file" accept="image/*,video/*" hidden><input id="fd" type="file" hidden>
+<div id="am" hidden><button onclick="$('#fl').click();$('#am').hidden=true">🖼  Photo / Video (max 3 MB)</button><button onclick="$('#fd').click();$('#am').hidden=true">📄  Document / File (max 3 MB)</button><button onclick="$('#am').hidden=true;newPoll()">📊  Poll</button></div><div id="ep" hidden></div><div id="comp"><button class="ib" id="em">😊</button><button class="ib" id="at"><svg class="i"><use href="#i-clip"/></svg></button><input id="fl" type="file" accept="image/*,video/*" hidden><input id="fd" type="file" hidden>
 <textarea id="tx" placeholder="Type a message…"></textarea><button class="ib" id="mic"><svg class="i"><use href="#i-mic"/></svg></button><button class="ib pri" id="sd"><svg class="i"><use href="#i-send"/></svg></button></div>
 </div></main></div>
 <div id="lb" hidden onclick="this.hidden=true"><img alt=""></div><div id="md" hidden onclick="if(event.target==this)this.hidden=true"></div><div id="sv" hidden></div><div id="lk" hidden></div><div id="mm" hidden></div><div id="ov" hidden></div><div id="tt" hidden></div>
@@ -653,7 +681,7 @@ async function doAuth(){if(!auth)return;actx();
 $('#go').onclick=doAuth;['u','pw','nm'].forEach(x=>$('#'+x).onkeydown=e=>{if(e.key=='Enter')doAuth()});
 if(auth)auth.onAuthStateChanged(u=>{if(u){me=u.uid;boot()}else{me=null;$('#app').hidden=true;$('#auth').hidden=false}});
 function tr(map){return s=>s.docChanges().forEach(c=>c.type=='removed'?map.delete(c.doc.id):map.set(c.doc.id,Object.assign({id:c.doc.id},c.doc.data())))}
-const NAV=[['chats','chat','Chats'],['friends','users','Friends'],['status','status','Status'],['calls','phone','Calls'],['set','set','Settings']];
+const NAV=[['chats','chat','Chats'],['feed','feed','Feed'],['friends','users','Friends'],['status','status','Status'],['calls','phone','Calls'],['set','set','Settings']];
 function boot(){
  unsub.forEach(f=>f());unsub=[];known=new Set();ready=false;
  const bt=window._bootT=(window._bootT||0)+1,alive=()=>bt==window._bootT;
@@ -750,7 +778,7 @@ const resp=(id,ok)=>fs.collection('reqs').doc(id).update({st:ok?'a':'x'});
 function postSt(){const t=$('#stx').value.trim();if(!t)return;fs.collection('status').add({u:me,text:t,data:'',ts:Date.now()});$('#stx').value=''}
 async function postImg(inp){const f=inp.files[0];if(!f)return;try{fs.collection('status').add({u:me,text:'',data:await pic(f,1600,.82),ts:Date.now()})}catch(e){toast('Photo error')}inp.value=''}
 const tgl=k=>fs.collection('users').doc(me).update({['priv.'+k]:U[me].priv[k]===false});
-const theme=t=>fs.collection('users').doc(me).update({theme:t});
+const theme=t=>{try{document.body.dataset.t=rt_(t);window._tcOk=1;document.querySelector('meta[name=theme-color]').content=getComputedStyle(document.body).getPropertyValue('--s').trim()||'#fff'}catch(e){}if(U[me])U[me].theme=t;const L=$('#list'),st=L?L.scrollTop:0;if(tab=='set'&&L)L._h=null;renderList();if(tab=='set'&&L)L.scrollTop=st;return fs.collection('users').doc(me).update({theme:t}).catch(()=>toast('Could not save theme'))};
 function logout(){unsub.forEach(f=>f());auth.signOut().then(()=>location.reload())}
 /* ---------- sound + notifications ---------- */
 function actx(){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state=='suspended')ac.resume()}catch(e){}}
@@ -848,7 +876,7 @@ $('#sd').addEventListener('click',()=>{$('#ep').hidden=true});
 let PF={};try{PF=JSON.parse(localStorage.getItem('kc_pf'))||{}}catch(e){}
 if(PF.w=='glass')PF.w='plain';if(PF.bs=='glass')PF.bs='classic';
 function applyPF(){const sc=innerWidth>=3200?1.75:innerWidth>=2400?1.4:innerWidth>=1700?1.18:1,rs=document.documentElement.style;rs.setProperty('--sc',sc);rs.setProperty('--fs',(({s:13,m:15,l:17.5})[PF.fs||'m']*sc)+'px');document.body.dataset.w=PF.w||'plain';const bs=document.body.style;if(PF.ac){bs.setProperty('--ac',PF.ac);bs.setProperty('--ac2',PF.ac)}else{bs.removeProperty('--ac');bs.removeProperty('--ac2')}}
-function sp(k,v){PF[k]=v;try{localStorage.setItem('kc_pf',JSON.stringify(PF))}catch(e){}applyPF();sig='';renderList();if(cur)renderMsgs()}
+function sp(k,v){PF[k]=v;try{localStorage.setItem('kc_pf',JSON.stringify(PF))}catch(e){}applyPF();sig='';const L=$('#list'),st=L?L.scrollTop:0;if(tab=='set'&&L)L._h=null;renderList();if(tab=='set'&&L)L.scrollTop=st;if(cur)renderMsgs()}
 applyPF();
 const blocked=u=>((U[me]||{}).blocked||[]).includes(u);
 function togBlock(u){const F=firebase.firestore.FieldValue,b=blocked(u);if(!b&&!confirm('Block this contact? You will no longer get their message or call notifications.'))return;fs.collection('users').doc(me).update({blocked:b?F.arrayRemove(u):F.arrayUnion(u)});$('#md').hidden=true;toast(b?'Contact unblocked':'Contact blocked')}
@@ -964,7 +992,7 @@ $('#fd').onchange=e=>{const f=e.target.files[0];if(f)sendDoc(f);e.target.value='
 const fsz=b=>b>1e6?(b/1e6).toFixed(1)+' MB':Math.max(1,Math.round(b/1e3))+' KB';
 const fic=n=>{const e=(n.split('.').pop()||'').toLowerCase();return({pdf:'📕',doc:'📘',docx:'📘',xls:'📗',xlsx:'📗',csv:'📗',ppt:'📙',pptx:'📙',zip:'🗜️',rar:'🗜️',txt:'📄',mp3:'🎵',wav:'🎵',apk:'📦'})[e]||'📄'};
 function fileHTML(m){return`<div class="fc"><span class="fi">${fic(m.name||'')}</span><div class="fm"><b>${esc(m.name||'file')}</b><span>${fsz(m.size||0)}</span></div><button class="fcb" onclick="dlFile('${m.id}')" title="Download">⬇</button></div>`}
-async function sendDoc(f){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');const gg=G.get(cur);if(gg&&gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages');if(f.size>5e6)return toast('File too large (max 5 MB)');
+async function sendDoc(f){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');const gg=G.get(cur);if(gg&&gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages');if(f.size>5e6)return toast('File too large (max 3 MB)');
  toast('Uploading '+f.name+'…');
  try{const d=await bd(f),b64=d.slice(d.indexOf(',')+1),fid='f'+Date.now()+me.slice(0,4),CH=700000,n=Math.max(1,Math.ceil(b64.length/CH)),b=fs.batch();
   for(let k=0;k<n;k++)b.set(fs.collection('fchunks').doc(fid+'_'+k),{fid,i:k,d:b64.slice(k*CH,(k+1)*CH),from:me});
@@ -1014,7 +1042,7 @@ function svReact(e){const x=ST.get(SV.ids[SV.i]);fs.collection('msgs').add({from
 /* file transfer: multi-file, progress, preview, drag & drop, paste */
 const fcol=n=>({pdf:'#e11d48',doc:'#2563eb',docx:'#2563eb',xls:'#16a34a',xlsx:'#16a34a',csv:'#16a34a',ppt:'#ea580c',pptx:'#ea580c',zip:'#a16207',rar:'#a16207'})[(n.split('.').pop()||'').toLowerCase()]||'#64748b';
 function fileHTML(m){const v=/^(image|video|audio)\/|pdf|text/.test(m.mime||''),n=m.name||'file';return`<div class="fc"><span class="fi" style="background:${fcol(n)}22;border-radius:12px;padding:6px 8px">${fic(n)}</span><div class="fm"><b>${esc(n)}</b><span>${fsz(m.size||0)} · ${esc((n.split('.').pop()||'file').toUpperCase())}</span></div>${v?`<button class="fcb" onclick="dlFile('${m.id}',1)" title="Open">👁</button>`:''}<button class="fcb" onclick="dlFile('${m.id}')" title="Download">⬇</button></div>`}
-async function sendDoc(f){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');const to=cur,gg=G.get(to);if(gg&&gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages');if(f.size>5e6)return toast(f.name+': too large (max 5 MB)');
+async function sendDoc(f){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');const to=cur,gg=G.get(to);if(gg&&gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages');if(f.size>5e6)return toast(f.name+': too large (max 3 MB)');
  try{const b64=(await bd(f)).split(',')[1],fid='f'+Date.now()+me.slice(0,4),CH=700000,n=Math.max(1,Math.ceil(b64.length/CH));
   for(let k=0;k<n;k++){await fs.collection('fchunks').doc(fid+'_'+k).set({fid,i:k,d:b64.slice(k*CH,(k+1)*CH),from:me});toast('⬆ '+f.name+' · '+Math.round((k+1)*100/n)+'%')}
   await fs.collection('msgs').add(Object.assign({from:me,to,type:'file',text:f.name,name:f.name,size:f.size,mime:f.type||'application/octet-stream',fid,n,ts:Date.now(),read:false,react:{}},gx(to)));toast('✓ Sent '+f.name)}catch(e){toast('Upload failed: '+(e.code||'error'))}}
@@ -1065,7 +1093,7 @@ service cloud.firestore {
       allow delete: if request.auth != null && resource.data.createdBy == request.auth.uid;
     }
     match /{col}/{id} {
-      allow read, write: if request.auth != null && col in ['reqs','msgs','status','calls','fchunks'];
+      allow read, write: if request.auth != null && col in ['reqs','msgs','status','calls','fchunks','posts'];
     }
   }
 }
@@ -1074,7 +1102,7 @@ service cloud.firestore {
 try{matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>rf())}catch(e){}
 let rhShown=false;
 function permErr(e,force){if(!e||e.code!='permission-denied')return false;if(!rhShown||force){rhShown=true;rulesHelp()}return true}
-function rulesHelp(){const d=$('#md');d.innerHTML=`<div class="mc gx" style="max-width:420px"><b style="font-size:18px">Database setup needed</b><p class="mu" style="font-size:13.5px;text-align:left">Groups need updated Firestore rules (this is why you see "access denied").<br><b>1.</b> Tap <b>Copy rules</b> below.<br><b>2.</b> Firebase Console → Firestore Database → <b>Rules</b> tab.<br><b>3.</b> Delete everything there, paste, then tap <b>Publish</b>.<br><b>4.</b> Come back and retry.</p><pre class="rhp">${esc(RULES)}</pre><div class="row"><button onclick="$('#md').hidden=true">Close</button><button class="pri" onclick="cpRules()">Copy rules</button></div></div>`;d.hidden=false}
+function rulesHelp(){const d=$('#md');d.innerHTML=`<div class="mc gx" style="max-width:420px"><b style="font-size:18px">Database setup needed</b><p class="mu" style="font-size:13.5px;text-align:left">Groups and Feed need updated Firestore rules (this is why you see "access denied").<br><b>1.</b> Tap <b>Copy rules</b> below.<br><b>2.</b> Firebase Console → Firestore Database → <b>Rules</b> tab.<br><b>3.</b> Delete everything there, paste, then tap <b>Publish</b>.<br><b>4.</b> Come back and retry.</p><pre class="rhp">${esc(RULES)}</pre><div class="row"><button onclick="$('#md').hidden=true">Close</button><button class="pri" onclick="cpRules()">Copy rules</button></div></div>`;d.hidden=false}
 function cpRules(){const f=()=>toast('Rules copied ✓ — paste them in Firebase');navigator.clipboard?navigator.clipboard.writeText(RULES).then(f).catch(()=>toast('Select the text and copy it manually')):toast('Select the text and copy it manually')}
 function chkRules(){fs.collection('groups').where('members','array-contains',me).limit(1).get().then(()=>toast('Database rules are OK ✓')).catch(e=>{permErr(e,true)||toast('Check failed: '+(e.code||'error'))})}
 
@@ -1284,10 +1312,10 @@ const _rm18=renderMsgs;renderMsgs=function(){try{window.RS=new Set([...M.values(
 
 /* bubble style */
 const BUB=[['classic','Classic','var(--ac)'],['aurora','Aurora','linear-gradient(135deg,#7c3aed,#ec4899)'],['sunset','Sunset','linear-gradient(135deg,#f97316,#ef4444,#ec4899)'],['ocean','Ocean','linear-gradient(135deg,#06b6d4,#2563eb,#4f46e5)'],['mint','Mint','linear-gradient(135deg,#10b981,#14b8a6,#06b6d4)'],['candy','Candy','linear-gradient(135deg,#ff7eb3,#ff758c)'],['outline','Outline','transparent'],['round','Round','var(--ac)']];
-const _ap18=applyPF;applyPF=function(){_ap18();document.body.dataset.bs=PF.bs&&PF.bs!='classic'?PF.bs:''};
+const _ap18=applyPF;applyPF=function(){_ap18();document.body.dataset.bs=''};
 applyPF();
-const _rl18=renderList;renderList=function(){_rl18();if(tab!='set')return;const f=$('#fnt');if(!f||$('#bbl'))return;
- f.insertAdjacentHTML('beforebegin',`<div class="sec" id="bbl">Chat bubbles</div><div class="bbs">${BUB.map(b=>`<button class="bb ${(PF.bs||'classic')==b[0]?'on':''}" onclick="sp('bs','${b[0]}')"><div class="pv" style="--g:${b[2]}"><span></span><span style="${b[0]=='outline'?'border:2px solid var(--ac)!important':''}"></span></div>${b[1]}</button>`).join('')}</div>`)};
+const _rl18=renderList;renderList=function(){_rl18();if(tab!='set')return;const f=$('#fnt');if(!f||$('#trs'))return;
+ f.insertAdjacentHTML('beforebegin',`<div class="sec" id="trs">Background</div><div class="row sp pad"><span>Transparent background<br><span class="mu">Off by default. Turn it on to use it.</span></span><button class="tg ${PF.trp?'on':''}" onclick="sp('trp',${!PF.trp})"></button></div>`)};
 
 /* animated stickers */
 const ANS=[['1f602','😂'],['1f923','🤣'],['1f60d','😍'],['1f970','🥰'],['1f618','😘'],['1f60e','😎'],['1f929','🤩'],['1f62d','😭'],['1f621','😡'],['1f634','😴'],['1f92f','🤯'],['1f973','🥳'],['1f607','😇'],['1f914','🤔'],['1f644','🙄'],['1f631','😱'],['1f917','🤗'],['1f97a','🥺'],['1f60b','😋'],['1f60f','😏'],['1f633','😳'],['1f622','😢'],['1f92a','🤪'],['1f911','🤑'],['1f44d','👍'],['1f44f','👏'],['1f64f','🙏'],['1f4aa','💪'],['1f525','🔥'],['2764_fe0f','❤️'],['1f494','💔'],['1f4af','💯'],['1f389','🎉'],['2728','✨'],['1f339','🌹'],['1f680','🚀'],['1f440','👀'],['1f381','🎁'],['1f382','🎂'],['1f308','🌈'],['1f31f','🌟'],['1f4a5','💥'],['1f4a4','💤'],['1f47b','👻'],['1f480','💀'],['1f648','🙈'],['1f4a9','💩'],['1f340','🍀']];
@@ -1306,7 +1334,7 @@ $('#sp .spt').insertAdjacentHTML('afterbegin','<button data-k="a">🎬 Animated<
 spTab='a';
 
 /* ---------- v19: photo/video up to 15 MB (chunked) ---------- */
-const BIGMAX=15*1048576,BL={},LD={};
+const BIGMAX=3e6,BL={},LD={};
 function bigHTML(m){const u=BL[m.fid];
  if(u)return m.type=='vid'?`<video controls playsinline preload="metadata" src="${u}" poster="${m.data||''}"></video>`:`<img src="${u}">`;
  const p=LD[m.fid];
@@ -1325,7 +1353,7 @@ function mediaThumb(f,type){return new Promise(res=>{
  v.onseeked=()=>{try{const k=Math.min(1,360/Math.max(v.videoWidth,v.videoHeight)),c=document.createElement('canvas');c.width=Math.round(v.videoWidth*k);c.height=Math.round(v.videoHeight*k);c.getContext('2d').drawImage(v,0,0,c.width,c.height);end({d:c.toDataURL('image/jpeg',.7),w:v.videoWidth,h:v.videoHeight})}catch(e){end({d:'',w:v.videoWidth||16,h:v.videoHeight||9})}};
  v.onerror=()=>end({d:'',w:16,h:9});v.src=u})}
 async function sendBig(f,type){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');const to=cur,gg=G.get(to);if(gg&&gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages');
- if(f.size>BIGMAX)return toast(f.name+': too large (max 15 MB)');
+ if(f.size>BIGMAX)return toast(f.name+': too large (max 3 MB)');
  const rpl=rp?Object.assign({u:rp.from,t:prv(rp)},rpTh?{th:rpTh}:{}):null;setRp(null);
  try{toast('Preparing '+(type=='vid'?'video':'photo')+'…');const th=await mediaThumb(f,type);if(!th&&type=='img')return toast('This photo format is not supported');
   const b64=(await bd(f)).split(',')[1],fid='m'+Date.now()+me.slice(0,4),CH=700000,n=Math.max(1,Math.ceil(b64.length/CH));
@@ -1362,34 +1390,86 @@ async function clearChat(u,del){const g=G.has(u);if(!confirm(del?'Delete this ch
  L.addEventListener('click',e=>{if(Date.now()-fired<700){e.stopImmediatePropagation();e.preventDefault()}},true);
  L.addEventListener('contextmenu',e=>{const o=e.target.closest('[data-o]');if(!o||tab!='chats')return;e.preventDefault();if(Date.now()-fired<700)return;fired=Date.now();chatMenu(o.dataset.o)})})();
 
-/* ---------- v20: recording bar ---------- */
-(function(){const c=$('#comp'),mic=$('#mic');c.insertAdjacentHTML('beforeend','<div id="rcb" hidden><i class="rd"></i><b id="rct">0:00</b><div class="rw">'+Array.from({length:26},(_,k)=>'<i style="animation-delay:'+((k*137)%900)+'ms;animation-duration:'+(600+(k*83)%500)+'ms"></i>').join('')+'</div><button class="rx" id="rcx">✕ Cancel</button></div>');
- const bar=$('#rcb');let iv=null,t0=0;
- new MutationObserver(()=>{const on=mic.classList.contains('rec');if(on&&bar.hidden){t0=Date.now();bar.style.right=(c.clientWidth-mic.offsetLeft+4)+'px';bar.hidden=false;$('#rct').textContent='0:00';iv=setInterval(()=>$('#rct').textContent=vfmt((Date.now()-t0)/1000),250)}else if(!on&&!bar.hidden){bar.hidden=true;clearInterval(iv)}}).observe(mic,{attributes:true,attributeFilter:['class']});
- $('#rcx').onclick=()=>{window.rcCancel=true;if(rec&&rec.state=='recording')rec.stop();toast('Voice message cancelled')}})();
+/* ---------- v28: light voice-recording bar (timer + cancel + send) ---------- */
+(function(){const c=$('#comp'),mic=$('#mic');
+ const bar=document.createElement('div');bar.id='rcv';bar.hidden=true;
+ bar.innerHTML='<i class="rdot"></i><b id="rvt">0:00</b><span class="rvh">Recording…</span><button class="rvc" id="rvx">✕ Cancel</button><button class="rvs" id="rvs">Send ➤</button>';
+ document.body.appendChild(bar);
+ let iv=null,t0=0;
+ const show=()=>{const r=c.getBoundingClientRect();bar.style.cssText='left:'+r.left+'px;top:'+r.top+'px;width:'+r.width+'px;height:'+r.height+'px';t0=Date.now();$('#rvt').textContent='0:00';bar.hidden=false;clearInterval(iv);iv=setInterval(()=>{const s=(Date.now()-t0)/1000;$('#rvt').textContent=vfmt(s);if(s>=90)mic.click()},500)};
+ const hide=()=>{bar.hidden=true;clearInterval(iv)};
+ new MutationObserver(()=>{const on=mic.classList.contains('rec');if(on&&bar.hidden)show();else if(!on&&!bar.hidden)hide()}).observe(mic,{attributes:true,attributeFilter:['class']});
+ $('#rvx').onclick=()=>{window.rcCancel=true;if(rec&&rec.state=='recording')rec.stop();toast('Voice message cancelled')};
+ $('#rvs').onclick=()=>mic.click()})();
 
 
 
-/* ---------- v22: swipe right = reply, swipe left = forward ---------- */
-(function(){const B=$('#msgs'),TH=64,MAX=120;let st=null,swEnd=0;
+/* ---------- v29: swipe right = reply, swipe left = forward (touch + mouse) ---------- */
+(function(){const B=$('#msgs'),TH=56,MAX=110;let st=null,swEnd=0;
  const el0=id=>B.querySelector('[data-m="'+id+'"]');
  const damp=a=>a<TH?a:TH+(a-TH)*.35;
- B.addEventListener('pointerdown',e=>{if(e.pointerType=='mouse')return;const el=e.target.closest('[data-m]');if(!el||e.target.closest('video,audio,a,.po,.fcb,.vs,input,textarea'))return;
-  const m=M.get(el.dataset.m);if(!m||m.del||m.type=='sys'||isLk(m))return;st={id:el.dataset.m,x:e.clientX,y:e.clientY,dx:0,lock:0,pid:e.pointerId}});
+ B.addEventListener('pointerdown',e=>{if(e.pointerType=='mouse'&&e.button!=0)return;const el=e.target.closest('[data-m]');if(!el||e.target.closest('video,audio,a,.po,.fcb,.vs,.vp,.vw,input,textarea,button'))return;
+  const m=M.get(el.dataset.m);if(!m||m.del||m.type=='sys'||isLk(m))return;st={id:el.dataset.m,x:e.clientX,y:e.clientY,dx:0,lock:0,pid:e.pointerId,mouse:e.pointerType=='mouse'}});
  B.addEventListener('pointermove',e=>{if(!st||e.pointerId!=st.pid)return;const dx=e.clientX-st.x,dy=e.clientY-st.y;
-  if(!st.lock){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;if(Math.abs(dx)>Math.abs(dy)*1.3){st.lock=1;try{hideMM()}catch(x){}}else{st=null;return}}
+  if(!st.lock){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;if(Math.abs(dx)>Math.abs(dy)*1.3){st.lock=1;try{hideMM()}catch(x){}try{B.setPointerCapture(st.pid)}catch(x){}B.classList.add('swg');try{getSelection().removeAllRanges()}catch(x){}}else{st=null;return}}
   st.dx=dx;const el=el0(st.id);if(!el)return;const sg=dx>0?1:-1,v=sg*Math.min(MAX,damp(Math.abs(dx)));
   el.style.transition='none';el.style.transform='translateX('+v+'px)';
   let ic=el.querySelector('.swi');if(!ic||ic.dataset.d!=sg){if(ic)ic.remove();ic=document.createElement('i');ic.className='swi '+(sg>0?'sl':'sr');ic.dataset.d=sg;ic.textContent=sg>0?'↩':'➦';el.appendChild(ic)}
-  const p=Math.min(1,Math.abs(dx)/TH);ic.style.opacity=p;ic.style.setProperty('--k',.45+.55*p);
+  const pr=Math.min(1,Math.abs(dx)/TH);ic.style.opacity=pr;ic.style.setProperty('--k',.45+.55*pr);
   const on=Math.abs(dx)>=TH;if(on!=ic.classList.contains('on')){ic.classList.toggle('on',on);if(on&&navigator.vibrate)navigator.vibrate(12)}});
- const end=(e,cancel)=>{if(!st||e.pointerId!=st.pid)return;const s=st;st=null;if(!s.lock)return;swEnd=Date.now();const el=el0(s.id);
-  if(el){el.style.transition='transform .36s cubic-bezier(.2,1.5,.4,1)';el.style.transform='';const ic=el.querySelector('.swi');if(ic){ic.style.transition='opacity .2s';ic.style.opacity=0;setTimeout(()=>ic.remove(),260)}setTimeout(()=>{el.style.transition=''},400)}
+ const end=(e,cancel)=>{if(!st||e.pointerId!=st.pid)return;const s=st;st=null;B.classList.remove('swg');try{B.releasePointerCapture(s.pid)}catch(x){}if(!s.lock)return;swEnd=Date.now();const el=el0(s.id);
+  if(el){el.style.transition='transform .3s ease-out';el.style.transform='';const ic=el.querySelector('.swi');if(ic){ic.style.transition='opacity .2s';ic.style.opacity=0;setTimeout(()=>ic.remove(),260)}setTimeout(()=>{el.style.transition=''},340)}
   if(!cancel&&Math.abs(s.dx)>=TH){if(s.dx>0){setRp(s.id);const t=$('#tx');t&&t.focus()}else fwd(s.id)}};
  B.addEventListener('pointerup',e=>end(e,0));B.addEventListener('pointercancel',e=>end(e,1));
+ B.addEventListener('dragstart',e=>{if(st&&st.mouse)e.preventDefault()});
  B.addEventListener('click',e=>{if(Date.now()-swEnd<350){e.stopImmediatePropagation();e.preventDefault()}},true)})();
 
 /* ---------- v24: performance helpers ---------- */
 window.MLIM={};
 function moreMsgs(){const B=$('#msgs'),h=B.scrollHeight;MLIM[cur]=((MLIM[cur])||80)+80;sig='';renderMsgs();B.scrollTop=B.scrollHeight-h}
+
+/* ---------- v26: auto-compress uploads (max 3 MB) + public feed ---------- */
+function cmp(f,lim,max){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onerror=()=>{URL.revokeObjectURL(u);rej(new Error('bad'))};
+ im.onload=()=>{URL.revokeObjectURL(u);let m=Math.min(max||1600,Math.max(im.width,im.height)),q=.72,o='',w=1,h=1;
+  const run=()=>{const sc=Math.min(1,m/Math.max(im.width,im.height));w=Math.max(1,Math.round(im.width*sc));h=Math.max(1,Math.round(im.height*sc));const c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);o=c.toDataURL('image/jpeg',q)};
+  run();while(o.length>lim){if(q>.46)q-=.08;else if(m>360){m=Math.round(m*.8);q=.6}else break;run()}
+  res({d:o,w,h})};im.src=u})}
+const _sf26=sendFile;
+sendFile=async function(f,type){
+ if(type=='img'){try{toast('Compressing photo…');const r=await cmp(f,800000,1600);send('img','',r.d)}catch(e){toast('This photo format is not supported')}return}
+ if(f.size>3e6)return toast((f.name||'File')+': too large (max 3 MB)');
+ return _sf26(f,type)};
+const _sd26=sendDoc;
+sendDoc=async function(f){if(f.type&&/^image\/(jpeg|png|webp|bmp)/.test(f.type))return sendFile(f,'img');if(f.size>3e6)return toast((f.name||'File')+': too large (max 3 MB)');return _sd26(f)};
+/* feed */
+const PO=new Map(),PU={},PC={};let PT='',PP=null,PB=0,FDL=20,FOK=0,fUn=null,PCm=0;
+const dURL=d=>{try{const b=atob(d.slice(d.indexOf(',')+1)),u=new Uint8Array(b.length);for(let k=0;k<b.length;k++)u[k]=b.charCodeAt(k);return URL.createObjectURL(new Blob([u],{type:'image/jpeg'}))}catch(e){return''}};
+const pAgo=t=>{const s=Math.max(1,Math.floor((Date.now()-t)/1e3));if(s<60)return'now';const m=Math.floor(s/60);if(m<60)return m+'m';const h=Math.floor(m/60);if(h<24)return h+'h';const d=Math.floor(h/24);return d<7?d+'d':new Date(t).toLocaleDateString([],{day:'numeric',month:'short'})};
+function startFeed(){if(fUn)fUn();FOK=0;fUn=fs.collection('posts').orderBy('ts','desc').limit(FDL).onSnapshot(s=>{PO.clear();s.forEach(d=>PO.set(d.id,Object.assign({id:d.id},d.data())));FOK=1;rf()},e=>{console.error(e);FOK=2;if(!permErr(e))toast('Feed error: '+(e.code||'error'));rf()})}
+function feedMore(){FDL+=20;startFeed()}
+function pHTML(p){const mn=Math.floor(Date.now()/6e4);if(mn!=PCm){PCm=mn;for(const k in PC)delete PC[k]}
+ const L=p.likes||{},lk=Object.keys(L).length,mine=!!L[me],o=U[p.u]||{},key=p.id+'|'+lk+'|'+mine+'|'+(o.name||'')+'|'+(o.dp?1:0)+'|'+(NK[p.u]||'');
+ if(PC[key])return PC[key];
+ let img='';if(p.img){const u=PU[p.id]||(PU[p.id]=dURL(p.img));img=`<div class="pim" style="aspect-ratio:${p.w||4}/${p.h||3}"><img src="${u}" alt="" decoding="async" ondblclick="pLike('${p.id}',1)"></div>`}
+ return PC[key]=`<article class="pst"><div class="psh">${av(p.u,38)}<div class="psn"><b>${esc(nm(p.u))}</b><span class="mu">${pAgo(p.ts)}</span></div>${p.u==me?`<button class="psd" onclick="pDel('${p.id}')" title="Delete post">🗑</button>`:''}</div>${img}<div class="psa"><button class="plk${mine?' on':''}" onclick="pLike('${p.id}')">${mine?'♥':'♡'}</button><span class="pcn">${lk?lk+(lk==1?' like':' likes'):''}</span></div>${p.text?`<div class="pct"><b>${esc(nm(p.u))}</b> ${lnk(esc(p.text)).replace(/\n/g,'<br>')}</div>`:''}</article>`}
+function pLike(id,add){const p=PO.get(id);if(!p)return;const mine=!!(p.likes||{})[me];if(add&&mine)return;const F=firebase.firestore.FieldValue;fs.collection('posts').doc(id).update({['likes.'+me]:mine?F.delete():1}).catch(e=>permErr(e)||toast('Could not update like'))}
+function pDel(id){if(!confirm('Delete this post?'))return;fs.collection('posts').doc(id).delete().then(()=>{delete PU[id];toast('Post deleted')}).catch(e=>permErr(e)||toast('Could not delete'))}
+function pComposer(){return`<div class="pcm"><div class="row" style="align-items:flex-start;gap:10px;flex-wrap:nowrap">${av(me,38)}<textarea id="pxt" maxlength="1000" rows="2" placeholder="What's on your mind?" oninput="PT=this.value;this.style.height='auto';this.style.height=Math.min(160,this.scrollHeight)+'px'" onblur="rf()">${esc(PT)}</textarea></div>${PP?`<div class="ppv"><img src="${PU._pp||(PU._pp=dURL(PP.d))}" alt=""><button onclick="pRm()">✕</button><span>${Math.round(PP.d.length*3/4/1024)} KB</span></div>`:''}<div class="row sp" style="margin-top:10px"><label class="pph">📷 Photo<input type="file" accept="image/*" hidden onchange="pPick(this)"></label><button class="pri" onclick="pPost()" ${PB?'disabled':''}>${PB?'Posting…':'Post'}</button></div></div>`}
+async function pPick(inp){const f=inp.files[0];inp.value='';if(!f)return;try{toast('Compressing photo…');const r=await cmp(f,680000,1280);if(r.d.length>700000)return toast('Photo is too detailed to compress under 500 KB');PP=r;if(PU._pp){URL.revokeObjectURL(PU._pp);delete PU._pp}feedRender(1)}catch(e){toast('This photo format is not supported')}}
+function pRm(){PP=null;if(PU._pp){URL.revokeObjectURL(PU._pp);delete PU._pp}feedRender(1)}
+async function pPost(){if(PB)return;const t=PT.trim();if(!t&&!PP)return toast('Write something or add a photo');PB=1;feedRender(1);
+ try{await fs.collection('posts').add({u:me,text:t,img:PP?PP.d:'',w:PP?PP.w:0,h:PP?PP.h:0,ts:Date.now(),likes:{}});PT='';PP=null;if(PU._pp){URL.revokeObjectURL(PU._pp);delete PU._pp}toast('Posted ✓')}catch(e){permErr(e)||toast('Post failed: '+(e.code||'error'))}PB=0;feedRender(1)}
+function feedRender(force){const L=$('#list');if(!L||!me)return;if(!fUn)startFeed();const a=document.activeElement&&document.activeElement.id;if(a=='pxt'&&!force)return;
+ const ps=[...PO.values()].sort((x,y)=>y.ts-x.ts);let h=pComposer();
+ if(FOK==2)h+='<p class="mu c" style="padding:24px 12px">The feed needs the new database rules. Go to Settings → "Check database rules" and publish them.</p>';
+ else if(!FOK)h+='<p class="mu c" style="padding:24px">Loading feed…</p>';
+ else if(!ps.length)h+='<p class="mu c" style="padding:24px">No posts yet. Be the first to post!</p>';
+ else h+=ps.map(pHTML).join('')+(ps.length>=FDL?'<div class="pad"><button style="width:100%" onclick="feedMore()">Load more</button></div>':'');
+ if(L._h!==h||L._t!=='feed'){const st=L._t==='feed'?L.scrollTop:0;L._h=h;L._t='feed';L.innerHTML=h;L.scrollTop=st}}
+const _rlF=renderList;renderList=function(){if(tab=='feed'){feedRender();return}_rlF()};
+const _boot26=boot;boot=function(){if(fUn){fUn();fUn=null}PO.clear();FOK=0;_boot26()};
+
+/* ---------- v27: transparent background option + instant settings ---------- */
+const _ap27=applyPF;applyPF=function(){_ap27();document.body.classList.toggle('trp',!!PF.trp)};applyPF();
+const _rl27=renderList;renderList=function(){if(tab=='set')loadFonts(1);_rl27()};
 </script></body></html>
