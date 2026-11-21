@@ -576,6 +576,7 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px soli
 #splash{background:var(--ac,#4f6bff);background:linear-gradient(160deg,#3b53d9,#1c2a6b)}
 #splash .mark{animation:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+#syn{position:fixed;top:max(10px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:150;background:var(--s);color:var(--mu);border:1px solid var(--bd);box-shadow:0 6px 18px -8px #0005;border-radius:99px;padding:6px 14px;font-size:12px;font-weight:600;pointer-events:none}#syn[hidden]{display:none}
 </style>
 <script>
 window._F1="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap";window._F2="https://fonts.googleapis.com/css2?family=Pacifico&family=Lobster&family=Caveat:wght@400;700&family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Orbitron:wght@400;700&family=Fredoka:wght@400;600&family=Quicksand:wght@400;600;700&family=Righteous&family=Bangers&family=Noto+Nastaliq+Urdu:wght@400;700&family=Comfortaa:wght@400;700&family=Merriweather:wght@400;700&display=swap";
@@ -628,7 +629,7 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const err=t=>$('#er').textContent=t;
 let auth,fs,me=null,U={},R=new Map(),M=new Map(),G=new Map(),ST=new Map(),CL=new Map(),unsub=[],cur=null,tab='chats',sig='',known=new Set(),ready=false,mode=0,
  ac,ri,rec,chunks=[],lastTy=0,ringId=null,ringSeen={},pc,ls,rs,timer,rt,cid=null,q=[],myField='ccand',applied=new Set(),remSet=false,tConn=0;
-try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();fs=firebase.firestore();fs.settings({experimentalAutoDetectLongPolling:true,ignoreUndefinedProperties:true,cacheSizeBytes:50*1024*1024});try{fs.enablePersistence({synchronizeTabs:true}).catch(()=>{})}catch(e){}}catch(e){err('Firebase error: '+e.message)}
+try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();fs=firebase.firestore();fs.settings({experimentalAutoDetectLongPolling:true,ignoreUndefinedProperties:true,cacheSizeBytes:firebase.firestore.CACHE_SIZE_UNLIMITED});try{fs.enablePersistence({synchronizeTabs:true}).catch(()=>{})}catch(e){}}catch(e){err('Firebase error: '+e.message)}
 function toast(t){const x=$('#tt');x.textContent=t;x.hidden=false;clearTimeout(x.t);x.t=setTimeout(()=>x.hidden=true,2800)}
 const col=n=>{let h=0;for(const c of String(n))h=(h*31+c.charCodeAt(0))%360;return`hsl(${h} 60% 48%)`};
 const NK=(()=>{try{return JSON.parse(localStorage.getItem('kc_nick'))||{}}catch(e){return{}}})();
@@ -655,19 +656,28 @@ async function doAuth(){if(!auth)return;actx();
   else await auth.signInWithEmailAndPassword(em,p);err('')}
  catch(e){const m={'auth/email-already-in-use':'This username is already taken','auth/invalid-credential':'Incorrect username or password','auth/wrong-password':'Incorrect username or password','auth/user-not-found':'Incorrect username or password','auth/operation-not-allowed':'Email/Password sign-in is not enabled in Firebase','auth/network-request-failed':'Check your internet connection'};err(m[e.code]||e.message)}}
 $('#go').onclick=doAuth;['u','pw','nm'].forEach(x=>$('#'+x).onkeydown=e=>{if(e.key=='Enter')doAuth()});
-setTimeout(()=>$('#splash').classList.add('out'),4500);if(auth)auth.onAuthStateChanged(u=>{setTimeout(()=>$('#splash').classList.add('out'),350);if(u){me=u.uid;boot()}else{me=null;$('#app').hidden=true;$('#auth').hidden=false}});
+setTimeout(()=>$('#splash').classList.add('out'),4500);if(auth)auth.onAuthStateChanged(u=>{if(u){me=u.uid;boot()}else{me=null;$('#app').hidden=true;$('#auth').hidden=false;setTimeout(()=>$('#splash').classList.add('out'),200)}});
 function tr(map){return s=>s.docChanges().forEach(c=>c.type=='removed'?map.delete(c.doc.id):map.set(c.doc.id,Object.assign({id:c.doc.id},c.doc.data())))}
 const NAV=[['chats','chat','Chats'],['friends','users','Friends'],['status','status','Status'],['calls','phone','Calls'],['set','set','Settings']];
 function boot(){
  unsub.forEach(f=>f());unsub=[];known=new Set();ready=false;
- const on=(qq,fn)=>unsub.push(qq.onSnapshot(s=>{fn(s);rf()},e=>{console.error(e);if(e.code=='permission-denied')permErr(e)}));
- on(fs.collection('users'),s=>{U={};s.forEach(d=>U[d.id]=d.data())});
- on(fs.collection('status'),tr(ST));
- on(fs.collection('groups').where('members','array-contains',me),tr(G));on(fs.collection('msgs').where('mem','array-contains',me),tr(M));for(const k of['from','to']){on(fs.collection('reqs').where(k,'==',me),tr(R));on(fs.collection('msgs').where(k,'==',me),tr(M));on(fs.collection('calls').where(k,'==',me),tr(CL))}
+ const bt=window._bootT=(window._bootT||0)+1,alive=()=>bt==window._bootT;
+ const syn=t=>{let p=$('#syn');if(!p){p=document.createElement('div');p.id='syn';document.body.appendChild(p)}if(t){p.textContent=t;p.hidden=false}else p.hidden=true};
+ const on=(qq,fn,cb)=>unsub.push(qq.onSnapshot(s=>{fn(s);if(cb)cb(s);rf()},e=>{console.error(e);if(e.code=='permission-denied')permErr(e);if(cb)cb(null)}));
+ let msgsOn=false;
+ const startMsgs=()=>{if(msgsOn||!alive())return;msgsOn=true;syn('Syncing messages…');
+  let left=3;const fin=()=>{if(--left==0)setTimeout(()=>{if(alive()){ready=true;syn()}},1500)};
+  const one=qq=>{let d=0;on(qq,tr(M),s=>{if(!d&&(!s||!s.metadata.fromCache)){d=1;fin()}})};
+  one(fs.collection('msgs').where('mem','array-contains',me));one(fs.collection('msgs').where('from','==',me));one(fs.collection('msgs').where('to','==',me))};
+ setTimeout(startMsgs,2500);setTimeout(()=>{if(alive()){ready=true;syn()}},30000);
+ on(fs.collection('users'),s=>{U={};s.forEach(d=>U[d.id]=d.data())},()=>{startMsgs();const sp=$('#splash');sp&&sp.classList.add('out')});
+ on(fs.collection('groups').where('members','array-contains',me),tr(G));
+ for(const k of['from','to']){on(fs.collection('reqs').where(k,'==',me),tr(R));on(fs.collection('calls').where(k,'==',me),tr(CL))}
+ on(fs.collection('status').where('ts','>',Date.now()-864e5),tr(ST));
  $('#auth').hidden=true;$('#app').hidden=false;
  $('#nav').innerHTML='<div class="nlogo"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div>'+NAV.map(a=>`<button data-k="${a[0]}">${i(a[1])}<span>${a[2]}</span>${a[0]=='chats'?'<em class="nbd" id="nb" hidden></em>':''}</button>`).join('');
  $('#nav').onclick=e=>{const b=e.target.closest('button');if(b){tab=b.dataset.k;refresh()}};
- lockNow();setTimeout(()=>ready=true,3500);clearInterval(timer);timer=setInterval(()=>{window._bt=(window._bt||0)+1;if(window._bt%4==0)beat();rf()},4000);beat()}
+ lockNow();clearInterval(timer);timer=setInterval(()=>{window._bt=(window._bt||0)+1;if(window._bt%4==0)beat();rf()},4000);beat()}
 function beat(){if(me&&!document.hidden)fs.collection('users').doc(me).update({seen:Date.now()}).catch(()=>{})}
 document.addEventListener('visibilitychange',beat);document.addEventListener('click',actx);
 const isF=(a,b)=>[...R.values()].some(r=>r.st=='a'&&(r.from==a&&r.to==b||r.from==b&&r.to==a));
