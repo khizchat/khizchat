@@ -238,6 +238,40 @@ body::before{content:"";position:fixed;inset:-25%;z-index:-1;pointer-events:none
 #scn{position:fixed;inset:0;z-index:130;background:#000;display:grid;place-items:center}#scn video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .scf{position:relative;width:240px;height:240px;border:3px solid #fff;border-radius:30px;box-shadow:0 0 0 100vmax #0008}
 #scn button{position:absolute;top:max(16px,env(safe-area-inset-top));right:16px;z-index:2}#scn p{position:absolute;bottom:70px;color:#fff;z-index:2;text-shadow:0 1px 6px #000}
+/* ===== v13: realistic 4K ===== */
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+body{font-size:calc(15px*var(--sc,1));letter-spacing:-.006em}
+:root{--hl:1px;--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+ --sh:0 1px 1px #0000000d,0 2px 2px #0000000d,0 4px 4px #0000000d,0 8px 8px #0000000d,0 16px 16px #0000000d,0 32px 40px -8px #0000002a}
+@media(min-resolution:2dppx){:root{--hl:.5px}}
+/* grain = real frosted-glass texture */
+#side,.mc,.card,#comp,#hd,.m,#nav{position:relative}
+#side::after,.mc::after,.card::after,#comp::after,#hd::after,.m::after,#nav::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--grain);opacity:.055;mix-blend-mode:overlay;pointer-events:none}
+#nav{position:fixed}
+@media(min-width:761px){#nav{position:relative}}
+/* specular highlights + layered, physically-soft shadows */
+.m.me::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,#ffffff40,#ffffff00 48%,#00000018);pointer-events:none}
+.m:not(.me)::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(180deg,#ffffff1f,transparent 40%);pointer-events:none}
+.m{box-shadow:var(--sh),inset 0 1px 0 #ffffff33,inset 0 -1px 0 #0000001a}
+.m.me{box-shadow:0 1px 1px #0000001a,0 6px 10px -4px color-mix(in srgb,var(--ac) 55%,transparent),0 18px 30px -12px var(--ac),inset 0 1px 0 #ffffff66,inset 0 -2px 6px #0003}
+.mc,.card{border-width:var(--hl);box-shadow:var(--sh),0 40px 90px -30px #000a,inset 0 1px 0 #ffffff3d,inset 0 -1px 0 #0000001f}
+#hd{border-bottom-width:var(--hl)}
+#comp{border-width:var(--hl);box-shadow:var(--sh),inset 0 1px 0 #ffffff40}
+.av,img.av{box-shadow:0 6px 14px -6px #0007,0 0 0 var(--hl) #ffffff40}
+.pri{box-shadow:0 1px 1px #0002,0 10px 22px -10px var(--ac),inset 0 1px 0 #ffffff59,inset 0 -2px 6px #0003}
+.mark,.nlogo{box-shadow:0 14px 30px -10px var(--ac2),inset 0 1px 0 #ffffff66,inset 0 -3px 8px #0003}
+.m img,.m video{box-shadow:0 10px 26px -12px #000a;image-rendering:auto}
+.it:hover{background:color-mix(in srgb,var(--s2) 70%,transparent)}
+input:not(#tx):not(#cq),textarea:not(#tx){box-shadow:inset 0 1px 3px #0002}
+.tagcard{box-shadow:0 24px 50px -20px var(--ac2),inset 0 -2px 8px #0000000f}
+/* HiDPI-crisp typography scale (set by JS via --sc) */
+.it .b b{font-size:calc(15.5px*var(--sc,1))}.it .mu,.it .b .mu{font-size:calc(13.5px*var(--sc,1))}
+.ph b{font-size:calc(28px*var(--sc,1))}#hd b{font-size:calc(16px*var(--sc,1))}#nav button{font-size:calc(10.5px*var(--sc,1))}
+.sec{font-size:calc(12px*var(--sc,1))}.mu{font-size:calc(13px*var(--sc,1))}
+/* 2K / 4K / 5K layouts */
+@media(min-width:1700px){#side{width:500px}.m{max-width:min(66%,680px)}.i{width:23px;height:23px}#nav{width:84px}.ib{width:46px;height:46px}}
+@media(min-width:2400px){#side{width:640px}.m{max-width:min(60%,880px)}.i{width:28px;height:28px}#nav{width:104px}.ib{width:54px;height:54px}.mc{max-width:480px}.card{max-width:520px}#comp textarea{height:56px}.m img,.m video{max-height:420px}}
+@media(min-width:3200px){#side{width:860px}.m{max-width:min(56%,1150px)}.i{width:36px;height:36px}#nav{width:132px}.ib{width:66px;height:66px}.mc{max-width:620px}.card{max-width:640px}#comp textarea{height:70px}.m img,.m video{max-height:560px}.mark{width:64px;height:64px}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -386,9 +420,9 @@ function send(type,text,data){if(!cur)return;if(blocked(cur))return toast('Unblo
 $('#sd').onclick=()=>{const t=$('#tx').value.trim();if(!t)return;$('#tx').value='';send('text',t)};
 $('#tx').onkeydown=e=>{if(e.key=='Enter'&&!e.shiftKey&&PF.ent!==false){e.preventDefault();$('#sd').click()}};
 $('#tx').oninput=()=>{if(cur&&!G.has(cur)&&U[me].priv.typing!==false&&Date.now()-lastTy>2000){lastTy=Date.now();fs.collection('users').doc(me).update({ty:{to:cur,ts:Date.now()}}).catch(()=>{})}};
-function pic(f,max,qq){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const s=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=im.width*s;c.height=im.height*s;c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',qq))};im.onerror=rej;im.src=u})}
+function pic(f,max,qq){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const s=Math.min(1,max/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*s);c.height=Math.round(im.height*s);const x=c.getContext('2d');x.imageSmoothingEnabled=true;x.imageSmoothingQuality='high';x.drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);let o=c.toDataURL('image/jpeg',qq),q2=qq;while(o.length>900000&&q2>.4){q2-=.08;o=c.toDataURL('image/jpeg',q2)}res(o)};im.onerror=rej;im.src=u})}
 const bd=b=>new Promise(r=>{const f=new FileReader();f.onload=()=>r(f.result);f.readAsDataURL(b)});
-async function sendFile(f,type){try{const d=type=='img'?await pic(f,900,.6):await bd(f);if(d.length>950000)return toast('File too large (video/voice limit ~700KB)');send(type,'',d)}catch(e){toast('File error')}}
+async function sendFile(f,type){try{const d=type=='img'?await pic(f,1800,.82):await bd(f);if(d.length>950000)return toast('File too large (video/voice limit ~700KB)');send(type,'',d)}catch(e){toast('File error')}}
 $('#fl').onchange=e=>{const f=e.target.files[0];if(f)sendFile(f,f.type.startsWith('video')?'vid':'img');e.target.value=''};
 $('#mic').onclick=async()=>{const b=$('#mic');if(rec&&rec.state=='recording'){rec.stop();return}
  try{const s=await navigator.mediaDevices.getUserMedia({audio:true});rec=new MediaRecorder(s);chunks=[];rec.ondataavailable=e=>chunks.push(e.data);
@@ -400,7 +434,7 @@ async function addF(){const u=$('#fu').value.trim().toLowerCase().replace('@',''
   await fs.collection('reqs').doc(me+'_'+t).set({from:me,to:t,st:'p',ts:Date.now()});$('#fu').value='';toast('Request sent ✓')}catch(e){toast('Error: '+e.code)}}
 const resp=(id,ok)=>fs.collection('reqs').doc(id).update({st:ok?'a':'x'});
 function postSt(){const t=$('#stx').value.trim();if(!t)return;fs.collection('status').add({u:me,text:t,data:'',ts:Date.now()});$('#stx').value=''}
-async function postImg(inp){const f=inp.files[0];if(!f)return;try{fs.collection('status').add({u:me,text:'',data:await pic(f,800,.6),ts:Date.now()})}catch(e){toast('Photo error')}inp.value=''}
+async function postImg(inp){const f=inp.files[0];if(!f)return;try{fs.collection('status').add({u:me,text:'',data:await pic(f,1600,.82),ts:Date.now()})}catch(e){toast('Photo error')}inp.value=''}
 const tgl=k=>fs.collection('users').doc(me).update({['priv.'+k]:U[me].priv[k]===false});
 const theme=t=>fs.collection('users').doc(me).update({theme:t});
 function logout(){unsub.forEach(f=>f());auth.signOut().then(()=>location.reload())}
@@ -458,8 +492,8 @@ setInterval(()=>{if(me&&!$('#ov').hidden)callUI()},1000);
 
 /* ---------- v4: DP, reply, reactions, delete, PWA ---------- */
 let rp=null,dip=null;
-function picSq(f,sz){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const m=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=sz;c.getContext('2d').drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,sz,sz);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.8))};im.onerror=rej;im.src=u})}
-async function setDp(inp){const f=inp.files[0];if(!f)return;try{await fs.collection('users').doc(me).update({dp:await picSq(f,200)});toast('Profile photo updated ✓')}catch(e){toast('Photo error')}inp.value=''}
+function picSq(f,sz){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const m=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=sz;const x=c.getContext('2d');x.imageSmoothingQuality='high';x.drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,sz,sz);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.88))};im.onerror=rej;im.src=u})}
+async function setDp(inp){const f=inp.files[0];if(!f)return;try{await fs.collection('users').doc(me).update({dp:await picSq(f,480)});toast('Profile photo updated ✓')}catch(e){toast('Photo error')}inp.value=''}
 const rmDp=()=>fs.collection('users').doc(me).update({dp:firebase.firestore.FieldValue.delete()});
 const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message',poll:'📊 Poll',file:'📄 Document'})[m.type];
 const hideMM=()=>$('#mm').hidden=true;
@@ -498,7 +532,7 @@ $('#sd').addEventListener('click',()=>{$('#ep').hidden=true});
 
 /* ---------- v6: more settings ---------- */
 let PF={};try{PF=JSON.parse(localStorage.getItem('kc_pf'))||{}}catch(e){}
-function applyPF(){document.documentElement.style.setProperty('--fs',({s:'13px',m:'15px',l:'17.5px'})[PF.fs||'m']);document.body.dataset.w=PF.w||'dots';const bs=document.body.style;if(PF.ac){bs.setProperty('--ac',PF.ac);bs.setProperty('--ac2','color-mix(in srgb,'+PF.ac+' 60%,#7c3aed)')}else{bs.removeProperty('--ac');bs.removeProperty('--ac2')}}
+function applyPF(){const sc=innerWidth>=3200?1.75:innerWidth>=2400?1.4:innerWidth>=1700?1.18:1,rs=document.documentElement.style;rs.setProperty('--sc',sc);rs.setProperty('--fs',(({s:13,m:15,l:17.5})[PF.fs||'m']*sc)+'px');document.body.dataset.w=PF.w||'dots';const bs=document.body.style;if(PF.ac){bs.setProperty('--ac',PF.ac);bs.setProperty('--ac2','color-mix(in srgb,'+PF.ac+' 60%,#7c3aed)')}else{bs.removeProperty('--ac');bs.removeProperty('--ac2')}}
 function sp(k,v){PF[k]=v;try{localStorage.setItem('kc_pf',JSON.stringify(PF))}catch(e){}applyPF();sig='';renderList();if(cur)renderMsgs()}
 applyPF();
 const blocked=u=>((U[me]||{}).blocked||[]).includes(u);
@@ -546,7 +580,7 @@ async function mkGroup(){const n=$('#gn').value.trim(),sel=[...document.querySel
   $('#md').hidden=true;tab='chats';toast('Group created ✓');setTimeout(()=>open(r.id),500)}catch(e){permErr(e)||toast('Could not create group: '+e.code)}}
 const gref=()=>fs.collection('groups').doc(cur);
 const gsys=(t,ex=[])=>{const g=G.get(cur);return fs.collection('msgs').add({from:me,to:cur,type:'sys',text:t,ts:Date.now(),g:1,mem:[...new Set([...g.members,...ex])],rd:{},react:{}})};
-async function gDp(inp){const f=inp.files[0];if(!f)return;try{await gref().update({dp:await picSq(f,200)});$('#md').hidden=true;toast('Group photo updated ✓')}catch(e){toast('Photo error')}inp.value=''}
+async function gDp(inp){const f=inp.files[0];if(!f)return;try{await gref().update({dp:await picSq(f,480)});$('#md').hidden=true;toast('Group photo updated ✓')}catch(e){toast('Photo error')}inp.value=''}
 function gEdit(){const g=G.get(cur),n=prompt('Group name',g.name);if(n===null)return;const a=prompt('Group description',g.about||'');if(a===null)return;gref().update({name:n.trim()||g.name,about:a.trim().slice(0,120)});$('#md').hidden=true;toast('Group updated ✓')}
 async function gMember(u,a){const g=G.get(cur),F=firebase.firestore.FieldValue;try{if(a=='rm'){await gref().update({members:F.arrayRemove(u),admins:F.arrayRemove(u)});await gsys(nm(me)+' removed '+nm(u))}else{const is=g.admins.includes(u);await gref().update({admins:is?F.arrayRemove(u):F.arrayUnion(u)});toast(is?'Admin dismissed':'Made group admin')}$('#md').hidden=true}catch(e){permErr(e)||toast('Action failed')}}
 function gAdd(){const g=G.get(cur),fr=friends().filter(u=>!g.members.includes(u)&&(U[u].priv||{}).groups!==false),d=$('#md');d.innerHTML=`<div class="mc gx"><b style="font-size:18px">Add members</b><div class="gl">${fr.map(u=>`<label class="it"><input type="checkbox" class="gc" value="${u}">${av(u,36)}<div class="b"><b>${esc(nm(u))}</b></div></label>`).join('')||'<p class="mu">All your friends are already in this group.</p>'}</div><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="doGAdd()">Add</button></div></div>`;d.hidden=false}
@@ -566,7 +600,7 @@ const stBy=()=>{const g={};for(const x of ST.values()){if(Date.now()-x.ts>=864e5
 const unseen=l=>l.some(x=>!(x.views||{})[me]);
 function addTextSt(){const d=$('#md');stBg=0;d.innerHTML=`<div class="mc gx" style="width:100%;max-width:380px"><div class="stp" id="stp" style="background:${SBG[0]}"><textarea id="stt" maxlength="200" placeholder="Type a status"></textarea></div><div class="row" style="justify-content:center">${SBG.map((b,ix)=>`<button class="dotc" style="background:${b}" onclick="stBg=${ix};$('#stp').style.background=SBG[${ix}]"></button>`).join('')}</div><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="postText()">Post</button></div></div>`;d.hidden=false;setTimeout(()=>$('#stt').focus(),60)}
 function postText(){const t=$('#stt').value.trim();if(!t)return toast('Type something first');fs.collection('status').add({u:me,text:t,data:'',bg:stBg,ts:Date.now(),views:{}}).then(()=>toast('Status posted ✓')).catch(()=>toast('Could not post status'));$('#md').hidden=true}
-async function addPhotoSt(inp){const f=inp.files[0];if(!f)return;try{stPh=await pic(f,900,.65)}catch(e){inp.value='';return toast('Photo error')}inp.value='';if(stPh.length>950000)return toast('Photo is too large');
+async function addPhotoSt(inp){const f=inp.files[0];if(!f)return;try{stPh=await pic(f,1600,.82)}catch(e){inp.value='';return toast('Photo error')}inp.value='';if(stPh.length>950000)return toast('Photo is too large');
  const d=$('#md');d.innerHTML=`<div class="mc gx" style="width:100%;max-width:380px"><img src="${stPh}" style="max-width:100%;max-height:50vh;border-radius:16px"><input id="stc" maxlength="120" placeholder="Add a caption…"><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="postPhoto()">Post</button></div></div>`;d.hidden=false}
 function postPhoto(){fs.collection('status').add({u:me,text:$('#stc').value.trim(),data:stPh,ts:Date.now(),views:{}}).then(()=>toast('Status posted ✓')).catch(()=>toast('Could not post status'));$('#md').hidden=true}
 function myStatus(){const g=stBy()[me];g&&g.length?viewSt(me):addTextSt()}
@@ -592,7 +626,7 @@ function stPost(o){fs.collection('status').add(Object.assign({u:me,ts:Date.now()
 function newStatus(){stBg=0;const d=$('#md');d.innerHTML=`<div class="mc gx" style="max-width:380px"><b style="font-size:18px">New status</b><div class="stpre" id="stp" style="background:${BG[0]}"><textarea id="stt" maxlength="200" placeholder="Type a status…"></textarea></div><div class="bgs">${BG.map((g,k)=>`<button class="bgd ${k==0?'on':''}" style="background:${g}" onclick="pickBg(${k})"></button>`).join('')}</div><div class="row" style="justify-content:center"><label class="chp">📷 Photo<input type="file" accept="image/*" hidden onchange="stPhoto(this)"></label><button onclick="stPriv()">🔒 Privacy</button></div><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="postText()">Post</button></div></div>`;d.hidden=false}
 function pickBg(k){stBg=k;$('#stp').style.background=BG[k];document.querySelectorAll('.bgd').forEach((b,j)=>b.classList.toggle('on',j==k))}
 function postText(){const t=$('#stt').value.trim();if(!t)return toast('Type something first');stPost({text:t,bg:stBg,data:''})}
-async function stPhoto(inp){const f=inp.files[0];if(!f)return;try{stImg=await pic(f,900,.65)}catch(e){return toast('Photo error')}inp.value='';const d=$('#md');d.innerHTML=`<div class="mc gx" style="max-width:380px"><b style="font-size:18px">Photo status</b><img src="${stImg}" style="max-width:100%;max-height:50vh;border-radius:14px"><input id="stc" maxlength="120" placeholder="Add a caption…"><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="stPost({text:$('#stc').value.trim(),data:stImg,bg:0})">Post</button></div></div>`}
+async function stPhoto(inp){const f=inp.files[0];if(!f)return;try{stImg=await pic(f,1600,.82)}catch(e){return toast('Photo error')}inp.value='';const d=$('#md');d.innerHTML=`<div class="mc gx" style="max-width:380px"><b style="font-size:18px">Photo status</b><img src="${stImg}" style="max-width:100%;max-height:50vh;border-radius:14px"><input id="stc" maxlength="120" placeholder="Add a caption…"><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="stPost({text:$('#stc').value.trim(),data:stImg,bg:0})">Post</button></div></div>`}
 function stPriv(){const c=U[me].stp||{mode:'all',list:[]},d=$('#md');d.innerHTML=`<div class="mc gx"><b style="font-size:18px">Status privacy</b><div class="mu">Who can see my status updates</div>${[['all','My friends'],['except','My friends except…'],['only','Only share with…']].map(a=>`<label class="it" style="width:100%"><input type="radio" name="spm" value="${a[0]}" class="gc" ${c.mode==a[0]?'checked':''}><div class="b" style="text-align:left"><b>${a[1]}</b></div></label>`).join('')}<div class="gl">${friends().map(f=>`<label class="it"><input type="checkbox" class="gc sl" value="${f}" ${(c.list||[]).includes(f)?'checked':''}>${av(f,34)}<div class="b"><b>${esc(nm(f))}</b></div></label>`).join('')||'<p class="mu">No friends yet</p>'}</div><div class="mu">Applies to updates you post from now on.</div><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="saveStp()">Save</button></div></div>`;d.hidden=false}
 function saveStp(){const m=document.querySelector('input[name=spm]:checked').value,l=[...document.querySelectorAll('.sl:checked')].map(x=>x.value);fs.collection('users').doc(me).update({stp:{mode:m,list:l}});$('#md').hidden=true;toast('Status privacy saved ✓')}
 function stItems(u){return [...ST.values()].filter(x=>Date.now()-x.ts<864e5&&x.u==u&&(u==me||(x.aud?x.aud.includes(me):isF(me,u)))).sort((a,b)=>a.ts-b.ts)}
@@ -657,7 +691,7 @@ function setF(k,b){sf=k;$('#stt').className='f'+k;[...b.parentNode.children].for
 function newStatus(){stBg=0;sf=0;const d=$('#md');d.innerHTML=`<div class="mc gx" style="max-width:380px"><b style="font-size:18px">New status</b><div class="stpre" id="stp" style="background:${BG[0]}"><textarea id="stt" maxlength="200" placeholder="Type a status…"></textarea></div><div class="bgs" style="flex-wrap:wrap;justify-content:center">${BG.map((g,k)=>`<button class="bgd ${k==0?'on':''}" style="background:${g}" onclick="pickBg(${k})"></button>`).join('')}</div><div class="flt">${['Aa','Aa','Aa','Aa'].map((t,k)=>`<button class="f${k} ${k?'':'on'}" onclick="setF(${k},this)">${t}</button>`).join('')}</div><div class="row" style="justify-content:center"><label class="chp">📷 Photo<input type="file" accept="image/*" hidden onchange="stPhoto(this)"></label><button onclick="stPriv()">🔒 Privacy</button></div><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="postText()">Post</button></div></div>`;d.hidden=false}
 function postText(){const t=$('#stt').value.trim();if(!t)return toast('Type something first');stPost({text:t,bg:stBg,data:'',f:sf})}
 function setFt(k,b){sft=k;$('#spi').style.filter=FL[k];[...b.parentNode.children].forEach(x=>x.classList.toggle('on',x==b))}
-async function stPhoto(inp){const f=inp.files[0];if(!f)return;try{stImg=await pic(f,900,.65)}catch(e){return toast('Photo error')}inp.value='';sft=0;$('#md').innerHTML=`<div class="mc gx" style="max-width:380px"><b style="font-size:18px">Photo status</b><img id="spi" src="${stImg}" style="max-width:100%;max-height:46vh;border-radius:14px"><div class="flt">${FN.map((n,k)=>`<button class="${k?'':'on'}" onclick="setFt(${k},this)">${n}</button>`).join('')}</div><input id="stc" maxlength="120" placeholder="Add a caption…"><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="stPost({text:$('#stc').value.trim(),data:stImg,bg:0,ft:sft})">Post</button></div></div>`}
+async function stPhoto(inp){const f=inp.files[0];if(!f)return;try{stImg=await pic(f,1600,.82)}catch(e){return toast('Photo error')}inp.value='';sft=0;$('#md').innerHTML=`<div class="mc gx" style="max-width:380px"><b style="font-size:18px">Photo status</b><img id="spi" src="${stImg}" style="max-width:100%;max-height:46vh;border-radius:14px"><div class="flt">${FN.map((n,k)=>`<button class="${k?'':'on'}" onclick="setFt(${k},this)">${n}</button>`).join('')}</div><input id="stc" maxlength="120" placeholder="Add a caption…"><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="stPost({text:$('#stc').value.trim(),data:stImg,bg:0,ft:sft})">Post</button></div></div>`}
 function svShow(){clearTimeout(svT);const o=$('#sv');if(!SV)return;const x=ST.get(SV.ids[SV.i]);if(!x)return closeSv();const own=SV.u==me;
  if(!own&&!stSeen(x)&&!seenSt.has(x.id)){seenSt.add(x.id);if((U[me].priv||{}).sview!==false)fs.collection('status').doc(x.id).update({['views.'+me]:Date.now()}).catch(()=>{});else sp('ss',[...(PF.ss||[]),x.id].slice(-100))}
  o.hidden=false;o.innerHTML=`<div class="svw" style="background:${x.data?'#000':BG[x.bg||0]||BG[0]}"><div class="spb">${SV.ids.map((_,k)=>`<i><b class="${k<SV.i?'d':k==SV.i?'run':''}"></b></i>`).join('')}</div><div class="svh">${av(SV.u,38)}<div><b>${own?'My status':esc(nm(SV.u))}</b><small>${ago(x.ts)}</small></div><button onclick="closeSv()">✕</button></div>${x.data?`<img class="svi" style="filter:${FL[x.ft||0]}" src="${x.data}">${x.text?`<div class="svc">${esc(x.text)}</div>`:''}`:`<div class="svt f${x.f||0}">${esc(x.text||'')}</div>`}<div class="svz"><div onclick="svGo(-1)"></div><div onclick="svGo(1)"></div></div>${own?`<div class="svf"><button onclick="svViewers()">👁 ${Object.keys(x.views||{}).length}</button><button onclick="svDel()">🗑 Delete</button></div>`:`<div class="sre">${['❤️','😂','😮','😢','👍','🔥'].map(e=>`<button onclick="svReact('${e}')">${e}</button>`).join('')}</div>`}</div>`;svT=setTimeout(()=>svGo(1),5500)}
@@ -686,7 +720,7 @@ $('#tx').addEventListener('paste',e=>{const f=[...((e.clipboardData||{}).files||
 /* groups */
 function newGroup(){gPh='';const fr=friends().filter(u=>(U[u].priv||{}).groups!==false),d=$('#md');
  d.innerHTML=`<div class="mc gx"><b style="font-size:18px">New group</b><label class="dpw"><div id="gpv" class="av" style="width:84px;height:84px;background:var(--ac);font-size:34px">👥</div><span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="gPick(this)"></label><input id="gn" placeholder="Group name" maxlength="40"><input id="gd" placeholder="Description (optional)" maxlength="120"><input placeholder="Search friends…" oninput="gFlt(this.value)"><div class="gl" style="max-height:30vh">${fr.map(u=>`<label class="it" data-n="${esc(nm(u).toLowerCase())}"><input type="checkbox" class="gc" value="${u}" onchange="gCnt()">${av(u,36)}<div class="b"><b>${esc(nm(u))}</b></div></label>`).join('')||'<p class="mu">Add some friends first.</p>'}</div><div class="mu" id="gcn">0 selected</div><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="mkGroup()">Create</button></div></div>`;d.hidden=false}
-async function gPick(inp){const f=inp.files[0];if(!f)return;gPh=await picSq(f,200);$('#gpv').outerHTML=`<img id="gpv" class="av" src="${gPh}" style="width:84px;height:84px;object-fit:cover">`}
+async function gPick(inp){const f=inp.files[0];if(!f)return;gPh=await picSq(f,480);$('#gpv').outerHTML=`<img id="gpv" class="av" src="${gPh}" style="width:84px;height:84px;object-fit:cover">`}
 const gFlt=q=>document.querySelectorAll('#md .gl .it[data-n]').forEach(e=>e.hidden=!e.dataset.n.includes(q.toLowerCase()));
 const gCnt=()=>$('#gcn').textContent=document.querySelectorAll('.gc:checked').length+' selected';
 async function mkGroup(){const n=$('#gn').value.trim(),sel=[...document.querySelectorAll('.gc:checked')].map(x=>x.value);if(!n)return toast('Enter a group name');if(!sel.length)return toast('Select at least one member');
@@ -797,4 +831,5 @@ const _rf0=refresh;refresh=function(){_rf0();try{if(me&&U[me]){ensureTag();if(pe
 const _rl2=renderList;renderList=function(){_rl2();const L=$('#list');
  if(tab=='set'){const p=L.querySelector('.prof');if(p&&!$('#ktb'))p.insertAdjacentHTML('afterend','<div class="pad" id="ktb"><button class="pri" onclick="showTag()" style="width:100%">🔳 My KhizTag QR</button></div>')}
  if(tab=='friends'&&!$('#ktf')){const p=L.querySelector('.pad');if(p)p.insertAdjacentHTML('afterend','<div class="pad" id="ktf"><button onclick="showTag()" style="width:100%">🔳 My KhizTag / Scan QR</button></div>')}};
+addEventListener('resize',()=>applyPF());applyPF();
 </script></body></html>
