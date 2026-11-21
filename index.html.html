@@ -272,6 +272,58 @@ input:not(#tx):not(#cq),textarea:not(#tx){box-shadow:inset 0 1px 3px #0002}
 @media(min-width:1700px){#side{width:500px}.m{max-width:min(66%,680px)}.i{width:23px;height:23px}#nav{width:84px}.ib{width:46px;height:46px}}
 @media(min-width:2400px){#side{width:640px}.m{max-width:min(60%,880px)}.i{width:28px;height:28px}#nav{width:104px}.ib{width:54px;height:54px}.mc{max-width:480px}.card{max-width:520px}#comp textarea{height:56px}.m img,.m video{max-height:420px}}
 @media(min-width:3200px){#side{width:860px}.m{max-width:min(56%,1150px)}.i{width:36px;height:36px}#nav{width:132px}.ib{width:66px;height:66px}.mc{max-width:620px}.card{max-width:640px}#comp textarea{height:70px}.m img,.m video{max-height:560px}.mark{width:64px;height:64px}}
+/* ===== v14: clean modern (overrides the heavy glass/grain/blobs) ===== */
+:root,[data-t=light]{--bg:#f5f6f8;--s:#fff;--s2:#f1f3f6;--tx:#0f172a;--mu:#6b7280;--ac:#4f6bff;--ac2:#4f6bff;--bd:#e6e8ec}
+[data-t=dark]{--bg:#0e1116;--s:#161a21;--s2:#1e232c;--tx:#e8eaee;--mu:#8b93a1;--ac:#5b8cff;--ac2:#5b8cff;--bd:#262c36}
+[data-t=midnight]{--bg:#05060a;--s:#0d0f15;--s2:#161a22;--tx:#f1f2f6;--mu:#868c9a;--ac:#8b7bff;--ac2:#8b7bff;--bd:#1d212b}
+[data-t=amoled]{--bg:#000;--s:#0a0a0c;--s2:#141418;--tx:#f5f5f7;--mu:#8e8e99;--ac:#3b9cff;--ac2:#3b9cff;--bd:#1b1b20}
+[data-t=emerald]{--bg:#f3f8f6;--s:#fff;--s2:#eaf3ef;--tx:#0f2a22;--mu:#5f7d71;--ac:#0f9d73;--ac2:#0f9d73;--bd:#dbe9e3}
+[data-t=rose]{--bg:#fbf5f6;--s:#fff;--s2:#f8eaed;--tx:#2d1018;--mu:#8a6270;--ac:#e0365c;--ac2:#e0365c;--bd:#f1dce1}
+[data-t=ocean]{--bg:#0a1c26;--s:#0f2a38;--s2:#153847;--tx:#e6f6fb;--mu:#7fb0c0;--ac:#22b8d6;--ac2:#22b8d6;--bd:#1b4558}
+[data-t=aurora]{--bg:#0a0e1f;--s:#10162c;--s2:#182040;--tx:#eaf0ff;--mu:#93a0d0;--ac:#38bdf8;--ac2:#38bdf8;--bd:#222c55}
+[data-t=sunset]{--bg:#fdf7f2;--s:#fff;--s2:#fbece0;--tx:#34190c;--mu:#9a6f58;--ac:#f26a1b;--ac2:#f26a1b;--bd:#f5dcc8}
+body{--gl:var(--s);--edge:var(--bd);--sh:0 1px 2px #0000000d,0 6px 18px -10px #00000026}
+body::before{display:none}
+[data-t] #main,[data-t] #auth{background-image:none!important}
+#auth{background:var(--bg)}
+/* no grain / gloss / blur */
+#side::after,.mc::after,.card::after,#comp::after,#hd::after,.m::after,#nav::after,.m.me::before,.m:not(.me)::before{display:none!important}
+#side,#hd,#comp,#rpb,#ep,#am,#mm,.mc,.card,.m,#nav,#hd{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+/* surfaces */
+#side{background:var(--s);box-shadow:none;border-right:1px solid var(--bd)}
+#hd{background:var(--s);border-bottom:1px solid var(--bd)}
+#comp{background:var(--s);border:1px solid var(--bd);box-shadow:var(--sh)}
+#ep,#am,#mm,#rpb,.mc,.card{background:var(--s);border:1px solid var(--bd);box-shadow:0 20px 50px -22px #0006}
+#main{background:var(--bg)}
+#msgs{background-image:none}
+/* bubbles */
+.m{background:var(--s);border:1px solid var(--bd);box-shadow:none;border-radius:18px 18px 18px 6px;padding:8px 13px;animation:none}
+.m.me{background:var(--ac);border:0;box-shadow:none;color:#fff;border-radius:18px 18px 6px 18px}
+.m.cont:not(.me){border-top-left-radius:8px}.m.me.cont{border-top-right-radius:8px}
+.m img,.m video{box-shadow:none}
+/* controls */
+.pri,.m.me,.mark,.nlogo,.sh{background:var(--ac)}
+.pri{box-shadow:none}.pri:hover{filter:brightness(1.06)}
+.mark,.nlogo,.fab{box-shadow:0 8px 20px -10px var(--ac)}
+.av,img.av{box-shadow:none}
+input,textarea{box-shadow:none!important}
+input:focus,textarea:focus{border-color:var(--ac);background:var(--s)}
+#comp textarea{background:transparent}
+.it{border-radius:14px}.it:hover{background:var(--s2);transform:none}.it.sel{background:color-mix(in srgb,var(--ac) 10%,transparent);box-shadow:none}
+.ph b{font-weight:700;letter-spacing:-.02em}
+.dsep span{box-shadow:none}
+.tagcard{box-shadow:none;border:1px solid #e6e8ec}
+/* nav */
+#nav{background:var(--s)}
+#nav .on{background:color-mix(in srgb,var(--ac) 12%,transparent);color:var(--ac);box-shadow:none}
+@media(max-width:760px){#nav{background:var(--s);border:1px solid var(--bd);box-shadow:0 10px 30px -12px #0004;border-radius:28px}}
+@media(min-width:761px){#nav{background:var(--s);border:0;border-right:1px solid var(--bd);border-radius:0;margin:0;height:auto;align-self:stretch;box-shadow:none;padding:14px 8px}}
+/* cropper */
+#cpw{position:fixed;inset:0;z-index:88;background:#0009;display:grid;place-items:center;padding:20px}
+.cw{position:relative;width:300px;height:300px;border-radius:18px;overflow:hidden;background:#000;touch-action:none;cursor:grab}.cw:active{cursor:grabbing}
+.cw canvas{display:block;touch-action:none}
+.cm{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle closest-side at 50% 50%,transparent calc(100% - 1.5px),#fff calc(100% - 1.5px),#fff calc(100% - .5px),#000a calc(100% - .5px))}
+#cz{padding:0;height:6px;accent-color:var(--ac)}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -398,8 +450,8 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
    return`<div class="it" onclick="call('${o}','${c.kind}')">${av(o)}<div class="b"><b style="${bad?'color:#e11d48':''}">${esc(nm(o))}</b><div class="mu">${out?'↗ Outgoing':'↙ Incoming'} ${c.kind} • ${s} • ${dt(c.ts)}</div></div><span style="color:var(--ac)">${i(c.kind=='video'?'video':'phone')}</span></div>`}).join('')||'<p class="mu c pad" style="padding:30px">No call history</p>'}
  if(tab=='set'){const u=U[me],p=u.priv||{};
   const lg=(k,l)=>`<div class="row sp pad"><span>${l}</span><button class="tg ${PF[k]!==false?'on':''}" onclick="sp('${k}',${PF[k]===false})"></button></div>`;const tg=(k,l)=>`<div class="row sp pad"><span>${l}</span><button class="tg ${p[k]!==false?'on':''}" onclick="tgl('${k}')"></button></div>`;
-  h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
-  <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'dots')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
+  h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
+  <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
   <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v12 • by Muhammad Khizar</p>`}
  $('#list').innerHTML=h}
@@ -532,7 +584,7 @@ $('#sd').addEventListener('click',()=>{$('#ep').hidden=true});
 
 /* ---------- v6: more settings ---------- */
 let PF={};try{PF=JSON.parse(localStorage.getItem('kc_pf'))||{}}catch(e){}
-function applyPF(){const sc=innerWidth>=3200?1.75:innerWidth>=2400?1.4:innerWidth>=1700?1.18:1,rs=document.documentElement.style;rs.setProperty('--sc',sc);rs.setProperty('--fs',(({s:13,m:15,l:17.5})[PF.fs||'m']*sc)+'px');document.body.dataset.w=PF.w||'dots';const bs=document.body.style;if(PF.ac){bs.setProperty('--ac',PF.ac);bs.setProperty('--ac2','color-mix(in srgb,'+PF.ac+' 60%,#7c3aed)')}else{bs.removeProperty('--ac');bs.removeProperty('--ac2')}}
+function applyPF(){const sc=innerWidth>=3200?1.75:innerWidth>=2400?1.4:innerWidth>=1700?1.18:1,rs=document.documentElement.style;rs.setProperty('--sc',sc);rs.setProperty('--fs',(({s:13,m:15,l:17.5})[PF.fs||'m']*sc)+'px');document.body.dataset.w=PF.w||'plain';const bs=document.body.style;if(PF.ac){bs.setProperty('--ac',PF.ac);bs.setProperty('--ac2',PF.ac)}else{bs.removeProperty('--ac');bs.removeProperty('--ac2')}}
 function sp(k,v){PF[k]=v;try{localStorage.setItem('kc_pf',JSON.stringify(PF))}catch(e){}applyPF();sig='';renderList();if(cur)renderMsgs()}
 applyPF();
 const blocked=u=>((U[me]||{}).blocked||[]).includes(u);
@@ -832,4 +884,30 @@ const _rl2=renderList;renderList=function(){_rl2();const L=$('#list');
  if(tab=='set'){const p=L.querySelector('.prof');if(p&&!$('#ktb'))p.insertAdjacentHTML('afterend','<div class="pad" id="ktb"><button class="pri" onclick="showTag()" style="width:100%">🔳 My KhizTag QR</button></div>')}
  if(tab=='friends'&&!$('#ktf')){const p=L.querySelector('.pad');if(p)p.insertAdjacentHTML('afterend','<div class="pad" id="ktf"><button onclick="showTag()" style="width:100%">🔳 My KhizTag / Scan QR</button></div>')}};
 addEventListener('resize',()=>applyPF());applyPF();
+
+/* ---------- v14: photo cropper (drag, zoom, rotate) ---------- */
+function cropImg(file,cb,out){out=out||480;const url=URL.createObjectURL(file),im=new Image();
+ im.onerror=()=>{URL.revokeObjectURL(url);toast('Photo error')};
+ im.onload=()=>{const V=300;let rot=0,z=1,ox=0,oy=0;const w=document.createElement('div');w.id='cpw';
+  w.innerHTML=`<div class="mc gx" style="max-width:360px"><b style="font-size:18px">Crop photo</b><div class="cw"><canvas id="cc" width="${V*2}" height="${V*2}" style="width:${V}px;height:${V}px"></canvas><div class="cm"></div></div><div class="row" style="width:100%;flex-wrap:nowrap"><span>🔍</span><input id="cz" type="range" min="1" max="4" step="0.01" value="1" style="flex:1"><button class="ib" id="cr" title="Rotate">⟳</button></div><div class="mu">Drag to move · slider or scroll to zoom</div><div class="row"><button id="cx">Cancel</button><button class="pri" id="cs">Save</button></div></div>`;
+  document.body.appendChild(w);const cv=w.querySelector('#cc'),g=cv.getContext('2d');
+  const dims=()=>rot%2?[im.height,im.width]:[im.width,im.height];
+  const base=()=>{const[a,b]=dims();return V/Math.min(a,b)};
+  const clamp=()=>{const[a,b]=dims(),s=base()*z,mx=Math.max(0,a*s/2-V/2),my=Math.max(0,b*s/2-V/2);ox=Math.min(mx,Math.max(-mx,ox));oy=Math.min(my,Math.max(-my,oy))};
+  const draw=(c,k,sz)=>{c.setTransform(1,0,0,1,0,0);c.fillStyle='#000';c.fillRect(0,0,sz,sz);c.imageSmoothingEnabled=true;c.imageSmoothingQuality='high';c.translate(sz/2+ox*k,sz/2+oy*k);c.rotate(rot*Math.PI/2);const s=base()*z*k;c.scale(s,s);c.drawImage(im,-im.width/2,-im.height/2)};
+  const paint=()=>{clamp();draw(g,2,V*2)};paint();
+  let d=null;cv.onpointerdown=e=>{d={x:e.clientX,y:e.clientY};cv.setPointerCapture(e.pointerId)};
+  cv.onpointermove=e=>{if(!d)return;ox+=e.clientX-d.x;oy+=e.clientY-d.y;d={x:e.clientX,y:e.clientY};paint()};
+  cv.onpointerup=cv.onpointercancel=()=>d=null;
+  const zs=w.querySelector('#cz');zs.oninput=()=>{z=+zs.value;paint()};
+  cv.onwheel=e=>{e.preventDefault();z=Math.min(4,Math.max(1,z-e.deltaY*.002));zs.value=z;paint()};
+  w.querySelector('#cr').onclick=()=>{rot=(rot+1)%4;ox=oy=0;paint()};
+  const close=()=>{URL.revokeObjectURL(url);w.remove()};
+  w.querySelector('#cx').onclick=close;
+  w.querySelector('#cs').onclick=()=>{const o=document.createElement('canvas');o.width=o.height=out;draw(o.getContext('2d'),out/V,out);const r=o.toDataURL('image/jpeg',.88);close();cb(r)}};
+ im.src=url}
+async function setDp(inp){const f=inp.files[0];if(!f)return;inp.value='';cropImg(f,async d=>{try{await fs.collection('users').doc(me).update({dp:d});toast('Profile photo updated ✓')}catch(e){toast('Photo error')}})}
+function recropDp(){const d=U[me]&&U[me].dp;if(!d)return;fetch(d).then(r=>r.blob()).then(b=>cropImg(b,async n=>{try{await fs.collection('users').doc(me).update({dp:n});toast('Photo updated ✓')}catch(e){toast('Photo error')}})).catch(()=>toast('Photo error'))}
+async function gDp(inp){const f=inp.files[0];if(!f)return;inp.value='';cropImg(f,async d=>{try{await gref().update({dp:d});$('#md').hidden=true;toast('Group photo updated ✓')}catch(e){toast('Photo error')}})}
+async function gPick(inp){const f=inp.files[0];if(!f)return;inp.value='';cropImg(f,d=>{gPh=d;const e=$('#gpv');if(e)e.outerHTML=`<img id="gpv" class="av" src="${gPh}" style="width:84px;height:84px;object-fit:cover">`})}
 </script></body></html>
