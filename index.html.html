@@ -188,9 +188,6 @@ label.btn{display:grid;place-items:center;border-radius:12px;padding:10px 16px;c
 .prof{position:relative;margin:6px 4px 12px;padding:0 0 16px;border-radius:26px;background:var(--s2);overflow:hidden}
 .prof::before{content:"";display:block;height:96px;width:100%;background:linear-gradient(135deg,var(--ac),var(--ac2))}
 .prof .dpw{margin-top:-52px}.prof .av{border:4px solid var(--s2)}
-#splash{position:fixed;inset:0;z-index:200;display:grid;place-content:center;justify-items:center;gap:10px;background:radial-gradient(70% 50% at 50% 30%,#2b3a8f,#0a0e24);color:#fff;transition:opacity .5s,visibility .5s}
-#splash.out{opacity:0;visibility:hidden}#splash .mark{width:84px;height:84px;border-radius:26px;animation:sp2 1.4s ease-in-out infinite}#splash b{font-size:26px;letter-spacing:1px}#splash span{font-size:12px;opacity:.7}
-@keyframes sp2{50%{transform:scale(1.08);box-shadow:0 0 50px -6px var(--ac2)}}
 .rhp{width:100%;text-align:left;font-size:11.5px;background:var(--s2);border-radius:12px;padding:10px;max-height:30vh;overflow:auto;white-space:pre-wrap;word-break:break-all;user-select:all}
 /* ===== v12: iOS 26 Liquid Glass, AMOLED, Dynamic, premium bubbles, floating nav ===== */
 [data-t=amoled]{--bg:#000;--s:#050507;--s2:#101014;--tx:#f5f5f7;--mu:#8e8e99;--ac:#0a84ff;--ac2:#bf5af2;--bd:#1a1a1f}
@@ -573,8 +570,6 @@ button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px soli
 .card,.mc,#ep,#am,#mm,#rpb{box-shadow:0 12px 32px -16px #0005}
 .m{box-shadow:0 1px 1px #0000000d}
 .m.me{background:var(--ac)!important;box-shadow:0 1px 2px #0002}
-#splash{background:var(--ac,#4f6bff);background:linear-gradient(160deg,#3b53d9,#1c2a6b)}
-#splash .mark{animation:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 #syn{position:fixed;top:max(10px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:150;background:var(--s);color:var(--mu);border:1px solid var(--bd);box-shadow:0 6px 18px -8px #0005;border-radius:99px;padding:6px 14px;font-size:12px;font-weight:600;pointer-events:none}#syn[hidden]{display:none}
 </style>
@@ -583,9 +578,9 @@ window._F1="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;
 window.loadFonts=function(all){function a(h){if(document.querySelector('link[href="'+h+'"]'))return;var l=document.createElement("link");l.rel="stylesheet";l.href=h;document.head.appendChild(l)}a(window._F1);if(all)a(window._F2)};
 window.addEventListener("load",function(){setTimeout(function(){loadFonts(0)},300)});
 document.addEventListener("DOMContentLoaded",function(){var t=document.getElementById("mainjs");if(!t)return;var x=document.createElement("script");x.text=t.textContent;document.body.appendChild(x)});
-setTimeout(function(){var p=document.getElementById("splash");if(p)p.classList.add("out")},10000);
+setTimeout(function(){var a=document.getElementById("app"),u=document.getElementById("auth");if(a&&u&&a.hidden)u.hidden=false},10000);
 </script>
-</head><body data-t="light"><div id="splash"><div class="mark"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><b>KhizChat</b><span>by Muhammad Khizar</span></div>
+</head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
 <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
@@ -600,7 +595,7 @@ setTimeout(function(){var p=document.getElementById("splash");if(p)p.classList.a
 <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></symbol>
 <symbol id="i-cam" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol><symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol><symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24z"/></symbol><symbol id="i-set" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></symbol>
 </defs></svg>
-<div id="auth"><div class="card">
+<div id="auth" hidden><div class="card">
 <div class="brand"><div class="mark"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><div><b>KhizChat</b><span>by Muhammad Khizar</span></div></div>
 <div class="seg"><button id="tl" class="on">Login</button><button id="ts">Sign up</button></div>
 <input id="nm" placeholder="Full name" hidden>
@@ -656,7 +651,7 @@ async function doAuth(){if(!auth)return;actx();
   else await auth.signInWithEmailAndPassword(em,p);err('')}
  catch(e){const m={'auth/email-already-in-use':'This username is already taken','auth/invalid-credential':'Incorrect username or password','auth/wrong-password':'Incorrect username or password','auth/user-not-found':'Incorrect username or password','auth/operation-not-allowed':'Email/Password sign-in is not enabled in Firebase','auth/network-request-failed':'Check your internet connection'};err(m[e.code]||e.message)}}
 $('#go').onclick=doAuth;['u','pw','nm'].forEach(x=>$('#'+x).onkeydown=e=>{if(e.key=='Enter')doAuth()});
-setTimeout(()=>$('#splash').classList.add('out'),4500);if(auth)auth.onAuthStateChanged(u=>{if(u){me=u.uid;boot()}else{me=null;$('#app').hidden=true;$('#auth').hidden=false;setTimeout(()=>$('#splash').classList.add('out'),200)}});
+if(auth)auth.onAuthStateChanged(u=>{if(u){me=u.uid;boot()}else{me=null;$('#app').hidden=true;$('#auth').hidden=false}});
 function tr(map){return s=>s.docChanges().forEach(c=>c.type=='removed'?map.delete(c.doc.id):map.set(c.doc.id,Object.assign({id:c.doc.id},c.doc.data())))}
 const NAV=[['chats','chat','Chats'],['friends','users','Friends'],['status','status','Status'],['calls','phone','Calls'],['set','set','Settings']];
 function boot(){
@@ -670,7 +665,7 @@ function boot(){
   const one=qq=>{let d=0;on(qq,tr(M),s=>{if(!d&&(!s||!s.metadata.fromCache)){d=1;fin()}})};
   one(fs.collection('msgs').where('mem','array-contains',me));one(fs.collection('msgs').where('from','==',me));one(fs.collection('msgs').where('to','==',me))};
  setTimeout(startMsgs,2500);setTimeout(()=>{if(alive()){ready=true;syn()}},30000);
- on(fs.collection('users'),s=>{U={};s.forEach(d=>U[d.id]=d.data())},()=>{startMsgs();const sp=$('#splash');sp&&sp.classList.add('out')});
+ on(fs.collection('users'),s=>{U={};s.forEach(d=>U[d.id]=d.data())},startMsgs);
  on(fs.collection('groups').where('members','array-contains',me),tr(G));
  for(const k of['from','to']){on(fs.collection('reqs').where(k,'==',me),tr(R));on(fs.collection('calls').where(k,'==',me),tr(CL))}
  on(fs.collection('status').where('ts','>',Date.now()-864e5),tr(ST));
