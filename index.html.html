@@ -660,6 +660,38 @@ setTimeout(function(){var a=document.getElementById("app"),u=document.getElement
 .pst .psa{padding:6px 14px 4px}.pst .plk.on{color:#ef4444;animation:kb-beat .5s}
 .ring.gold{background:conic-gradient(#f7b733,#fc4a1a,#ec4899,#f7b733)}
 </style>
+<style>
+/* ===== v31: premium look + Luxury sticker packs ===== */
+.lxv{position:relative;overflow:hidden;margin:6px 6px 14px;padding:28px 18px 22px;border-radius:28px;color:#fff;background:radial-gradient(90% 70% at 50% 0%,#7a4d0e55,transparent),linear-gradient(160deg,#17102b,#241406);border:1px solid #f5b94255;display:grid;gap:8px;justify-items:center;text-align:center;box-shadow:0 26px 54px -28px #f59e0b}
+.lxv::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 35%,#ffe9a838 50%,transparent 65%);background-size:250% 100%;animation:lxsw 4.5s ease-in-out infinite;pointer-events:none}
+@keyframes lxsw{0%{background-position:150% 0}100%{background-position:-50% 0}}
+.lxcr{font-size:46px;line-height:1;animation:kb-float 3s ease-in-out infinite;filter:drop-shadow(0 8px 16px #f59e0b99)}
+.lxv b.t{font-size:27px;font-weight:800;letter-spacing:-.3px;background:linear-gradient(90deg,#ffe29a,#f7b733,#fc4a1a,#f7b733,#ffe29a);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:lxgs 4s linear infinite}
+@keyframes lxgs{to{background-position:200% center}}
+.lxv p{font-size:13.5px;opacity:.85;max-width:290px}
+.lxspk{position:absolute;color:#ffe29a;font-size:16px;animation:lxtw 2.4s ease-in-out infinite}
+@keyframes lxtw{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1.15)}}
+.lxs2{padding:6px 16px;border-radius:99px;border:1px solid #f5b94288;background:#00000045;font-size:12.5px;font-weight:700;color:#ffe29a;position:relative;z-index:1}
+.lxg{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 6px 14px}
+.lxg div{padding:14px 12px;border-radius:18px;background:var(--s);border:1px solid var(--bd);display:grid;gap:3px;box-shadow:0 12px 26px -22px #000a}
+.lxg i{font-style:normal;font-size:26px}.lxg b{font-size:14px}.lxg span{font-size:12px;color:var(--mu);line-height:1.35}
+.lxcmp{margin:0 6px 16px;border-radius:18px;overflow:hidden;border:1px solid var(--bd);background:var(--s)}
+.lxcmp>div{display:grid;grid-template-columns:1fr 60px 64px;align-items:center;padding:10px 14px;font-size:13.5px;border-top:1px solid var(--bd)}
+.lxcmp>div:first-child{border-top:0;background:var(--s2);font-weight:700;font-size:12px}
+.lxcmp span{text-align:center}.lxcmp .y{color:#16a34a;font-weight:800}.lxcmp .n{color:var(--mu)}.lxcmp .g{color:#d97706;font-weight:800}
+.lxp{background:linear-gradient(135deg,var(--s),color-mix(in srgb,#f59e0b 8%,var(--s)))}
+.lxp.hot{border-color:#f59e0b}.lxp.best{border-color:#fc4a1a;box-shadow:0 16px 34px -22px #fc4a1a}
+.lxp .lxn span.pm{display:block;margin-top:2px;font-size:12px;color:#d97706;font-weight:700}
+/* cat stickers */
+.cat{width:150px;height:175px;display:block;transform-origin:50% 90%}.cat svg{width:100%;height:100%;display:block;overflow:visible}
+.cat[class*=kb-]{animation-iteration-count:5}
+.stkg{padding:10px 20px;border-radius:16px;font-weight:900;font-size:22px;letter-spacing:.6px;color:#3b2300;background:linear-gradient(110deg,#f7d46a,#fff3b0,#f7b733,#fff3b0,#f7d46a);background-size:250% 100%;animation:lxshine 3s linear 4;border:2px solid #fff6c8;box-shadow:0 10px 22px -10px #f59e0b,inset 0 1px 0 #fff;transform:rotate(-2deg);text-shadow:0 1px 0 #fff8}
+@keyframes lxshine{to{background-position:-250% 0}}
+.spg.l{grid-template-columns:repeat(6,1fr);max-height:300px}
+.spg.l .spc.cs{grid-column:span 2;padding:2px}.spg.l .spc.cs svg{width:100%;height:auto;display:block}
+.spg.l .spc.gw{grid-column:span 3;font-size:13px;font-weight:900;padding:11px 6px;border-radius:12px;background:linear-gradient(110deg,#f7d46a,#fff3b0,#f7b733);color:#3b2300;box-shadow:0 6px 14px -8px #f59e0b}
+.spl{grid-column:1/-1;font-size:12px;font-weight:800;color:#d97706;padding:6px 4px 0;display:flex;justify-content:space-between;align-items:center}
+</style>
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -796,7 +828,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v30 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v31 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -1638,4 +1670,49 @@ const _bootL=boot;boot=function(){_bootL();startPrem()};
 function updCrb(){const b=$('#crb');if(!b||!U[me])return;const a=isPrem();b.className=a?'act':'';b.textContent=a?'👑 Luxury':'👑 Upgrade';
  const nb=document.querySelector('#nav button[data-k=plans]');if(nb){let e=nb.querySelector('.nbd');const n=isAdm()?[...PY.values()].filter(x=>x.st=='p').length:0;if(n&&!e){e=document.createElement('em');e.className='nbd';nb.appendChild(e)}if(e){e.hidden=!n;e.textContent=n}}}
 const _rfL=refresh;refresh=function(){_rfL();try{ensurePay();updCrb()}catch(e){}};
+
+/* ---------- v31: premium look + Luxury sticker packs (original cat "Noor Billi") ---------- */
+const CATM={happy:{l:'Mast!',a:'bounce'},love:{l:'Love U',a:'beat'},sleepy:{l:'Zzz…',a:'float'},angry:{l:'Gussa!',a:'shake'},cry:{l:'Hai Hai',a:'wiggle'},wow:{l:'Wow!',a:'zoom'},cool:{l:'Boss',a:'swing'},laugh:{l:'LOL',a:'wiggle'},party:{l:'Party!',a:'bounce'},hungry:{l:'Bhook!',a:'zoom'}};
+const GW=['KING 👑','BOSS','LEGEND','VIP','Shabash!','Zabardast','Mast!','Luxury 💎','Respect','No.1'];
+const _ht=(x,y,s)=>`<path d="M${x} ${y+7*s}C${x-12*s} ${y-2*s} ${x-6*s} ${y-12*s} ${x} ${y-4*s}C${x+6*s} ${y-12*s} ${x+12*s} ${y-2*s} ${x} ${y+7*s}Z" fill="#ff4d79"/>`;
+const _sp=(x,y)=>`<path d="M${x} ${y-7}Q${x} ${y} ${x+7} ${y}Q${x} ${y} ${x} ${y+7}Q${x} ${y} ${x-7} ${y}Q${x} ${y} ${x} ${y-7}Z" fill="#f7b733"/>`;
+function catSvg(k){const c=CATM[k];if(!c)return'';
+ const S='stroke="#4a3a7a" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"',D='#4a3a7a';
+ let tint='',eyes='',mouth=`<path d="M52 80Q56 86 60 80Q64 86 68 80" ${S}/>`,extra='',hat='',star=true;
+ if(k=='happy'){eyes=`<path d="M35 68Q42 58 49 68M71 68Q78 58 85 68" ${S}/>`}
+ if(k=='love'){eyes=_ht(42,66,1)+_ht(78,66,1);extra=_ht(102,24,.6)+_ht(16,34,.5)}
+ if(k=='sleepy'){eyes=`<path d="M35 66Q42 72 49 66M71 66Q78 72 85 66" ${S}/>`;mouth=`<path d="M56 82Q60 85 64 82" ${S}/>`;extra=`<text x="90" y="32" font-size="17" font-weight="800" fill="#8b73e0">Z</text><text x="104" y="18" font-size="11" font-weight="800" fill="#8b73e0">z</text>`}
+ if(k=='angry'){tint='<ellipse cx="60" cy="70" rx="46" ry="38" fill="#ff7a7a" opacity=".38"/>';eyes=`<circle cx="42" cy="68" r="4" fill="${D}"/><circle cx="78" cy="68" r="4" fill="${D}"/><path d="M32 56L52 64M88 56L68 64" ${S}/>`;mouth=`<path d="M52 87Q60 77 68 87" ${S}/>`;extra='<circle cx="18" cy="30" r="5" fill="#ffb3b3" opacity=".8"/><circle cx="104" cy="26" r="6" fill="#ffb3b3" opacity=".8"/>'}
+ if(k=='cry'){eyes=`<path d="M35 64Q42 71 49 64M71 64Q78 71 85 64" ${S}/>`;mouth=`<path d="M52 88Q60 79 68 88" ${S}/>`;extra='<path d="M42 74q-6 9 0 12q6-3 0-12z" fill="#5cc8ff"/><path d="M78 74q-6 9 0 12q6-3 0-12z" fill="#5cc8ff"/>'}
+ if(k=='wow'){eyes=`<circle cx="42" cy="66" r="8" fill="#fff" stroke="${D}" stroke-width="2.5"/><circle cx="42" cy="66" r="3.5" fill="${D}"/><circle cx="78" cy="66" r="8" fill="#fff" stroke="${D}" stroke-width="2.5"/><circle cx="78" cy="66" r="3.5" fill="${D}"/>`;mouth=`<ellipse cx="60" cy="87" rx="5" ry="6.5" fill="#5a3d7a"/>`;extra=_sp(16,30)+_sp(106,38)}
+ if(k=='cool'){eyes=`<rect x="30" y="57" width="26" height="17" rx="6" fill="#1f1f2e"/><rect x="64" y="57" width="26" height="17" rx="6" fill="#1f1f2e"/><path d="M56 64h8" stroke="#1f1f2e" stroke-width="3"/><path d="M35 61l6 0M69 61l6 0" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>`;mouth=`<path d="M52 82Q60 90 68 82" ${S}/>`}
+ if(k=='laugh'){eyes=`<path d="M34 60L48 67L34 74M86 60L72 67L86 74" ${S}/>`;mouth=`<path d="M47 78Q60 101 73 78Z" fill="#5a3d7a"/><ellipse cx="60" cy="90" rx="6" ry="3" fill="#ff8fb0"/>`;extra='<path d="M26 76q-6 7-1 10q5-2 1-10z" fill="#5cc8ff"/><path d="M94 76q6 7 1 10q-5-2-1-10z" fill="#5cc8ff"/>'}
+ if(k=='party'){star=false;eyes=`<path d="M35 68Q42 58 49 68M71 68Q78 58 85 68" ${S}/>`;hat='<path d="M44 38L60 2L76 38Z" fill="#ff6b9d"/><path d="M50 26h20M54 14h12" stroke="#fff" stroke-width="3"/><circle cx="60" cy="3" r="4.5" fill="#f7b733"/>';extra='<rect x="12" y="20" width="6" height="3" fill="#4dd0e1" transform="rotate(30 12 20)"/><rect x="100" y="14" width="6" height="3" fill="#ff6b9d" transform="rotate(-25 100 14)"/><rect x="108" y="50" width="6" height="3" fill="#f7b733" transform="rotate(40 108 50)"/><rect x="8" y="56" width="6" height="3" fill="#a78bfa" transform="rotate(-35 8 56)"/>'}
+ if(k=='hungry'){eyes=`<circle cx="42" cy="66" r="6.5" fill="${D}"/><circle cx="44" cy="64" r="2.2" fill="#fff"/><circle cx="78" cy="66" r="6.5" fill="${D}"/><circle cx="80" cy="64" r="2.2" fill="#fff"/>`;mouth=`<path d="M53 80Q60 96 67 80Z" fill="#5a3d7a"/><ellipse cx="60" cy="88" rx="4" ry="2.4" fill="#ff8fb0"/>`;extra='<ellipse cx="96" cy="107" rx="15" ry="8" fill="#ffa94d"/><path d="M109 107L120 99V115Z" fill="#ff8a3d"/><circle cx="88" cy="105" r="2" fill="#fff"/><circle cx="88" cy="105" r=".9" fill="#222"/>'}
+ return`<svg viewBox="0 0 120 140" xmlns="http://www.w3.org/2000/svg"><path d="M20 52L24 16L52 36Z" fill="#d9ccff" stroke="#b9a6f5" stroke-width="2" stroke-linejoin="round"/><path d="M28 44L30 26L42 36Z" fill="#ffb3c7"/><path d="M100 52L96 16L68 36Z" fill="#d9ccff" stroke="#b9a6f5" stroke-width="2" stroke-linejoin="round"/><path d="M92 44L90 26L78 36Z" fill="#ffb3c7"/><ellipse cx="60" cy="70" rx="46" ry="38" fill="#d9ccff" stroke="#b9a6f5" stroke-width="2"/>${tint}<ellipse cx="60" cy="82" rx="24" ry="16" fill="#f3ecff"/><ellipse cx="40" cy="106" rx="11" ry="7" fill="#d9ccff" stroke="#b9a6f5" stroke-width="2"/><ellipse cx="80" cy="106" rx="11" ry="7" fill="#d9ccff" stroke="#b9a6f5" stroke-width="2"/>${star?'<path d="M60 40l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z" fill="#f7b733"/>':''}<path d="M18 74L34 76M18 82L34 80M102 74L86 76M102 82L86 80" stroke="#8b73e0" stroke-width="2" stroke-linecap="round"/><ellipse cx="33" cy="80" rx="7" ry="4" fill="#ff9fb8" opacity=".55"/><ellipse cx="87" cy="80" rx="7" ry="4" fill="#ff9fb8" opacity=".55"/>${eyes}<path d="M56 72h8l-4 4z" fill="#ff8fb0"/>${mouth}${extra}${hat}<rect x="22" y="116" width="76" height="22" rx="11" fill="#f7b733" stroke="#fff" stroke-width="2.5"/><text x="60" y="131" text-anchor="middle" font-size="13" font-weight="800" fill="#3b2300" font-family="Poppins,Inter,Arial,sans-serif">${esc(c.l)}</text></svg>`}
+const _stkL=stkHTML;
+stkHTML=function(m){const t=m.text||'';
+ if(t.startsWith('c:')){const k=t.slice(2);if(CATM[k])return`<div class="cat kb-${CATM[k].a}">${catSvg(k)}</div>`}
+ if(t.startsWith('g:')){const w=GW[+t.slice(2)];if(w)return`<div class="stkg">${esc(w)}</div>`}
+ return _stkL(m)};
+function sendLx(t){if(!premOK('Luxury sticker packs'))return;sendStk(t)}
+const _rspX=renderSp;
+renderSp=function(){if(spTab!='l')return _rspX();
+ const g=$('#spg'),lock=isPrem()?'':'<i>🔒</i>';$('#sp').querySelectorAll('.spt button').forEach(b=>b.classList.toggle('on',b.dataset.k==spTab));g.className='spg l';
+ g.innerHTML=`<div class="spl"><span>🐱 Noor Billi · animated</span><span class="crn">👑 LUXURY</span></div>`+Object.keys(CATM).map(k=>`<button class="spc cs" onclick="sendLx('c:${k}')">${catSvg(k)}${lock}</button>`).join('')
+ +`<div class="spl"><span>✨ Gold words</span></div>`+GW.map((w,k)=>`<button class="spc gw" onclick="sendLx('g:${k}')">${esc(w)}${lock}</button>`).join('')};
+$('#sp .spt').insertAdjacentHTML('afterbegin','<button data-k="l">👑 Luxury</button>');
+spTab='l';
+/* richer plans page */
+const _phO=plansHTML;
+plansHTML=function(){const old=_phO(),ix=old.indexOf('<div class="lxq"><b>How to activate'),adm=isAdm(),pr=isPrem(),dl=lxDays(me);
+ const st=adm?'👑 Owner · Luxury unlocked':pr?`✓ Active · ${dl} day${dl==1?'':'s'} left · until ${new Date(prUntil(me)).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})}`:'Free plan · text only';
+ const F=[['Text messages & calls','✓','✓'],['Voice messages & documents','✓','✓'],['Photo & video sharing','✕','✓'],['Photos in Feed','✕','✓'],['Luxury sticker packs','✕','✓'],['Gold badge & profile ring','✕','✓']];
+ return`<div class="lxv"><span class="lxspk" style="left:14%;top:18%">✦</span><span class="lxspk" style="right:16%;top:26%;animation-delay:.8s">✦</span><span class="lxspk" style="left:26%;bottom:18%;animation-delay:1.4s;font-size:11px">✦</span><span class="lxspk" style="right:24%;bottom:22%;animation-delay:2s;font-size:12px">✦</span><div class="lxcr">👑</div><b class="t">KhizChat Luxury</b><p>Photos, videos, premium animated stickers and a gold profile.</p><div class="lxs2">${st}</div></div>
+ <div class="lxg"><div><i>🖼</i><b>Photos & Videos</b><span>Share media in every chat</span></div><div><i>📰</i><b>Feed Photo Posts</b><span>Post images in the Feed</span></div><div><i>🐱</i><b>Luxury Stickers</b><span>Animated Noor Billi cat & gold words</span></div><div><i>👑</i><b>Gold Badge</b><span>Gold ring on your name everywhere</span></div></div>
+ <div class="lxcmp"><div><span style="text-align:left">Feature</span><span>Free</span><span class="g">Luxury</span></div>${F.map(r=>`<div><span style="text-align:left">${r[0]}</span><span class="${r[1]=='✓'?'y':'n'}">${r[1]}</span><span class="g">${r[2]}</span></div>`).join('')}</div>`
+ +PLANS.map(p=>`<div class="lxp${p.t=='POPULAR'?' hot':p.t?' best':''}" onclick="openPay('${p.id}')">${p.t?`<span class="lxt">${p.t}</span>`:''}<div class="lxn"><b>Luxury · ${p.n}</b><span class="mu">${p.s}</span><span class="pm">≈ PKR ${Math.round(p.p/(p.d/30))} / month</span></div><div class="lxpr"><small>PKR</small> ${p.p}</div></div>`).join('')
+ +(ix>=0?old.slice(ix):'')};
+/* gold crown next to premium contact name in chat header */
+const _rfX=refresh;refresh=function(){_rfX();try{const h=$('#hn');if(h&&cur&&!G.has(cur)&&isPremU(cur)&&!h.querySelector('.crn'))h.insertAdjacentHTML('beforeend','<span class="crn">👑</span>')}catch(e){}};
 </script></body></html>
