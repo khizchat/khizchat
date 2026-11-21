@@ -355,12 +355,67 @@ input:focus,textarea:focus{border-color:var(--ac);background:var(--s)}
 .inf{display:flex;gap:12px;align-items:center;width:100%;text-align:left;padding:8px 6px;border-radius:12px;background:var(--s2)}
 .inf .tk{margin:0;flex:none;width:24px;justify-content:center}.inf .tk.s1,.inf .tk.s2{color:var(--mu);opacity:1}.inf .tk.s3{color:#2f9bff;filter:none}
 .inf b{font-size:14px}.infb{display:grid;gap:6px;width:100%}
+/* ===== v17: fonts, stickers, neon ===== */
+body{font-family:var(--ff,'Inter'),-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+body[data-ff=nunito]{--ff:'Nunito'}body[data-ff=poppins]{--ff:'Poppins'}body[data-ff=grotesk]{--ff:'Space Grotesk'}
+.fonts{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;padding:6px 8px}
+.fo{display:grid;justify-items:start;gap:2px;padding:12px 14px;border:2px solid transparent;background:var(--s2);border-radius:14px;text-align:left}.fo b{font-size:24px;line-height:1.1}.fo span{font-size:12px;color:var(--mu)}.fo.on{border-color:var(--ac)}
+.neons{display:flex;gap:8px;flex-wrap:wrap;padding:6px 8px}
+.nd{display:grid;justify-items:center;gap:5px;font-size:12px;padding:8px 10px;border:2px solid transparent;background:var(--s2);border-radius:14px}.nd span{width:26px;height:26px;border-radius:50%;background:var(--c);box-shadow:0 0 12px var(--c)}.nd.on{border-color:var(--ac)}
+[data-t=neon]{--bg:#05060f;--s:#0b0d1c;--s2:#12162e;--tx:#eaf6ff;--mu:#7f8cb5;--ac:#00e5ff;--ac2:#ff2bd6;--bd:#1b2250}
+/* stickers */
+.m.stk{background:transparent!important;border:0!important;box-shadow:none!important;padding:2px 4px;color:var(--tx)!important}.m.stk small{color:var(--mu);opacity:1}
+.stke{font-size:76px;line-height:1.1}
+.stkw{padding:10px 18px;border-radius:18px;color:#fff;font-weight:800;font-size:22px;letter-spacing:.4px;text-shadow:0 2px 6px #0004;transform:rotate(-3deg);box-shadow:0 8px 20px -8px #0006;border:3px solid #fff}
+.stki{display:block;width:140px;height:140px;object-fit:cover;border-radius:50%;border:4px solid #fff;box-shadow:0 8px 20px -8px #0006}
+#sp{margin:0 10px;background:var(--s);border:1px solid var(--bd);border-radius:18px;box-shadow:0 12px 30px -12px #0005;overflow:hidden}
+.spt{display:flex;gap:6px;padding:8px;border-bottom:1px solid var(--bd)}.spt button{padding:6px 14px;font-size:13px;border-radius:99px;background:none;color:var(--mu)}.spt .on{background:color-mix(in srgb,var(--ac) 14%,transparent);color:var(--ac);font-weight:600}
+.spg{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;padding:8px;max-height:230px;overflow:auto}.spg.w{grid-template-columns:repeat(2,1fr)}
+.spc{display:grid;place-items:center;font-size:34px;padding:6px;border-radius:12px;cursor:pointer;background:none;position:relative}.spc:hover{background:var(--s2)}
+.spc.w{font-size:13px;font-weight:800;color:#fff;padding:12px 6px;text-shadow:0 1px 4px #0005;border-radius:12px}.spc.w:hover{filter:brightness(1.1)}
+.spc img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:50%}
+.spc i{position:absolute;top:0;right:0;font-style:normal;font-size:11px;background:#0008;color:#fff;border-radius:50%;width:18px;height:18px;display:grid;place-items:center}
+.spc.add{border:2px dashed var(--bd);color:var(--mu);aspect-ratio:1;font-size:28px}
+/* neon */
+body.nx{--nc:var(--ac)}
+body.nx ::selection{background:var(--nc);color:#000}
+body.nx #hd{border-bottom-color:var(--nc);box-shadow:0 6px 26px -12px var(--nc)}
+body.nx #side{box-shadow:1px 0 20px -10px var(--nc)}
+body.nx #comp{border-color:var(--nc);box-shadow:0 0 18px -4px var(--nc),inset 0 0 12px -8px var(--nc)}
+body.nx .m.me{background:color-mix(in srgb,var(--nc) 20%,var(--s));border:1px solid var(--nc);color:var(--tx);box-shadow:0 0 14px -3px var(--nc),inset 0 0 10px -7px var(--nc)}
+body.nx .m:not(.me){border-color:color-mix(in srgb,var(--nc) 35%,var(--bd));box-shadow:0 0 10px -7px var(--nc)}
+body.nx .pri,body.nx .fab,body.nx .mark,body.nx .nlogo,body.nx .sh{background:var(--nc);color:#031018;box-shadow:0 0 18px var(--nc),0 0 44px -8px var(--nc)}
+body.nx .mark svg,body.nx .nlogo svg{stroke:#031018}
+body.nx #nav .on{color:var(--nc);text-shadow:0 0 10px var(--nc);background:transparent;box-shadow:inset 0 0 0 1px var(--nc),0 0 16px -4px var(--nc)}
+body.nx .ph b,body.nx #hn{text-shadow:0 0 14px color-mix(in srgb,var(--nc) 70%,transparent)}
+body.nx .it.sel{box-shadow:inset 3px 0 0 var(--nc),0 0 20px -10px var(--nc)}
+body.nx .bd,body.nx .nbd{background:var(--nc);color:#031018;box-shadow:0 0 10px var(--nc)}
+body.nx input:focus,body.nx textarea:focus{border-color:var(--nc);box-shadow:0 0 0 3px color-mix(in srgb,var(--nc) 22%,transparent),0 0 18px -4px var(--nc)!important}
+body.nx .tg.on{background:var(--nc);box-shadow:0 0 12px var(--nc)}
+body.nx #hav .av,body.nx .prof .av{box-shadow:0 0 0 2px var(--s),0 0 0 3px var(--nc),0 0 16px var(--nc)!important}
+body.nx .mc,body.nx .card,body.nx #ep,body.nx #am,body.nx #sp,body.nx #hmn,body.nx #mm{border-color:var(--nc);box-shadow:0 0 28px -8px var(--nc),0 20px 50px -22px #000a}
+body.nx #ca,body.nx #cv{color:var(--nc)!important}
+body.nx .tk.s3{color:var(--nc);filter:drop-shadow(0 0 4px var(--nc))}
+body.nx .fo.on,body.nx .nd.on,body.nx .sw.on{border-color:var(--nc);box-shadow:0 0 14px -4px var(--nc)}
+body.nx .dsep span{border-color:color-mix(in srgb,var(--nc) 40%,var(--bd))}
+body.nx .stkw{box-shadow:0 0 18px -2px var(--nc)}
+/* ===== v18: image actions ===== */
+#lb{flex-direction:column}
+.lbb{position:absolute;bottom:max(20px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;gap:6px;background:#000b;padding:8px;border-radius:99px;cursor:default;z-index:2;max-width:96vw}
+.lbb button{background:#ffffff1f;color:#fff;padding:10px 14px;border-radius:99px;font-size:14px;white-space:nowrap}.lbb button:hover{background:#ffffff38}.lbb button.d{color:#ff7b8f}
+.lbh{position:absolute;top:max(16px,env(safe-area-inset-top));left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;color:#fff;z-index:2;text-shadow:0 1px 6px #000;cursor:default;pointer-events:none}
+.lbh button{pointer-events:auto;background:#ffffff26;color:#fff;border-radius:50%;width:40px;height:40px;padding:0}
+#lb img{cursor:default}
+.qth{display:block;width:56px;height:56px;object-fit:cover;border-radius:8px;margin-top:4px;cursor:default}
+#rpt .qth{display:inline-block;vertical-align:middle;margin:0 8px 0 0;width:32px;height:32px}
+@media(max-width:520px){.lbb button{padding:10px 11px;font-size:13px}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-messaging-compat.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head><body data-t="light"><div id="splash"><div class="mark"><svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M9 7v6M14 7l-5 3.5M11 9.5l3 3.5"/></svg></div><b>KhizChat</b><span>by Muhammad Khizar</span></div>
 <svg width="0" height="0" style="position:absolute"><defs>
 <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
@@ -456,8 +511,8 @@ function refresh(){if(!me||!U[me])return;
  renderList();if(cur&&(U[cur]||G.has(cur))){$('#ca').hidden=$('#cv').hidden=G.has(cur);{const gg=G.get(cur),lk=!!(gg&&gg.only&&!gg.admins.includes(me));$('#tx').disabled=lk;$('#tx').placeholder=lk?'Only admins can send messages':'Type a message…';$('#sd').disabled=$('#mic').disabled=$('#at').disabled=lk}$('#hn').textContent=nm(cur);$('#hp').innerHTML=G.has(cur)?gsub(cur):typing(cur)?'<i style="color:var(--ac)">typing…</i>':pres(cur);$('#hav').innerHTML=avo(cur,40);renderMsgs()}
  callUI();notify()}
 function renderList(){const a=document.activeElement&&document.activeElement.id;if((tab=='friends'&&a=='fu')||(tab=='status'&&a=='stx'))return;let h='';
- if(tab=='chats'){const g={};for(const m of M.values()){if(m.g)continue;const o=m.from==me?m.to:m.from;(g[o]=g[o]||[]).push(m)}
-  const gm={};for(const m of M.values())if(m.g&&G.has(m.to))(gm[m.to]=gm[m.to]||[]).push(m);
+ if(tab=='chats'){const g={};for(const m of M.values()){if(m.g||(m.hid||{})[me])continue;const o=m.from==me?m.to:m.from;(g[o]=g[o]||[]).push(m)}
+  const gm={};for(const m of M.values())if(m.g&&G.has(m.to)&&!(m.hid||{})[me])(gm[m.to]=gm[m.to]||[]).push(m);
   const pins=U[me].pins||[];
   const mk=(id,ms,grp)=>{ms=(ms||[]).sort((x,y)=>x.ts-y.ts);const l=ms[ms.length-1];return{u:id,grp,l,n:grp?ms.filter(m=>m.from!=me&&m.type!='sys'&&!(m.rd||{})[me]).length:ms.filter(m=>m.from==id&&!m.read&&!m.del).length,t:l?l.ts:(grp?G.get(id).ts||0:0),p:pins.includes(id)?1:0}};
   let fr=friends().map(u=>mk(u,g[u],0)).concat([...G.keys()].map(id=>mk(id,gm[id],1)));
@@ -482,24 +537,24 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
  if(tab=='set'){const u=U[me],p=u.priv||{};
   const lg=(k,l)=>`<div class="row sp pad"><span>${l}</span><button class="tg ${PF[k]!==false?'on':''}" onclick="sp('${k}',${PF[k]===false})"></button></div>`;const tg=(k,l)=>`<div class="row sp pad"><span>${l}</span><button class="tg ${p[k]!==false?'on':''}" onclick="tgl('${k}')"></button></div>`;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
-  <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
+  <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
   <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v12 • by Muhammad Khizar</p>`}
  $('#list').innerHTML=h}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
 $('#bk').onclick=()=>{if(cur)drafts[cur]=$('#tx').value;cur=null;$('#app').classList.remove('co');$('#chat').hidden=true;$('#empty').hidden=false};
-function renderMsgs(){const gr=G.has(cur),all=[...M.values()].filter(m=>gr?(m.g&&m.to==cur):(!m.g&&(m.from==cur||m.to==cur))).sort((a,b)=>a.ts-b.ts),ms=cq?all.filter(m=>m.type=='text'&&!m.del&&!(m.unlock&&m.unlock>Date.now()&&m.from!=me)&&m.text.toLowerCase().includes(cq)):all;
+function renderMsgs(){const gr=G.has(cur),all=[...M.values()].filter(m=>(gr?(m.g&&m.to==cur):(!m.g&&(m.from==cur||m.to==cur)))&&!(m.hid||{})[me]).sort((a,b)=>a.ts-b.ts),ms=cq?all.filter(m=>m.type=='text'&&!m.del&&!(m.unlock&&m.unlock>Date.now()&&m.from!=me)&&m.text.toLowerCase().includes(cq)):all;
  const un=gr?all.filter(m=>m.from!=me&&m.type!='sys'&&!(m.rd||{})[me]):all.filter(m=>m.from==cur&&m.to==me&&!m.read);
  if(un.length&&!document.hidden&&(U[me].priv||{}).receipts!==false){const b=fs.batch();un.forEach(m=>{b.update(fs.collection('msgs').doc(m.id),gr?{['rd.'+me]:Date.now()}:{read:true,readAt:Date.now()});if(gr)m.rd=Object.assign({},m.rd,{[me]:true});else m.read=true});b.commit().catch(()=>{})}
  const s=ms.map(m=>m.id+(m.unlock&&m.unlock>Date.now()?'L':'')+(m.read?1:0)+(m.dlv?1:0)+Object.keys(m.dl||{}).length+Object.keys(m.rd||{}).length+(m.votes?Object.values(m.votes).join(''):'')+(m.del?'d':'')+(m.edited?m.text.length:'')+((m.star||{})[me]?'s':'')+Object.values(m.react||{}).join('')).join()+'|'+cq;if(s==sig)return;sig=s;const B=$('#msgs');
  let ld='';B.innerHTML=ms.map((m,ix)=>{const pv=ms[ix-1],cont=pv&&pv.from==m.from&&m.ts-pv.ts<12e4&&sd(m.ts,pv.ts);const mine=m.from==me;let x;const dk=new Date(m.ts).toDateString(),sep=dk!=ld?(ld=dk,`<div class="dsep"><span>${dl(m.ts)}</span></div>`):'';if(m.type=='sys')return sep+`<div class="dsep sy"><span>${esc(m.text)}</span></div>`;const rr=gr?G.get(cur).members.filter(z=>z!=me).every(z=>(m.rd||{})[z]):m.read,sn=gr&&!mine&&!(cont&&!sep)?`<div class="sn" style="color:${col(m.from)}">${esc(nm(m.from))}</div>`:'';
  if(m.del)x='<i class="mu">🚫 This message was deleted</i>';
- else if(isLk(m))x=lockHTML(m);else x=lkPre(m)+(m.fwd?'<div class="fw">➦ Forwarded</div>':'')+(m.reply?`<div class="qt"><b>${m.reply.u==me?'You':esc(nm(m.reply.u))}</b>${esc(m.reply.t)}</div>`:'')+(m.type=='text'?lnk(esc(m.text)).replace(/\n/g,'<br>'):m.type=='file'?fileHTML(m):m.type=='poll'?pollHTML(m):m.type=='img'?`<img src="${m.data}">`:m.type=='vid'?`<video controls playsinline src="${m.data}"></video>`:`<audio controls src="${m.data}"></audio>`);
+ else if(isLk(m))x=lockHTML(m);else x=lkPre(m)+(m.fwd?'<div class="fw">➦ Forwarded</div>':'')+(m.reply?`<div class="qt"><b>${m.reply.u==me?'You':esc(nm(m.reply.u))}</b>${esc(m.reply.t)}${m.reply.th?`<img class="qth" src="${m.reply.th}">`:''}</div>`:'')+(m.type=='text'?lnk(esc(m.text)).replace(/\n/g,'<br>'):m.type=='file'?fileHTML(m):m.type=='poll'?pollHTML(m):m.type=='stk'?stkHTML(m):m.type=='img'?`<img src="${m.data}">`:m.type=='vid'?`<video controls playsinline src="${m.data}"></video>`:`<audio controls src="${m.data}"></audio>`);
  const rc=Object.values(m.react||{}),rx=rc.length?`<span class="rx">${[...new Set(rc)].join('')}${rc.length>1?' '+rc.length:''}</span>`:'';
- return sep+`<div class="m ${mine?'me':''}${cont&&!sep?' cont':''}" data-m="${m.id}">${sn}${x}<small>${(m.star||{})[me]?'★ ':''}${m.edited?'edited · ':''}${tm(m.ts)} ${mine?tickHTML(m):''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
+ return sep+`<div class="m ${mine?'me':''}${cont&&!sep?' cont':''}${m.type=='stk'&&!m.del?' stk':''}" data-m="${m.id}">${sn}${x}<small>${(m.star||{})[me]?'★ ':''}${m.edited?'edited · ':''}${tm(m.ts)} ${mine?tickHTML(m):''}</small>${rx}</div>`}).join('');B.scrollTop=B.scrollHeight}
 /* ---------- chat actions ---------- */
-function send(type,text,data){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');if(G.has(cur)){const gg=G.get(cur);if(gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages')}fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},...gx(cur),reply:rp?{u:rp.from,t:prv(rp)}:null}).catch(e=>toast('Send failed: '+e.code));setRp(null)}
+function send(type,text,data){if(!cur)return;if(blocked(cur))return toast('Unblock this contact first');if(G.has(cur)){const gg=G.get(cur);if(gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages')}fs.collection('msgs').add({from:me,to:cur,type,text:text||'',data:data||'',ts:Date.now(),read:false,react:{},...gx(cur),reply:rp?Object.assign({u:rp.from,t:prv(rp)},rpTh?{th:rpTh}:{}):null}).catch(e=>toast('Send failed: '+e.code));setRp(null)}
 $('#sd').onclick=()=>{const t=$('#tx').value.trim();if(!t)return;$('#tx').value='';send('text',t)};
 $('#tx').onkeydown=e=>{if(e.key=='Enter'&&!e.shiftKey&&PF.ent!==false){e.preventDefault();$('#sd').click()}};
 $('#tx').oninput=()=>{if(cur&&!G.has(cur)&&U[me].priv.typing!==false&&Date.now()-lastTy>2000){lastTy=Date.now();fs.collection('users').doc(me).update({ty:{to:cur,ts:Date.now()}}).catch(()=>{})}};
@@ -578,12 +633,12 @@ let rp=null,dip=null;
 function picSq(f,sz){return new Promise((res,rej)=>{const im=new Image(),u=URL.createObjectURL(f);im.onload=()=>{const m=Math.min(im.width,im.height),c=document.createElement('canvas');c.width=c.height=sz;const x=c.getContext('2d');x.imageSmoothingQuality='high';x.drawImage(im,(im.width-m)/2,(im.height-m)/2,m,m,0,0,sz,sz);URL.revokeObjectURL(u);res(c.toDataURL('image/jpeg',.88))};im.onerror=rej;im.src=u})}
 async function setDp(inp){const f=inp.files[0];if(!f)return;try{await fs.collection('users').doc(me).update({dp:await picSq(f,480)});toast('Profile photo updated ✓')}catch(e){toast('Photo error')}inp.value=''}
 const rmDp=()=>fs.collection('users').doc(me).update({dp:firebase.firestore.FieldValue.delete()});
-const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message',poll:'📊 Poll',file:'📄 Document'})[m.type];
+const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message',poll:'📊 Poll',file:'📄 Document',stk:'🎭 Sticker'})[m.type];
 const hideMM=()=>$('#mm').hidden=true;
 function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm'),mine=m.from==me,st=(m.star||{})[me];
- d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${mine?`<button onclick="msgInfo('${m.id}')">ⓘ Info</button>`:''}<button onclick="fwd('${m.id}')">➦ Forward</button><button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}${mine?`<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button>`:''}</div>`;
+ d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${mine?`<button onclick="msgInfo('${m.id}')">ⓘ Info</button>`:''}<button onclick="fwd('${m.id}')">➦ Forward</button><button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button></div>`;
  d.hidden=false;const h=d.offsetHeight,w=d.offsetWidth;let t=r.top-h-6;if(t<8)t=Math.min(r.bottom+6,innerHeight-h-8);d.style.top=Math.max(8,t)+'px';d.style.left=Math.min(Math.max(8,mine?r.right-w:r.left),innerWidth-w-8)+'px'}
-$('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video,a,.po,.fcb'))return;if(e.target.tagName=='IMG'&&e.target.closest('.m')){lb(e.target.src);return}const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;if(m.unlock&&m.unlock>Date.now()&&m.from!=me)return toast('🔒 Unlocks '+dt(m.unlock));showMM(m,el)});
+$('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video,a,.po,.fcb'))return;if(e.target.tagName=='IMG'&&!e.target.classList.contains('qth')&&e.target.closest('.m')){lb(e.target.src,e.target.closest('[data-m]').dataset.m);return}const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;if(m.unlock&&m.unlock>Date.now()&&m.from!=me)return toast('🔒 Unlocks '+dt(m.unlock));showMM(m,el)});
 document.addEventListener('click',e=>{if(!e.target.closest('#mm,[data-m]'))hideMM()});
 function react(id,e){hideMM();const m=M.get(id);fs.collection('msgs').doc(id).update({['react.'+me]:(m.react||{})[me]==e?firebase.firestore.FieldValue.delete():e}).catch(()=>{})}
 function delMsg(id){hideMM();if(confirm('Delete for everyone?'))fs.collection('msgs').doc(id).update({del:true,text:'',data:''}).catch(()=>{})}
@@ -646,7 +701,7 @@ let hidAt=0;document.addEventListener('visibilitychange',()=>{if(document.hidden
 /* ---------- v8: groups, polls, profile about ---------- */
 const gx=c=>G.has(c)?{g:1,mem:G.get(c).members,rd:{}}:{};
 const gsub=id=>G.get(id).members.map(u=>u==me?'You':nm(u)).join(', ');
-const lp=f=>{const l=f.l;if(l.del)return '🚫 Deleted message';const b=(l.unlock&&l.unlock>Date.now()&&l.from!=me)?'⏳ Time-locked message':l.type=='text'||l.type=='sys'?esc(l.text):l.type=='poll'?'📊 '+esc(l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message',file:'Document'})[l.type];const pre=l.type=='sys'?'':l.from==me?(f.grp?'You: ':tickHTML(l)+' '):(f.grp?esc(nm(l.from))+': ':'');return pre+b};
+const lp=f=>{const l=f.l;if(l.del)return '🚫 Deleted message';const b=(l.unlock&&l.unlock>Date.now()&&l.from!=me)?'⏳ Time-locked message':l.type=='text'||l.type=='sys'?esc(l.text):l.type=='poll'?'📊 '+esc(l.text):'📎 '+({img:'Photo',vid:'Video',aud:'Voice message',file:'Document',stk:'Sticker'})[l.type];const pre=l.type=='sys'?'':l.from==me?(f.grp?'You: ':tickHTML(l)+' '):(f.grp?esc(nm(l.from))+': ':'');return pre+b};
 const PRE=['Available','Busy','At school','At work','At the gym','In a meeting','Sleeping','Urgent calls only','Battery about to die'];
 function editProf(){const u=U[me],d=$('#md');d.innerHTML=`<div class="mc gx"><b style="font-size:18px">Edit profile</b><input id="pn" value="${esc(u.name)}" maxlength="30" placeholder="Your name"><textarea id="pa" maxlength="80" placeholder="About" style="height:70px">${esc(u.about||'')}</textarea><div class="chips" style="flex-wrap:wrap;justify-content:center">${PRE.map(t=>`<button onclick="$('#pa').value='${t}'">${t}</button>`).join('')}</div><div class="row"><button onclick="$('#md').hidden=true">Cancel</button><button class="pri" onclick="saveProf()">Save</button></div></div>`;d.hidden=false}
 function saveProf(){const n=$('#pn').value.trim(),a=$('#pa').value.trim().slice(0,80);fs.collection('users').doc(me).update({name:n||U[me].name,about:a}).then(()=>toast('Profile updated ✓')).catch(()=>toast('Update failed'));$('#md').hidden=true}
@@ -888,7 +943,7 @@ function mkLock(){const t=$('#lkt').value.trim(),ts=new Date($('#lkd').value).ge
 $('#am').insertAdjacentHTML('beforeend','<button onclick="$(\'#am\').hidden=true;newLock()">⏳  Time-locked message</button>');
 /* ---- chat timeline ---- */
 let tlF='all';
-function tlItems(){const gr=G.has(cur),ms=[...M.values()].filter(m=>gr?(m.g&&m.to==cur):(!m.g&&(m.from==cur||m.to==cur)));
+function tlItems(){const gr=G.has(cur),ms=[...M.values()].filter(m=>(gr?(m.g&&m.to==cur):(!m.g&&(m.from==cur||m.to==cur)))&&!(m.hid||{})[me]);
  const it=ms.map(m=>{const lk=isLk(m);let k='msg',ic='💬',tx=m.del?'Deleted message':lk?'Time-locked message':m.type=='text'?m.text.slice(0,80):(prv(m)||'');
   if(m.type=='sys'){k='sys';ic='ℹ️';tx=m.text}else if(m.type=='img'||m.type=='vid'){k='media';ic=m.type=='img'?'📷':'🎬'}else if(m.type=='aud'){k='media';ic='🎤'}else if(m.type=='file'){k='file';ic=fic(m.name||'');tx=m.name||'File'}else if(m.type=='poll')ic='📊';
   if(m.unlock){k='lock';ic=lk?'🔒':'🔓'}
@@ -971,4 +1026,53 @@ function msgInfo(id){hideMM();const m=M.get(id);if(!m)return;const r=(s,l,t)=>`<
  if(!m.g)h=r(1,'Sent',dt(m.ts))+r(2,'Delivered',m.dlv?(m.dlvAt?dt(m.dlvAt):'Yes'):'Not yet')+r(3,'Seen',m.read?(m.readAt?dt(m.readAt):'Yes'):'Not yet');
  else{const g=G.get(m.to);h=r(1,'Sent',dt(m.ts))+(g?g.members.filter(u=>u!=me).map(u=>{const rd=(m.rd||{})[u],dl=(m.dl||{})[u];return`<div class="inf">${av(u,32)}<div style="flex:1"><b>${esc(nm(u))}</b><div class="mu">${rd?'Seen'+(typeof rd=='number'?' · '+dt(rd):''):dl?'Delivered'+(typeof dl=='number'?' · '+dt(dl):''):'Not yet delivered'}</div></div><span class="tk s${rd?3:dl?2:1}">${rd||dl?TK2:TK1}</span></div>`}).join(''):'')}
  const d=$('#md');d.innerHTML=`<div class="mc gx"><b style="font-size:18px">Message info</b><div class="infb">${h}</div><button onclick="$('#md').hidden=true">Close</button></div>`;d.hidden=false}
+
+/* ---------- v17: fonts, neon, stickers ---------- */
+const FONTS=[['inter','Modern','Inter'],['nunito','Rounded','Nunito'],['poppins','Elegant','Poppins'],['grotesk','Techy','Space Grotesk']];
+const NEONS=[['off','Off','#888'],['cyan','Cyan','#00e5ff'],['pink','Pink','#ff2bd6'],['green','Green','#39ff14'],['purple','Purple','#b66bff'],['orange','Orange','#ff9500']];
+const NC={cyan:'#00e5ff',pink:'#ff2bd6',green:'#39ff14',purple:'#b66bff',orange:'#ff9500'};
+function applyNeon(){const b=document.body,k=PF.neon&&PF.neon!='off'&&NC[PF.neon]?PF.neon:null;b.classList.toggle('nx',!!(k||b.dataset.t=='neon'));if(k)b.style.setProperty('--nc',NC[k]);else b.style.removeProperty('--nc')}
+const _ap=applyPF;applyPF=function(){_ap();document.body.dataset.ff=PF.ff||'inter';applyNeon()};
+const _rf2=refresh;refresh=function(){_rf2();applyNeon()};
+applyPF();
+const _rl3=renderList;renderList=function(){_rl3();if(tab!='set')return;const L=$('#list'),s=[...L.querySelectorAll('.sec')].find(x=>x.textContent=='Theme');if(!s||$('#fnt'))return;
+ s.insertAdjacentHTML('beforebegin',`<div class="sec" id="fnt">Font style</div><div class="fonts">${FONTS.map(f=>`<button class="fo ${(PF.ff||'inter')==f[0]?'on':''}" style="font-family:'${f[2]}',sans-serif" onclick="sp('ff','${f[0]}')"><b>Aa</b><span>${f[1]} · ${f[2]}</span></button>`).join('')}</div><div class="sec">Neon glow</div><div class="neons">${NEONS.map(n=>`<button class="nd ${(PF.neon||'off')==n[0]?'on':''}" style="--c:${n[2]}" onclick="sp('neon','${n[0]}')"><span></span>${n[1]}</button>`).join('')}</div>`)};
+/* stickers */
+const WORDS=[['WOW!','#ff512f,#dd2476'],['GG','#11998e,#38ef7d'],['LOL','#f7971e,#ffd200'],['THANKS','#667eea,#764ba2'],['MISS U','#fa709a,#fee140'],['LOVE U ❤️','#f5576c,#f093fb'],['BRB','#232526,#414345'],['NICE!','#4facfe,#00c6fb'],['SORRY 🙏','#ff9a44,#fc6076'],['BOSS 😎','#0f2027,#2c5364'],['Shukriya','#43e97b,#2bc9a8'],['Mubarak! 🎉','#ff512f,#f09819'],['MashaAllah ✨','#1d976c,#93f9b9'],['Wah Wah!','#8e2de2,#4a00e0'],['Khuda Hafiz','#373b44,#4286f4'],['Assalamualaikum','#0ba360,#3cba92']];
+const SEM=['😀','😂','🤣','😍','🥰','😘','😎','🤩','😭','😡','😴','🤯','🥳','😇','🤔','🙄','😱','🤗','👍','👎','👏','🙏','💪','🔥','❤️','💔','💯','🎉','✨','🌹','☕','🍕','🎂','⚽','🏏','🚀','👀','🤝','😅','🥺'];
+let spTab='e';
+const myStk=()=>{try{return JSON.parse(localStorage.getItem('kc_stk'))||[]}catch(e){return[]}};
+function stkHTML(m){const t=m.text||'';if(t.startsWith('e:'))return`<div class="stke">${esc(t.slice(2))}</div>`;if(t.startsWith('w:')){const w=WORDS[+t.slice(2)];if(w)return`<div class="stkw" style="background:linear-gradient(135deg,${w[1]})">${esc(w[0])}</div>`}return m.data?`<img class="stki" src="${m.data}">`:'🎭'}
+function renderSp(){const g=$('#spg');$('#sp').querySelectorAll('.spt button').forEach(b=>b.classList.toggle('on',b.dataset.k==spTab));g.className='spg'+(spTab=='w'?' w':'');
+ if(spTab=='e')g.innerHTML=SEM.map(e=>`<button class="spc" onclick="sendStk('e:${e}')">${e}</button>`).join('');
+ else if(spTab=='w')g.innerHTML=WORDS.map((w,k)=>`<button class="spc w" style="background:linear-gradient(135deg,${w[1]})" onclick="sendStk('w:${k}')">${esc(w[0])}</button>`).join('');
+ else g.innerHTML=`<label class="spc add">＋<input type="file" accept="image/*" hidden onchange="addStk(this)"></label>`+myStk().map((d,k)=>`<div class="spc"><img src="${d}" onclick="sendStkImg(${k})"><i onclick="delStk(${k})">✕</i></div>`).join('')}
+function sendStk(t,d){$('#sp').hidden=true;send('stk',t,d||'')}
+const sendStkImg=k=>{const d=myStk()[k];if(d)sendStk('i',d)};
+function addStk(inp){const f=inp.files[0];if(!f)return;inp.value='';cropImg(f,d=>{const l=myStk();l.unshift(d);try{localStorage.setItem('kc_stk',JSON.stringify(l.slice(0,24)))}catch(e){toast('Storage full')}renderSp()},320)}
+function delStk(k){const l=myStk();l.splice(k,1);try{localStorage.setItem('kc_stk',JSON.stringify(l))}catch(e){}renderSp()}
+$('#ep').insertAdjacentHTML('afterend','<div id="sp" hidden><div class="spt"><button data-k="e">😀 Emoji</button><button data-k="w">💬 Words</button><button data-k="m">⭐ Mine</button></div><div class="spg" id="spg"></div></div>');
+$('#em').insertAdjacentHTML('afterend','<button class="ib" id="stkb" title="Stickers">🎭</button>');
+$('#stkb').onclick=()=>{$('#ep').hidden=true;$('#am').hidden=true;const s=$('#sp');s.hidden=!s.hidden;if(!s.hidden)renderSp()};
+$('#sp .spt').onclick=e=>{const b=e.target.closest('button');if(b){spTab=b.dataset.k;renderSp()}};
+$('#em').addEventListener('click',()=>$('#sp').hidden=true);$('#at').addEventListener('click',()=>$('#sp').hidden=true);
+document.addEventListener('keydown',e=>{if(e.key=='Escape')$('#sp').hidden=true});
+
+/* ---------- v18: image viewer actions, delete for me/everyone, forward to groups, reply thumbnail ---------- */
+const lbx=()=>{$('#lb').hidden=true};
+function lb(src,id){const l=$('#lb'),m=id&&M.get(id),mine=m&&m.from==me;
+ l.innerHTML=`<img alt="" src="${src}">${m?`<div class="lbh"><div><b>${m.from==me?'You':esc(nm(m.from))}</b><div style="font-size:12px;opacity:.8">${dt(m.ts)}</div></div><button onclick="lbx()">✕</button></div><div class="lbb"><button onclick="lbx();setRp('${id}')">↩ Reply</button><button onclick="lbx();fwd('${id}')">➦ Forward</button>${m.type=='img'?`<button onclick="lbSave('${id}')">⬇ Save</button>`:''}<button class="d" onclick="lbx();delMsg('${id}')">🗑 Delete</button></div>`:''}`;
+ l.onclick=e=>{if(!e.target.closest('.lbb,.lbh button'))l.hidden=true};l.hidden=false}
+function lbSave(id){const m=M.get(id);if(!m||!m.data)return;const a=document.createElement('a');a.href=m.data;a.download='KhizChat-'+m.ts+'.jpg';document.body.appendChild(a);a.click();a.remove();toast('Saved ✓')}
+function delMsg(id){hideMM();const m=M.get(id);if(!m)return;const mine=m.from==me,d=$('#md');
+ d.innerHTML=`<div class="mc"><b style="font-size:18px">Delete message?</b><div class="mu">${mine?'Remove it for everyone, or only from your own chat.':'This removes it only from your chat.'}</div>${mine&&!m.del?`<button style="width:100%;color:#e11d48" onclick="delDo('${id}',1)">🗑 Delete for everyone</button>`:''}<button style="width:100%" onclick="delDo('${id}',0)">Delete for me</button><button style="width:100%" onclick="$('#md').hidden=true">Cancel</button></div>`;d.hidden=false}
+function delDo(id,all){$('#md').hidden=true;const r=fs.collection('msgs').doc(id);(all?r.update({del:true,text:'',data:'',name:''}):r.update({['hid.'+me]:true})).then(()=>toast(all?'Deleted for everyone':'Deleted for you')).catch(()=>toast('Could not delete'))}
+function fwd(id){hideMM();const d=$('#md'),t=friends().filter(u=>!blocked(u)).concat([...G.keys()]);
+ d.innerHTML=`<div class="mc" style="align-items:stretch;text-align:left;max-height:80vh;overflow:auto;justify-items:stretch"><b style="font-size:17px">Forward to…</b>${t.map(u=>`<div class="it" onclick="doFwd('${id}','${u}')">${av(u,40)}<div class="b"><b>${esc(nm(u))}</b><div class="mu">${G.has(u)?'Group':'@'+esc((U[u]||{}).username||'')}</div></div></div>`).join('')||'<p class="mu">No chats yet</p>'}<button onclick="$('#md').hidden=true">Cancel</button></div>`;d.hidden=false}
+function doFwd(id,u){const m=M.get(id);if(!m)return;const gg=G.get(u);if(gg&&gg.only&&!gg.admins.includes(me))return toast('Only admins can send messages there');$('#md').hidden=true;
+ const o={from:me,to:u,type:m.type,text:m.text||'',data:m.data||'',ts:Date.now(),read:false,react:{},fwd:true};['name','size','mime','fid','n','opts'].forEach(k=>{if(m[k]!==undefined)o[k]=m[k]});if(m.type=='poll')o.votes={};
+ fs.collection('msgs').add(Object.assign(o,gx(u))).then(()=>toast('Forwarded ✓')).catch(()=>toast('Forward failed'))}
+let rpTh='';const _srp=setRp;
+setRp=function(id){_srp(id);rpTh='';if(rp&&(rp.type=='img'||rp.type=='stk')&&rp.data){const im=new Image();im.onload=()=>{const c=document.createElement('canvas'),k=Math.min(1,96/Math.max(im.width,im.height));c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);rpTh=c.toDataURL('image/jpeg',.6)};im.src=rp.data;$('#rpt').innerHTML='<img class="qth" src="'+rp.data+'">'+esc($('#rpt').textContent)}};
+$('#msgs').addEventListener('contextmenu',e=>{const el=e.target.closest('[data-m]');if(!el)return;const m=M.get(el.dataset.m);if(!m||m.del||isLk(m))return;e.preventDefault();showMM(m,el)});
 </script></body></html>
