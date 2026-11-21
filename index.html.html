@@ -324,6 +324,27 @@ input:focus,textarea:focus{border-color:var(--ac);background:var(--s)}
 .cw canvas{display:block;touch-action:none}
 .cm{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle closest-side at 50% 50%,transparent calc(100% - 1.5px),#fff calc(100% - 1.5px),#fff calc(100% - .5px),#000a calc(100% - .5px))}
 #cz{padding:0;height:6px;accent-color:var(--ac)}
+/* ===== v15: professional chat header ===== */
+#hd{min-height:64px;padding:10px 14px;gap:12px;align-items:center;position:relative}
+#hd .b{display:grid;gap:2px;min-width:0;align-content:center}
+#hn{font-size:calc(16px*var(--sc,1));font-weight:650;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:-.01em}
+#hp{font-size:calc(12.5px*var(--sc,1));line-height:1.2;color:var(--mu)}
+#hd .ib{width:40px;height:40px;border-radius:12px;background:transparent;color:var(--mu)}
+#hd .ib:hover{background:var(--s2);color:var(--tx)}
+#hd .ib .i{width:20px;height:20px}
+#hd .ib:active{transform:scale(.94)}
+#ca,#cv{color:var(--ac)!important;background:color-mix(in srgb,var(--ac) 11%,transparent)!important}
+#ca:hover,#cv:hover{background:color-mix(in srgb,var(--ac) 20%,transparent)!important}
+#ctl{display:none!important}
+#hm{font-size:22px;font-weight:800;line-height:1;padding-bottom:5px!important}
+#hav{display:grid;place-items:center;flex:none}
+.hdg{display:flex;gap:6px;align-items:center;flex:none}
+#hmn{position:absolute;right:12px;top:calc(100% + 6px);z-index:60;min-width:236px;background:var(--s);border:1px solid var(--bd);border-radius:16px;padding:6px;display:grid;gap:1px;box-shadow:0 22px 50px -20px #0007;animation:pop .14s ease-out}
+#hmn button{background:none;text-align:left;display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;font-size:14px;width:100%}
+#hmn button:hover{background:var(--s2)}
+#hmn span{width:20px;text-align:center;flex:none}
+#cbar{padding:8px 14px}
+@media(max-width:760px){#cs_{display:none!important}#hd{padding:8px 10px;gap:8px;min-height:60px}#hd .ib{width:38px;height:38px}.back{margin-left:-2px;color:var(--tx)!important}.hdg{gap:4px}#hmn{right:10px}}
 </style>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
@@ -910,4 +931,17 @@ async function setDp(inp){const f=inp.files[0];if(!f)return;inp.value='';cropImg
 function recropDp(){const d=U[me]&&U[me].dp;if(!d)return;fetch(d).then(r=>r.blob()).then(b=>cropImg(b,async n=>{try{await fs.collection('users').doc(me).update({dp:n});toast('Photo updated ✓')}catch(e){toast('Photo error')}})).catch(()=>toast('Photo error'))}
 async function gDp(inp){const f=inp.files[0];if(!f)return;inp.value='';cropImg(f,async d=>{try{await gref().update({dp:d});$('#md').hidden=true;toast('Group photo updated ✓')}catch(e){toast('Photo error')}})}
 async function gPick(inp){const f=inp.files[0];if(!f)return;inp.value='';cropImg(f,d=>{gPh=d;const e=$('#gpv');if(e)e.outerHTML=`<img id="gpv" class="av" src="${gPh}" style="width:84px;height:84px;object-fit:cover">`})}
+
+/* ---------- v15: header overflow menu ---------- */
+(function(){const hd=$('#hd'),g=document.createElement('div');g.className='hdg';
+ ['cs_','ca','cv'].forEach(id=>g.appendChild($('#'+id)));
+ g.insertAdjacentHTML('beforeend','<button class="ib" id="hm" title="More" aria-label="More options">⋮</button>');
+ hd.appendChild(g);hd.insertAdjacentHTML('beforeend','<div id="hmn" hidden></div>');
+ $('#hm').onclick=e=>{e.stopPropagation();hmMenu()};
+ document.addEventListener('click',e=>{if(!e.target.closest('#hm,#hmn'))hmHide()});
+ document.addEventListener('keydown',e=>{if(e.key=='Escape')hmHide()});
+ $('#bk').addEventListener('click',hmHide)})();
+function hmHide(){const m=$('#hmn');if(m)m.hidden=true}
+function hmMenu(){const m=$('#hmn');if(!m.hidden){m.hidden=true;return}if(!cur||!U[me])return;const gr=G.has(cur),pin=(U[me].pins||[]).includes(cur);
+ m.innerHTML=[['ℹ️',gr?'Group info':'Contact info','showCI()'],['🔍','Search in chat',"$('#cs_').click()"],['🕘','Chat timeline','showTL()'],['🗂','Shared files','showFiles()'],['📌',pin?'Unpin chat':'Pin chat','togglePin()'],['🔇',muted(cur)?'Unmute notifications':'Mute notifications','togMute(cur)']].map(a=>`<button onclick="hmHide();${a[2]}"><span>${a[0]}</span>${a[1]}</button>`).join('');m.hidden=false}
 </script></body></html>
