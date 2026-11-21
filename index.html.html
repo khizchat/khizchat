@@ -704,6 +704,34 @@ setTimeout(function(){var a=document.getElementById("app"),u=document.getElement
 .pkh .on{background:color-mix(in srgb,var(--ac) 18%,transparent);color:var(--ac)}
 .spg .spc.pk img{object-fit:contain;border-radius:10px;background:var(--s2)}
 .stku{display:block;max-width:150px;max-height:150px;object-fit:contain}
+
+/* ===== v35 ===== */
+#comp{background:transparent!important;border:0!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;margin:4px 8px max(8px,env(safe-area-inset-bottom))!important;padding:0!important;gap:8px;align-items:flex-end}
+#cpill{flex:1;min-width:0;display:flex;align-items:flex-end;gap:2px;background:var(--s);border:1px solid var(--bd);border-radius:26px;padding:4px 6px;box-shadow:0 2px 10px -5px #0005}
+#comp #cpill textarea{flex:1;min-width:0;height:40px;min-height:40px;max-height:120px;padding:10px 6px;line-height:1.35;font-size:16px;border-radius:0;overflow-y:auto;background:transparent!important;border:0!important}
+#comp #cpill .ib{width:40px;height:40px;background:none!important;color:var(--mu)}
+#comp #mic,#comp #sd{width:48px;height:48px;border-radius:50%;flex:none;background:linear-gradient(135deg,var(--ac),var(--ac2))!important;color:#fff;box-shadow:0 6px 14px -6px var(--ac);animation:kxpop .18s}
+#comp #mic.rec{background:#e11d48!important}
+@keyframes kxpop{from{transform:scale(.6);opacity:0}}
+.typb{align-self:flex-start;display:flex;gap:5px;align-items:center;padding:14px 16px!important;animation:kxpop .2s}
+.typb i{width:8px;height:8px;border-radius:50%;background:var(--mu);animation:kxbn 1.2s infinite}
+.typb i:nth-child(2){animation-delay:.18s}.typb i:nth-child(3){animation-delay:.36s}
+@keyframes kxbn{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-5px);opacity:1}}
+body[data-wp] #msgs{background-image:linear-gradient(rgba(0,0,0,var(--kxd)),rgba(0,0,0,var(--kxd))),var(--kxwp)!important;background-size:cover!important;background-position:center!important}
+.kxwv{height:130px;border-radius:16px;background:var(--s2) center/cover;display:grid;place-items:center;border:1px solid var(--bd)}
+.kxg{display:flex;flex-wrap:wrap;gap:8px}.kxo{padding:8px 14px;border-radius:99px;font-size:13px;background:var(--s2)}.kxo.on{background:color-mix(in srgb,var(--ac) 18%,transparent);color:var(--ac);font-weight:700}
+#kxnb{position:fixed;top:max(10px,env(safe-area-inset-top));left:0;right:0;z-index:120;display:grid;gap:8px;justify-items:center;pointer-events:none;padding:0 10px}
+.kxn{pointer-events:auto;position:relative;overflow:hidden;display:flex;align-items:center;gap:12px;width:min(420px,100%);padding:12px 14px;border-radius:22px;background:color-mix(in srgb,var(--s) 88%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border:1px solid var(--bd);box-shadow:0 18px 40px -14px #000a,0 0 0 0 var(--ac);animation:kxin .55s cubic-bezier(.34,1.56,.64,1),kxgl 1.6s .5s ease-out 1}
+.kxn.out{animation:kxout .38s ease-in forwards}
+.kxi{width:40px;height:40px;border-radius:14px;flex:none;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,var(--ac),var(--ac2))}.kxi span{display:inline-block;transform-origin:50% 10%;animation:kxrg 1s .35s ease-in-out 2}
+.kxt{min-width:0;display:grid}.kxt b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.kxt span{font-size:13px;color:var(--mu);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kxp{position:absolute;left:0;bottom:0;height:3px;width:100%;background:linear-gradient(90deg,var(--ac),var(--ac2));transform-origin:left;animation:kxpr 4.3s linear forwards}
+@keyframes kxin{from{transform:translateY(-130%) scale(.9);opacity:0}}
+@keyframes kxout{to{transform:translateY(-130%);opacity:0}}
+@keyframes kxrg{0%,100%{transform:rotate(0)}20%{transform:rotate(22deg)}40%{transform:rotate(-20deg)}60%{transform:rotate(14deg)}80%{transform:rotate(-10deg)}}
+@keyframes kxgl{from{box-shadow:0 18px 40px -14px #000a,0 0 0 0 color-mix(in srgb,var(--ac) 55%,transparent)}to{box-shadow:0 18px 40px -14px #000a,0 0 0 18px transparent}}
+@keyframes kxpr{to{transform:scaleX(0)}}
+.pwr{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:0 14px 12px}.pwr button{padding:6px 12px;font-size:12.5px;border-radius:99px}
 </style>
 </head><body data-t="light">
 <svg width="0" height="0" style="position:absolute"><defs>
@@ -737,8 +765,7 @@ setTimeout(function(){var a=document.getElementById("app"),u=document.getElement
 <div id="chat" hidden>
 <div id="hd"><button class="ib back" id="bk"><svg class="i"><use href="#i-back"/></svg></button><div id="hav"></div><div class="b"><b id="hn"></b><div class="mu" id="hp"></div></div><button class="ib" id="cs_"><svg class="i"><use href="#i-search"/></svg></button><button class="ib" id="ca"><svg class="i"><use href="#i-phone"/></svg></button><button class="ib" id="cv"><svg class="i"><use href="#i-video"/></svg></button></div>
 <div id="cbar" hidden><input id="cq" placeholder="Search in this chat…" autocomplete="off"></div><div id="msgs"></div><div id="rpb" hidden><span id="rpt"></span><button class="ib" onclick="setRp(null)">✕</button></div>
-<div id="am" hidden><button onclick="$('#fl').click();$('#am').hidden=true">🖼  Photo / Video (max 3 MB)</button><button onclick="$('#fd').click();$('#am').hidden=true">📄  Document / File (max 3 MB)</button><button onclick="$('#am').hidden=true;newPoll()">📊  Poll</button></div><div id="ep" hidden></div><div id="comp"><button class="ib" id="em">😊</button><button class="ib" id="at"><svg class="i"><use href="#i-clip"/></svg></button><input id="fl" type="file" accept="image/*,video/*" hidden><input id="fd" type="file" hidden>
-<textarea id="tx" placeholder="Type a message…"></textarea><button class="ib" id="mic"><svg class="i"><use href="#i-mic"/></svg></button><button class="ib pri" id="sd"><svg class="i"><use href="#i-send"/></svg></button></div>
+<div id="am" hidden><button onclick="$('#fl').click();$('#am').hidden=true">🖼  Photo / Video (max 3 MB)</button><button onclick="$('#fd').click();$('#am').hidden=true">📄  Document / File (max 3 MB)</button><button onclick="$('#am').hidden=true;newPoll()">📊  Poll</button></div><div id="ep" hidden></div><div id="comp"><div id="cpill"><button class="ib" id="em">😊</button><textarea id="tx" placeholder="Message" rows="1"></textarea><button class="ib" id="at"><svg class="i"><use href="#i-clip"/></svg></button><input id="fl" type="file" accept="image/*,video/*" hidden><input id="fd" type="file" hidden></div><button class="ib" id="mic"><svg class="i"><use href="#i-mic"/></svg></button><button class="ib pri" id="sd" hidden><svg class="i"><use href="#i-send"/></svg></button></div>
 </div></main></div>
 <div id="lb" hidden onclick="this.hidden=true"><img alt=""></div><div id="md" hidden onclick="if(event.target==this)this.hidden=true"></div><div id="sv" hidden></div><div id="lk" hidden></div><div id="mm" hidden></div><div id="ov" hidden></div><div id="tt" hidden></div>
 <script type="text/plain" id="mainjs">
@@ -841,7 +868,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v34 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v35 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -881,11 +908,11 @@ function logout(){unsub.forEach(f=>f());auth.signOut().then(()=>location.reload(
 /* ---------- sound + notifications ---------- */
 function actx(){try{ac=ac||new(window.AudioContext||window.webkitAudioContext)();if(ac.state=='suspended')ac.resume()}catch(e){}}
 function tone(f,d){if(!ac)return;const o=ac.createOscillator(),g=ac.createGain();o.frequency.value=f;g.gain.value=.12;o.connect(g);g.connect(ac.destination);o.start();o.stop(ac.currentTime+d)}
-const beep=()=>{if(PF.snd!==false)tone(880,.15)};
-function startRing(){if(ri)return;const r=()=>{tone(660,.3);setTimeout(()=>tone(520,.3),350)};r();ri=setInterval(r,1500);try{navigator.vibrate&&navigator.vibrate([400,200,400])}catch(e){}}
+const beep=()=>{if(PF.snd!==false)ntPlay()};
+function startRing(){if(ri)return;const r=()=>rtPlay();r();ri=setInterval(r,rtLoop());try{navigator.vibrate&&navigator.vibrate([400,200,400])}catch(e){}}
 function stopRing(){clearInterval(ri);ri=null}
 function askN(){if(!('Notification' in window))return toast('Not supported in this browser');Notification.requestPermission().then(p=>toast(p=='granted'?'Notifications on ✓':'Permission denied'))}
-function push(t,b){toast(t+': '+b);try{if(Notification.permission!='granted')return;if(navigator.serviceWorker&&navigator.serviceWorker.ready)navigator.serviceWorker.ready.then(r=>r.showNotification(t,{body:b,icon:'icon-192.png',badge:'icon-192.png',vibrate:[200,100,200],tag:'khizchat'})).catch(()=>{});else new Notification(t,{body:b})}catch(e){}}
+function push(t,b){kxBanner(t,b);try{if(Notification.permission!='granted')return;if(navigator.serviceWorker&&navigator.serviceWorker.ready)navigator.serviceWorker.ready.then(r=>r.showNotification(t,{body:b,icon:'icon-192.png',badge:'icon-192.png',vibrate:[200,100,200],tag:'khizchat'})).catch(()=>{});else new Notification(t,{body:b})}catch(e){}}
 function notify(){for(const m of M.values())if(m.g&&m.from!=me&&m.type!='sys'&&!known.has(m.id)){known.add(m.id);if(ready&&G.has(m.to)&&!muted(m.to)&&(document.hidden||cur!=m.to)){push(G.get(m.to).name,nm(m.from)+': '+(npv(m)));beep()}}for(const m of M.values())if(m.to==me&&!known.has(m.id)){known.add(m.id);if(ready&&!blocked(m.from)&&!muted(m.from)&&(document.hidden||cur!=m.from)){push(nm(m.from),npv(m));beep()}}
  for(const r of R.values())if(r.to==me&&r.st=='p'&&!known.has(r.id)){known.add(r.id);if(ready){push('Friend request',nm(r.from)+' sent you a friend request');beep()}}}
 /* ---------- calls: WebRTC + Firestore signaling (trickle ICE) ---------- */
@@ -938,7 +965,7 @@ const rmDp=()=>fs.collection('users').doc(me).update({dp:firebase.firestore.Fiel
 const prv=m=>m.type=='text'?m.text.slice(0,80):({img:'📷 Photo',vid:'🎬 Video',aud:'🎤 Voice message',poll:'📊 Poll',file:'📄 Document',stk:'🎭 Sticker'})[m.type];
 const hideMM=()=>$('#mm').hidden=true;
 function showMM(m,el){const r=el.getBoundingClientRect(),d=$('#mm'),mine=m.from==me,st=(m.star||{})[me];
- d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${mine?`<button onclick="msgInfo('${m.id}')">ⓘ Info</button>`:''}<button onclick="fwd('${m.id}')">➦ Forward</button><button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button></div>`;
+ d.innerHTML=`<div class="rr">${['👍','❤️','😂','😮','😢','🙏'].map(e=>`<button onclick="react('${m.id}','${e}')">${e}</button>`).join('')}</div><div class="ac"><button onclick="setRp('${m.id}')">↩ Reply</button>${mine?`<button onclick="msgInfo('${m.id}')">ⓘ Info</button>`:''}<button onclick="fwd('${m.id}')">➦ Forward</button>${mine&&(m.type=='text'||m.type=='img')&&!m.del?`<button onclick="shareToFeed('${m.id}')">📰 Share to Feed 👑</button>`:''}<button onclick="star('${m.id}')">${st?'☆ Unstar':'★ Star'}</button>${m.type=='text'?`<button onclick="cpy('${m.id}')">⧉ Copy</button>`:''}${mine&&m.type=='text'?`<button onclick="edMsg('${m.id}')">✎ Edit</button>`:''}<button onclick="delMsg('${m.id}')" style="color:#e11d48">🗑 Delete</button></div>`;
  d.hidden=false;const h=d.offsetHeight,w=d.offsetWidth;let t=r.top-h-6;if(t<8)t=Math.min(r.bottom+6,innerHeight-h-8);d.style.top=Math.max(8,t)+'px';d.style.left=Math.min(Math.max(8,mine?r.right-w:r.left),innerWidth-w-8)+'px'}
 $('#msgs').addEventListener('click',e=>{if(e.target.closest('audio,video,a,.po,.fcb,.vm'))return;if(e.target.tagName=='IMG'&&!e.target.classList.contains('qth')&&e.target.closest('.m')){lb(e.target.src,e.target.closest('[data-m]').dataset.m);return}const el=e.target.closest('[data-m]');if(!el)return hideMM();const m=M.get(el.dataset.m);if(!m||m.del)return;if(m.unlock&&m.unlock>Date.now()&&m.from!=me)return toast('🔒 Unlocks '+dt(m.unlock));showMM(m,el)});
 document.addEventListener('click',e=>{if(!e.target.closest('#mm,[data-m]'))hideMM()});
@@ -1201,6 +1228,10 @@ service cloud.firestore {
       allow create: if request.auth != null && request.resource.data.u == request.auth.uid && request.resource.data.st == 'p';
       allow read: if request.auth != null && (isAdmin() || resource.data.u == request.auth.uid);
       allow update, delete: if isAdmin();
+    }
+    match /posts/{pid}/{sub}/{uid} {
+      allow create, delete: if request.auth != null && request.auth.uid == uid && sub in ['lk','vw'];
+      allow read: if request.auth != null && sub in ['lk','vw'] && (request.auth.uid == uid || get(/databases/$(database)/documents/posts/$(pid)).data.u == request.auth.uid);
     }
     match /{col}/{id} {
       allow read, write: if request.auth != null && col in ['reqs','msgs','status','calls','fchunks','posts'];
@@ -1837,4 +1868,104 @@ renderSp=function(){if(spTab!='o')return _rspO();
  g.innerHTML=`<div class="pkh">${L.map((q,k)=>`<button class="${k==PKSEL?'on':''}" onclick="PKSEL=${k};renderSp()">${esc(q.n)} (${q.i.length})</button>`).join('')}<button onclick="pkNew()">＋ New pack</button></div><div class="pkh"><label class="chp">📁 From device<input type="file" accept="image/*" multiple hidden onchange="pkFiles(this)"></label><button onclick="pkUrls()">🔗 From links</button><button onclick="pkDelPack()" style="color:#e11d48">🗑 Pack</button></div>`
  +(p.i.length?p.i.map((u,k)=>`<div class="spc pk"><img src="${esc(u)}" loading="lazy" alt="" onclick="pkSend(${k})"><i onclick="pkDel(${k})">✕</i></div>`).join(''):`<p class="mu" style="grid-column:1/-1;text-align:center;padding:14px 8px">No stickers yet. Add PNG / GIF / WebP from your device, or paste links (Giphy links work too).</p>`)};
 $('#sp .spt').insertAdjacentHTML('beforeend','<button data-k="o">🌐 Add packs</button>');
+
+/* ====== v35: WhatsApp composer, typing bubble, wallpaper, ringtones, banners, private feed stats, share-to-feed ====== */
+const kxSave=()=>{try{localStorage.setItem('kc_pf',JSON.stringify(PF))}catch(e){}};
+/* --- composer: mic <-> send, autogrow --- */
+let kxLen=-1;
+function wamSync(){const t=$('#tx'),s=$('#sd'),m=$('#mic');if(!t||!s||!m)return;const has=t.value.trim().length>0;s.hidden=!has;m.hidden=has;if(t.value.length!==kxLen){kxLen=t.value.length;t.style.height='auto';t.style.height=Math.min(120,Math.max(40,t.scrollHeight))+'px'}}
+setInterval(wamSync,150);$('#tx').placeholder='Message';
+/* --- typing bubble --- */
+const kxTy=u=>{const t=U[u]&&U[u].ty;return !!(t&&t.to==me&&Date.now()-t.ts<3500&&(U[u].priv||{}).typing!==false)};
+function kxTyp(){const B=$('#msgs');if(!B||!cur||!me)return;let e=$('#typb');const on=!G.has(cur)&&kxTy(cur);
+ if(!on){if(e)e.remove();return}
+ const near=B.scrollHeight-B.scrollTop-B.clientHeight<140;
+ if(!e){e=document.createElement('div');e.id='typb';e.className='m typb';e.innerHTML='<i></i><i></i><i></i>'}
+ if(B.lastElementChild!==e){B.appendChild(e);if(near)B.scrollTop=B.scrollHeight}}
+{const _rm=renderMsgs;renderMsgs=function(){const r=_rm.apply(this,arguments);kxTyp();return r}}
+setInterval(kxTyp,500);
+/* --- wallpaper from gallery --- */
+let KW={img:'',dim:15};try{KW=Object.assign(KW,JSON.parse(localStorage.getItem('kc_wp')||'{}'))}catch(e){}
+function kxWpApply(){let s=$('#kxwps');if(!s){s=document.createElement('style');s.id='kxwps';document.head.appendChild(s)}
+ if(KW.img){s.textContent=':root{--kxwp:url("'+KW.img+'");--kxd:'+(KW.dim/100)+'}';document.body.dataset.wp='1'}else{s.textContent='';delete document.body.dataset.wp}}
+function kxWpSave(){try{localStorage.setItem('kc_wp',JSON.stringify(KW));return true}catch(e){toast('Storage full — try a smaller photo');return false}}
+async function kxWpPick(inp){const f=inp.files[0];inp.value='';if(!f)return;try{toast('Setting wallpaper…');const r=await cmp(f,450000,1280);if(r.d.length>900000)return toast('Photo too detailed, pick another');const old=KW.img;KW.img=r.d;if(!kxWpSave()){KW.img=old;return}kxWpApply();kxRefresh();toast('Wallpaper set ✓')}catch(e){toast('This photo format is not supported')}}
+function kxWpRm(){KW.img='';kxWpSave();kxWpApply();kxRefresh()}
+let kxDt;function kxWpDim(v){KW.dim=+v;kxWpApply();clearTimeout(kxDt);kxDt=setTimeout(kxWpSave,400)}
+kxWpApply();
+/* --- ringtones & message tones (synthesised, no files) --- */
+const mid=n=>440*Math.pow(2,(n-69)/12);
+function kxNote(f,t,d,ty,v){const o=ac.createOscillator(),g=ac.createGain();o.type=ty;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(v,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+d+.05);
+ if(ty=='sine'&&f>500){const o2=ac.createOscillator(),g2=ac.createGain();o2.frequency.setValueAtTime(f*2.01,t);g2.gain.setValueAtTime(v*.3,t);g2.gain.exponentialRampToValueAtTime(.0001,t+d*.6);o2.connect(g2);g2.connect(ac.destination);o2.start(t);o2.stop(t+d)}}
+function kxGl(a,b,t,d,ty,v){const o=ac.createOscillator(),g=ac.createGain();o.type=ty;o.frequency.setValueAtTime(a,t);o.frequency.exponentialRampToValueAtTime(b,t+d);g.gain.setValueAtTime(v,t);g.gain.exponentialRampToValueAtTime(.0001,t+d+.05);o.connect(g);g.connect(ac.destination);o.start(t);o.stop(t+d+.1)}
+function kxKick(t,v){kxGl(170,45,t,.18,'sine',v||.5)}
+function kxPlay(def){actx();if(!ac)return;const t=ac.currentTime+.03;def.s.forEach(x=>{if(x[0]=='k')kxKick(t+x[1],x[2]);else if(x[0]=='g')kxGl(x[1],x[2],t+x[3],x[4],x[5],x[6]);else kxNote(mid(x[0]),t+x[1],x[2],x[3]||'triangle',x[4]||.18)})}
+const trill=[];for(let k=0;k<14;k++){trill.push([k%2?84:90,k*.055,.05,'square',.06]);trill.push([k%2?84:90,1.1+k*.055,.05,'square',.06])}
+const RT={classic:{n:'Classic',l:1500,s:[[76,0,.28,'sine'],[72,.35,.28,'sine']]},
+ sunrise:{n:'Sunrise',l:2600,s:[[60,0,.5],[64,.14,.5],[67,.28,.5],[72,.42,.6],[76,.56,.9]]},
+ marimba:{n:'Marimba',l:2200,s:[[72,0,.22,'sine'],[76,.16,.22,'sine'],[79,.32,.22,'sine'],[76,.48,.22,'sine'],[84,.64,.5,'sine'],[79,.9,.3,'sine'],[84,1.06,.6,'sine']]},
+ crystal:{n:'Crystal',l:2800,s:[[88,0,.9,'sine',.14],[91,.2,.9,'sine',.14],[95,.4,1.1,'sine',.14],[91,.75,.9,'sine',.14],[100,1,1.4,'sine',.12]]},
+ retro:{n:'Retro Phone',l:3000,s:trill},
+ pulse:{n:'Dhol Beat',l:1800,s:[['k',0],['k',.45],['k',.9,.4],['k',1.2,.4],['k',1.5]]},
+ melody:{n:'Melody',l:3400,s:[[67,0,.25],[67,.3,.25],[72,.6,.25],[71,.9,.25],[69,1.2,.25],[67,1.5,.25],[64,1.8,.5],[67,2.4,.7]]},
+ rise:{n:'Chime Rise',l:3000,s:[[72,0,.9,'sine',.15],[76,.3,.9,'sine',.15],[79,.6,.9,'sine',.15],[84,.9,1.4,'sine',.15]]}};
+const NT={default:{n:'Default',s:[[81,0,.15,'sine',.12]]},
+ pop:{n:'Pop',s:[['g',500,950,0,.12,'sine',.2]]},
+ drop:{n:'Droplet',s:[['g',1300,420,0,.18,'sine',.22]]},
+ ding:{n:'Ding',s:[[88,0,.5,'sine',.2],[95,.12,.6,'sine',.15]]},
+ chirp:{n:'Chirp',s:[[84,0,.08,'triangle'],[88,.09,.08,'triangle'],[91,.18,.14,'triangle']]},
+ bell:{n:'Bell',s:[[79,0,.9,'sine',.22]]},
+ whistle:{n:'Whistle',s:[['g',700,1500,0,.18,'sine',.16],['g',1500,1000,.18,.16,'sine',.16]]},
+ knock:{n:'Knock',s:[['k',0,.6],['k',.14,.5]]}};
+const rtId=()=>RT[PF.rt]?PF.rt:'classic',ntId=()=>NT[PF.nt]?PF.nt:'default';
+function rtPlay(){kxPlay(RT[rtId()])}function rtLoop(){return RT[rtId()].l}function ntPlay(){kxPlay(NT[ntId()]);try{navigator.vibrate&&navigator.vibrate(35)}catch(e){}}
+function kxPick(k,v){PF[k]=v;kxSave();kxPlay((k=='rt'?RT:NT)[v]);kxRefresh()}
+/* --- settings section --- */
+function kxSetHTML(){const o=(k,lib,cur)=>Object.keys(lib).map(x=>`<button class="kxo${cur==x?' on':''}" onclick="kxPick('${k}','${x}')">${cur==x?'✓':'▶'} ${lib[x].n}</button>`).join('');
+ return`<div id="kxsec"><div class="sec">Chat wallpaper</div><div class="pad"><div class="kxwv" style="${KW.img?'background-image:linear-gradient(rgba(0,0,0,var(--kxd)),rgba(0,0,0,var(--kxd))),var(--kxwp)':''}">${KW.img?'':'<span class="mu">Default wallpaper</span>'}</div><div class="row" style="margin-top:10px;flex-wrap:nowrap"><label class="btn pri" style="flex:1">🖼 Choose from gallery<input type="file" accept="image/*" hidden onchange="kxWpPick(this)"></label>${KW.img?'<button onclick="kxWpRm()">Remove</button>':''}</div>${KW.img?`<div class="row sp" style="margin-top:10px"><span class="mu">Dim</span><input type="range" min="0" max="60" value="${KW.dim}" oninput="kxWpDim(this.value)" style="flex:1;margin-left:12px;padding:0"></div>`:''}</div>
+ <div class="sec">Call ringtone</div><div class="pad kxg">${o('rt',RT,rtId())}</div><div class="sec">Message tone</div><div class="pad kxg">${o('nt',NT,ntId())}</div></div>`}
+function kxRefresh(){const e=$('#kxsec');if(e)e.outerHTML=kxSetHTML()}
+function kxSet(){const L=$('#list');if(!L||$('#kxsec'))return;const a=[...L.querySelectorAll('.sec')].find(e=>e.textContent=='Account');if(a)a.insertAdjacentHTML('beforebegin',kxSetHTML());else L.insertAdjacentHTML('beforeend',kxSetHTML())}
+{const _rl=renderList;renderList=function(){const r=_rl.apply(this,arguments);if(tab=='set')kxSet();return r}}
+/* --- animated notification banner --- */
+function kxBanner(t,b){let h=$('#kxnb');if(!h){h=document.createElement('div');h.id='kxnb';document.body.appendChild(h)}
+ const n=document.createElement('div');n.className='kxn';n.innerHTML=`<div class="kxi"><span>🔔</span></div><div class="kxt"><b>${esc(t)}</b><span>${esc(b)}</span></div><i class="kxp"></i>`;
+ h.appendChild(n);while(h.children.length>3)h.firstChild.remove();
+ let done=0,y0=null;const close=()=>{if(done)return;done=1;n.classList.add('out');setTimeout(()=>n.remove(),380)};
+ n.onclick=close;n.onpointerdown=e=>{y0=e.clientY};n.onpointermove=e=>{if(y0!==null&&e.clientY-y0<-24)close()};
+ setTimeout(close,4300)}
+/* --- feed: private like/view names, public counts --- */
+const KV=(()=>{try{return new Set(JSON.parse(localStorage.getItem('kc_vw')||'[]'))}catch(e){return new Set()}})();
+const pLc=p=>(p.lc||0)+Object.keys(p.likes||{}).length;
+const pMine=p=>!!(p.likes||{})[me]||(((U[me]||{}).liked)||[]).includes(p.id);
+pLike=async function(id,add){const p=PO.get(id);if(!p)return;const mine=pMine(p);if(add&&mine)return;const F=firebase.firestore.FieldValue,pr=fs.collection('posts').doc(id),lr=pr.collection('lk').doc(me);
+ try{if((p.likes||{})[me])await pr.update({['likes.'+me]:F.delete()});
+  else await fs.runTransaction(async tx=>{const s=await tx.get(lr);if(mine&&s.exists){tx.delete(lr);tx.update(pr,{lc:F.increment(-1)})}else if(!mine&&!s.exists){tx.set(lr,{u:me,t:Date.now()});tx.update(pr,{lc:F.increment(1)})}});
+  await fs.collection('users').doc(me).update({liked:mine?F.arrayRemove(id):F.arrayUnion(id)})}catch(e){permErr(e)||toast('Could not update like')}};
+async function pView(id){if(KV.has(id))return;const p=PO.get(id);if(!p||p.u==me)return;KV.add(id);try{localStorage.setItem('kc_vw',JSON.stringify([...KV].slice(-800)))}catch(e){}
+ const F=firebase.firestore.FieldValue,pr=fs.collection('posts').doc(id),vr=pr.collection('vw').doc(me);
+ try{await fs.runTransaction(async tx=>{const s=await tx.get(vr);if(!s.exists){tx.set(vr,{u:me,t:Date.now()});tx.update(pr,{vc:F.increment(1)})}})}catch(e){}}
+let KO=null;function kxObs(){if(!('IntersectionObserver' in window))return;if(!KO)KO=new IntersectionObserver(es=>es.forEach(e=>{const el=e.target;if(e.isIntersecting)el._vt=setTimeout(()=>pView(el.dataset.pid),1200);else clearTimeout(el._vt)}),{threshold:.6});
+ document.querySelectorAll('#list .pst[data-pid]').forEach(el=>{if(!el._ko){el._ko=1;KO.observe(el)}})}
+{const _fr=feedRender;feedRender=function(){const r=_fr.apply(this,arguments);kxObs();return r}}
+async function pWho(id,kind){const d=$('#md');d.innerHTML=`<div class="mc gx"><b style="font-size:18px">${kind=='lk'?'♥ Liked by':'👁 Viewed by'}</b><div class="mu">🔒 Only you can see this list</div><div class="gl" id="kxwho"><p class="mu c">Loading…</p></div><button onclick="$('#md').hidden=true">Close</button></div>`;d.hidden=false;
+ try{const s=await fs.collection('posts').doc(id).collection(kind).orderBy('t','desc').limit(200).get();const rows=s.docs.map(x=>x.data());
+  if(kind=='lk'){const p=PO.get(id);Object.keys((p&&p.likes)||{}).forEach(u=>{if(!rows.find(r=>r.u==u))rows.push({u,t:0})})}
+  $('#kxwho').innerHTML=rows.length?rows.map(r=>`<div class="it">${av(r.u,38)}<div class="b"><b>${esc(nm(r.u))}</b><div class="mu">${esc(unm(r.u))}${r.t?' • '+pAgo(r.t):''}</div></div></div>`).join(''):'<p class="mu c">Nobody yet</p>'}
+ catch(e){$('#kxwho').innerHTML='<p class="mu c">Could not load. Publish the updated database rules (Settings → Check database rules).</p>'}}
+pHTML=function(p){const mn=Math.floor(Date.now()/6e4);if(mn!=PCm){PCm=mn;for(const k in PC)delete PC[k]}
+ const lk=pLc(p),vc=p.vc||0,mine=pMine(p),own=p.u==me,o=U[p.u]||{},pr=isPremU(p.u),key='k|'+p.id+'|'+lk+'|'+vc+'|'+mine+'|'+(o.name||'')+'|'+(o.dp?1:0)+'|'+(NK[p.u]||'')+'|'+(pr?1:0)+'|'+own;
+ if(PC[key])return PC[key];
+ let img='';if(p.img){const u=PU[p.id]||(PU[p.id]=dURL(p.img));img=`<div class="pim" style="aspect-ratio:${p.w||4}/${p.h||3}"><img src="${u}" alt="" decoding="async" ondblclick="pLike('${p.id}',1)"></div>`}
+ const txt=p.text?(p.img?`<div class="pct"><b>${esc(nm(p.u))}</b> ${lnk(esc(p.text)).replace(/\n/g,'<br>')}</div>`:`<div class="pct big">${lnk(esc(p.text)).replace(/\n/g,'<br>')}</div>`):'';
+ return PC[key]=`<article class="pst${pr?' pr':''}" data-pid="${p.id}"><div class="psh">${pr?`<div class="ring gold">${av(p.u,38)}</div>`:av(p.u,38)}<div class="psn"><b>${esc(nm(p.u))}${pr?'<span class="crn">👑 LUXURY</span>':''}</b><span class="mu">${pAgo(p.ts)}</span></div>${own?`<button class="psd" onclick="pDel('${p.id}')" title="Delete post">🗑</button>`:''}</div>${p.img?'':txt}${img}<div class="psa"><button class="plk${mine?' on':''}" onclick="pLike('${p.id}')">${mine?'♥':'♡'}</button><span class="pcn">${lk?lk+(lk==1?' like':' likes'):''}</span><span class="pcn">👁 ${vc}</span></div>${own?`<div class="pwr"><button onclick="pWho('${p.id}','lk')">♥ Who liked</button><button onclick="pWho('${p.id}','vw')">👁 Who viewed</button><span class="mu">🔒 only you</span></div>`:''}${p.img?txt:''}</article>`};
+/* --- share a chat message to the public feed (Luxury) --- */
+function shareToFeed(id){if(!premOK('Share to Feed'))return;const m=M.get(id);if(!m||m.from!=me)return;
+ if(m.type=='img'&&(m.fid||!m.data||m.data.length>900000))return toast('This photo is too large for the Feed');
+ const pv=m.type=='img'?`<img src="${m.data}" style="max-width:100%;max-height:180px;border-radius:12px">`:`<div class="st" style="max-height:120px;overflow:auto">${esc(m.text)}</div>`;
+ const d=$('#md');d.innerHTML=`<div class="mc"><div class="lxc1 big">📰</div><b style="font-size:19px">Share to Feed</b><div class="mu">Every KhizChat user will see this. Everyone sees the like and view counts, but only you can see who they are.</div>${pv}<button class="pri" style="width:100%" onclick="kxShare('${id}')">🌍 Share with everyone</button><button style="width:100%" onclick="$('#md').hidden=true">Cancel</button></div>`;d.hidden=false}
+async function kxShare(id){const m=M.get(id);if(!m)return;$('#md').hidden=true;let w=0,h=0;
+ if(m.type=='img'){await new Promise(r=>{const im=new Image();im.onload=()=>{w=im.naturalWidth;h=im.naturalHeight;r()};im.onerror=r;im.src=m.data})}
+ try{await fs.collection('posts').add({u:me,text:m.type=='text'?m.text:'',img:m.type=='img'?m.data:'',w,h,ts:Date.now(),likes:{},lc:0,vc:0});toast('Shared to Feed ✓')}catch(e){permErr(e)||toast('Share failed: '+(e.code||'error'))}}
+
 </script></body></html>
