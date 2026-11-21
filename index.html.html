@@ -833,7 +833,7 @@ function renderList(){const a=document.activeElement&&document.activeElement.id;
   h=`<div class="prof"><label class="dpw">${av(me,100)}<span class="dpe">${i('cam')}</span><input type="file" accept="image/*" hidden onchange="setDp(this)"></label><b style="font-size:20px;margin-top:6px">${esc(u.name)}</b><div class="mu">@${esc(u.username)}</div><p class="mu" onclick="editProf()" style="max-width:270px;cursor:pointer">✎ ${esc(u.about||'Hey there! I am using KhizChat')}</p><div class="row" style="justify-content:center"><button onclick="editProf()">Edit profile</button>${u.dp?'<button onclick="recropDp()">Crop photo</button><button onclick="rmDp()">Remove photo</button>':''}</div></div><div class="sec">Privacy</div>${tg('seen','Show last seen')}${tg('online','Show online status')}${tg('typing','Show typing indicator')}${tg('receipts','Read receipts (blue ticks)')}<div class="row sp pad"><span>App lock (PIN)</span><button class="tg ${PF.pin?'on':''}" onclick="setLock()"></button></div>${tg('groups','Allow friends to add me to groups')}<div class="pad"><button onclick="stPriv()" style="width:100%;text-align:left">Status privacy ›</button></div><div class="sec">Blocked contacts (${(u.blocked||[]).length})</div>${(u.blocked||[]).map(b=>`<div class="it">${av(b,36)}<div class="b"><b>${esc(nm(b))}</b></div><button onclick="togBlock('${b}')">Unblock</button></div>`).join('')||'<p class="mu pad">No blocked contacts</p>'}
   <div class="sec">Chat settings</div><div class="pad"><button onclick="showStar()" style="width:100%;text-align:left">★ Starred messages</button></div>${lg('ent','Press Enter to send')}${lg('snd','Notification sound')}<div class="row sp pad"><span>Font size</span><div class="chips">${[['s','Small'],['m','Medium'],['l','Large']].map(a=>`<button class="${(PF.fs||'m')==a[0]?'on':''}" onclick="sp('fs','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="row sp pad"><span>Chat background</span><div class="chips">${[['dots','Dots'],['plain','Plain'],['grad','Gradient']].map(a=>`<button class="${(PF.w||'plain')==a[0]?'on':''}" onclick="sp('w','${a[0]}')">${a[1]}</button>`).join('')}</div></div><div class="sec">Theme</div><div class="sws">${[['auto','Auto','linear-gradient(135deg,#fff 50%,#111 50%)'],['dynamic','Dynamic','linear-gradient(135deg,#f97316,#8b5cf6,#06b6d4)'],['amoled','AMOLED','#000'],['neon','Neon','#00e5ff'],['aurora','Aurora','#22d3ee'],['sunset','Sunset','#f97316'],['ocean','Ocean','#06b6d4'],['light','Light','#2563eb'],['dark','Dark','#3b82f6'],['midnight','Midnight','#8b5cf6'],['emerald','Emerald','#059669'],['rose','Rose','#e11d48']].map(t=>`<button class="sw ${(u.theme||'light')==t[0]?'on':''}" style="--c:${t[2]}" onclick="theme('${t[0]}')"><span></span>${t[1]}</button>`).join('')}</div>
   <div class="row sp pad"><span>Custom accent color</span><div class="row"><input type="color" value="${PF.ac||'#2563eb'}" onchange="sp('ac',this.value)" style="width:48px;height:34px;padding:2px">${PF.ac?'<button onclick="sp(\'ac\',\'\')">Reset</button>':''}</div></div>${matchMedia('(display-mode: standalone)').matches?'':'<div class="sec">App</div><div class="pad"><button class="pri" onclick="inst()" style="width:100%">Install KhizChat app</button></div>'}<div class="sec">Notifications</div><div class="pad"><button onclick="regPush()" style="width:100%">Enable notifications</button></div>
-  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v32 • by Muhammad Khizar</p>`}
+  <div class="sec">Account</div><div class="pad"><button onclick="chkRules()" style="width:100%">🛠 Check database rules (fix group access)</button></div><div class="pad"><button onclick="chPw()" style="width:100%">🔑 Change password</button></div><div class="pad"><button onclick="logout()" style="width:100%;color:#e11d48">Logout</button></div><p class="mu c pad">KhizChat v33 • by Muhammad Khizar</p>`}
  {const _L=$('#list');if(_L._h!==h||_L._t!==tab){_L._h=h;_L._t=tab;_L.innerHTML=h}}}
 $('#list').onclick=e=>{const o=e.target.closest('[data-o]');if(o)open(o.dataset.o)};
 function open(u){if(cur)drafts[cur]=$('#tx').value;cur=u;sig='';cq='';$('#cq').value='';$('#cbar').hidden=true;$('#tx').value=drafts[u]||'';$('#empty').hidden=true;$('#chat').hidden=false;$('#app').classList.add('co');refresh();$('#tx').focus()}
@@ -1704,8 +1704,7 @@ function sendLx(t){if(!premOK('Luxury sticker packs'))return;sendStk(t)}
 const _rspX=renderSp;
 renderSp=function(){if(spTab!='l')return _rspX();
  const g=$('#spg'),lock=isPrem()?'':'<i>🔒</i>';$('#sp').querySelectorAll('.spt button').forEach(b=>b.classList.toggle('on',b.dataset.k==spTab));g.className='spg l';
- g.innerHTML=`<div class="spl"><span>🐱 Noor Billi · animated</span><span class="crn">👑 LUXURY</span></div>`+Object.keys(CATM).map(k=>`<button class="spc cs" onclick="sendLx('c:${k}')">${catSvg(k)}${lock}</button>`).join('')
- +`<div class="spl"><span>✨ Gold words</span></div>`+GW.map((w,k)=>`<button class="spc gw" onclick="sendLx('g:${k}')">${esc(w)}${lock}</button>`).join('')};
+ g.innerHTML=`<div class="spl"><span>✨ Gold words · shiny animated</span><span class="crn">👑 LUXURY</span></div>`+GW.map((w,k)=>`<button class="spc gw" onclick="sendLx('g:${k}')">${esc(w)}${lock}</button>`).join('')};
 $('#sp .spt').insertAdjacentHTML('afterbegin','<button data-k="l">👑 Luxury</button>');
 spTab='l';
 /* richer plans page */
@@ -1713,8 +1712,8 @@ const _phO=plansHTML;
 plansHTML=function(){const old=_phO(),ix=old.indexOf('<div class="lxq"><b>How to activate'),adm=isAdm(),pr=isPrem(),dl=lxDays(me);
  const st=adm?'👑 Owner · Luxury unlocked':pr?`✓ Active · ${dl} day${dl==1?'':'s'} left · until ${new Date(prUntil(me)).toLocaleDateString([],{day:'numeric',month:'short',year:'numeric'})}`:'Free plan · text only';
  const F=[['Text messages & calls','✓','✓'],['Voice messages & documents','✓','✓'],['Photo & video sharing','✕','✓'],['Photos in Feed','✕','✓'],['Luxury sticker packs','✕','✓'],['Gold badge & profile ring','✕','✓']];
- return`<div class="lxv"><span class="lxspk" style="left:14%;top:18%">✦</span><span class="lxspk" style="right:16%;top:26%;animation-delay:.8s">✦</span><span class="lxspk" style="left:26%;bottom:18%;animation-delay:1.4s;font-size:11px">✦</span><span class="lxspk" style="right:24%;bottom:22%;animation-delay:2s;font-size:12px">✦</span><div class="lxcr">👑</div><b class="t">KhizChat Luxury</b><p>Photos, videos, premium animated stickers and a gold profile.</p><div class="lxs2">${st}</div></div>
- <div class="lxg"><div><i>🖼</i><b>Photos & Videos</b><span>Share media in every chat</span></div><div><i>📰</i><b>Feed Photo Posts</b><span>Post images in the Feed</span></div><div><i>🐱</i><b>Luxury Stickers</b><span>Animated Noor Billi cat & gold words</span></div><div><i>👑</i><b>Gold Badge</b><span>Gold ring on your name everywhere</span></div></div>
+ return`<div class="lxv"><span class="lxspk" style="left:14%;top:18%">✦</span><span class="lxspk" style="right:16%;top:26%;animation-delay:.8s">✦</span><span class="lxspk" style="left:26%;bottom:18%;animation-delay:1.4s;font-size:11px">✦</span><span class="lxspk" style="right:24%;bottom:22%;animation-delay:2s;font-size:12px">✦</span><div class="lxcr">👑</div><b class="t">KhizChat Luxury</b><p>Photos, videos, gold animated stickers and a gold profile.</p><div class="lxs2">${st}</div></div>
+ <div class="lxg"><div><i>🖼</i><b>Photos & Videos</b><span>Share media in every chat</span></div><div><i>📰</i><b>Feed Photo Posts</b><span>Post images in the Feed</span></div><div><i>🐱</i><b>Luxury Stickers</b><span>Shiny animated gold word stickers</span></div><div><i>👑</i><b>Gold Badge</b><span>Gold ring on your name everywhere</span></div></div>
  <div class="lxcmp"><div><span style="text-align:left">Feature</span><span>Free</span><span class="g">Luxury</span></div>${F.map(r=>`<div><span style="text-align:left">${r[0]}</span><span class="${r[1]=='✓'?'y':'n'}">${r[1]}</span><span class="g">${r[2]}</span></div>`).join('')}</div>`
  +PLANS.map(p=>`<div class="lxp${p.t=='POPULAR'?' hot':p.t?' best':''}" onclick="openPay('${p.id}')">${p.t?`<span class="lxt">${p.t}</span>`:''}<div class="lxn"><b>Luxury · ${p.n}</b><span class="mu">${p.s}</span><span class="pm">≈ PKR ${Math.round(p.p/(p.d/30))} / month</span></div><div class="lxpr"><small>PKR</small> ${p.p}</div></div>`).join('')
  +(ix>=0?old.slice(ix):'')};
@@ -1753,7 +1752,7 @@ function duoSvg(k){const c=DUO[k];if(!c)return'';let m1='happy',m2='happy',x='',
  return`<svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">${A}${P}${x}${after}${_lb(105,104,c.l)}</svg>`}
 const _stkP=stkHTML;
 stkHTML=function(m){const t=m.text||'';
- if(t.startsWith('p:')){const [a,k]=t.slice(2).split('_');if((a=='b'||a=='p')&&PETM[k])return`<div class="cat kb-${PETM[k].a}">${petSvg(a,k)}</div>`}
+ if(t.startsWith('p:')){const [a,k]=t.slice(2).split('_');if((a=='b'||a=='p'||a=='l')&&PETM[k])return`<div class="cat kb-${PETM[k].a}">${petSvg(a,k)}</div>`}
  if(t.startsWith('d:')){const k=t.slice(2);if(DUO[k])return`<div class="cat duo kb-${DUO[k].a}">${duoSvg(k)}</div>`}
  return _stkP(m)};
 const _rspP=renderSp;
@@ -1764,4 +1763,38 @@ renderSp=function(){if(spTab!='p')return _rspP();
  +`<div class="spl" style="color:var(--mu)"><span>🐼 Pandu the panda</span></div>`+Object.keys(PETM).map(k=>`<button class="spc cs" onclick="sendStk('p:p_${k}')">${petSvg('p',k)}</button>`).join('')};
 $('#sp .spt').insertAdjacentHTML('afterbegin','<button data-k="p">🐰 Free pets</button>');
 spTab='p';
+
+/* ---------- v33: Noor Billi is FREE + couple with Sher (lion cub) ---------- */
+const _phN=petHead;
+petHead=function(a,k){if(a!='l')return _phN(a,k);
+ let s=_phN('b',k);
+ const mane='<circle cx="60" cy="72" r="50" fill="#f59e42" stroke="#d9822b" stroke-width="2"/><circle cx="27" cy="44" r="12" fill="#ffd59a" stroke="#e0a050" stroke-width="2"/><circle cx="93" cy="44" r="12" fill="#ffd59a" stroke="#e0a050" stroke-width="2"/><circle cx="27" cy="44" r="6" fill="#ffb3a0"/><circle cx="93" cy="44" r="6" fill="#ffb3a0"/>';
+ s=s.replace(/<g>[\s\S]*?(?=<ellipse cx="60" cy="72" rx="43")/,'<g>'+mane);
+ return s.replace(/#bff0de/g,'#ffd59a').replace(/#6fc3a8/g,'#e0a050').replace(/#2e5d4f/g,'#6b3d12')};
+const noorG=k=>catSvg(k).replace(/^<svg[^>]*>/,'').replace(/<rect x="22" y="116"[\s\S]*$/,'');
+function duoNS(k){const c=DUO[k];if(!c)return'';let m1='happy',m2='happy',x='',after='';
+ if(k=='love'){m1=m2='love';x=_ht(105,36,1)+_ht(94,18,.6)+_ht(117,16,.6)}
+ if(k=='sleep'){m1=m2='sleepy'}
+ if(k=='sorry'){m1='cry'}
+ if(k=='hug'){x=_ht(105,30,.9);after='<ellipse cx="99" cy="109" rx="13" ry="6.5" fill="#d9ccff" stroke="#b9a6f5" stroke-width="2"/><ellipse cx="112" cy="109" rx="13" ry="6.5" fill="#ffd59a" stroke="#e0a050" stroke-width="2"/>'}
+ const t=k=='hug'?7:0;
+ const A=`<g transform="translate(6 18) rotate(${t} 48 58) scale(.8)">${noorG(m1)}</g>`,P=`<g transform="translate(108 18) rotate(${-t} 48 58) scale(.8)">${petHead('l',m2)}</g>`;
+ if(k=='sleep')after='<path d="M6 100Q105 84 204 100V116H6Z" fill="#c9b8ff" stroke="#9b86e8" stroke-width="2"/><text x="100" y="22" font-size="15" font-weight="800" fill="#8b73e0">Z</text><text x="114" y="12" font-size="10" font-weight="800" fill="#8b73e0">z</text>';
+ return`<svg viewBox="0 0 210 140" xmlns="http://www.w3.org/2000/svg">${A}${P}${x}${after}${_lb(105,104,c.l)}</svg>`}
+const _stkN=stkHTML;
+stkHTML=function(m){const t=m.text||'';
+ if(t.startsWith('n:')){const k=t.slice(2);if(DUO[k])return`<div class="cat duo kb-${DUO[k].a}">${duoNS(k)}</div>`}
+ return _stkN(m)};
+const _rspN=renderSp;
+renderSp=function(){if(spTab!='p')return _rspN();
+ const g=$('#spg'),H=(t,r)=>`<div class="spl" style="color:var(--mu)"><span>${t}</span>${r||''}</div>`,FR='<span class="lxb a">FREE</span>';
+ $('#sp').querySelectorAll('.spt button').forEach(b=>b.classList.toggle('on',b.dataset.k==spTab));g.className='spg l';
+ const duo=(pre,fn)=>Object.keys(DUO).map(k=>`<button class="spc dc" onclick="sendStk('${pre}:${k}')">${fn(k)}</button>`).join(''),
+  one=(pre,fn,keys)=>keys.map(k=>`<button class="spc cs" onclick="sendStk('${pre}${k}')">${fn(k)}</button>`).join('');
+ g.innerHTML=H('🐱🦁 Noor Billi & Sher · couple',FR)+duo('n',duoNS)
+ +H('🐱 Noor Billi')+one('c:',catSvg,Object.keys(CATM))
+ +H('🦁 Sher the lion cub')+one('p:l_',k=>petSvg('l',k),Object.keys(PETM))
+ +H('🐰🐼 Bunty & Pandu · couple')+duo('d',duoSvg)
+ +H('🐰 Bunty the bunny')+one('p:b_',k=>petSvg('b',k),Object.keys(PETM))
+ +H('🐼 Pandu the panda')+one('p:p_',k=>petSvg('p',k),Object.keys(PETM))};
 </script></body></html>
